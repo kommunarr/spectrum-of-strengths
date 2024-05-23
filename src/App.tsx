@@ -7,7 +7,6 @@ import Contact from './views/Contact/Contact';
 
 import React from 'react';
 import ErrorPage from './views/ErrorPage/ErrorPage';
-// import Layout from './components/Layout';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
