@@ -1,0 +1,18 @@
+#header {
+    display: flex;
+    align-items: flex-end;
+    position: fixed;
+    background-color: var(--primary-background-color);
+    inline-size: 100vw;
+    inset-block-start: 0;
+}
+
+.navigationMenuHeadings {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.navigationMenuHeadings li a {
+    text-decoration: none;
+}

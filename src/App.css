@@ -21,3 +21,7 @@ html {
   font-size: var(--font-size-base);
   text-align: center;
 }
+
+body {
+  margin-block: 0;
+}

@@ -6,7 +6,7 @@ function SocialMediaIconList() {
     return (
         <div className="socialMediaIconList">
             <a href="https://www.facebook.com/profile.php?id=61556445292415">
-                <FontAwesomeIcon icon={faFacebook} title="Facebook" />
+                <FontAwesomeIcon className="socialMediaIcon" icon={faFacebook} title="Facebook" />
             </a>
         </div>
     );

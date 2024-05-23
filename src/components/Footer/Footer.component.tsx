@@ -1,3 +1,4 @@
+import Logo from '../Logo';
 import SocialMediaIconList from '../SocialMediaIconList';
 import './Footer.css';
 
@@ -6,8 +7,8 @@ import './Footer.css';
 function Footer() {
     return (
         <div className="footer">
+            <Logo />
             <SocialMediaIconList />
-        
         </div>
     );
 }
