@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import './Header.css';
 import Logo from "../Logo";
 
@@ -6,6 +6,8 @@ function Header() {
     function openAddEmailPrompt() {
       console.log('Email collected');
     }
+
+    const location = useLocation();
 
     return (
         <>
@@ -16,18 +18,19 @@ function Header() {
             <nav className="navigationMenu">
               <ul className="navigationMenuHeadings">
                 <li>
-                  <Link className="menuLink" to={``}>Home</Link>
+                  <Link className="actionLink" to={``}>Home</Link>
                 </li>
                 <li>
-                  <Link className="menuLink" to={`about`}>About</Link>
+                  <Link className="actionLink" to={`about`}>About</Link>
                 </li>
                 <li>
-                  <Link className="menuLink" to={`contact-us`}>Contact Us</Link>
+                  <Link className="actionLink" to={`contact-us`}>Contact</Link>
                 </li>
               </ul>
             </nav>
     
             <div className="actionSection">
+              <Link className="actionLink languageLink" to={`fr${location.pathname}`}>Français</Link>
               <button className="actionButton" onClick={openAddEmailPrompt}>
                 Join
               </button>

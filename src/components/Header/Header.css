@@ -9,7 +9,7 @@
 }
 
 .navigationMenu {
-    flex: 80%;
+    flex: 70%;
 }
 
 .navigationMenuHeadings {
@@ -21,23 +21,28 @@
     font-weight: 600;
 }
 
-.menuLink {
+.actionLink {
     text-decoration: none;
 }
 
-.menuLink:visited {
+.actionLink:visited {
     color: inherit;
 }
 
-.menuLink:hover, .menuLink:active {
+.actionLink:hover, .actionLink:active {
     color: var(--action-background-color);
 }
 
+.languageLink {
+    font-weight: 500;
+    font-size: var(--font-size-md);
+}
+
 .actionSection {
-    flex: 20%;
+    flex: 30%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .actionButton {
