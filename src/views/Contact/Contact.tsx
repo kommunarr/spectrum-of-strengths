@@ -1,7 +1,10 @@
+import { useTranslation } from "react-i18next";
+
 function Contact() {
+    const { t } = useTranslation(['common']);
     return (
         <div>
-            <h1>Contact us</h1>
+            <h1>{t('contact')}</h1>
         </div>
     );
 }

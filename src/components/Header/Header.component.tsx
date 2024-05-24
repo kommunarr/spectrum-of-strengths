@@ -4,9 +4,15 @@ import Logo from "../Logo";
 import { useTranslation } from "react-i18next";
 
 function Header() {
-  const { t } = useTranslation(['common', 'otherLanguage']);
+  const { t, i18n } = useTranslation(['common', 'otherLanguage']);
     function openAddEmailPrompt() {
       console.log('Email collected');
+    }
+
+    function getCorrespondingPageRouteInOtherLanguage(path: string): string {
+      const isValidPath = i18n.exists(path, { ns: 'otherLanguage' });
+      const key = isValidPath ? path : `/${t('homePath')}`;
+      return t(key, { ns: 'otherLanguage' });
     }
 
     const location = useLocation();
@@ -31,7 +37,7 @@ function Header() {
             </nav>
     
             <div className="actionSection">
-              <Link className="actionLink languageLink" to={t(location.pathname, { ns: 'otherLanguage' })}>
+              <Link className="actionLink languageLink" to={getCorrespondingPageRouteInOtherLanguage(location.pathname)}>
                 {t('name', { ns: 'otherLanguage' })}
               </Link>
               <button className="actionButton" onClick={openAddEmailPrompt}>

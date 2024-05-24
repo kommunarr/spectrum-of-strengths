@@ -6,7 +6,9 @@
         "homePath": "",
         "aboutPath": "about",
         "contactPath": "contact-us",
-        "join": "Join"
+        "join": "Join",
+        "pageNotFoundTitle": "Page not found",
+        "pageNotFoundSubtitle": "We appreciate that you want to diverge from the intended path, but this page does not exist."
     },
     "otherLanguage": {
         "name": "Français",

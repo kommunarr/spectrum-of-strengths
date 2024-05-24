@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
+
 function ErrorPage() {
+    const { t } = useTranslation(['common']);
     return (
         <div>
-            <h1>Page not found</h1>
-            <p>We appreciate that you want to diverge from the intended path, but this page does not exist.</p>
+            <h1>{t('pageNotFoundTitle')}</h1>
+            <p>{t('pageNotFoundSubtitle')}</p>
         </div>
     );
 }

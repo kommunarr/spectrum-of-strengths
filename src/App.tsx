@@ -5,7 +5,7 @@ import Home from './views/Home/Home';
 import About from './views/About//About';
 import Contact from './views/Contact/Contact';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import ErrorPage from './views/ErrorPage/ErrorPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -32,11 +32,18 @@ interface ILanguageLoader {
   children: React.ReactNode;
 }
 
-function LanguageLoader(props: ILanguageLoader) {
-  const newLanguage: string = props.lang === 'fr' ? 'fr' : 'en';
+
+function setLanguage(language: string) {
+  const newLanguage: string = language === 'fr' ? 'fr' : 'en';
   if (i18n.language !== newLanguage) {
     void i18n.changeLanguage(newLanguage);
   }
+}
+
+function LanguageLoader(props: ILanguageLoader) {
+  useEffect(() => {
+    setLanguage(props.lang);
+  }, [props.lang]);
 
   return (props.children)
 }
