@@ -6,10 +6,10 @@ import './Footer.css';
 
 function Footer() {
     return (
-        <div className="footer">
+        <footer className="footer">
             <Logo />
             <SocialMediaIconList />
-        </div>
+        </footer>
     );
 }
 

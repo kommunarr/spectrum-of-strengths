@@ -1,18 +1,60 @@
 #header {
     display: flex;
-    align-items: flex-end;
-    position: fixed;
+    align-items: center;
+    position: sticky;
     background-color: var(--primary-background-color);
-    inline-size: 100vw;
+    inline-size: 100%;
     inset-block-start: 0;
+    block-size: 60px;
+}
+
+.navigationMenu {
+    flex: 80%;
 }
 
 .navigationMenuHeadings {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     list-style-type: none;
+    font-size: var(--font-size-md);
+    font-weight: 600;
 }
 
-.navigationMenuHeadings li a {
+.menuLink {
     text-decoration: none;
+}
+
+.menuLink:visited {
+    color: inherit;
+}
+
+.menuLink:hover, .menuLink:active {
+    color: var(--action-background-color);
+}
+
+.actionSection {
+    flex: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actionButton {
+    cursor: pointer;
+    padding-inline: 1.5rem;
+    padding-block: 0.75rem;
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    border-style: none;
+
+    background-color: var(--action-background-color);
+    color: var(--action-text-color);
+    border-color: var(--action-background-color);
+}
+
+.actionButton:hover {
+    background-color: var(--action-background-hover-color);
+    color: var(--action-text-hover-color);
+    border-color: var(--action-background-hover-color);
 }

@@ -10,11 +10,17 @@ import ErrorPage from './views/ErrorPage/ErrorPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-function Layout() {
+interface IRootRoute {
+  outlet?: React.JSX.Element;
+}
+
+function Layout(props: IRootRoute) {
   return (
       <>
         <Header />
-        <Outlet />
+        <main>
+          {props.outlet ? props.outlet : <Outlet />}
+        </main>
         <Footer />
       </>
   );
@@ -24,7 +30,7 @@ const routeObject: RouteObject = {
   path: "/",
   // <Root />
   element: <Layout />,
-  errorElement: <ErrorPage />,
+  errorElement: <Layout outlet={<ErrorPage />} />,
   children: [
     { index: true, element: <Home /> },
     {
