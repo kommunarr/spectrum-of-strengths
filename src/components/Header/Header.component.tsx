@@ -1,8 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import './Header.css';
 import Logo from "../Logo";
+import { useTranslation } from "react-i18next";
 
 function Header() {
+  const { t } = useTranslation(['common', 'otherLanguage']);
     function openAddEmailPrompt() {
       console.log('Email collected');
     }
@@ -13,26 +15,27 @@ function Header() {
         <>
           <div id="header">
             <Logo />
-            {/* other elements */}
     
             <nav className="navigationMenu">
               <ul className="navigationMenuHeadings">
                 <li>
-                  <Link className="actionLink" to={``}>Home</Link>
+                  <Link className="actionLink" to={t('homePath')}>{t('home')}</Link>
                 </li>
                 <li>
-                  <Link className="actionLink" to={`about`}>About</Link>
+                  <Link className="actionLink" to={t('aboutPath')}>{t('about')}</Link>
                 </li>
                 <li>
-                  <Link className="actionLink" to={`contact-us`}>Contact</Link>
+                  <Link className="actionLink" to={t('contactPath')}>{t('contact')}</Link>
                 </li>
               </ul>
             </nav>
     
             <div className="actionSection">
-              <Link className="actionLink languageLink" to={`fr${location.pathname}`}>Français</Link>
+              <Link className="actionLink languageLink" to={t(location.pathname, { ns: 'otherLanguage' })}>
+                {t('name', { ns: 'otherLanguage' })}
+              </Link>
               <button className="actionButton" onClick={openAddEmailPrompt}>
-                Join
+                {t('join')}
               </button>
             </div>
           </div>

@@ -9,6 +9,7 @@ import React from 'react';
 import ErrorPage from './views/ErrorPage/ErrorPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import i18n from './i18n';
 
 interface IRootRoute {
   outlet?: React.JSX.Element;
@@ -26,20 +27,48 @@ function Layout(props: IRootRoute) {
   );
 }
 
+interface ILanguageLoader {
+  lang: string;
+  children: React.ReactNode;
+}
+
+function LanguageLoader(props: ILanguageLoader) {
+  const newLanguage: string = props.lang === 'fr' ? 'fr' : 'en';
+  if (i18n.language !== newLanguage) {
+    void i18n.changeLanguage(newLanguage);
+  }
+
+  return (props.children)
+}
+
 const routeObject: RouteObject = {
   path: "/",
   // <Root />
   element: <Layout />,
   errorElement: <Layout outlet={<ErrorPage />} />,
   children: [
-    { index: true, element: <Home /> },
+    { index: true, element: <LanguageLoader lang="en"><Home /></LanguageLoader> },
     {
       path: "about",
-      element: <About />,
+      element: <LanguageLoader lang="en"><About /></LanguageLoader>,
     },
     {
       path: "contact-us",
-      element: <Contact />,
+      element: <LanguageLoader lang="en"><Contact /></LanguageLoader>,
+    },
+    {
+      path: 'fr',
+      children: [
+        { index: true, element: <LanguageLoader lang="fr"><Home /></LanguageLoader> },
+        {
+          path: "propos",
+          element: <LanguageLoader lang="fr"><About /></LanguageLoader>,
+        },
+        {
+          path: "contactez-nous",
+          element: <LanguageLoader lang="fr"><Contact /></LanguageLoader>,
+        },
+      ]
     }
   ]
 };

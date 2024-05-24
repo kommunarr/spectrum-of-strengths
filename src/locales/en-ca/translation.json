@@ -1,0 +1,17 @@
+{
+    "common": {
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact",
+        "homePath": "",
+        "aboutPath": "about",
+        "contactPath": "contact-us",
+        "join": "Join"
+    },
+    "otherLanguage": {
+        "name": "Français",
+        "/": "fr",
+        "/about": "fr/propos",
+        "/contact-us": "fr/contactez-nous"    
+    }
+}
