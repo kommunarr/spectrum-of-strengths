@@ -9,6 +9,8 @@
   --font-size-xxxl: 2rem;     /* 32px */
   --font-size-xxxxl: 2.25rem; /* 36px */
 
+  --container-inline-size: 1170px;
+
   --spectrum-blue: #1FA8DD;
   --spectrum-orange: #F59B4A;
   --spectrum-yellow: #DCC63F;
@@ -40,8 +42,58 @@ html {
 
 main {
   min-block-size: calc(100vh - 158px);
+  max-inline-size: var(--container-inline-size);
+  margin-inline: auto;
 }
 
 body {
   margin-block: 0;
+}
+
+.screenreader-only {
+  clip: rect(1px 1px 1px 1px); /* IE 6/7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* h1 {
+  
+}
+
+h2 {
+
+} */
+
+@media only screen and (min-width: 667px) {
+  #root {
+    --container-inline-size: 630px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #root {
+    --container-inline-size: 730px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #root {
+    --container-inline-size: 960px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #root {
+    --container-inline-size: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  #root {
+    --container-inline-size: 1400px;
+  }
 }

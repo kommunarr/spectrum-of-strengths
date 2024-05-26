@@ -1,0 +1,18 @@
+.actionButton {
+    cursor: pointer;
+    padding-inline: 1.5rem;
+    padding-block: 0.75rem;
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    border-style: none;
+
+    background-color: var(--action-background-color);
+    color: var(--action-text-color);
+    border-color: var(--action-background-color);
+}
+
+.actionButton:hover {
+    background-color: var(--action-background-hover-color);
+    color: var(--action-text-hover-color);
+    border-color: var(--action-background-hover-color);
+}

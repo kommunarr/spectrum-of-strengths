@@ -6,7 +6,8 @@
         "homePath": "fr",
         "aboutPath": "fr/propos",
         "contactPath": "fr/contactez-nous",
-        "join": "Rejoindre",
+        "menu": "Menu",
+        "joinUs": "Rejoignez-nous",
         "pageNotFoundTitle": "Page non trouvée",
         "pageNotFoundSubtitle": "Nous comprenons que vous souhaitiez vous écarter du chemin prévu, mais cette page n'existe pas."
     },

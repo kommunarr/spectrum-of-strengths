@@ -2,4 +2,23 @@
     background-color: var(--secondary-background-color);
     color: var(--secondary-text-color);
     margin-inline: -8px;
+    padding-block: 1rem;
+}
+
+.footerContent {
+    max-inline-size: var(--container-inline-size);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-inline: auto;
+}
+
+.leftFooter {
+
+}
+
+.rightFooter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }

@@ -1,24 +1,39 @@
 #header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: sticky;
+    column-gap: 2rem;
     background-color: var(--primary-background-color);
     inline-size: 100%;
+    block-size: 100%;
     inset-block-start: 0;
-    block-size: 60px;
+    max-inline-size: var(--container-inline-size);
+    margin-inline: auto;
 }
 
 .navigationMenu {
-    flex: 70%;
+    flex: 50%;
 }
 
 .navigationMenuHeadings {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 2rem;
     list-style-type: none;
     font-size: var(--font-size-md);
     font-weight: 600;
+    padding-inline: 0;
+}
+
+.actionSection {
+    flex: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 2rem;
 }
 
 .actionLink {
@@ -33,33 +48,34 @@
     color: var(--action-background-color);
 }
 
+.actionLink.active { 
+    border-bottom: 3px solid var(--action-background-color);
+    /* text-decoration: underline solid var(--action-background-color) 0.1rem; */
+}
+
 .languageLink {
     font-weight: 500;
     font-size: var(--font-size-md);
 }
 
-.actionSection {
-    flex: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+.mobileMenuTrigger {
+    display: none;
 }
 
-.actionButton {
-    cursor: pointer;
-    padding-inline: 1.5rem;
-    padding-block: 0.75rem;
-    font-size: var(--font-size-lg);
-    font-weight: 700;
-    border-style: none;
+@media only screen and (max-width: 992px) {
+    .navigationMenu, .actionSection {
+        display: none;
+    }
 
-    background-color: var(--action-background-color);
-    color: var(--action-text-color);
-    border-color: var(--action-background-color);
-}
+    .mobileMenuTrigger {
+        display: block;
+        border: none;
+        background: transparent;
+        margin-inline-end: 0.5rem;
+        cursor: pointer;
+    }
 
-.actionButton:hover {
-    background-color: var(--action-background-hover-color);
-    color: var(--action-text-hover-color);
-    border-color: var(--action-background-hover-color);
+    .mobileMenuTriggerIcon {
+        font-size: 1.25rem;
+    }
 }

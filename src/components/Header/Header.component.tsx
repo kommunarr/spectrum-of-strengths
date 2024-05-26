@@ -2,20 +2,32 @@ import { Link, useLocation } from "react-router-dom";
 import './Header.css';
 import Logo from "../Logo";
 import { useTranslation } from "react-i18next";
+import ActionButton from "../ActionButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
   const { t, i18n } = useTranslation(['common', 'otherLanguage']);
-    function openAddEmailPrompt() {
-      console.log('Email collected');
-    }
+  let isMobileMenuOpen = false;
 
-    function getCorrespondingPageRouteInOtherLanguage(path: string): string {
-      const isValidPath = i18n.exists(path, { ns: 'otherLanguage' });
-      const key = isValidPath ? path : `/${t('homePath')}`;
-      return t(key, { ns: 'otherLanguage' });
-    }
+  function openAddEmailPrompt() {
+    console.log('Email collected');
+  }
+
+  function getCorrespondingPageRouteInOtherLanguage(path: string): string {
+    const isValidPath = i18n.exists(path, { ns: 'otherLanguage' });
+    const key = isValidPath ? path : `/${t('homePath')}`;
+    return t(key, { ns: 'otherLanguage' });
+  }
+
+  function openMobileMenu(): void {
+    isMobileMenuOpen = true;
+    console.log('Menu opened');
+  }
 
     const location = useLocation();
+    const currentPathname = location.pathname.substring(1);
+    const pageSections = ['home', 'about', 'contact'];
 
     return (
         <>
@@ -24,15 +36,15 @@ function Header() {
     
             <nav className="navigationMenu">
               <ul className="navigationMenuHeadings">
-                <li>
-                  <Link className="actionLink" to={t('homePath')}>{t('home')}</Link>
-                </li>
-                <li>
-                  <Link className="actionLink" to={t('aboutPath')}>{t('about')}</Link>
-                </li>
-                <li>
-                  <Link className="actionLink" to={t('contactPath')}>{t('contact')}</Link>
-                </li>
+                {pageSections.map((section, index) => 
+                {
+                  const path = t(`${section}Path`);
+                  const activeClass = (currentPathname === path ? ' active' : '');
+                  return (
+                  <li key={index}>
+                    <Link className={`actionLink${activeClass}`} to={path}>{t(section)}</Link>
+                  </li>
+                )})}
               </ul>
             </nav>
     
@@ -40,10 +52,12 @@ function Header() {
               <Link className="actionLink languageLink" to={getCorrespondingPageRouteInOtherLanguage(location.pathname)}>
                 {t('name', { ns: 'otherLanguage' })}
               </Link>
-              <button className="actionButton" onClick={openAddEmailPrompt}>
-                {t('join')}
-              </button>
+              <ActionButton onClick={openAddEmailPrompt} label={t('joinUs')} />
             </div>
+
+            <button className="mobileMenuTrigger" aria-label={t('menu')} onClick={openMobileMenu}>
+              <FontAwesomeIcon className="mobileMenuTriggerIcon" icon={faBars} />
+            </button>
           </div>
         </>
     );
