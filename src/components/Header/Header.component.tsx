@@ -27,13 +27,25 @@ function Header() {
 
     const location = useLocation();
     const currentPathname = location.pathname.substring(1);
-    const pageSections = ['home', 'about', 'contact'];
+    const pageSections = ['home', 'events', 'about', 'contact'];
 
     return (
-        <>
-          <div id="header">
-            <Logo />
-    
+      <div id="header">
+        <div className="topRow">
+          <Logo />
+
+          <div className="actionSection">
+            <Link className="actionLink languageLink" to={getCorrespondingPageRouteInOtherLanguage(location.pathname)}>
+              {t('name', { ns: 'otherLanguage' })}
+            </Link>
+            <ActionButton onClick={openAddEmailPrompt} label={t('joinUs')} />
+            <button className="mobileMenuTrigger" aria-label={t('menu')} onClick={openMobileMenu}>
+              <FontAwesomeIcon className="mobileMenuTriggerIcon" icon={faBars} />
+            </button>
+          </div>
+        </div>
+        <div className="bottomRow">
+          <div className="bottomRowContent">
             <nav className="navigationMenu">
               <ul className="navigationMenuHeadings">
                 {pageSections.map((section, index) => 
@@ -47,19 +59,9 @@ function Header() {
                 )})}
               </ul>
             </nav>
-    
-            <div className="actionSection">
-              <Link className="actionLink languageLink" to={getCorrespondingPageRouteInOtherLanguage(location.pathname)}>
-                {t('name', { ns: 'otherLanguage' })}
-              </Link>
-              <ActionButton onClick={openAddEmailPrompt} label={t('joinUs')} />
-            </div>
-
-            <button className="mobileMenuTrigger" aria-label={t('menu')} onClick={openMobileMenu}>
-              <FontAwesomeIcon className="mobileMenuTriggerIcon" icon={faBars} />
-            </button>
           </div>
-        </>
+        </div>
+      </div>
     );
 }
 

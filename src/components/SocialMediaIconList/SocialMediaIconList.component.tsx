@@ -5,7 +5,7 @@ import { faFacebook } from '@fortawesome/free-brands-svg-icons'
 function SocialMediaIconList() {
     return (
         <div className="socialMediaIconList">
-            <a href="https://www.facebook.com/profile.php?id=61556445292415">
+            <a className="socialMediaIconLink" href="https://www.facebook.com/profile.php?id=61556445292415">
                 <FontAwesomeIcon className="socialMediaIcon" icon={faFacebook} title="Facebook" />
             </a>
         </div>

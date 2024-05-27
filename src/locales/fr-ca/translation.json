@@ -2,8 +2,10 @@
     "common": {
         "home": "Accueil",
         "about": "À propos",
+        "events": "Événements",
         "contact": "Contactez-nous",
         "homePath": "fr",
+        "eventsPath": "fr/événements",
         "aboutPath": "fr/propos",
         "contactPath": "fr/contactez-nous",
         "menu": "Menu",
@@ -14,6 +16,7 @@
     "otherLanguage": {
         "name": "English",
         "/fr": "",
+        "fr/événements": "/events",
         "/fr/propos": "about",
         "/fr/contactez-nous": "contact-us"    
     }

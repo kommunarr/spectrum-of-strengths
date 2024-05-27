@@ -2,3 +2,9 @@
     color: var(--secondary-text-color);
     background-color: transparent;
 }
+
+
+.socialMediaIconLink {
+    border-bottom: none;
+    font-weight: 400;
+}
