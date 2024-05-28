@@ -1,15 +1,13 @@
 #root {
-  --font-size-tiny: 0.75rem;  /* 12px */
-  --font-size-sm: 0.875rem;   /* 14px */
-  --font-size-base: 1rem;     /* 16px, base */
-  --font-size-md: 1.125rem;   /* 18px */
-  --font-size-lg: 1.25rem;    /* 20px */
-  --font-size-xl: 1.5rem;     /* 24px */
-  --font-size-xxl: 1.75rem;   /* 28px */
-  --font-size-xxxl: 2rem;     /* 32px */
-  --font-size-xxxxl: 2.25rem; /* 36px */
+  --font-size-tiny: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px, base */
+  --font-size-md: 1.125rem;    /* 18px */
+  --font-size-xl1: 1.25rem;    /* 20px */
+  --font-size-xl2: 1.3125rem;  /* 21px */
+  --font-size-xl3: 3rem;       /* 48px */
 
-  --container-inline-size: 1170px;
+  --container-inline-size: 1140px;
 
   --spectrum-gray: #f6f6f6;
   --spectrum-blue: #1FA8DD;
@@ -38,13 +36,14 @@ html {
   background-color: var(--primary-background-color);
 
   font-size: var(--font-size-base);
-  text-align: center;
 }
+
 
 main {
   min-block-size: calc(100vh - 158px);
   max-inline-size: var(--container-inline-size);
   margin-inline: auto;
+  padding-inline: 1rem;
 }
 
 body {
@@ -100,40 +99,14 @@ a[href]:not(:where(
   }
 }
 
-/* h1 {
-  
+h1 {
+  font-size: var(--font-size-xl3);
 }
 
 h2 {
-
-} */
-
-@media only screen and (min-width: 667px) {
-  #root {
-    --container-inline-size: 630px;
-  }
+  font-size: var(--font-size-xl2);
 }
 
-@media only screen and (min-width: 768px) {
-  #root {
-    --container-inline-size: 730px;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  #root {
-    --container-inline-size: 960px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  #root {
-    --container-inline-size: 1170px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  #root {
-    --container-inline-size: 1400px;
-  }
+p {
+  font-size: var(--font-size-xl2);
 }
