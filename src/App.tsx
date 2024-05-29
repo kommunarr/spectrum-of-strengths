@@ -34,6 +34,7 @@ function Layout(props: IRootRoute) {
 
 interface ILanguageLoader {
   lang: string;
+  title: string;
   children: React.ReactNode;
 }
 
@@ -43,50 +44,50 @@ const routeObject: RouteObject = {
   element: <Layout />,
   errorElement: <Layout outlet={<ErrorPage />} />,
   children: [
-    { index: true, element: <LanguageLoader lang="en"><Home /></LanguageLoader> },
+    { index: true, element: <LanguageLoader lang="en" title="home"><Home /></LanguageLoader> },
     {
       path: "events",
-      element: <LanguageLoader lang="en"><Events /></LanguageLoader>,
+      element: <LanguageLoader lang="en" title="events"><Events /></LanguageLoader>,
     },
     {
       path: "about",
-      element: <LanguageLoader lang="en"><About /></LanguageLoader>,
+      element: <LanguageLoader lang="en" title="about"><About /></LanguageLoader>,
     },
     {
       path: "contact-us",
-      element: <LanguageLoader lang="en"><Contact /></LanguageLoader>,
+      element: <LanguageLoader lang="en" title="contact"><Contact /></LanguageLoader>,
     },
     {
       path: "terms-of-use-and-privacy",
-      element: <LanguageLoader lang="en"><TermsOfUseAndPrivacy /></LanguageLoader>
+      element: <LanguageLoader lang="en" title="termsOfUseAndPrivacy"><TermsOfUseAndPrivacy /></LanguageLoader>
     },
     {
       path: "accessibility-standards",
-      element: <LanguageLoader lang="en"><AccessibilityStandards /></LanguageLoader>,
+      element: <LanguageLoader lang="en" title="accessibilityStandards"><AccessibilityStandards /></LanguageLoader>,
     },
     {
       path: 'fr',
       children: [
-        { index: true, element: <LanguageLoader lang="fr"><Home /></LanguageLoader> },
+        { index: true, element: <LanguageLoader lang="fr" title="home"><Home /></LanguageLoader> },
         {
           path: "événements",
-          element: <LanguageLoader lang="fr"><Events /></LanguageLoader>,
+          element: <LanguageLoader lang="fr" title="events"><Events /></LanguageLoader>,
         },
         {
           path: "propos",
-          element: <LanguageLoader lang="fr"><About /></LanguageLoader>,
+          element: <LanguageLoader lang="fr" title="about"><About /></LanguageLoader>,
         },
         {
           path: "contactez-nous",
-          element: <LanguageLoader lang="fr"><Contact /></LanguageLoader>,
+          element: <LanguageLoader lang="fr" title="contact"><Contact /></LanguageLoader>,
         },
         {
           path: "conditions-dutilisation-politique-confidentialite",
-          element: <LanguageLoader lang="fr"><TermsOfUseAndPrivacy /></LanguageLoader>,
+          element: <LanguageLoader lang="fr" title="termsOfUseAndPrivacy"><TermsOfUseAndPrivacy /></LanguageLoader>,
         },
         {
           path: "normes-daccessibilite",
-          element: <LanguageLoader lang="fr"><AccessibilityStandards /></LanguageLoader>,
+          element: <LanguageLoader lang="fr" title="accessibilityStandards"><AccessibilityStandards /></LanguageLoader>,
         }
       ]
     }
@@ -95,16 +96,17 @@ const routeObject: RouteObject = {
 
 const router = createBrowserRouter([routeObject]);
 function LanguageLoader(props: ILanguageLoader) {
-  const { i18n } = useTranslation(['common']);
+  const { t, i18n } = useTranslation(['common']);
   const { pathname } = useLocation();
+  const title = t(props.title)
   
   useEffect(() => {
-    const newLanguage: string = props.lang === 'fr' ? 'fr' : 'en';
-    void i18n.changeLanguage(newLanguage);
+    void i18n.changeLanguage(props.lang);
+    document.title = `${title} | Spectrum of Strengths`;
 
     // scroll to top on route change
     window.scrollTo(0, 0);
-  }, [props.lang, i18n, pathname]);
+  }, [props.lang, props.title, title, i18n, pathname]);
 
   return (props.children)
 }
