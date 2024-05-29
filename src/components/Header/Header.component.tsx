@@ -51,6 +51,8 @@ function Header() {
                 {pageSections.map((section, index) => 
                 {
                   const path = t(`${section}Path`);
+                  console.log(section);
+                  console.log(path);
                   const activeClass = (currentPathname === path ? ' active' : '');
                   return (
                   <li key={index}>

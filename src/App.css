@@ -5,7 +5,8 @@
   --font-size-md: 1.125rem;    /* 18px */
   --font-size-xl1: 1.25rem;    /* 20px */
   --font-size-xl2: 1.3125rem;  /* 21px */
-  --font-size-xl3: 3rem;       /* 48px */
+  --font-size-xl3: 2rem;       /* 32px */
+  --font-size-xl4: 3rem;       /* 48px */
 
   --container-inline-size: 1140px;
 
@@ -38,9 +39,12 @@ html {
   font-size: var(--font-size-base);
 }
 
+.headerAndMain {
+  min-block-size: calc(100vh - 87px - 2rem);
+  margin-block-end: 2rem;
+}
 
 main {
-  min-block-size: calc(100vh - 158px);
   max-inline-size: var(--container-inline-size);
   margin-inline: auto;
   padding-inline: 1rem;
@@ -64,7 +68,10 @@ body {
 a {
   color: var(--primary-text-color);
   text-decoration: none;
+}
 
+.a:visited {
+  color: inherit;
 }
 
 a[href]:not(:where(
@@ -100,10 +107,14 @@ a[href]:not(:where(
 }
 
 h1 {
-  font-size: var(--font-size-xl3);
+  font-size: var(--font-size-xl4);
 }
 
 h2 {
+  font-size: var(--font-size-xl3);
+}
+
+h3 {
   font-size: var(--font-size-xl2);
 }
 

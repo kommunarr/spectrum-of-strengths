@@ -10,7 +10,9 @@ import ErrorPage from './views/ErrorPage/ErrorPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Events from './views/Events/Events';
+import TermsOfUseAndPrivacy from './views/TermsOfUseAndPrivacy/TermsOfUseAndPrivacy';
 import { useTranslation } from 'react-i18next';
+import AccessibilityStandards from './views/AccessibilityStandards/AccessibilityStandards';
 
 interface IRootRoute {
   outlet?: React.JSX.Element;
@@ -19,10 +21,12 @@ interface IRootRoute {
 function Layout(props: IRootRoute) {
   return (
       <>
-        <Header />
-        <main>
-          {props.outlet ? props.outlet : <Outlet />}
-        </main>
+        <div className="headerAndMain">
+          <Header />
+          <main>
+            {props.outlet ? props.outlet : <Outlet />}
+          </main>
+        </div>
         <Footer />
       </>
   );
@@ -53,6 +57,14 @@ const routeObject: RouteObject = {
       element: <LanguageLoader lang="en"><Contact /></LanguageLoader>,
     },
     {
+      path: "terms-of-use-and-privacy",
+      element: <LanguageLoader lang="en"><TermsOfUseAndPrivacy /></LanguageLoader>
+    },
+    {
+      path: "accessibility-standards",
+      element: <LanguageLoader lang="en"><AccessibilityStandards /></LanguageLoader>,
+    },
+    {
       path: 'fr',
       children: [
         { index: true, element: <LanguageLoader lang="fr"><Home /></LanguageLoader> },
@@ -68,6 +80,14 @@ const routeObject: RouteObject = {
           path: "contactez-nous",
           element: <LanguageLoader lang="fr"><Contact /></LanguageLoader>,
         },
+        {
+          path: "conditions-dutilisation-politique-confidentialite",
+          element: <LanguageLoader lang="fr"><TermsOfUseAndPrivacy /></LanguageLoader>,
+        },
+        {
+          path: "normes-daccessibilite",
+          element: <LanguageLoader lang="fr"><AccessibilityStandards /></LanguageLoader>,
+        }
       ]
     }
   ]

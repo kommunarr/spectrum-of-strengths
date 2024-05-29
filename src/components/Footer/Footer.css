@@ -12,12 +12,19 @@
     margin-inline: auto;
 }
 
-.leftFooter {
-
+.footerLink {
+    color: var(--secondary-text-color);
+    font-weight: 500;
+    max-inline-size: 14rem;
+    /* font-size: var(--font-size-sm); */
 }
 
-.rightFooter {
+.footerLink:hover {
+    text-decoration: solid underline var(--action-background-color) 3px;
+}
+
+.leftFooter, .rightFooter {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    column-gap: 2rem;
 }
