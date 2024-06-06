@@ -16,16 +16,17 @@ function Footer() {
     const footerLinks = ['termsOfUseAndPrivacy', 'accessibilityStandards']
     return (
         <footer className="footer">
-            <div className="footerContent">
-                <Logo />
-                <div className="footerInfo">
-                    <div className="footerLinks">
-                        {footerLinks.map((footerLink, index) => (
-                            <Link key={index} className="footerLink" to={t(`${footerLink}Path`)}>
-                                {t(footerLink)}
-                            </Link>
-                        ))}
-                    </div>
+            <Logo />
+            <div className="footerInfo">
+                <div className="footerLinks">
+                    {footerLinks.map((footerLink, index) => (
+                        <Link key={index} className="footerLink" to={t(`${footerLink}Path`)}>
+                            {t(footerLink)}
+                        </Link>
+                    ))}
+                </div>
+                <div className="footerActionSectionAndMobileLogo">
+                    <Logo />
                     <div className="footerActionSection">
                         <SocialMediaIconList />
                         <ActionButton onClick={openAddEmailPrompt} label={t('joinUs')} />

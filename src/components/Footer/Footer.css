@@ -1,13 +1,10 @@
 .footer {
     background-color: var(--secondary-background-color);
     color: var(--secondary-text-color);
-    padding-block: 1rem;
-}
-
-.footerContent {
-    max-inline-size: 95%;
-    justify-content: space-between;
-    margin-inline: auto;
+    padding-inline: 2.5%;
+    box-sizing: border-box;
+    block-size: 6.375rem;
+    justify-content: center;
 }
 
 .footerInfo {
@@ -26,34 +23,79 @@
     text-decoration: solid underline var(--action-background-color) 3px;
 }
 
-.footerContent, .footerInfo, .footerLinks, .footerActionSection {
+.footer, .footerInfo, .footerLinks, .footerActionSectionAndMobileLogo, .footerActionSection {
     display: flex;
     align-items: center;
     column-gap: 2rem;
+    row-gap: 1rem;
 }
 
 @media only screen and (min-width: 751px) {
-    .footerContent > *:first-child {
+    .footer > *:first-child {
         flex: 100px;
+    }
+
+    .footerActionSectionAndMobileLogo > *:first-child {
+        display: none;
     }
 }
 
 @media only screen and (max-width: 750px) {
+    .footer > *:first-child {
+        display: none;
+    }
+
+    .footer {
+        padding-inline: 10%;
+        min-block-size: 15rem;
+    }
+
+    .footerInfo {
+        justify-content: center;
+        row-gap: 1.5rem;
+        inline-size: 100%;
+        block-size: 100%;
+    }
+
+    .footerActionSectionAndMobileLogo {
+        justify-content: space-between;
+        align-items: flex-end;
+        inline-size: 100%;
+    }
+
     .footerActionSection {
         row-gap: 0.5rem;
     }
-    .footerContent {
-        flex-direction: column-reverse;
-        max-inline-size: 80%;
-    }
+
     .footerInfo, .footerActionSection {
         flex-direction: column;
     }
-    .footerInfo, .footerContent {
-        row-gap: 1.5rem;
-    }
+
     .footerLinks {
         align-content: space-between;
+    }
+
+    .footerLink:first-child {
+        text-align: start;
+    }
+
+    .footerLink:last-child {
+        text-align: end;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .footer {
+        block-size: fit-content;
+        padding-block: 1rem;
+    }
+
+    .footerLinks, .footerActionSectionAndMobileLogo {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footerLinks > .footerLink {
         text-align: center;
     }
 }

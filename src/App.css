@@ -40,7 +40,7 @@ html {
 }
 
 .headerAndMain {
-  min-block-size: calc(100vh - 87px - 2rem);
+  min-block-size: calc(100vh - 8.375rem);
   margin-block-end: 2rem;
 }
 
@@ -77,6 +77,7 @@ a {
 a[href]:not(:where(
   .socialMediaIconLink,
   .logoLink,
+  .actionLink,
   /* exclude hash only links */
   [href^="#"],
   /* exclude relative but not double slash only links */
@@ -120,4 +121,10 @@ h3 {
 
 p {
   font-size: var(--font-size-xl2);
+}
+
+@media only screen and (max-width: 750px) {
+  .headerAndMain {
+    min-block-size: calc(100vh - 17rem);
+  }
 }
