@@ -5,12 +5,11 @@ import './Footer.css';
 import ActionButton from '../ActionButton';
 import { Link } from 'react-router-dom';
 
-// logo and social media icons on the left, Subscribe button on the right
+interface IFooter {
+    openAddEmailPrompt: () => void;
+  }
 
-function Footer() {
-    function openAddEmailPrompt() {
-        console.log('x');
-    }
+function Footer(props: IFooter) {
 
     const { t } = useTranslation(['common']);
     const footerLinks = ['termsOfUseAndPrivacy', 'accessibilityStandards']
@@ -29,7 +28,7 @@ function Footer() {
                     <Logo />
                     <div className="footerActionSection">
                         <SocialMediaIconList />
-                        <ActionButton onClick={openAddEmailPrompt} label={t('joinUs')} />
+                        <ActionButton onClick={props.openAddEmailPrompt} label={t('joinUs')} />
                     </div>
                 </div>
             </div>

@@ -5,11 +5,12 @@ import Home from './views/Home/Home';
 import About from './views/About//About';
 import Contact from './views/Contact/Contact';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ErrorPage from './views/ErrorPage/ErrorPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Events from './views/Events/Events';
+import MobileMenu from './components/MobileMenu';
 import TermsOfUseAndPrivacy from './views/TermsOfUseAndPrivacy/TermsOfUseAndPrivacy';
 import { useTranslation } from 'react-i18next';
 import AccessibilityStandards from './views/AccessibilityStandards/AccessibilityStandards';
@@ -19,15 +20,28 @@ interface IRootRoute {
 }
 
 function Layout(props: IRootRoute) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  function toggleMobileMenu(): void {
+    console.log(!isMobileMenuOpen)
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  function openAddEmailPrompt() {
+    console.log('Email collected');
+  }
   return (
       <>
         <div className="headerAndMain">
-          <Header />
+          <Header openAddEmailPrompt={openAddEmailPrompt} toggleMobileMenu={toggleMobileMenu} isMobileMenuOpen={isMobileMenuOpen} />
           <main>
-            {props.outlet ? props.outlet : <Outlet />}
+            <div className={isMobileMenuOpen ? 'hidden' : undefined}>
+              {props.outlet ? props.outlet : <Outlet />}
+            </div>
+            {isMobileMenuOpen && <MobileMenu />}
           </main>
         </div>
-        <Footer />
+        <Footer openAddEmailPrompt={openAddEmailPrompt} />
       </>
   );
 }

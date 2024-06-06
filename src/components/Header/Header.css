@@ -85,6 +85,7 @@
 
     .mobileMenuTriggerIcon {
         font-size: 1.25rem;
+        inline-size: 1.25rem;
     }
 }
 

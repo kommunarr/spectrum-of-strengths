@@ -4,25 +4,21 @@ import Logo from "../Logo";
 import { useTranslation } from "react-i18next";
 import ActionButton from "../ActionButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-function Header() {
+interface IHeader {
+  toggleMobileMenu: () => void;
+  openAddEmailPrompt: () => void;
+  isMobileMenuOpen: boolean;
+}
+
+function Header(props: IHeader) {
   const { t, i18n } = useTranslation(['common', 'otherLanguage']);
-  let isMobileMenuOpen = false;
-
-  function openAddEmailPrompt() {
-    console.log('Email collected');
-  }
 
   function getCorrespondingPageRouteInOtherLanguage(path: string): string {
     const isValidPath = i18n.exists(path, { ns: 'otherLanguage' });
     const key = isValidPath ? path : `/${t('homePath')}`;
     return t(key, { ns: 'otherLanguage' });
-  }
-
-  function openMobileMenu(): void {
-    isMobileMenuOpen = true;
-    console.log('Menu opened');
   }
 
     const location = useLocation();
@@ -38,9 +34,9 @@ function Header() {
             <Link className="actionLink languageLink" to={getCorrespondingPageRouteInOtherLanguage(location.pathname)}>
               {t('name', { ns: 'otherLanguage' })}
             </Link>
-            <ActionButton onClick={openAddEmailPrompt} label={t('joinUs')} />
-            <button className="mobileMenuTrigger" aria-label={t('menu')} onClick={openMobileMenu}>
-              <FontAwesomeIcon className="mobileMenuTriggerIcon" icon={faBars} />
+            <ActionButton onClick={props.openAddEmailPrompt} label={t('joinUs')} />
+            <button className="mobileMenuTrigger" aria-label={t('menu')} onClick={props.toggleMobileMenu}>
+              <FontAwesomeIcon className="mobileMenuTriggerIcon" icon={props.isMobileMenuOpen ? faXmark : faBars} />
             </button>
           </div>
         </div>

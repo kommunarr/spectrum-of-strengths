@@ -65,6 +65,10 @@ body {
   width: 1px;
 }
 
+.hidden {
+  display: none;
+}
+
 a {
   color: var(--primary-text-color);
   text-decoration: none;
