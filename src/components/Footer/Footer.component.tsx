@@ -17,17 +17,19 @@ function Footer() {
     return (
         <footer className="footer">
             <div className="footerContent">
-                <div className="leftFooter">
-                    <Logo />
-                    {footerLinks.map((footerLink, index) => (
-                        <Link key={index} className="footerLink" to={t(`${footerLink}Path`)}>
-                            {t(footerLink)}
-                        </Link>
-                    ))}
-                </div>
-                <div className="rightFooter">
-                    <SocialMediaIconList />
-                    <ActionButton onClick={openAddEmailPrompt} label={t('joinUs')} />
+                <Logo />
+                <div className="footerInfo">
+                    <div className="footerLinks">
+                        {footerLinks.map((footerLink, index) => (
+                            <Link key={index} className="footerLink" to={t(`${footerLink}Path`)}>
+                                {t(footerLink)}
+                            </Link>
+                        ))}
+                    </div>
+                    <div className="footerActionSection">
+                        <SocialMediaIconList />
+                        <ActionButton onClick={openAddEmailPrompt} label={t('joinUs')} />
+                    </div>
                 </div>
             </div>
         </footer>
