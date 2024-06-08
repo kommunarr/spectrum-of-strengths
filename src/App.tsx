@@ -7,10 +7,10 @@ import Contact from './views/Contact/Contact';
 
 import React, { useEffect, useState } from 'react';
 import ErrorPage from './views/ErrorPage/ErrorPage';
+import NavMenu from './components/NavMenu';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Events from './views/Events/Events';
-import MobileMenu from './components/MobileMenu';
 import TermsOfUseAndPrivacy from './views/TermsOfUseAndPrivacy/TermsOfUseAndPrivacy';
 import { useTranslation } from 'react-i18next';
 import AccessibilityStandards from './views/AccessibilityStandards/AccessibilityStandards';
@@ -20,36 +20,49 @@ interface IRootRoute {
 }
 
 function Layout(props: IRootRoute) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
+  
+  const hideMobileMenuOnResize = React.useCallback(() => {
+    if (window.innerWidth > 750) {
+      setIsMobileMenuOpen(false)
+      window.removeEventListener('resize', hideMobileMenuOnResize);
+    }
+  }, []);
 
   function toggleMobileMenu(): void {
-    console.log(!isMobileMenuOpen)
-    setIsMobileMenuOpen(!isMobileMenuOpen)
+    if (!isMobileMenuOpen) {
+      window.addEventListener('resize', hideMobileMenuOnResize);
+    } else {
+      window.removeEventListener('resize', hideMobileMenuOnResize);
+    }
+  
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   }
 
   function openAddEmailPrompt() {
     console.log('Email collected');
   }
+
   return (
       <>
-        <div className="headerAndMain">
+        <div className={"headerAndMain" + (isMobileMenuOpen ? " mobileMenuOpen" : '')}>
           <Header openAddEmailPrompt={openAddEmailPrompt} toggleMobileMenu={toggleMobileMenu} isMobileMenuOpen={isMobileMenuOpen} />
           <main>
-            <div className={isMobileMenuOpen ? 'hidden' : undefined}>
-              {props.outlet ? props.outlet : <Outlet />}
+            <div className="outlet">
+              {props.outlet ?? <Outlet />}
             </div>
-            {isMobileMenuOpen && <MobileMenu />}
+            {isMobileMenuOpen && <NavMenu openAddEmailPrompt={openAddEmailPrompt} />}
           </main>
         </div>
         <Footer openAddEmailPrompt={openAddEmailPrompt} />
       </>
   );
-}
-
-interface ILanguageLoader {
-  lang: string;
-  title: string;
-  children: React.ReactNode;
 }
 
 const routeObject: RouteObject = {
@@ -109,6 +122,13 @@ const routeObject: RouteObject = {
 };
 
 const router = createBrowserRouter([routeObject]);
+
+interface ILanguageLoader {
+  lang: string;
+  title: string;
+  children: React.ReactNode;
+}
+
 function LanguageLoader(props: ILanguageLoader) {
   const { t, i18n } = useTranslation(['common']);
   const { pathname } = useLocation();

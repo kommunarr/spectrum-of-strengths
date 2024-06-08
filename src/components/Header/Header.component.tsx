@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import ActionButton from "../ActionButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import NavMenu from "../NavMenu";
+import * as Utils from "../../utils";
 
 interface IHeader {
   toggleMobileMenu: () => void;
@@ -14,24 +16,17 @@ interface IHeader {
 
 function Header(props: IHeader) {
   const { t, i18n } = useTranslation(['common', 'otherLanguage']);
-
-  function getCorrespondingPageRouteInOtherLanguage(path: string): string {
-    const isValidPath = i18n.exists(path, { ns: 'otherLanguage' });
-    const key = isValidPath ? path : `/${t('homePath')}`;
-    return t(key, { ns: 'otherLanguage' });
-  }
-
     const location = useLocation();
-    const currentPathname = location.pathname.substring(1);
-    const pageSections = ['home', 'events', 'about', 'contact'];
+    const languageLinkLocation = Utils.getCorrespondingPageRouteInOtherLanguage(t, i18n, location.pathname);
 
     return (
       <div id="header">
         <div className="topRow">
+
           <Logo />
 
           <div className="actionSection">
-            <Link className="actionLink languageLink" to={getCorrespondingPageRouteInOtherLanguage(location.pathname)}>
+            <Link className="actionLink languageLink" to={languageLinkLocation}>
               {t('name', { ns: 'otherLanguage' })}
             </Link>
             <ActionButton onClick={props.openAddEmailPrompt} label={t('joinUs')} />
@@ -42,19 +37,7 @@ function Header(props: IHeader) {
         </div>
         <div className="bottomRow">
           <div className="bottomRowContent">
-            <nav className="navigationMenu">
-              <ul className="navigationMenuHeadings">
-                {pageSections.map((section, index) => 
-                {
-                  const path = t(`${section}Path`);
-                  const activeClass = (currentPathname === path ? ' active' : '');
-                  return (
-                  <li key={index}>
-                    <Link className={`actionLink${activeClass}`} to={path}>{t(section)}</Link>
-                  </li>
-                )})}
-              </ul>
-            </nav>
+            <NavMenu openAddEmailPrompt={props.openAddEmailPrompt} />
           </div>
         </div>
       </div>

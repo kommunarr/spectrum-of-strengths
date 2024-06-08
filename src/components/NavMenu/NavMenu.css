@@ -1,0 +1,65 @@
+@media only screen and (min-width: 751px) {
+    .navigationMenu {
+        inline-size: 100%;
+    }
+
+    .navigationMenuHeadings {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 2rem;
+        list-style-type: none;
+        font-size: var(--font-size-md);
+        font-weight: 600;
+        margin-block: 0.75rem;
+        padding-inline: 10%;
+    }
+
+    .mobileMenuOnly {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .navigationMenuHeadings {
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        font-size: var(--font-size-xl3);
+        font-weight: 800;
+        overflow-wrap: break-word;
+        padding-inline-start: 5%;
+        margin-block-end: 0;
+        min-block-size: 100%;
+    }
+
+    .navigationMenuHeadings li {
+        padding-block: 1rem;
+    }
+
+    .coreMenu {
+        min-block-size: calc(100vh - 87px - 12.5rem);
+    }
+
+    .navigationMenuHeadings .mobileMenuOnly {
+        /* position: absolute;
+        inset-block-end: 1rem; */
+        display: flex;
+        flex-direction: column;
+        font-size: smaller;
+    }
+
+    .actionLink.active { 
+        border-bottom-width: 0.5rem;
+    }
+
+    .menuButton {
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        text-align: start;
+    }
+}
