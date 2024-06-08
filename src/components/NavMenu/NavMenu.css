@@ -36,6 +36,17 @@
 
     .navigationMenuHeadings li {
         padding-block: 1rem;
+        animation: fadeIn .5s ease-out;
+
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
 
     .coreMenu {
@@ -43,8 +54,6 @@
     }
 
     .navigationMenuHeadings .mobileMenuOnly {
-        /* position: absolute;
-        inset-block-end: 1rem; */
         display: flex;
         flex-direction: column;
         font-size: smaller;

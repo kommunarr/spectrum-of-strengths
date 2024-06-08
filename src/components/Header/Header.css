@@ -3,6 +3,7 @@
     flex-direction: column;
     column-gap: 2rem;
     background-color: var(--primary-background-color);
+    z-index: 1;
 }
 
 .topRow {
@@ -67,8 +68,8 @@
     }
 
     .mobileMenuTriggerIcon {
-        font-size: 1.25rem;
-        inline-size: 1.25rem;
+        font-size: 1.5rem;
+        inline-size: 1.5rem;
     }
 }
 
