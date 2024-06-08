@@ -5,19 +5,17 @@ main {
     padding-inline: 1rem;
 }
 
-@media only screen and (min-width: 751px) {
-    .headerAndMain, main {
-        margin-block-end: 2rem;
-    }
+main {
+    margin-block-end: 2rem;
 }
-  
+
 @media only screen and (max-width: 750px) {
     main {
-        margin-block-start: 87px;
+        margin-block-start: var(--header-block-size);
     }
 
-    .headerAndMain.mobileMenuOpen {
-        min-block-size: 100vh;
+    .headerAndMain.mobileMenuOpen main {
+        min-block-size: calc(100vh - var(--header-block-size));
         margin-block-end: 0;
     }
 

@@ -50,7 +50,7 @@
     }
 
     .coreMenu {
-        min-block-size: calc(100vh - 87px - 10rem);
+        min-block-size: calc(100vh - var(--header-block-size) - 10rem);
     }
 
     .navigationMenuHeadings .mobileMenuOnly {

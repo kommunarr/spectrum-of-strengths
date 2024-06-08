@@ -9,6 +9,7 @@
   --font-size-xl4: 3rem;       /* 48px */
 
   --container-inline-size: 1140px;
+  --header-block-size: 82px;
 
   --spectrum-gray: #f6f6f6;
   --spectrum-blue: #1FA8DD;
@@ -112,11 +113,7 @@ h2 {
   font-size: var(--font-size-xl3);
 }
 
-h3 {
-  font-size: var(--font-size-xl2);
-}
-
-p {
+h3, p {
   font-size: var(--font-size-xl2);
 }
 
