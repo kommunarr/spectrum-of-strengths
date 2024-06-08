@@ -3,7 +3,7 @@
         inline-size: 100%;
     }
 
-    .navigationMenuHeadings {
+    .coreMenu {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -30,7 +30,7 @@
         font-weight: 800;
         overflow-wrap: break-word;
         padding-inline-start: 5%;
-        margin-block-end: 0;
+        margin-block: 0;
         min-block-size: 100%;
     }
 
@@ -39,7 +39,7 @@
     }
 
     .coreMenu {
-        min-block-size: calc(100vh - 87px - 12.5rem);
+        min-block-size: calc(100vh - 87px - 10rem);
     }
 
     .navigationMenuHeadings .mobileMenuOnly {

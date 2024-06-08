@@ -1,0 +1,27 @@
+
+main {
+    max-inline-size: var(--container-inline-size);
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+@media only screen and (min-width: 751px) {
+    .headerAndMain, main {
+        margin-block-end: 2rem;
+    }
+}
+  
+@media only screen and (max-width: 750px) {
+    main {
+        margin-block-start: 87px;
+    }
+
+    .headerAndMain.mobileMenuOpen {
+        min-block-size: 100vh;
+        margin-block-end: 0;
+    }
+
+    .mobileMenuOpen .outlet, .mobileMenuOpen + .footer {
+        display: none;
+    }
+}

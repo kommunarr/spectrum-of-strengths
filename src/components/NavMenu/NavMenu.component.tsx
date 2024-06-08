@@ -20,7 +20,7 @@ function NavMenu(props: INavMenu) {
                     {Utils.navMenuSections.map((section, index) => 
                     {
                         const path = t(`${section}Path`);
-                        const activeClass = (currentPathname === path ? ' active' : '');
+                        const activeClass = (currentPathname === encodeURI(path) ? ' active' : '');
                         return (
                         <li key={index}>
                             <Link className={`actionLink${activeClass}`} to={path}>{t(section)}</Link>
