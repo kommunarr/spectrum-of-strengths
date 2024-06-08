@@ -44,6 +44,14 @@
         "accessibilityWebContentBody": "Nous nous engageons fermement à assurer le plein respect des normes de conformité du contenu. Nous sommes actuellement en conformité avec ces normes et nous mettrons en œuvre les mises à jour appropriées afin de répondre à toute nouvelle exigence déclarée chaque fois qu'elle sera promulguée.",
         "accessibilityFeedbackProcessBody": "<p>Nous nous engageons fermement à garantir que nos services sont de qualité supérieure et accessibles à toutes les personnes, handicapées et handicapées. Les commentaires sur la façon dont nous atteignons cet objectif sont les bienvenus et appréciés.</p><p>Nous apprécions tous les commentaires sur la manière dont nous fournissons une assistance aux personnes handicapées par e-mail ou par d'autres méthodes pertinentes.</p><p>Tous les commentaires reçus seront adressés à notre équipe à <a href=\"mailto:spectrum.of.strengths@gmail.com\">spectrum.of.strengths@gmail.com</a>.</p><p>Cela sera fait de manière à respecter et à respecter la confidentialité de dans toute la mesure possible, et nous pouvons garantir que ces commentaires seront examinés pour toute mesure possible qui peut être prise pour améliorer nos services. Une réponse aux commentaires donnés sera, dans la plupart des cas, fournie dans un délai d'un mois ouvrable. les réponses et/ou les commentaires seront livrés dans un format accessible à celui qui les a soumis.</p>"
     },
+    "contactUs": {
+        "contactUs": "Contactez-nous",
+        "nameInput": "Nom",
+        "emailInput": "Adresse e-mail",
+        "subjectInput": "Subject",
+        "messageInput": "Message",
+        "submit": "Soumettre"
+    },
     "otherLanguage": {
         "name": "English",
         "/fr": "",

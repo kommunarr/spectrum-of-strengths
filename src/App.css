@@ -20,6 +20,8 @@
   --spectrum-pink: #E367A3;
   --spectrum-red: #F0787E;
   --spectrum-magenta: #E11584;
+  --form-gray: #4C4E52;
+  --form-error: #FF0000;
 
   --primary-background-color: #FFF;
   --primary-text-color: #000;
@@ -72,6 +74,27 @@ a {
   /* text-decoration: underline solid var(--action-background-color) 0.1rem; */
 }
 
+.formField {
+  display: flex;
+  flex-direction: column;
+  margin-block-end: 0.5rem;
+  font-size: var(--font-size-xl2);
+}
+
+input, textarea {
+  font-size: var(--font-size-base);
+  /* border: 0;
+  border-bottom: 0.2rem solid var(--form-gray); */
+}
+
+input:valid {
+  /* border-bottom-color: var(--action-background-color); */
+}
+
+/* .formField label {
+  font-size: 
+} */
+
 a[href]:not(:where(
   .socialMediaIconLink,
   .logoLink,
@@ -113,7 +136,7 @@ h2 {
   font-size: var(--font-size-xl3);
 }
 
-h3, p {
+h3, p, legend, label {
   font-size: var(--font-size-xl2);
 }
 

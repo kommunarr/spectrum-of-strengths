@@ -7,11 +7,13 @@ import CanadianFrench from "./locales/fr-ca/translation.json";
 const resources = {
   en: {
     common: CanadianEnglish.common,
-    otherLanguage: CanadianEnglish.otherLanguage
+    otherLanguage: CanadianEnglish.otherLanguage,
+    contactUs: CanadianEnglish.contactUs
   },
   fr: {
     common: CanadianFrench.common,
-    otherLanguage: CanadianFrench.otherLanguage
+    otherLanguage: CanadianFrench.otherLanguage,
+    contactUs: CanadianFrench.contactUs
   }
 };
 /* eslint-enable @typescript-eslint/no-unsafe-assignment */

@@ -44,6 +44,14 @@
         "accessibilityWebContentBody": "We have a strong committment to ensuring full compliance with content conformity norms. We are currently in compliance with such norms, and we will implement appropriate updates in order to meet any new stated requirements whenever they are enacted.",
         "accessibilityFeedbackProcessBody": "<p>We have a strong commitment to ensuring that our services are of superior quality and accessible to all individuals, disabled and abled alike. Comments on how well we achieve this goal are welcomed and appreciated.</p><p>We welcome any & all feedback on the manner in which we provide support to disabled individuals through by email or other pertinent methods.</p><p>All feedback received will be directed to our team at <a href=\"mailto:spectrum.of.strengths@gmail.com\">spectrum.of.strengths@gmail.com</a>.</p><p>This will be done in such a manner that upholds & respsects privacy to the fullest degree, and we can ensure that such feedback will be reviewed for any possible action that can be taken to better our services. A response to the given feedback will, in most cases, be provided within one business month. We will ensure that the responses and/or feedback will be delivered in a format accessible to the submitter.</p>"
     },
+    "contactUs": {
+        "contactUs": "Contact us",
+        "nameInput": "Name",
+        "emailInput": "Email address",
+        "subjectInput": "Subject",
+        "messageInput": "Message",
+        "submit": "Submit"
+    },
     "otherLanguage": {
         "name": "Français",
         "/": "fr",
