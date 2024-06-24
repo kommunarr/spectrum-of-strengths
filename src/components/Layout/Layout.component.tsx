@@ -1,10 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import Footer from "../Footer";
+import Footer from "../Footer"
 import Header from "../Header";
 import NavMenu from "../NavMenu";
 import './Layout.css';
+import EmailModal from "../EmailModal";
 
 interface IRootRoute {
     outlet?: React.JSX.Element;
@@ -12,6 +13,7 @@ interface IRootRoute {
   
 function Layout(props: IRootRoute) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isEmailPromptOpen, setIsEmailPromptOpen] = useState(false);
   
     const location = useLocation();
   
@@ -37,7 +39,7 @@ function Layout(props: IRootRoute) {
     }
   
     function openAddEmailPrompt() {
-      console.log('Email collected');
+      setIsEmailPromptOpen(true);
     }
 
     return (
@@ -51,6 +53,7 @@ function Layout(props: IRootRoute) {
                 {isMobileMenuOpen && <NavMenu openAddEmailPrompt={openAddEmailPrompt} />}
                 </main>
             </div>
+            <EmailModal showModal={isEmailPromptOpen} setShowModal={setIsEmailPromptOpen} />
             <Footer openAddEmailPrompt={openAddEmailPrompt} />
         </>
     );
