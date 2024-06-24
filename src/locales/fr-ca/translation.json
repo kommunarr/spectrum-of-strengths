@@ -47,8 +47,8 @@
     "contactUs": {
         "contactUs": "Contactez-nous",
         "nameInput": "Nom",
-        "emailInput": "Adresse e-mail",
-        "subjectInput": "Subject",
+        "emailInput": "Adresse électronique",
+        "subjectInput": "Sujet",
         "messageInput": "Message",
         "submit": "Soumettre"
     },

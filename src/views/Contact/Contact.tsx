@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from "react-i18next";
+import './Contact.css';
 
 interface ContactFormData {
     name: { value: string };
@@ -7,6 +8,9 @@ interface ContactFormData {
     subject: { value: string };
     message: { value: string };
 }
+
+const emailRegex = /[A-Z0-9._%+-]{4,}@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+// value && emailRegex.test(value)
 
 
 function Contact() {
@@ -26,15 +30,15 @@ function Contact() {
             <h1>{t('contactUs')}</h1>
             <form onSubmit={handleSubmitClick}>
                 <fieldset>
-                    <legend>{t('contactUs')}</legend>
+                    {/* <legend>{t('contactUs')}</legend> */}
                     <div className="formField">
                         <label htmlFor="nameInput">{t('nameInput')}</label>
-                        <input id="nameInput" name="nameInput" type="text" required />
+                        <input id="nameInput" name="nameInput" type="text" required autoComplete="on" />
                     </div>
                     
                     <div className="formField">
                         <label htmlFor="emailInput">{t('emailInput')}</label>
-                        <input id="emailInput" name="emailInput" type="text" required />
+                        <input id="emailInput" name="emailInput" type="email" required autoComplete="on" />
                     </div>
 
                     <div className="formField">
@@ -44,11 +48,10 @@ function Contact() {
 
                     <div className="formField">
                         <label htmlFor="messageInput">{t('messageInput')}</label>
-                        <label htmlFor="messageInput" />
                         <textarea id="messageInput" name="messageInput" required rows={3} autoComplete="off" minLength={10} />
                     </div>
 
-                    <input type="submit" value="Submit" className="actionButton primary" />
+                    <input type="submit" value="Submit" className="actionButton primary submitButton" />
                 </fieldset>
             </form>
         </div>

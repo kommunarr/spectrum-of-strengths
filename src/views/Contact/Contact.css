@@ -1,0 +1,35 @@
+.formField {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.25rem;
+    font-size: var(--font-size-xl2);
+}
+
+.formField + .formField {
+    margin-block-start: 0.5rem;
+}
+
+.formField label:after {
+    content: "*";
+    color: var(--form-error);
+}
+
+
+.submitButton {
+    margin-block-start: 1rem;
+}
+
+  
+input, textarea {
+    font-size: var(--font-size-base);
+    /* border: 0;
+    border-bottom: 0.2rem solid var(--form-gray); */
+}
+  
+  input:valid {
+    /* border-bottom-color: var(--action-background-color); */
+  }
+  
+  /* .formField label {
+    font-size: 
+  } */

@@ -30,6 +30,9 @@ function Header(props: IHeader) {
               {t('name', { ns: 'otherLanguage' })}
             </Link>
             <ActionButton onClick={props.openAddEmailPrompt} label={t('joinUs')} />
+            <a href="/" className="actionButton secondary" target="_blank" rel="noreferrer">
+              {t('donate')}
+            </a>
             <button className="mobileMenuTrigger" aria-label={t('menu')} onClick={props.toggleMobileMenu}>
               <FontAwesomeIcon className="mobileMenuTriggerIcon" icon={props.isMobileMenuOpen ? faXmark : faBars} />
             </button>
