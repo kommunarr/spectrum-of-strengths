@@ -9,10 +9,6 @@ interface ContactFormData {
     message: { value: string };
 }
 
-const emailRegex = /[A-Z0-9._%+-]{4,}@[A-Z0-9.-]+\.[A-Z]{2,}/i;
-// value && emailRegex.test(value)
-
-
 function Contact() {
 
     const handleSubmitClick = (e: React.SyntheticEvent) => {

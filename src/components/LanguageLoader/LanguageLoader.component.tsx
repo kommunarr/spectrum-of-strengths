@@ -16,6 +16,7 @@ interface ILanguageLoader {
     
     useEffect(() => {
       void i18n.changeLanguage(props.lang);
+      document.documentElement.lang = props.lang;
       document.title = `${title} | Spectrum of Strengths`;
   
       // scroll to top on route change

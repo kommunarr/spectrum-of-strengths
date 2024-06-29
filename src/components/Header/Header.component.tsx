@@ -18,6 +18,7 @@ function Header(props: IHeader) {
   const { t, i18n } = useTranslation(['common', 'otherLanguage']);
     const location = useLocation();
     const languageLinkLocation = Utils.getCorrespondingPageRouteInOtherLanguage(t, i18n, location.pathname);
+    const otherLanguageKey = i18n.resolvedLanguage === 'en' ? 'fr' : 'en'
 
     return (
       <div id="header">
@@ -26,7 +27,7 @@ function Header(props: IHeader) {
           <Logo />
 
           <div className="actionSection">
-            <Link className="actionLink languageLink" to={languageLinkLocation}>
+            <Link className="actionLink languageLink" to={languageLinkLocation} lang={otherLanguageKey}>
               {t('name', { ns: 'otherLanguage' })}
             </Link>
             <ActionButton onClick={props.openAddEmailPrompt} label={t('joinUs')} />
