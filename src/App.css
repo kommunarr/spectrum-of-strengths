@@ -21,6 +21,7 @@
   --spectrum-red: #F0787E;
   --spectrum-magenta: #E11584;
   --spectrum-green-2: #50C878;
+  --form-disabled: #BEBEBE;
   --form-gray: #4C4E52;
   --form-error: #FF0000;
 
@@ -33,6 +34,8 @@
   --action-background-hover-color: var(--spectrum-green-2);
   --action-text-color: #FFF;
   --action-text-hover-color: #FFF;
+  
+  --action-background-disabled-color: var(--form-disabled);
 
   min-block-size: 100vh;
   display: flex;
@@ -76,6 +79,7 @@ a {
 }
 
 a[href]:not(:where(
+  .actionButton,
   .socialMediaIconLink,
   .logoLink,
   .actionLink,

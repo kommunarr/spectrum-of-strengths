@@ -31,7 +31,7 @@ function Header(props: IHeader) {
               {t('name', { ns: 'otherLanguage' })}
             </Link>
             <ActionButton onClick={props.openAddEmailPrompt} label={t('joinUs')} />
-            <a href="/" className="actionButton secondary" target="_blank" rel="noreferrer">
+            <a href="https://www.facebook.com/people/Spectrum-of-Strengths-foundation-We-are-the-Spectrum/61556445292415/?sk=about" className="actionButton secondary" target="_blank" rel="noreferrer">
               {t('donate')}
             </a>
             <button className="mobileMenuTrigger" aria-label={t('menu')} onClick={props.toggleMobileMenu}>

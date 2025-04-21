@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import './NavMenu.css';
 import * as Utils from "../../utils";
 import { Link, useLocation } from 'react-router-dom';
+import ActionButton from '../ActionButton';
 
 interface INavMenu {
     openAddEmailPrompt: () => void;
@@ -29,9 +30,7 @@ function NavMenu(props: INavMenu) {
                 </div>
                 <div className="mobileMenuOnly">
                     <li>
-                        <button className="menuButton actionLink" onClick={props.openAddEmailPrompt}>
-                            {t('joinUs')}
-                        </button>
+                        <ActionButton label={t('joinUs')} link="true" className="menuButton" onClick={props.openAddEmailPrompt} />
                     </li>
                     <li>
                         <Link className="actionLink" to={languageLinkLocation}>

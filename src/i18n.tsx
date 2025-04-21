@@ -8,12 +8,14 @@ const resources = {
   en: {
     common: CanadianEnglish.common,
     otherLanguage: CanadianEnglish.otherLanguage,
-    contactUs: CanadianEnglish.contactUs
+    contactUs: CanadianEnglish.contactUs,
+    email: CanadianEnglish.email
   },
   fr: {
     common: CanadianFrench.common,
     otherLanguage: CanadianFrench.otherLanguage,
-    contactUs: CanadianFrench.contactUs
+    contactUs: CanadianFrench.contactUs,
+    email: CanadianFrench.email
   }
 };
 /* eslint-enable @typescript-eslint/no-unsafe-assignment */

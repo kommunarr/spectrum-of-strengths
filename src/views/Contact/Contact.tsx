@@ -20,7 +20,7 @@ function Contact() {
         console.log(target.message.value);
     };
 
-    const { t } = useTranslation(['contactUs']);
+    const { t } = useTranslation(['contactUs', 'common']);
     return (
         <div>
             <h1>{t('contactUs')}</h1>
@@ -33,7 +33,7 @@ function Contact() {
                     </div>
                     
                     <div className="formField">
-                        <label htmlFor="emailInput">{t('emailInput')}</label>
+                        <label htmlFor="emailInput">{t('emailAddress', { ns: 'common'} )}</label>
                         <input id="emailInput" name="emailInput" type="email" required autoComplete="on" />
                     </div>
 

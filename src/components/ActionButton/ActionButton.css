@@ -25,3 +25,17 @@
     color: var(--action-text-hover-color);
     border-color: var(--action-background-hover-color);
 }
+
+.actionButton:disabled {
+    background-color: var(--action-background-disabled-color);
+    color: var(--primary-text-color);
+    border-color: var(--action-background-disabled-color);
+    cursor: not-allowed;
+    pointer-events: all;
+}
+
+.loading > .actionButtonLabel {
+    visibility: hidden;
+    display: block;
+    block-size: 0;
+}

@@ -1,15 +1,20 @@
-import { MouseEventHandler } from 'react';
+import Loader from '../Loader';
 import './ActionButton.css';
+import React from 'react';
 
-interface IActionButton {
-    onClick: MouseEventHandler<HTMLButtonElement>;
+interface IActionButton extends React.ComponentPropsWithoutRef<"button"> {
     label: string;
     theme?: string;
+    loading?: string;
+    link?: string;
 }
 
 function ActionButton(props: IActionButton) {
     return (
-        <button className={"actionButton " + (props.theme ?? 'primary')} onClick={props.onClick}>{props.label}</button>
+        <button {...props} disabled={!!props.loading || props.disabled} className={(props.loading ? "loading " : "") + (!props.link ? "actionButton " : "actionLink ") + (props.theme ?? 'primary')}>
+            <span className="actionButtonLabel">{props.label}</span>
+            {props.loading && <Loader></Loader>}
+        </button>
     );
 }
 
