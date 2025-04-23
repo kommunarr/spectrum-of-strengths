@@ -17,16 +17,16 @@
     padding-block: 2rem;
 }
 
-label {
+.emailModal label {
     font-size: var(--font-size-base);
 }
 
-h2 {
+.emailModal h2 {
     font-size: var(--font-size-xl1);
     margin-block: 0;
 }
 
-h3 {
+.emailModal h3 {
     font-size: var(--font-size-md);
     font-weight: normal;
 }

@@ -14,22 +14,27 @@
     color: var(--form-error);
 }
 
-
 .submitButton {
     margin-block-start: 1rem;
 }
 
+.postSubmitMessage {
+  padding-inline: 20%;
+  padding-block-start: 10vh;
+  text-align: center;
+}
+
+fieldset:valid {
+  color: blue;
+}
+
   
-input, textarea {
+.formField input, .formField textarea {
     font-size: var(--font-size-base);
-    /* border: 0;
-    border-bottom: 0.2rem solid var(--form-gray); */
+    border: 0;
+    border-bottom: 0.2rem solid var(--form-gray);
 }
   
-  input:valid {
-    /* border-bottom-color: var(--action-background-color); */
-  }
-  
-  /* .formField label {
-    font-size: 
-  } */
+.formField input:valid, .formField textarea:valid {
+  border-bottom: 0.2rem solid var(--action-background-color);
+}

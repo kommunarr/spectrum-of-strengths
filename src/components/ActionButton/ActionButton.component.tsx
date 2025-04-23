@@ -2,7 +2,7 @@ import Loader from '../Loader';
 import './ActionButton.css';
 import React from 'react';
 
-interface IActionButton extends React.ComponentPropsWithoutRef<"button"> {
+interface IActionButton extends React.ComponentPropsWithoutRef<'button'> {
     label: string;
     theme?: string;
     loading?: string;
@@ -11,8 +11,8 @@ interface IActionButton extends React.ComponentPropsWithoutRef<"button"> {
 
 function ActionButton(props: IActionButton) {
     return (
-        <button {...props} disabled={!!props.loading || props.disabled} className={(props.loading ? "loading " : "") + (!props.link ? "actionButton " : "actionLink ") + (props.theme ?? 'primary')}>
-            <span className="actionButtonLabel">{props.label}</span>
+        <button {...props} disabled={!!props.loading || props.disabled} className={(props.loading ? 'loading ' : '') + (!props.link ? 'actionButton ' : 'actionLink ') + (props.theme ?? 'primary ') + (props.className ?? '')}>
+            <span className='actionButtonLabel'>{props.label}</span>
             {props.loading && <Loader></Loader>}
         </button>
     );

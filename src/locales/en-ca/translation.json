@@ -59,7 +59,8 @@
         "nameInput": "Name",
         "subjectInput": "Subject",
         "messageInput": "Message",
-        "submit": "Submit"
+        "submit": "Submit",
+        "postSubmitMessage": "Thanks for reaching out! We will get back to you as promptly as we can."
     },
     "otherLanguage": {
         "name": "Français",
