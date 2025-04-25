@@ -20,21 +20,11 @@
 
 .postSubmitMessage {
   padding-inline: 20%;
-  padding-block-start: 10vh;
+  padding-block-start: 2rem;
   text-align: center;
 }
 
-fieldset:valid {
-  color: blue;
-}
-
-  
-.formField input, .formField textarea {
-    font-size: var(--font-size-base);
-    border: 0;
-    border-bottom: 0.2rem solid var(--form-gray);
-}
-  
-.formField input:valid, .formField textarea:valid {
-  border-bottom: 0.2rem solid var(--action-background-color);
+.postSubmitMessageTitle {
+  color: var(--action-background-color);
+  font-weight: 800;
 }

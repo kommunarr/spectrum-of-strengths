@@ -60,7 +60,8 @@
         "subjectInput": "Subject",
         "messageInput": "Message",
         "submit": "Submit",
-        "postSubmitMessage": "Thanks for reaching out! We will get back to you as promptly as we can."
+        "postSubmitTitle": "Thanks for reaching out!",
+        "postSubmitSubtitle": "We will get back to you as promptly as we can."
     },
     "otherLanguage": {
         "name": "Français",

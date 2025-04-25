@@ -124,6 +124,33 @@ h3, p, legend, label {
   font-size: var(--font-size-xl2);
 }
 
+input, textarea {
+  font-size: var(--font-size-base);
+  border: 0;
+  border-bottom: 0.2rem solid var(--form-gray);
+}
+  
+input:valid, textarea:valid {
+  border-bottom: 0.2rem solid var(--action-background-color);
+}
+
+input:focus, textarea:focus {
+  border: none;
+}
+
+.events li {
+
+}
+
+.events li > *:first-child {
+  font-weight: 600;
+}
+
+.events li > * {
+  margin-block: 0.5rem;
+  font-size: var(--font-size-base);
+}
+
 @media (prefers-reduced-motion) {
   html {
     animation: none !important;

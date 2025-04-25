@@ -56,8 +56,9 @@ function Contact() {
                     </fieldset>
                 </form>
                 :
-                <div>
-                    <h2 className="postSubmitMessage">{t('postSubmitMessage')}</h2>
+                <div className="postSubmitMessage">
+                    <h2 className="postSubmitMessageTitle">{t('postSubmitTitle')}</h2>
+                    <h3>{t('postSubmitSubtitle')}</h3>
                 </div>
             }
         </div>

@@ -59,7 +59,8 @@
         "subjectInput": "Sujet",
         "messageInput": "Message",
         "submit": "Soumettre",
-        "postSubmitMessage": "Merci de nous avoir contactés ! Nous vous répondrons dans les plus brefs délais."
+        "postSubmitTitle": "Merci de nous avoir contactés !",
+        "postSubmitSubtitle": "Nous vous répondrons dans les plus brefs délais."
     },
     "otherLanguage": {
         "name": "English",
