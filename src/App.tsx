@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createHashRouter } from 'react-router-dom'
 import type { RouteObject } from "react-router-dom";
 import './App.css'
 import Home from './views/Home/Home';
@@ -14,7 +14,7 @@ import Layout from './components/Layout';
 import LanguageLoader from './components/LanguageLoader';
 
 const routeObject: RouteObject = {
-  path: "/spectrum-of-strengths",
+  path: "/",
   // <Root />
   element: <Layout />,
   errorElement: <Layout outlet={<ErrorPage />} />,
@@ -69,7 +69,7 @@ const routeObject: RouteObject = {
   ]
 };
 
-const router = createBrowserRouter([routeObject]);
+const router = createHashRouter([routeObject]);
 
 function App() {
   return (
