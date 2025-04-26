@@ -14,7 +14,7 @@ import Layout from './components/Layout';
 import LanguageLoader from './components/LanguageLoader';
 
 const routeObject: RouteObject = {
-  path: "/",
+  path: "/spectrum-of-strengths",
   // <Root />
   element: <Layout />,
   errorElement: <Layout outlet={<ErrorPage />} />,

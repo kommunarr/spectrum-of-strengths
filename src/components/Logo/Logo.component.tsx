@@ -1,16 +1,14 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Logo.css';
+import logoImage from '../../assets/SpectrumOfStrengthsLogo.svg';
 import { useTranslation } from "react-i18next";
 
 function Logo() {
     const { t } = useTranslation(['common']);
-    const location = useLocation();
-    const isFrenchPath = location.pathname.startsWith('/fr/');
-    const srcPath = `${isFrenchPath ? '../' : ''}src/assets/SpectrumOfStrengthsLogo.svg`
     return (
         <>
             <Link className="logoLink" to={t('homePath')}>
-            <img src={srcPath} className="logo" alt="" />
+            <img src={logoImage} className="logo" alt="" />
             </Link>
         </>
     );
