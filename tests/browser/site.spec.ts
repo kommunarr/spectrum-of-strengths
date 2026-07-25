@@ -42,6 +42,28 @@ test('opens and dismisses the newsletter dialog with focus return', async ({ pag
   await expect(joinButton).toBeFocused();
 });
 
+test('loads the home page without console or resource errors', async ({ page }) => {
+  const consoleErrors: string[] = [];
+  const failedResponses: string[] = [];
+
+  page.on('console', (message) => {
+    if (message.type() === 'error') {
+      consoleErrors.push(message.text());
+    }
+  });
+  page.on('response', (response) => {
+    if (response.status() >= 400) {
+      failedResponses.push(`${String(response.status())} ${response.url()}`);
+    }
+  });
+
+  await page.goto(homePage);
+
+  await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', /favicon\.svg$/);
+  expect(consoleErrors).toEqual([]);
+  expect(failedResponses).toEqual([]);
+});
+
 test('reports that the contact form is not connected after a valid attempt', async ({ page }) => {
   await page.goto('index.html#/contact-us');
   await page.getByLabel('Name').fill('Test visitor');
