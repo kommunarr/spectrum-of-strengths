@@ -7,6 +7,9 @@ The repository uses two layers of automated checks:
 - `npm run test:browser` builds the production bundle, serves it under the
   configured `/spectrum-of-strengths/` base path, and exercises the site in
   Chromium.
+- `npm run test:lighthouse` audits representative production routes and
+  enforces measurable quality budgets for accessibility, performance, SEO, and
+  best practices.
 
 The browser suite covers:
 
@@ -24,3 +27,5 @@ replace keyboard, zoom, screen-reader, contrast, or user testing.
 GitHub Actions installs Chromium and runs the browser suite on pushes to
 `main` and pull requests. Failed runs retain the Playwright HTML report for
 diagnosis.
+
+Lighthouse reports are also retained by the dedicated Lighthouse workflow.

@@ -25,6 +25,10 @@ To run the production browser suite locally, install Chromium with
 [testing strategy](docs/testing.md) for the covered user flows and the limits
 of automated accessibility checks.
 
+Run `npm run test:lighthouse` with Chrome installed to audit the production
+build against the configured performance, accessibility, best-practice, and
+SEO budgets.
+
 ## Deferred Decisions
 
 CMS, newsletter, and contact-provider choices are intentionally deferred. See

@@ -125,6 +125,8 @@ The initial content model should cover:
 - Added a Chromium browser suite for bilingual navigation, dialog focus,
   honest form behaviour, and automated axe-core accessibility checks.
 - Added a CI workflow that runs the browser suite and retains its report.
+- Added Lighthouse CI budgets and report artifacts for production performance,
+  accessibility, best practices, and SEO.
 - Added a skip-to-content link, semantic main/navigation landmarks, mobile menu
   keyboard behavior, dialog focus return, responsive dialog sizing, and
   accessible social-icon naming.

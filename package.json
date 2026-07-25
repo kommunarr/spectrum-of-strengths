@@ -14,6 +14,7 @@
     "check:build": "node scripts/check-build-output.mjs",
     "check": "npm run lint && npm run check:translations && npm test && npm run build && npm run check:build",
     "test:browser": "playwright test",
+    "test:lighthouse": "npm run build && lhci autorun",
     "setup:hooks": "node scripts/install-git-hooks.mjs",
     "prepare": "npm run setup:hooks",
     "preview": "vite preview"
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
+    "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.62.0",
     "@types/node": "^26.1.1",
     "@types/react": "^18.2.66",
