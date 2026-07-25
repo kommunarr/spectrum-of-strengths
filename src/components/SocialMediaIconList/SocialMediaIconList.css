@@ -5,6 +5,11 @@
 
 
 .socialMediaIconLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 2rem;
+    min-block-size: 2rem;
     border-bottom: none;
     font-weight: 400;
 }

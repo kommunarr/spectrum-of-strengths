@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import TranslatedHtml from "../../components/TranslatedHtml";
 
 function AccessibilityStandards() {
     const { t } = useTranslation(['common']);
@@ -6,11 +7,11 @@ function AccessibilityStandards() {
     return (
         <div>
             <h1>{t('accessibilityStandards')}</h1>
-            <p dangerouslySetInnerHTML={{__html: t('accessibilityStandardsBody')}}></p>
+            <TranslatedHtml html={t('accessibilityStandardsBody')} />
             {sections.map((section, index) => (
                 <div key={index}>
                   <h2>{t(`${section}Title`)}</h2>
-                  <p dangerouslySetInnerHTML={{__html: t(`${section}Body`)}}></p>
+                  <TranslatedHtml html={t(`${section}Body`)} />
                 </div>
             ))}
         </div>

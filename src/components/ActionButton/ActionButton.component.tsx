@@ -1,19 +1,42 @@
 import Loader from '../Loader';
 import './ActionButton.css';
-import React from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
-interface IActionButton extends React.ComponentPropsWithoutRef<'button'> {
+interface IActionButton extends ComponentPropsWithoutRef<'button'> {
     label: string;
     theme?: string;
-    loading?: string;
-    link?: string;
+    loading?: boolean;
+    link?: boolean;
 }
 
 function ActionButton(props: IActionButton) {
+    const {
+        label,
+        theme = 'primary',
+        loading = false,
+        link = false,
+        className,
+        disabled,
+        ...buttonProps
+    } = props;
+
+    const buttonClassName = [
+        loading ? 'loading' : '',
+        link ? 'actionLink' : 'actionButton',
+        theme,
+        className ?? '',
+    ].filter(Boolean).join(' ');
+
     return (
-        <button {...props} disabled={!!props.loading || props.disabled} className={(props.loading ? 'loading ' : '') + (!props.link ? 'actionButton ' : 'actionLink ') + (props.theme ?? 'primary ') + (props.className ?? '')}>
-            <span className='actionButtonLabel'>{props.label}</span>
-            {props.loading && <Loader></Loader>}
+        <button
+            {...buttonProps}
+            type={buttonProps.type ?? 'button'}
+            disabled={loading || disabled}
+            aria-busy={loading}
+            className={buttonClassName}
+        >
+            <span className='actionButtonLabel'>{label}</span>
+            {loading && <Loader />}
         </button>
     );
 }

@@ -4,9 +4,10 @@ import SocialMediaIconList from '../SocialMediaIconList';
 import './Footer.css';
 import ActionButton from '../ActionButton';
 import { Link } from 'react-router-dom';
+import type { MouseEventHandler } from 'react';
 
 interface IFooter {
-    openAddEmailPrompt: () => void;
+    openAddEmailPrompt: MouseEventHandler<HTMLButtonElement>;
   }
 
 function Footer(props: IFooter) {

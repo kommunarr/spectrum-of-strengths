@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import type { MouseEventHandler, RefObject } from 'react';
 import './Header.css';
 import Logo from "../Logo";
 import { useTranslation } from "react-i18next";
@@ -10,8 +11,9 @@ import * as Utils from "../../utils";
 
 interface IHeader {
   toggleMobileMenu: () => void;
-  openAddEmailPrompt: () => void;
+  openAddEmailPrompt: MouseEventHandler<HTMLButtonElement>;
   isMobileMenuOpen: boolean;
+  mobileMenuTriggerRef: RefObject<HTMLButtonElement>;
 }
 
 function Header(props: IHeader) {
@@ -21,7 +23,7 @@ function Header(props: IHeader) {
     const otherLanguageKey = i18n.resolvedLanguage === 'en' ? 'fr' : 'en'
 
     return (
-      <div id="header">
+      <header id="header">
         <div className="topRow">
 
           <Logo />
@@ -34,8 +36,16 @@ function Header(props: IHeader) {
             <a href="https://www.facebook.com/people/Spectrum-of-Strengths-foundation-We-are-the-Spectrum/61556445292415/?sk=about" className="actionButton secondary" target="_blank" rel="noreferrer">
               {t('donate')}
             </a>
-            <button className="mobileMenuTrigger" aria-label={t('menu')} onClick={props.toggleMobileMenu}>
-              <FontAwesomeIcon className="mobileMenuTriggerIcon" icon={props.isMobileMenuOpen ? faXmark : faBars} />
+            <button
+              className="mobileMenuTrigger"
+              type="button"
+              aria-label={props.isMobileMenuOpen ? t('close') : t('menu')}
+              aria-expanded={props.isMobileMenuOpen}
+              aria-controls="mobile-navigation"
+              ref={props.mobileMenuTriggerRef}
+              onClick={props.toggleMobileMenu}
+            >
+              <FontAwesomeIcon aria-hidden="true" className="mobileMenuTriggerIcon" icon={props.isMobileMenuOpen ? faXmark : faBars} />
             </button>
           </div>
         </div>
@@ -44,7 +54,7 @@ function Header(props: IHeader) {
             <NavMenu openAddEmailPrompt={props.openAddEmailPrompt} />
           </div>
         </div>
-      </div>
+      </header>
     );
 }
 

@@ -8,7 +8,7 @@ function Logo() {
     return (
         <>
             <Link className="logoLink" to={t('homePath')}>
-            <img src={logoImage} className="logo" alt="" />
+            <img src={logoImage} className="logo" alt={t('organizationName')} />
             </Link>
         </>
     );

@@ -9,12 +9,19 @@
     margin-block-start: 0.5rem;
 }
 
-.formField label:after {
-    content: "*";
-    color: var(--form-error);
+.formHint {
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    margin-block: 0.5rem 1rem;
 }
 
 .submitButton {
+    margin-block-start: 1rem;
+}
+
+.formStatus {
+    font-size: var(--font-size-base);
+    line-height: 1.5;
     margin-block-start: 1rem;
 }
 

@@ -32,6 +32,7 @@
         padding-inline-start: 5%;
         margin-block: 0;
         min-block-size: 100%;
+        row-gap: 0.25rem;
     }
 
     .navigationMenuHeadings li {
@@ -53,10 +54,11 @@
         min-block-size: calc(100vh - var(--header-block-size) - 10rem);
     }
 
-    .navigationMenuHeadings .mobileMenuOnly {
+    .mobileMenuOnly {
         display: flex;
         flex-direction: column;
         font-size: smaller;
+        min-block-size: auto;
     }
 
     .actionLink.active { 
@@ -70,5 +72,11 @@
         font: inherit;
         cursor: pointer;
         text-align: start;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navigationMenuHeadings li {
+        animation: none;
     }
 }

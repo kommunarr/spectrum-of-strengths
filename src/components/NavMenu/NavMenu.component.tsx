@@ -1,43 +1,50 @@
 import { useTranslation } from 'react-i18next';
 import './NavMenu.css';
 import * as Utils from "../../utils";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import type { MouseEventHandler } from 'react';
 import ActionButton from '../ActionButton';
 
 interface INavMenu {
-    openAddEmailPrompt: () => void;
+    openAddEmailPrompt: MouseEventHandler<HTMLButtonElement>;
+    id?: string;
+    hidden?: boolean;
 }
 
 function NavMenu(props: INavMenu) {
     const { t, i18n } = useTranslation(['common', 'otherLanguage']);
     const location = useLocation();
-    const currentPathname = location.pathname.substring(1);
     const languageLinkLocation = Utils.getCorrespondingPageRouteInOtherLanguage(t, i18n, location.pathname);
+    const otherLanguageKey = i18n.resolvedLanguage === 'en' ? 'fr' : 'en';
 
     return (
-        <nav className="navigationMenu">
-                <ul className="navigationMenuHeadings">
-                <div className="coreMenu">
-                    {Utils.navMenuSections.map((section, index) => 
+        <nav className="navigationMenu" id={props.id} aria-label={t('primaryNavigation')} hidden={props.hidden}>
+                <ul className="coreMenu navigationMenuHeadings">
+                    {Utils.navMenuSections.map((section) =>
                     {
                         const path = t(`${section}Path`);
-                        const activeClass = (currentPathname === encodeURI(path) ? ' active' : '');
                         return (
-                        <li key={index}>
-                            <Link className={`actionLink${activeClass}`} to={path}>{t(section)}</Link>
+                        <li key={section}>
+                            <NavLink className={({ isActive }) => `actionLink${isActive ? ' active' : ''}`} to={path} end>
+                                {t(section)}
+                            </NavLink>
                         </li>
                     )})}
-                </div>
-                <div className="mobileMenuOnly">
+                </ul>
+                <ul className="mobileMenuOnly navigationMenuHeadings">
                     <li>
-                        <ActionButton label={t('joinUs')} link="true" className="menuButton" onClick={props.openAddEmailPrompt} />
+                        <ActionButton
+                            label={t('joinUs')}
+                            link
+                            className="menuButton"
+                            onClick={props.openAddEmailPrompt}
+                        />
                     </li>
                     <li>
-                        <Link className="actionLink" to={languageLinkLocation}>
+                        <Link className="actionLink" to={languageLinkLocation} lang={otherLanguageKey}>
                             {t('name', { ns: 'otherLanguage' })}
                         </Link>
                     </li>
-                </div>
         </ul>
       </nav>
     );

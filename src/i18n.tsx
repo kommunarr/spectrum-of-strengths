@@ -3,7 +3,6 @@ import { initReactI18next } from "react-i18next";
 import CanadianEnglish from "./locales/en-ca/translation.json";
 import CanadianFrench from "./locales/fr-ca/translation.json";
 
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 const resources = {
   en: {
     common: CanadianEnglish.common,
@@ -18,7 +17,6 @@ const resources = {
     email: CanadianFrench.email
   }
 };
-/* eslint-enable @typescript-eslint/no-unsafe-assignment */
 
 void i18next.use(initReactI18next)
   .init({

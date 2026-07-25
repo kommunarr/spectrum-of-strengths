@@ -3,43 +3,33 @@ import { useTranslation } from "react-i18next";
 import './Contact.css';
 import ActionButton from '../../components/ActionButton';
 
-interface ContactFormData {
-    name: { value: string };
-    email: { value: string };
-    subject: { value: string };
-    message: { value: string };
-}
-
 function Contact() {
-    const [contactFormSubmitted, setContactFormSubmitted] = useState(false);
+    const [contactFormAttempted, setContactFormAttempted] = useState(false);
 
-    const handleSubmitClick = (e: React.SyntheticEvent) => {
+    const handleSubmitClick = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setTimeout(() => { setContactFormSubmitted(true); }, 500);
-        // const target = e.target as typeof e.target & ContactFormData;
-        // console.log(target.name.value);
-        // console.log(target.email.value);
-        // console.log(target.subject.value);
-        // console.log(target.message.value);
+        setContactFormAttempted(true);
     };
 
     const { t } = useTranslation(['contactUs', 'common']);
     return (
         <div>
             <h1>{t('contactUs')}</h1>
-            {
-                !contactFormSubmitted ?
-                    <form onSubmit={handleSubmitClick}>
-                    <fieldset>
-                        {/* <legend>{t('contactUs')}</legend> */}
+            <form
+                onSubmit={handleSubmitClick}
+                aria-describedby={contactFormAttempted ? 'contact-form-status' : undefined}
+            >
+                    <fieldset aria-describedby="contact-form-required">
+                        <legend>{t('contactUs')}</legend>
+                        <p className="formHint" id="contact-form-required">{t('requiredFields')}</p>
                         <div className="formField">
                             <label htmlFor="nameInput">{t('nameInput')}</label>
-                            <input id="nameInput" name="nameInput" type="text" required autoComplete="on" />
+                            <input id="nameInput" name="nameInput" type="text" required autoComplete="name" />
                         </div>
                         
                         <div className="formField">
                             <label htmlFor="emailInput">{t('emailAddress', { ns: 'common'} )}</label>
-                            <input id="emailInput" name="emailInput" type="email" required autoComplete="on" />
+                            <input id="emailInput" name="emailInput" type="email" required autoComplete="email" />
                         </div>
 
                         <div className="formField">
@@ -53,14 +43,9 @@ function Contact() {
                         </div>
 
                         <ActionButton type="submit" label={t('submit')} className="submitButton" />
+                        {contactFormAttempted && <p id="contact-form-status" className="formStatus" role="alert">{t('formNotConnected')}</p>}
                     </fieldset>
-                </form>
-                :
-                <div className="postSubmitMessage">
-                    <h2 className="postSubmitMessageTitle">{t('postSubmitTitle')}</h2>
-                    <h3>{t('postSubmitSubtitle')}</h3>
-                </div>
-            }
+            </form>
         </div>
     );
 }

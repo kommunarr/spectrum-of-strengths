@@ -61,9 +61,18 @@ body {
   display: none;
 }
 
+button {
+  color: var(--primary-text-color);
+}
+
 a {
   color: var(--primary-text-color);
   text-decoration: none;
+}
+
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 3px solid var(--action-background-color);
+  outline-offset: 3px;
 }
 
 .a:visited {
@@ -136,7 +145,7 @@ input:valid, textarea:valid {
 }
 
 input:focus, textarea:focus {
-  border: none;
+  border-bottom-color: var(--action-background-color);
 }
 
 .events li {
@@ -152,9 +161,11 @@ input:focus, textarea:focus {
   font-size: var(--font-size-base);
 }
 
-@media (prefers-reduced-motion) {
-  html {
-    animation: none !important;
-    transition: none !important;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

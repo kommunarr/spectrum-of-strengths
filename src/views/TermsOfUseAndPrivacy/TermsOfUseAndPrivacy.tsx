@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import TranslatedHtml from "../../components/TranslatedHtml";
 
 function TermsOfUseAndPrivacy() {
     const { t } = useTranslation(['common']);
@@ -10,7 +11,7 @@ function TermsOfUseAndPrivacy() {
             {sections.map((section, index) => (
                 <div key={index}>
                 <h2>{t(`${section}Title`)}</h2>
-                <p dangerouslySetInnerHTML={{__html: t(`${section}Body`)}}></p>
+                <TranslatedHtml html={t(`${section}Body`)} />
               </div>
             ))}
         </div>
