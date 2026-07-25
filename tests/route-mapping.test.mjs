@@ -79,6 +79,20 @@ test('maps every published route in both locale tables', () => {
   }
 });
 
+test('keeps the published English and French route maps in sync', () => {
+  const englishRoutes = Object.fromEntries(
+    Object.entries(englishLocale.otherLanguage).filter(([path]) => path.startsWith('/')),
+  );
+  const frenchRoutes = Object.fromEntries(
+    Object.entries(frenchLocale.otherLanguage).filter(([path]) => path.startsWith('/')),
+  );
+
+  assert.deepEqual(Object.keys(frenchRoutes).sort(), Object.values(englishRoutes).sort());
+  for (const [englishPath, frenchPath] of Object.entries(englishRoutes)) {
+    assert.equal(frenchRoutes[frenchPath], englishPath, `reverse route mapping for ${englishPath}`);
+  }
+});
+
 test('detects the language for an unmatched route', () => {
   assert.equal(getLanguageForPath('/fr/not-found'), 'fr');
   assert.equal(getLanguageForPath('/not-found'), 'en');

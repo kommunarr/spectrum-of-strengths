@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { flattenKeys, validateTranslations } from '../scripts/check-translations.mjs';
+import {
+  flattenKeys,
+  getContentNamespaces,
+  validateTranslations,
+} from '../scripts/check-translations.mjs';
 
 test('flattens nested translation objects into stable keys', () => {
   assert.deepEqual(
@@ -18,5 +22,17 @@ test('reports missing keys in either locale', () => {
   assert.deepEqual(validateTranslations(locales, ['common']), [
     'common: missing in French: common.events',
     'common: missing in English: common.contact',
+  ]);
+});
+
+test('discovers new content namespaces without a hard-coded allowlist', () => {
+  const locales = {
+    en: { common: { home: 'Home' }, events: { title: 'Events' }, otherLanguage: {} },
+    fr: { common: { home: 'Accueil' }, events: {}, otherLanguage: {} },
+  };
+
+  assert.deepEqual(getContentNamespaces(locales), ['common', 'events']);
+  assert.deepEqual(validateTranslations(locales), [
+    'events: missing in French: events.title',
   ]);
 });

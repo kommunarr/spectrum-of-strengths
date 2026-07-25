@@ -7,7 +7,7 @@ const localeFiles = {
   fr: resolve('src/locales/fr-ca/translation.json'),
 };
 
-export const contentNamespaces = ['common', 'events', 'contactUs', 'email'];
+export const nonContentNamespaces = new Set(['otherLanguage']);
 
 export function flattenKeys(value, prefix = '') {
   if (value === null || typeof value !== 'object' || Array.isArray(value)) {
@@ -29,7 +29,16 @@ export function difference(left, right) {
   return left.filter((key) => !rightSet.has(key));
 }
 
-export function validateTranslations(locales, namespaces = contentNamespaces) {
+export function getContentNamespaces(locales) {
+  return [...new Set([
+    ...Object.keys(locales.en),
+    ...Object.keys(locales.fr),
+  ])]
+    .filter((namespace) => !nonContentNamespaces.has(namespace))
+    .sort();
+}
+
+export function validateTranslations(locales, namespaces = getContentNamespaces(locales)) {
   const errors = [];
   for (const namespace of namespaces) {
     const englishKeys = flattenKeys(locales.en[namespace] ?? {}, namespace).sort();
@@ -58,12 +67,14 @@ export async function loadLocales() {
 const isMainModule = process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1]);
 
 if (isMainModule) {
-  const errors = validateTranslations(await loadLocales());
+  const locales = await loadLocales();
+  const namespaces = getContentNamespaces(locales);
+  const errors = validateTranslations(locales, namespaces);
   if (errors.length > 0) {
     console.error('Translation key check failed:');
     for (const error of errors) console.error(`- ${error}`);
     process.exit(1);
   }
 
-  console.log(`Translation key check passed for ${contentNamespaces.join(', ')}.`);
+  console.log(`Translation key check passed for ${namespaces.join(', ')}.`);
 }
