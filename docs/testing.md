@@ -1,12 +1,18 @@
 # Testing Strategy
 
-The repository uses two layers of automated checks:
+The repository uses layered automated checks:
 
 - `npm test` runs fast unit tests for route mapping and translation-key
   validation.
 - `npm run test:browser` builds the production bundle, serves it under the
   configured `/spectrum-of-strengths/` base path, and exercises the site in
   Chromium.
+- `npm run test:visual` compares screenshots of the shared shell at desktop
+  and mobile sizes. Editorial page bodies are intentionally excluded.
+- `npm run test:cross-browser` runs a small smoke suite in Chromium, Firefox,
+  and WebKit.
+- `npm run test:external-links` crawls rendered routes and checks HTTPS links.
+  The scheduled workflow runs this separately from pull-request checks.
 - `npm run test:lighthouse` audits representative production routes and
   enforces measurable quality budgets for accessibility, performance, SEO, and
   best practices.
@@ -39,7 +45,12 @@ accessibility checks catch common DOM and ARIA regressions, but they do not
 replace keyboard, zoom, screen-reader, contrast, or user testing.
 
 GitHub Actions installs Chromium and runs the browser suite on pushes to
-`main` and pull requests. Failed runs retain the Playwright HTML report for
-diagnosis.
+`main` and pull requests. A separate cross-browser smoke job installs Firefox
+and WebKit. Failed runs retain the Playwright HTML report for diagnosis.
+
+Visual baselines can be refreshed intentionally with
+`npm run test:visual:update`; review those changes as carefully as code.
+The manual keyboard, zoom/reflow, and screen-reader checklist lives in
+[accessibility-checklist.md](accessibility-checklist.md).
 
 Lighthouse reports are also retained by the dedicated Lighthouse workflow.

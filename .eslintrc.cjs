@@ -32,7 +32,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['playwright.config.ts'],
+      files: ['playwright.config.ts', 'playwright.cross-browser.config.ts'],
       env: { node: true },
     },
   ],
