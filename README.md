@@ -20,6 +20,11 @@ Before committing, run `npm run check`. The repository also installs local
 pre-commit and pre-push hooks through `npm run prepare` when dependencies are
 installed. GitHub Actions runs the same checks for pushes and pull requests.
 
+To run the production browser suite locally, install Chromium with
+`npx playwright install chromium`, then run `npm run test:browser`. See the
+[testing strategy](docs/testing.md) for the covered user flows and the limits
+of automated accessibility checks.
+
 ## Deferred Decisions
 
 CMS, newsletter, and contact-provider choices are intentionally deferred. See

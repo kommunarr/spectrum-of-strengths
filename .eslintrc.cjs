@@ -30,4 +30,10 @@ module.exports = {
       version: 'detect',
     },
   },
+  overrides: [
+    {
+      files: ['playwright.config.ts'],
+      env: { node: true },
+    },
+  ],
 }

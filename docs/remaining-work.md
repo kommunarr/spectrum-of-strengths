@@ -122,6 +122,9 @@ The initial content model should cover:
   requests.
 - Added a production build output check for generated assets under the
   configured `/spectrum-of-strengths/` base path.
+- Added a Chromium browser suite for bilingual navigation, dialog focus,
+  honest form behaviour, and automated axe-core accessibility checks.
+- Added a CI workflow that runs the browser suite and retains its report.
 - Added a skip-to-content link, semantic main/navigation landmarks, mobile menu
   keyboard behavior, dialog focus return, responsive dialog sizing, and
   accessible social-icon naming.
