@@ -20,6 +20,7 @@
         "close": "Close",
         "organizationName": "Spectrum of Strengths",
         "loading": "Loading",
+        "contentComingSoon": "Public content for this page is still being prepared. Please check back after the organization has approved the information to share.",
         "emailAddress": "Email address",
         "facebook": "Spectrum of Strengths on Facebook",
         "pageNotFoundTitle": "Page not found",
@@ -59,6 +60,15 @@
         "successTitle": "Success!",
         "successSubtitle": "Thank you for subscribing!"
     },
+    "events": {
+        "officialTitle": "Official events",
+        "officialName": "Seniors' Sunday Spectrum Soiree",
+        "officialDescription": "Closed group. Please contact the SSF team privately for the date and time.",
+        "partnerTitle": "Partner events",
+        "partnerName": "Asperger's, Autism, ASD Socializing",
+        "partnerDescription": "Open to all, Thursdays at 6 p.m.",
+        "partnerUrl": "https://www.meetup.com/aspergers-autism-asd-relatives-socializing-networking/"
+    },
     "contactUs": {
         "contactUs": "Contact us",
         "nameInput": "Name",
@@ -72,11 +82,11 @@
     },
     "otherLanguage": {
         "name": "Français",
-        "/": "fr",
-        "/events": "fr/événements",
-        "/about": "fr/propos",
-        "/contact-us": "fr/contactez-nous",
-        "/terms-of-use-and-privacy": "fr/conditions-dutilisation-politique-confidentialite",
-        "/accessibility-standards": "fr/normes-daccessibilite"
+        "/": "/fr",
+        "/events": "/fr/événements",
+        "/about": "/fr/propos",
+        "/contact-us": "/fr/contactez-nous",
+        "/terms-of-use-and-privacy": "/fr/conditions-dutilisation-politique-confidentialite",
+        "/accessibility-standards": "/fr/normes-daccessibilite"
     }
 }

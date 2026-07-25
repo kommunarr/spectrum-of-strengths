@@ -120,6 +120,8 @@ The initial content model should cover:
 - Added installable `.githooks/pre-commit` and `.githooks/pre-push` checks.
 - Added a GitHub Actions quality workflow for pushes to `main` and pull
   requests.
+- Added a production build output check for generated assets under the
+  configured `/spectrum-of-strengths/` base path.
 - Added a skip-to-content link, semantic main/navigation landmarks, mobile menu
   keyboard behavior, dialog focus return, responsive dialog sizing, and
   accessible social-icon naming.

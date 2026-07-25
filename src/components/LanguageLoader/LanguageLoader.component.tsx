@@ -13,15 +13,16 @@ interface ILanguageLoader {
     const { t, i18n } = useTranslation(['common']);
     const { pathname } = useLocation();
     const title = t(props.title)
+    const organizationName = t('organizationName');
     
     useEffect(() => {
       void i18n.changeLanguage(props.lang);
       document.documentElement.lang = props.lang;
-      document.title = `${title} | Spectrum of Strengths`;
+      document.title = `${title} | ${organizationName}`;
   
       // scroll to top on route change
       window.scrollTo(0, 0);
-    }, [props.lang, props.title, title, i18n, pathname]);
+    }, [props.lang, props.title, title, organizationName, i18n, pathname]);
   
     return (props.children)
   }

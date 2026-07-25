@@ -7,7 +7,7 @@ const localeFiles = {
   fr: resolve('src/locales/fr-ca/translation.json'),
 };
 
-export const contentNamespaces = ['common', 'contactUs', 'email'];
+export const contentNamespaces = ['common', 'events', 'contactUs', 'email'];
 
 export function flattenKeys(value, prefix = '') {
   if (value === null || typeof value !== 'object' || Array.isArray(value)) {

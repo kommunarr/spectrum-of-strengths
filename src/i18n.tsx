@@ -6,12 +6,14 @@ import CanadianFrench from "./locales/fr-ca/translation.json";
 const resources = {
   en: {
     common: CanadianEnglish.common,
+    events: CanadianEnglish.events,
     otherLanguage: CanadianEnglish.otherLanguage,
     contactUs: CanadianEnglish.contactUs,
     email: CanadianEnglish.email
   },
   fr: {
     common: CanadianFrench.common,
+    events: CanadianFrench.events,
     otherLanguage: CanadianFrench.otherLanguage,
     contactUs: CanadianFrench.contactUs,
     email: CanadianFrench.email

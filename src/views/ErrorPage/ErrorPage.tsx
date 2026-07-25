@@ -1,18 +1,21 @@
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import * as Utils from "../../utils";
 
 function ErrorPage() {
     const { t, i18n } = useTranslation(['common']);
     const location = useLocation();
+    const language = Utils.getLanguageForPath(location.pathname);
 
     useEffect(() => {
-        // Keep an unmatched French route in French without changing language during render.
-        if (location.pathname.startsWith('/fr/')) {
-            void i18n.changeLanguage('fr');
-            document.documentElement.lang = 'fr';
-        }
-    }, [i18n, location.pathname]);
+        void i18n.changeLanguage(language);
+        document.documentElement.lang = language;
+    }, [i18n, language]);
+
+    useEffect(() => {
+        document.title = `${t('pageNotFoundTitle')} | ${t('organizationName')}`;
+    }, [t]);
 
     return (
         <div>

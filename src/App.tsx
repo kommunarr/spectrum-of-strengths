@@ -2,7 +2,7 @@ import { RouterProvider, createHashRouter } from 'react-router-dom'
 import type { RouteObject } from "react-router-dom";
 import './App.css'
 import Home from './views/Home/Home';
-import About from './views/About//About';
+import About from './views/About/About';
 import Contact from './views/Contact/Contact';
 
 import React from 'react';
