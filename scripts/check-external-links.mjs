@@ -62,6 +62,10 @@ async function findExternalLinks(siteUrl, routePaths) {
         ? baseUrl.toString()
         : `${baseUrl.toString()}#${path}`;
       await page.goto(routeUrl, { waitUntil: 'networkidle' });
+      await page.waitForFunction(
+        (expectedLanguage) => document.documentElement.lang === expectedLanguage,
+        path.startsWith('/fr') ? 'fr' : 'en',
+      );
 
       const hrefs = await page.locator('a').evaluateAll((anchors) => (
         anchors
