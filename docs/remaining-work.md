@@ -15,8 +15,9 @@ the defaults and questions intentionally deferred to reduce owner workload.
 
 ### Review Current Public Content
 
-- Review the first-stage English and French narrative and value definitions
-  before public deployment.
+- Prepare a short, issue-focused review for the owner covering identity, key
+  term meanings, factual claims, and current privacy/accessibility statements.
+  The maintainer handles routine bilingual proofing and technical details.
 - Confirm organization-specific facts, names, contact details, social links,
   and calls to action before those details are published or activated.
 - Separate current services from future ideas. Do not publish a Zoom link,

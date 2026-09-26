@@ -67,10 +67,20 @@ work. It is a working editorial brief, not approval of legal or policy claims.
 | What happens to correspondence and personal stories? | Publish dated summaries and source context by default; require permission and redaction before publishing excerpts or identifiable stories. |
 | Which domain and host are final? | Keep the current configured base path and translated page descriptions; defer canonical and social-card metadata until deployment ownership is confirmed. |
 
-## Owner review needed before public launch
+## Focused owner review before public launch
 
-The site copy is based on the owner’s answers. Before deploying it publicly,
-the organization should make one focused review of the English and French
-wording, especially the value definitions, organization description, and the
-privacy/accessibility summaries. Later updates should require owner input only
-for the specific deferred items above that become active.
+Before public launch, prepare a short review summary covering only the points
+that need the owner's knowledge:
+
+- Does the organization description, slogan, and audience reflect the intended
+  identity?
+- Do the four value definitions and key heritage terms preserve their intended
+  meaning?
+- Are any factual claims, names, permissions, or policy statements incorrect?
+- Do the privacy and accessibility summaries accurately describe the site's
+  current behavior?
+
+The technical maintainer handles routine bilingual proofing, labels, and layout.
+The owner can provide corrections in plain notes; they do not need to rewrite
+the copy or translate it. Later updates should require owner input only for the
+specific deferred items above that become active.
