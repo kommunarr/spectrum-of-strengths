@@ -75,9 +75,18 @@
             "gapsBody": "Examples of unmet needs, the systems around them, and ideas for products or changes that bridge the gaps and create shared value.",
             "progressTitle": "Plans and progress",
             "progressBody": "Dated updates that distinguish intentions, work in progress, and confirmed milestones. Private correspondence can be cited without publishing the full message.",
+            "entriesTitle": "Published entries",
+            "plannedStatus": "Planned",
+            "inProgressStatus": "In progress",
+            "confirmedStatus": "Confirmed",
+            "publishedLabel": "Publication date",
+            "sourceDateLabel": "Source timestamp",
+            "sourceContextLabel": "Source context",
+            "sourceLinkLabel": "Open public source",
             "emptyTitle": "The journal is just getting started",
             "emptyBody": "No journal entries have been published yet. Entries will appear here as research, experiences, and records are prepared for public sharing.",
-            "dateNote": "Entries will include publication dates and source context when available."
+            "dateNote": "Entries will include publication dates and source context when available.",
+            "entries": []
         },
         "glossaryPage": {
             "metaDescription": "Plain-language definitions of heritage, systems, dignity, gap bridging, and the four value principles.",

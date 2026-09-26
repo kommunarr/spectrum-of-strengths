@@ -3,3 +3,55 @@
     font-size: 1.75rem;
     line-height: 1.3;
 }
+
+.archiveEntries {
+    margin-block-start: 2.5rem;
+}
+
+.archiveEntryList {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.archiveEntry {
+    padding: clamp(1.25rem, 4vw, 2rem);
+    border: 1px solid #dedee2;
+    border-inline-start: 0.35rem solid var(--spectrum-purple);
+    border-radius: 0.75rem;
+    background: #fff;
+}
+
+.archiveEntryMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    color: #4c4e52;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.archiveEntry h3 {
+    margin-block: 0.75rem 0.5rem;
+    font-size: 1.4rem;
+    line-height: 1.35;
+}
+
+.archiveEntry > p {
+    margin-block: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.archiveEntry .archiveEntrySource {
+    padding-block-start: 0.75rem;
+    border-block-start: 1px solid #dedee2;
+    font-size: 0.9rem;
+}
+
+.archiveEmpty h3 {
+    margin-block: 0 0.5rem;
+    font-size: 1.5rem;
+}

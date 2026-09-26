@@ -37,7 +37,9 @@ headings to change.
 
 Translation validation discovers content namespaces automatically. The
 `otherLanguage` namespace is treated as routing data and is checked separately
-for matching, reversible English/French route pairs.
+for matching, reversible English/French route pairs. It also checks archive
+entry fields, matching entry IDs and shared metadata, valid dates, supported
+categories/statuses, and valid HTTPS source URLs.
 
 Browser checks use semantic roles and labels so they validate user-visible
 behaviour rather than implementation-specific CSS selectors. Automated

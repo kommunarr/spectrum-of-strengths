@@ -75,9 +75,18 @@
             "gapsBody": "Des exemples de besoins non satisfaits, des systèmes qui les entourent et des idées de produits ou de changements qui comblent les lacunes et créent une valeur partagée.",
             "progressTitle": "Plans et progrès",
             "progressBody": "Des nouvelles datées qui distinguent les intentions, le travail en cours et les étapes confirmées. Il est possible de citer une correspondance privée sans en publier le message intégral.",
+            "entriesTitle": "Entrées publiées",
+            "plannedStatus": "Prévu",
+            "inProgressStatus": "En cours",
+            "confirmedStatus": "Confirmé",
+            "publishedLabel": "Date de publication",
+            "sourceDateLabel": "Date et heure de la source",
+            "sourceContextLabel": "Contexte de la source",
+            "sourceLinkLabel": "Ouvrir la source publique",
             "emptyTitle": "Le journal ne fait que commencer",
             "emptyBody": "Aucune entrée n’a encore été publiée. Les entrées paraîtront ici lorsque les recherches, expériences et archives seront prêtes à être partagées publiquement.",
-            "dateNote": "Les entrées indiqueront leur date de publication et le contexte de leurs sources lorsque ces renseignements seront disponibles."
+            "dateNote": "Les entrées indiqueront leur date de publication et le contexte de leurs sources lorsque ces renseignements seront disponibles.",
+            "entries": []
         },
         "glossaryPage": {
             "metaDescription": "Des définitions en langage clair du patrimoine, des systèmes, de la dignité, de la réduction des écarts et des principes de valeur.",

@@ -97,7 +97,7 @@ If content growth justifies a structured model later, start with:
 
 - Keep the existing route/language and translation-key checks current as routes
   or locale structure changes.
-- Add archive-entry behavior checks if journal entries become data-driven.
+- Add an archive-rendering check when the first journal entries are added.
 - Keep browser coverage aligned with the development states and any future
   submission workflows.
 - Add an accessibility check to the browser test path.
@@ -106,8 +106,6 @@ If content growth justifies a structured model later, start with:
 
 ## P2: Polish And Operations
 
-- Replace the remaining stale README TODOs with approved ownership and content
-  workflow instructions.
 - Add a short maintainer guide with screenshots for editing, translating,
   previewing, publishing, and rolling back content.
 - Refresh the desktop and mobile visual baselines after the first-stage header
@@ -126,6 +124,9 @@ If content growth justifies a structured model later, start with:
   foundations, and four-value framework supplied by the organization owner.
 - Added an Archive & journal landing page and bilingual plain-language key
   terms without inventing archive entries, dates, contributors, or outcomes.
+- Made the archive ready for paired English/French entries with publication
+  and source timestamps, status, category, summary, and optional public source
+  context or link. It remains empty until approved content is available.
 - Added paired English/French routes and brought Events and Contact into clear
   development states without submission or registration forms.
 - Replaced unreviewed privacy/accessibility policy claims with concise current-
@@ -145,9 +146,10 @@ If content growth justifies a structured model later, start with:
 - Added a CI workflow that runs the browser suite and retains its report.
 - Added Lighthouse CI budgets and report artifacts for production performance,
   accessibility, best practices, and SEO.
-- Added a skip-to-content link, semantic main/navigation landmarks, mobile menu
-  keyboard behavior, dialog focus return, responsive dialog sizing, and
-  accessible social-icon naming.
+- Added a skip-to-content link, semantic main/navigation landmarks, mobile
+  menu keyboard behavior and focus restoration, and reduced-motion handling.
+- Added screen-reader descriptions for the visible Events and Contact
+  development statuses in both copies of the navigation.
 - Removed simulated contact/newsletter success states and corrected malformed
   policy markup without adding external integrations.
 
