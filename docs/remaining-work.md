@@ -154,6 +154,13 @@ If content growth justifies a structured model later, start with:
 - Added the slow bilingual value carousel with pause and navigation controls,
   manual slide announcements, focus/hover pause, and a reduced-motion card
   layout.
+- Added a bilingual accessibility-page explanation of the carousel's timing,
+  controls, and reduced-motion layout; the full statement still needs review.
+- Simplified the archive update handoff so an owner can provide rough notes,
+  source timing, and sharing status while the maintainer handles editorial
+  fields and translation.
+- Added a technical content update guide for the locale files, local preview,
+  quality checks, deployment limits, and rollback.
 - Added screen-reader descriptions for the visible Events and Contact
   development statuses in both copies of the navigation.
 - Removed simulated contact/newsletter success states and corrected malformed
