@@ -109,8 +109,8 @@ If content growth justifies a structured model later, start with:
 
 ## P2: Polish And Operations
 
-- Add a short maintainer guide with screenshots for editing, translating,
-  previewing, publishing, and rolling back content.
+- Add annotated screenshots to the [content update guide](content-update-guide.md)
+  if they would help onboard a nontechnical maintainer.
 - Refresh the desktop and mobile visual baselines after the first-stage header
   and footer changes are reviewed.
 - Add image sizing/compression rules and a small media inventory.
