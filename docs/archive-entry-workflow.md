@@ -19,36 +19,42 @@ English and French archivePage.entries arrays in the locale files.
   the public site and keep its private reference label outside the repository.
   Publish a summary; quote or identify people only after sharing permission is
   confirmed.
-- Prepare English and French together. Keep the item as a draft if a fact,
-  translation, permission, or source date still needs confirmation.
+- The technical maintainer prepares the English and French versions together.
+  Keep the item as a draft if a fact, permission, or source date still needs
+  confirmation.
 - The technical maintainer handles categories, formatting, translation, and
-  adding the approved entry. Ask the organization owner only to confirm factual
-  claims, names, permissions, or organization-specific wording.
+  adding the entry. Ask the organization owner only to confirm factual claims,
+  names, permissions, or organization-specific wording.
 
-## Copyable draft
+## Quick update handoff
+
+Rough notes, voice-to-text, or a link are enough. The organization owner does
+not need to choose a category, write a title or public summary, translate the
+copy, or set a publication date.
 
 ```text
-Working title (English):
-Working title (French):
-
-Category: heritage and systems | research and evidence | lived experience |
-          gaps and responses | plans and progress
-Status: planned | in progress | confirmed
-
-Source date and time, as recorded:
-Time zone, if known:
-Public publication date: [maintainer fills in when publishing]
-
-Public summary (English):
-Public summary (French):
-
-Public source context or citation (optional; no private reference):
-Public source URL (optional; must not lead to a private record):
-Sharing permission confirmed: yes | not applicable | no
-Names and identifying details approved for publication: yes | no
-
-Next step (optional, and only if actually planned):
+What happened? (rough notes are fine):
+When? (source date/time; time zone if shown; leave blank if unknown):
+Source? (public link or type of record):
+Sharing status? (already public | permission confirmed | ask me | unsure):
+Names, quotes, or personal details approved? (yes | no | unsure | not applicable):
+Anything to keep private or explain:
 ```
+
+Do not put private correspondence, attachments, personal details, or private
+reference labels in the repository. Keep original records in the
+organization's normal secure storage. For a private source, share only the
+minimum source detail the maintainer needs to verify the date and facts.
+
+## Maintainer prepares the entry
+
+The maintainer assigns the category and status, creates a short title and
+public summary, records the publication date when the item is published, and
+prepares matching English and French copy. Use the source to distinguish a
+plan, work underway, and a confirmed milestone. If one of those choices or a
+public-sharing permission is unclear, keep the item unpublished and ask one
+focused question. The owner reviews specific facts, names, permissions, and
+organization-specific language rather than routine editorial fields.
 
 ## Before publishing
 
@@ -80,6 +86,6 @@ Each published entry has these fields:
 
 The site sorts entries by publication date, newest first.
 
-The draft template is an editorial aid, not a website form or publishing
+The handoff template is an editorial aid, not a website form or publishing
 system. The site currently has no archive entries, CMS, scheduling, or
 submission workflow.
