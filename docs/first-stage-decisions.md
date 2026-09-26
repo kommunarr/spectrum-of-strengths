@@ -35,9 +35,10 @@ work. It is a working editorial brief, not approval of legal or policy claims.
 - Do not invent contributors, organizational history, services, outcomes,
   partners, or archive entries. The archive starts with its scope and an honest
   empty state; no dates are backfilled.
-- When entries are added, show their publication date and source context where
-  available. Default to dated summaries and source references for private
-  correspondence; publish excerpts only when they are approved for sharing.
+- Use the [archive entry workflow](archive-entry-workflow.md) when preparing
+  updates. It separates source dates from publication dates and defaults to
+  summaries and source references for private correspondence; publish excerpts
+  only when they are approved for sharing.
 - Keep English and French page copy paired. French wording is prepared with
   the English copy, so the owner does not need to supply a translation. Ask for
   review only when a name, specialized term, personal account, or formal policy

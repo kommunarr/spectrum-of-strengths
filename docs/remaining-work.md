@@ -157,8 +157,9 @@ If content growth justifies a structured model later, start with:
    accessibility summaries.
 2. Confirm ownership of the public domain and host before adding deployment-
    specific metadata or provider details.
-3. Add archive entries only when the source, publication date, and sharing
-   permissions are known.
+3. Use the [archive entry workflow](archive-entry-workflow.md) to prepare the
+   first bilingual entry once its source, dates, and sharing permissions are
+   known.
 4. Revisit a CMS only if nontechnical self-editing is a real need. Do not add
    signup, contact, payment, or event providers before their workflows and
    privacy wording are approved.
