@@ -21,66 +21,66 @@ const routeObject: RouteObject = {
   element: <Layout />,
   errorElement: <Layout outlet={<ErrorPage />} />,
   children: [
-    { index: true, element: <LanguageLoader lang="en" title="homePage.title"><Home /></LanguageLoader> },
+    { index: true, element: <LanguageLoader lang="en" title="homePage.title" description="homePage.metaDescription"><Home /></LanguageLoader> },
     {
       path: "events",
-      element: <LanguageLoader lang="en" title="events"><Events /></LanguageLoader>,
+      element: <LanguageLoader lang="en" title="events" description="developmentsPage.eventsMetaDescription"><Events /></LanguageLoader>,
     },
     {
       path: "about",
-      element: <LanguageLoader lang="en" title="about"><About /></LanguageLoader>,
+      element: <LanguageLoader lang="en" title="about" description="foundationsPage.metaDescription"><About /></LanguageLoader>,
     },
     {
       path: "archive",
-      element: <LanguageLoader lang="en" title="archive"><Archive /></LanguageLoader>,
+      element: <LanguageLoader lang="en" title="archive" description="archivePage.metaDescription"><Archive /></LanguageLoader>,
     },
     {
       path: "glossary",
-      element: <LanguageLoader lang="en" title="glossary"><Glossary /></LanguageLoader>,
+      element: <LanguageLoader lang="en" title="glossary" description="glossaryPage.metaDescription"><Glossary /></LanguageLoader>,
     },
     {
       path: "contact-us",
-      element: <LanguageLoader lang="en" title="contact"><Contact /></LanguageLoader>,
+      element: <LanguageLoader lang="en" title="contact" description="developmentsPage.contactMetaDescription"><Contact /></LanguageLoader>,
     },
     {
       path: "terms-of-use-and-privacy",
-      element: <LanguageLoader lang="en" title="termsOfUseAndPrivacy"><TermsOfUseAndPrivacy /></LanguageLoader>
+      element: <LanguageLoader lang="en" title="termsOfUseAndPrivacy" description="privacyPage.metaDescription"><TermsOfUseAndPrivacy /></LanguageLoader>
     },
     {
       path: "accessibility-standards",
-      element: <LanguageLoader lang="en" title="accessibilityStandards"><AccessibilityStandards /></LanguageLoader>,
+      element: <LanguageLoader lang="en" title="accessibilityStandards" description="accessibilityPage.metaDescription"><AccessibilityStandards /></LanguageLoader>,
     },
     {
       path: 'fr',
       children: [
-        { index: true, element: <LanguageLoader lang="fr" title="homePage.title"><Home /></LanguageLoader> },
+        { index: true, element: <LanguageLoader lang="fr" title="homePage.title" description="homePage.metaDescription"><Home /></LanguageLoader> },
         {
           path: "événements",
-          element: <LanguageLoader lang="fr" title="events"><Events /></LanguageLoader>,
+          element: <LanguageLoader lang="fr" title="events" description="developmentsPage.eventsMetaDescription"><Events /></LanguageLoader>,
         },
         {
           path: "propos",
-          element: <LanguageLoader lang="fr" title="about"><About /></LanguageLoader>,
+          element: <LanguageLoader lang="fr" title="about" description="foundationsPage.metaDescription"><About /></LanguageLoader>,
         },
         {
           path: "archives",
-          element: <LanguageLoader lang="fr" title="archive"><Archive /></LanguageLoader>,
+          element: <LanguageLoader lang="fr" title="archive" description="archivePage.metaDescription"><Archive /></LanguageLoader>,
         },
         {
           path: "glossaire",
-          element: <LanguageLoader lang="fr" title="glossary"><Glossary /></LanguageLoader>,
+          element: <LanguageLoader lang="fr" title="glossary" description="glossaryPage.metaDescription"><Glossary /></LanguageLoader>,
         },
         {
           path: "contactez-nous",
-          element: <LanguageLoader lang="fr" title="contact"><Contact /></LanguageLoader>,
+          element: <LanguageLoader lang="fr" title="contact" description="developmentsPage.contactMetaDescription"><Contact /></LanguageLoader>,
         },
         {
           path: "conditions-dutilisation-politique-confidentialite",
-          element: <LanguageLoader lang="fr" title="termsOfUseAndPrivacy"><TermsOfUseAndPrivacy /></LanguageLoader>,
+          element: <LanguageLoader lang="fr" title="termsOfUseAndPrivacy" description="privacyPage.metaDescription"><TermsOfUseAndPrivacy /></LanguageLoader>,
         },
         {
           path: "normes-daccessibilite",
-          element: <LanguageLoader lang="fr" title="accessibilityStandards"><AccessibilityStandards /></LanguageLoader>,
+          element: <LanguageLoader lang="fr" title="accessibilityStandards" description="accessibilityPage.metaDescription"><AccessibilityStandards /></LanguageLoader>,
         }
       ]
     }

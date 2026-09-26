@@ -83,8 +83,9 @@ If content growth justifies a structured model later, start with:
 - Decide whether the final public URL is GitHub Pages, a custom domain, or
   another host. Preserve the `/spectrum-of-strengths` base path until that is
   decided.
-- Add canonical URL, description, Open Graph/Twitter metadata, favicon, and a
-  useful 404 experience once the public domain is known.
+- Keep the translated title and page description aligned with each route.
+- Add canonical URL and Open Graph/Twitter metadata once the public domain is
+  known; confirm the favicon and 404 experience on the final host.
 - Test refresh and direct navigation for every English and French route on the
   actual host.
 - Add a deployment preview path for content changes before publishing them.

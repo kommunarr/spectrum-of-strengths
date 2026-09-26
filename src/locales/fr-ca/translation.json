@@ -25,6 +25,7 @@
         "loading": "Chargement",
         "contentComingSoon": "Le contenu public de cette page est encore en préparation. Revenez après l’approbation des informations à publier par l’organisation.",
         "homePage": {
+            "metaDescription": "Un dossier public fondé sur le patrimoine, les systèmes, la dignité et les forces des communautés autistes et neurodivergentes.",
             "eyebrow": "Patrimoine · systèmes · leadership visionnaire",
             "title": "Nous sommes le spectre.",
             "lead": "Spectrum of Strengths constitue un dossier public fondé sur la dignité, le patrimoine et les forces des communautés neurodivergentes, notamment celles des personnes autistes et des personnes ayant un TDAH.",
@@ -47,6 +48,7 @@
             "developmentBody": "Les événements, les moyens de communiquer et les façons de participer sont en développement. Les détails seront ajoutés lorsqu’ils pourront être communiqués."
         },
         "foundationsPage": {
+            "metaDescription": "Découvrez les origines, l’objectif, les personnes contributrices et l’orientation fondatrice de Spectrum of Strengths.",
             "title": "Fondements",
             "intro": "Cette page présente l’orientation fondatrice. Elle pourra s’enrichir lorsque les personnes contributrices, les éléments de preuve et les archives historiques seront confirmés.",
             "originsTitle": "Origines",
@@ -60,6 +62,7 @@
             "termsLink": "Lire les définitions en langage clair"
         },
         "archivePage": {
+            "metaDescription": "Un journal public évolutif sur le patrimoine, la recherche, l’expérience vécue, les besoins sociaux et les progrès de l’organisation.",
             "title": "Archives et journal",
             "intro": "Un dossier évolutif des histoires, recherches, expériences, lacunes, idées et progrès qui façonnent Spectrum of Strengths.",
             "categoriesTitle": "Ce que le dossier réunira",
@@ -78,6 +81,7 @@
             "dateNote": "Les entrées indiqueront leur date de publication et le contexte de leurs sources lorsque ces renseignements seront disponibles."
         },
         "glossaryPage": {
+            "metaDescription": "Des définitions en langage clair du patrimoine, des systèmes, de la dignité, de la réduction des écarts et des principes de valeur.",
             "title": "Termes clés",
             "intro": "Ces définitions de travail en langage clair expliquent l’usage que fait Spectrum of Strengths des termes clés. Elles constituent un point de départ et pourront être précisées à mesure que le cadre évoluera.",
             "heritageTitle": "Patrimoine",
@@ -106,10 +110,13 @@
             "livingLabBody": "Une façon continue d’apprendre à partir d’expériences réelles et de données probantes pendant l’élaboration d’idées et de réponses."
         },
         "developmentsPage": {
+            "eventsMetaDescription": "Les renseignements sur les événements publics et les inscriptions sont en développement; aucun événement n’est affiché.",
+            "contactMetaDescription": "Les options de contact sont en développement. Cette page ne recueille ni n’envoie de messages.",
             "eventsBody": "Les événements publics et les inscriptions ne font pas partie de cette première étape. Les renseignements seront publiés lorsque les plans seront confirmés.",
             "contactBody": "Les options de contact sont en développement. Cette page ne reçoit ni n’envoie de messages."
         },
         "privacyPage": {
+            "metaDescription": "Découvrez comment le site de Spectrum of Strengths traite actuellement les soumissions, les sites externes et le contenu publié.",
             "intro": "Cette page résume le fonctionnement actuel du site Web. Elle sera mise à jour avant l’ajout de moyens de transmettre des renseignements ou d’autres pratiques relatives aux données.",
             "submissionsTitle": "Renseignements transmis par l’entremise du site",
             "submissionsBody": "Le site actuel ne comprend aucun formulaire fonctionnel de contact, d’inscription à une infolettre, d’inscription à un événement ou de paiement. Il ne demande pas aux visiteurs de transmettre ce type de renseignements personnels.",
@@ -121,13 +128,15 @@
             "detailsBody": "Les renseignements sur l’hébergement doivent encore être confirmés. Cette page ne formule aucune affirmation sur les renseignements conservés par un fournisseur d’hébergement ou un site externe."
         },
         "accessibilityPage": {
+            "metaDescription": "Découvrez les caractéristiques d’accessibilité prises en compte sur le site de Spectrum of Strengths et l’état de son examen.",
             "intro": "Le site est conçu en tenant compte de titres clairs, de la navigation au clavier, d’un lien d’évitement, de mises en page adaptables et des préférences de réduction des animations.",
             "reviewTitle": "Examen et commentaires",
             "reviewBody": "Le site et le présent énoncé doivent encore être examinés. Aucun canal de commentaires sur l’accessibilité n’est actif pour le moment; des options de contact seront ajoutées lorsqu’elles seront prêtes."
         },
         "facebook": "Spectrum of Strengths sur Facebook",
         "pageNotFoundTitle": "Page non trouvée",
-        "pageNotFoundSubtitle": "Nous comprenons que vous souhaitiez vous écarter du chemin prévu, mais cette page n'existe pas.",
+        "pageNotFoundSubtitle": "La page est introuvable. Utilisez la navigation principale pour continuer.",
+        "pageNotFoundDescription": "La page Spectrum of Strengths demandée est introuvable.",
         "termsOfUseBody": "Les conditions d'utilisation suivantes sont fournies à titre de clarifications et d'informations générales.",
         "privacyStatementAndInfoTitle": "Déclaration de confidentialité et informations personnelles collectées auprès des visiteurs du site",
         "officialLanguagesNoticeTitle": "Avis des langues officielles",

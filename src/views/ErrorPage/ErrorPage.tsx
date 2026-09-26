@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import * as Utils from "../../utils";
+import { updateMetaDescription } from '../../utils/pageMetadata';
 
 function ErrorPage() {
     const { t, i18n } = useTranslation(['common']);
@@ -15,7 +16,8 @@ function ErrorPage() {
 
     useEffect(() => {
         document.title = `${t('pageNotFoundTitle')} | ${t('organizationName')}`;
-    }, [t]);
+        updateMetaDescription(t('pageNotFoundDescription'));
+    }, [t, language]);
 
     return (
         <div>

@@ -25,6 +25,7 @@
         "loading": "Loading",
         "contentComingSoon": "Public content for this page is still being prepared. Please check back after the organization has approved the information to share.",
         "homePage": {
+            "metaDescription": "A public record rooted in heritage, systems, dignity, and the strengths of autistic and neurodivergent communities.",
             "eyebrow": "Heritage · systems · visionary leadership",
             "title": "We ARE the Spectrum.",
             "lead": "Spectrum of Strengths is building a public record rooted in dignity, heritage, and the strengths of neurodivergent communities, including autistic and ADHD people.",
@@ -47,6 +48,7 @@
             "developmentBody": "Events, contact options, and ways to participate are in development. Details will be added when they are ready to share."
         },
         "foundationsPage": {
+            "metaDescription": "Explore the origins, purpose, contributors, and founding direction of Spectrum of Strengths.",
             "title": "Foundations",
             "intro": "This page sets out the founding direction. It can grow as contributors, evidence, and historical records are confirmed.",
             "originsTitle": "Origins",
@@ -60,6 +62,7 @@
             "termsLink": "Read the plain-language key terms"
         },
         "archivePage": {
+            "metaDescription": "A growing public journal of heritage, research, lived experience, social needs, and organizational progress.",
             "title": "Archive & journal",
             "intro": "A living record of the histories, research, experiences, gaps, ideas, and progress that shape Spectrum of Strengths.",
             "categoriesTitle": "What the record will include",
@@ -78,6 +81,7 @@
             "dateNote": "Entries will include publication dates and source context when available."
         },
         "glossaryPage": {
+            "metaDescription": "Plain-language definitions of heritage, systems, dignity, gap bridging, and the four value principles.",
             "title": "Key terms",
             "intro": "These plain-language working definitions explain how Spectrum of Strengths uses key terms. They are a starting point and can be refined as the framework develops.",
             "heritageTitle": "Heritage",
@@ -106,10 +110,13 @@
             "livingLabBody": "An ongoing way of learning from real experiences and evidence while ideas and responses are being developed."
         },
         "developmentsPage": {
+            "eventsMetaDescription": "Public event information and registration are in development; no events are currently listed.",
+            "contactMetaDescription": "Contact options are in development. This page does not collect or send messages.",
             "eventsBody": "Public events and registration are not part of this first stage. Information will be posted when plans are confirmed.",
             "contactBody": "Contact options are in development. This page does not accept or send messages."
         },
         "privacyPage": {
+            "metaDescription": "How the Spectrum of Strengths website currently handles submissions, external websites, and published content.",
             "intro": "This page summarizes how the website currently works. It will be updated before new ways of submitting information or other data practices are introduced.",
             "submissionsTitle": "Information submitted through this site",
             "submissionsBody": "The current site does not provide working contact, newsletter, event registration, or payment forms. It does not ask visitors to submit those kinds of personal information.",
@@ -121,13 +128,15 @@
             "detailsBody": "Hosting-related information is still being confirmed. This page does not make claims about information kept by a hosting provider or an external website."
         },
         "accessibilityPage": {
+            "metaDescription": "Learn about the accessibility features considered in the Spectrum of Strengths website and its review status.",
             "intro": "The site is being built with clear headings, keyboard navigation, a skip link, responsive layouts, and reduced-motion preferences in mind.",
             "reviewTitle": "Review and feedback",
             "reviewBody": "The website and this statement still need review. An accessibility feedback channel is not active yet; contact options will be added when they are ready."
         },
         "facebook": "Spectrum of Strengths on Facebook",
         "pageNotFoundTitle": "Page not found",
-        "pageNotFoundSubtitle": "We appreciate that you want to diverge from the intended path, but this page does not exist.",
+        "pageNotFoundSubtitle": "The page could not be found. Use the main navigation to continue.",
+        "pageNotFoundDescription": "The requested Spectrum of Strengths page could not be found.",
         "termsOfUseBody": "The following terms of use are provided as general clarifications and information.",
         "privacyStatementAndInfoTitle": "Privacy statement & personal information that is collected from site visitors",
         "officialLanguagesNoticeTitle": "Notice of official languages",

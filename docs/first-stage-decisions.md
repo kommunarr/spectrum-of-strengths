@@ -62,7 +62,7 @@ work. It is a working editorial brief, not approval of legal or policy claims.
 | Should there be events, contact forms, registration, or a newsletter? | Keep these inactive until the organization has an owner, a real destination/provider, and approved privacy wording. |
 | Should analytics be added? | No tracking by default. Revisit only if a concrete decision depends on usage data. |
 | What happens to correspondence and personal stories? | Publish dated summaries and source context by default; require permission and redaction before publishing excerpts or identifiable stories. |
-| Which domain and host are final? | Keep the current configured base path and defer domain-specific metadata until deployment ownership is confirmed. |
+| Which domain and host are final? | Keep the current configured base path and translated page descriptions; defer canonical and social-card metadata until deployment ownership is confirmed. |
 
 ## Owner review needed before public launch
 
