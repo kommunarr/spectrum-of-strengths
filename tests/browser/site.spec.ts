@@ -175,6 +175,125 @@ test('does not offer newsletter signup in the first-stage site', async ({ page }
   await expect(page.getByRole('dialog')).toHaveCount(0);
 });
 
+test.describe('home value carousel', () => {
+  test('allows visitors to pause rotation and move through the values', async ({ page }) => {
+    await page.clock.install();
+    await page.goto(homePage);
+
+    const carousel = page.getByRole('group', { name: 'Four ways of thinking about value', exact: true });
+    await carousel.getByRole('button', { name: 'Pause rotation' }).click();
+    await expect(carousel.getByRole('button', { name: 'Resume rotation' })).toBeVisible();
+
+    await page.clock.fastForward(28_000);
+    await expect(carousel.getByRole('group', { name: 'Slide 1 of 4' })).toBeVisible();
+
+    await carousel.getByRole('button', { name: 'Next value' }).click();
+    await expect(carousel.getByRole('group', { name: 'Slide 2 of 4' })).toContainText('Value transformation');
+    await expect(page.getByRole('status')).toHaveText('Value transformation, 2 of 4');
+  });
+
+  test('stops rotation when keyboard focus enters the carousel', async ({ page }) => {
+    await page.clock.install();
+    await page.goto(homePage);
+
+    const carousel = page.getByRole('group', { name: 'Four ways of thinking about value', exact: true });
+    await carousel.getByRole('button', { name: 'Pause rotation' }).focus();
+    await expect(carousel.getByRole('button', { name: 'Pause rotation' })).toBeVisible();
+
+    await page.clock.fastForward(28_000);
+    await expect(carousel.getByRole('group', { name: 'Slide 1 of 4' })).toBeVisible();
+  });
+
+  test('stops rotation on pointer hover until the visitor resumes it', async ({ page }) => {
+    await page.clock.install();
+    await page.goto(homePage);
+
+    const carousel = page.getByRole('group', { name: 'Four ways of thinking about value', exact: true });
+    await carousel.hover();
+    await expect(carousel.getByRole('button', { name: 'Pause rotation' })).toBeVisible();
+    await page.clock.fastForward(28_000);
+    await expect(carousel.getByRole('group', { name: 'Slide 1 of 4' })).toBeVisible();
+
+    await carousel.getByRole('button', { name: 'Pause rotation' }).click();
+    await expect(carousel.getByRole('button', { name: 'Resume rotation' })).toBeVisible();
+    await carousel.getByRole('button', { name: 'Resume rotation' }).click();
+    await page.clock.fastForward(28_000);
+    await expect(carousel.getByRole('group', { name: 'Slide 2 of 4' })).toBeVisible();
+  });
+
+  test('provides translated controls and announcements in French', async ({ page }) => {
+    await page.goto('index.html#/fr');
+
+    const carousel = page.getByRole('group', { name: 'Quatre façons de penser la valeur', exact: true });
+    await carousel.getByRole('button', { name: 'Valeur suivante' }).click();
+    await expect(carousel.getByRole('group', { name: 'Diapositive 2 sur 4' })).toContainText('Transformation de la valeur');
+    await expect(page.getByRole('status')).toHaveText('Transformation de la valeur, 2 sur 4');
+  });
+});
+
+for (const route of [
+  {
+    language: 'en',
+    path: homePage,
+    titles: ['Value capture', 'Value transformation', 'Value creation', 'Value preservation'],
+  },
+  {
+    language: 'fr',
+    path: 'index.html#/fr',
+    titles: ['Captation de valeur', 'Transformation de la valeur', 'Création de valeur', 'Préservation de la valeur'],
+  },
+] as const) {
+  test(`shows all value ideas without rotation under reduced motion in ${route.language}`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto(route.path);
+
+    await expect(page.locator('html')).toHaveAttribute('lang', route.language);
+    await expect(page.locator('.valueCardsStatic')).toBeVisible();
+    await expect(page.locator('.valueCarouselMotion')).toBeHidden();
+    for (const title of route.titles) {
+      await expect(page.locator('.valueCardsStatic').getByRole('heading', { name: title })).toBeVisible();
+    }
+  });
+}
+
+const policyRoutes = [
+  { language: 'en', path: 'index.html#/terms-of-use-and-privacy', sectionCount: 4 },
+  { language: 'fr', path: 'index.html#/fr/conditions-dutilisation-politique-confidentialite', sectionCount: 4 },
+  { language: 'en', path: 'index.html#/accessibility-standards', sectionCount: 2 },
+  { language: 'fr', path: 'index.html#/fr/normes-daccessibilite', sectionCount: 2 },
+] as const;
+
+for (const route of policyRoutes) {
+  test(`keeps policy page sections semantic for ${route.path}`, async ({ page }) => {
+    await page.goto(route.path);
+
+    const policy = page.locator('main article.policyPage');
+    const sections = policy.locator(':scope > section');
+    await expect(page.locator('html')).toHaveAttribute('lang', route.language);
+    await expect(policy.getByRole('heading', { level: 1 })).toHaveCount(1);
+    await expect(sections).toHaveCount(route.sectionCount);
+    await expect(sections.getByRole('heading', { level: 2 })).toHaveCount(route.sectionCount);
+    await expect(sections.locator('p')).toHaveCount(route.sectionCount);
+  });
+}
+
+for (const route of [
+  { language: 'en', path: homePage, label: 'Skip to main content' },
+  { language: 'fr', path: 'index.html#/fr', label: 'Passer au contenu principal' },
+] as const) {
+  test(`shows a visible keyboard skip link in ${route.language}`, async ({ page }) => {
+    await page.goto(route.path);
+    await expect(page.locator('html')).toHaveAttribute('lang', route.language);
+    await page.keyboard.press('Tab');
+
+    const skipLink = page.getByRole('link', { name: route.label });
+    await expect(skipLink).toBeFocused();
+    await expect(skipLink).toBeVisible();
+    await expect(skipLink).toHaveCSS('outline-style', 'solid');
+    await expect(skipLink).toHaveCSS('outline-width', '3px');
+  });
+}
+
 test.describe('responsive navigation', () => {
   test.use({
     hasTouch: true,
@@ -213,6 +332,29 @@ test.describe('mobile layout contracts', () => {
   });
 
   test('keeps every published page within the mobile viewport', async ({ page }) => {
+    const overflowRoutes: string[] = [];
+
+    for (const route of publishedRoutes) {
+      await page.goto(route.testPath);
+      await expect(page.locator('main h1')).toHaveCount(1);
+
+      const layout = await page.evaluate(() => ({
+        scrollWidth: document.documentElement.scrollWidth,
+        viewportWidth: window.innerWidth,
+      }));
+      if (layout.scrollWidth > layout.viewportWidth) {
+        overflowRoutes.push(`${route.name} (${String(layout.scrollWidth)}px > ${String(layout.viewportWidth)}px)`);
+      }
+    }
+
+    expect(overflowRoutes).toEqual([]);
+  });
+});
+
+test.describe('narrow layout contracts', () => {
+  test.use({ viewport: { width: 640, height: 900 } });
+
+  test('keeps every published page within a narrow reflow viewport', async ({ page }) => {
     const overflowRoutes: string[] = [];
 
     for (const route of publishedRoutes) {

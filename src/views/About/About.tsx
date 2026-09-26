@@ -25,7 +25,7 @@ function About() {
             </div>
 
             <p className="foundationGlossaryLink">
-                <Link to={t('glossaryPath')}>{t('foundationsPage.termsLink')}</Link>
+                <Link to={`/${t('glossaryPath')}`}>{t('foundationsPage.termsLink')}</Link>
             </p>
         </article>
     );

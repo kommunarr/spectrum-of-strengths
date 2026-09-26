@@ -16,9 +16,11 @@ function getReducedMotionPreference(): boolean {
 function Home() {
     const { t } = useTranslation(['common']);
     const [prefersReducedMotion, setPrefersReducedMotion] = useState(getReducedMotionPreference);
-    const [isRotationEnabled, setIsRotationEnabled] = useState(() => !getReducedMotionPreference());
+    const [isRotationRequested, setIsRotationRequested] = useState(() => !getReducedMotionPreference());
+    const [hasInteractionPausedRotation, setHasInteractionPausedRotation] = useState(false);
     const [activePillarIndex, setActivePillarIndex] = useState(0);
     const [slideAnnouncement, setSlideAnnouncement] = useState('');
+    const isRotationEnabled = isRotationRequested && !hasInteractionPausedRotation && !prefersReducedMotion;
 
     useEffect(() => {
         if (typeof window.matchMedia !== 'function') return;
@@ -28,24 +30,28 @@ function Home() {
         function updateMotionPreference() {
             setPrefersReducedMotion(reducedMotionQuery.matches);
             if (reducedMotionQuery.matches) {
-                setIsRotationEnabled(false);
+                setIsRotationRequested(false);
             }
         }
 
         updateMotionPreference();
         reducedMotionQuery.addEventListener('change', updateMotionPreference);
-        return () => reducedMotionQuery.removeEventListener('change', updateMotionPreference);
+        return () => {
+            reducedMotionQuery.removeEventListener('change', updateMotionPreference);
+        };
     }, []);
 
     useEffect(() => {
-        if (!isRotationEnabled || prefersReducedMotion) return;
+        if (!isRotationEnabled) return;
 
         const rotationTimer = window.setInterval(() => {
             setActivePillarIndex((currentIndex) => (currentIndex + 1) % valuePillars.length);
         }, rotationInterval);
 
-        return () => window.clearInterval(rotationTimer);
-    }, [isRotationEnabled, prefersReducedMotion]);
+        return () => {
+            window.clearInterval(rotationTimer);
+        };
+    }, [isRotationEnabled]);
 
     function moveToPillar(direction: -1 | 1) {
         const nextIndex = (activePillarIndex + direction + valuePillars.length) % valuePillars.length;
@@ -86,30 +92,45 @@ function Home() {
                     role="group"
                     aria-labelledby="values-title"
                     aria-roledescription={t('homePage.carouselRoleDescription')}
-                    onFocusCapture={() => setIsRotationEnabled(false)}
-                    onPointerEnter={() => setIsRotationEnabled(false)}
+                    onFocusCapture={() => {
+                        setHasInteractionPausedRotation(true);
+                    }}
+                    onPointerEnter={() => {
+                        setHasInteractionPausedRotation(true);
+                    }}
                 >
                     <div className="valueCarouselControls">
                         <button
                             type="button"
                             aria-controls="value-carousel-slides"
-                            onClick={() => setIsRotationEnabled((enabled) => !enabled)}
+                            onClick={() => {
+                                if (isRotationRequested) {
+                                    setIsRotationRequested(false);
+                                } else {
+                                    setHasInteractionPausedRotation(false);
+                                    setIsRotationRequested(true);
+                                }
+                            }}
                         >
-                            {t(isRotationEnabled ? 'homePage.pauseRotation' : 'homePage.resumeRotation')}
+                            {t(isRotationRequested ? 'homePage.pauseRotation' : 'homePage.resumeRotation')}
                         </button>
-                        <button type="button" aria-controls="value-carousel-slides" onClick={() => moveToPillar(-1)}>
+                        <button type="button" aria-controls="value-carousel-slides" onClick={() => {
+                            moveToPillar(-1);
+                        }}>
                             {t('homePage.previousValue')}
                         </button>
                         <span className="valueCarouselPosition" aria-hidden="true">
                             {activePillarIndex + 1} / {valuePillars.length}
                         </span>
-                        <button type="button" aria-controls="value-carousel-slides" onClick={() => moveToPillar(1)}>
+                        <button type="button" aria-controls="value-carousel-slides" onClick={() => {
+                            moveToPillar(1);
+                        }}>
                             {t('homePage.nextValue')}
                         </button>
                     </div>
                     <div className="valueCarouselViewport" id="value-carousel-slides" aria-live="off">
                         {valuePillars.map((pillar, index) => (
-                            <article
+                            <div
                                 className={`valueCard valueCard-${pillar} valueCarouselSlide`}
                                 key={pillar}
                                 hidden={activePillarIndex !== index}
@@ -122,7 +143,7 @@ function Home() {
                             >
                                 <h3>{t(`homePage.${pillar}Title`)}</h3>
                                 <p>{t(`homePage.${pillar}Body`)}</p>
-                            </article>
+                            </div>
                         ))}
                     </div>
                     <p className="valueCarouselAnnouncement" role="status" aria-live="polite" aria-atomic="true">
@@ -138,10 +159,10 @@ function Home() {
                     <p>{t('homePage.recordBody')}</p>
                 </div>
                 <div className="homeLinks">
-                    <Link className="homeLink homeLinkPrimary" to={t('archivePath')}>
+                    <Link className="homeLink homeLinkPrimary" to={`/${t('archivePath')}`}>
                         {t('homePage.archiveLink')}
                     </Link>
-                    <Link className="homeLink" to={t('aboutPath')}>
+                    <Link className="homeLink" to={`/${t('aboutPath')}`}>
                         {t('homePage.foundationsLink')}
                     </Link>
                 </div>
