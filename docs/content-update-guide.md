@@ -18,7 +18,8 @@ or to edit code. For an archive or journal update, start with the
   workflow, owner, and privacy wording.
 - The existing Spectrum of Strengths logo is the only approved brand image in
   the site. Get permission, context, and useful alternative text before adding
-  other images or partner marks.
+  other images or partner marks. See the [media inventory](media-inventory.md)
+  for current assets and image guidance.
 
 Keep drafts, private correspondence, attachments, and personal information out
 of the repository. Use the archive workflow's secure-source guidance when a

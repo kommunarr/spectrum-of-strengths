@@ -73,12 +73,12 @@ If content growth justifies a structured model later, start with:
 
 ### Accessibility Remediation
 
-- Add focused browser/DOM validation for policy markup and the remaining
-  heading-order, landmark, visible-focus, contrast, zoom, reduced-motion, and
-  screen-reader checks in both languages.
-- Verify heading order, landmarks, link names, visible focus, contrast, zoom,
-  reduced motion, carousel controls, and screen-reader announcements in both
-  languages.
+- Automated browser checks now cover policy-section structure, skip-link focus,
+  reduced-motion layout, carousel announcements, and axe-core rules on every
+  English and French route.
+- Manually verify heading order, landmarks, link names, contrast, 200% zoom,
+  and screen-reader behavior in both languages before public launch. Use the
+  [manual accessibility checklist](accessibility-checklist.md).
 
 ### Routing, SEO, And Deployment
 
@@ -102,19 +102,13 @@ If content growth justifies a structured model later, start with:
 - Add an archive-rendering check when the first journal entries are added.
 - Keep browser coverage aligned with the development states and any future
   submission workflows.
-- Add browser coverage for carousel pause, manual navigation, reduced-motion
-  layout, and automatic-rotation pause on focus and hover.
-- Add an accessibility check to the browser test path.
-- Add a production build smoke test that verifies generated asset paths under
-  the configured base path.
 
 ## P2: Polish And Operations
 
 - Add annotated screenshots to the [content update guide](content-update-guide.md)
-  if they would help onboard a nontechnical maintainer.
-- Refresh the desktop and mobile visual baselines after the first-stage header
-  and footer changes are reviewed.
-- Add image sizing/compression rules and a small media inventory.
+  only if editing responsibility moves to a nontechnical maintainer.
+- Add new approved assets to the [media inventory](media-inventory.md) when
+  they are supplied; no additional images are currently approved.
 - Decide whether analytics are needed. If they are, use a privacy-respecting
   provider and document consent requirements before adding tracking.
 - Add a custom domain only after email, privacy, and deployment ownership are
@@ -157,11 +151,21 @@ If content growth justifies a structured model later, start with:
   layout.
 - Added a bilingual accessibility-page explanation of the carousel's timing,
   controls, and reduced-motion layout; the full statement still needs review.
+- Added browser coverage for carousel controls, reduced motion, policy section
+  structure, keyboard focus, and English/French announcements.
+- Reviewed and refreshed desktop/mobile visual baselines for the current
+  development-status badges and the removal of inactive calls to action.
+- Fixed Home and Foundations links to use absolute localized routes; route
+  checks now catch nested-path mistakes.
+- Spaced and styled the Events and Contact development badges so they remain
+  distinct from their navigation links.
 - Simplified the archive update handoff so an owner can provide rough notes,
   source timing, and sharing status while the maintainer handles editorial
   fields and translation.
 - Added a technical content update guide for the locale files, local preview,
   quality checks, deployment limits, and rollback.
+- Added an inventory for the current logo and favicon plus image sizing,
+  permission, and alternative-text guidance for future approved assets.
 - Added screen-reader descriptions for the visible Events and Contact
   development statuses in both copies of the navigation.
 - Removed simulated contact/newsletter success states and corrected malformed

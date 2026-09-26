@@ -22,7 +22,11 @@ The browser suite covers:
 - English and French navigation and language switching;
 - the absence of inactive newsletter/contact submission controls;
 - responsive mobile-menu navigation, Escape dismissal, and focus return;
-- mobile-viewport overflow checks across every published route;
+- mobile and narrow-viewport reflow checks across every published route;
+- carousel pause on keyboard focus and pointer hover, manual navigation and
+  announcements, and the reduced-motion static-card layout in both languages;
+- semantic privacy/accessibility page sections and visible keyboard skip links
+  in both languages;
 - the Events and Contact in-development states; and
 - automated axe-core accessibility checks on every published English and
   French route.
