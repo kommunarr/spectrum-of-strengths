@@ -90,7 +90,6 @@ a:visited {
 
 a[href]:not(:where(
   .actionButton,
-  .socialMediaIconLink,
   .logoLink,
   .actionLink,
   /* exclude hash only links */
@@ -147,15 +146,6 @@ input:valid, textarea:valid {
 
 input:focus, textarea:focus {
   border-bottom-color: var(--action-background-color);
-}
-
-.events li > *:first-child {
-  font-weight: 600;
-}
-
-.events li > * {
-  margin-block: 0.5rem;
-  font-size: var(--font-size-base);
 }
 
 @media (prefers-reduced-motion: reduce) {
