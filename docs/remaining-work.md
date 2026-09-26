@@ -76,7 +76,8 @@ If content growth justifies a structured model later, start with:
   heading-order, landmark, visible-focus, contrast, zoom, reduced-motion, and
   screen-reader checks in both languages.
 - Verify heading order, landmarks, link names, visible focus, contrast, zoom,
-  reduced motion, and screen-reader announcements in both languages.
+  reduced motion, carousel controls, and screen-reader announcements in both
+  languages.
 
 ### Routing, SEO, And Deployment
 
@@ -100,6 +101,8 @@ If content growth justifies a structured model later, start with:
 - Add an archive-rendering check when the first journal entries are added.
 - Keep browser coverage aligned with the development states and any future
   submission workflows.
+- Add browser coverage for carousel pause, manual navigation, reduced-motion
+  layout, and automatic-rotation pause on focus and hover.
 - Add an accessibility check to the browser test path.
 - Add a production build smoke test that verifies generated asset paths under
   the configured base path.
@@ -148,6 +151,9 @@ If content growth justifies a structured model later, start with:
   accessibility, best practices, and SEO.
 - Added a skip-to-content link, semantic main/navigation landmarks, mobile
   menu keyboard behavior and focus restoration, and reduced-motion handling.
+- Added the slow bilingual value carousel with pause and navigation controls,
+  manual slide announcements, focus/hover pause, and a reduced-motion card
+  layout.
 - Added screen-reader descriptions for the visible Events and Contact
   development statuses in both copies of the navigation.
 - Removed simulated contact/newsletter success states and corrected malformed

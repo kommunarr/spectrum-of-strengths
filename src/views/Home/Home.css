@@ -64,6 +64,71 @@
     gap: 1rem;
 }
 
+.valueCardsStatic {
+    display: none;
+}
+
+.valueCarouselMotion {
+    display: grid;
+    row-gap: 1rem;
+}
+
+.valueCarouselControls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+}
+
+.valueCarouselControls button {
+    min-block-size: 2.75rem;
+    padding: 0.5rem 0.85rem;
+    border: 1px solid #76716f;
+    border-radius: 0.5rem;
+    background: #fff;
+    font: inherit;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.valueCarouselPosition {
+    min-inline-size: 3.5rem;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.valueCarouselViewport {
+    inline-size: min(100%, 48rem);
+    margin-inline: auto;
+}
+
+.valueCarouselSlide[hidden] {
+    display: none;
+}
+
+.valueCarouselSlide:not([hidden]) {
+    min-block-size: 9rem;
+    animation: valueSlideReveal 800ms ease-out;
+}
+
+.valueCarouselAnnouncement {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+}
+
+@keyframes valueSlideReveal {
+    from { opacity: 0.65; }
+    to { opacity: 1; }
+}
+
 .valueCard {
     min-inline-size: 0;
     padding: 1.25rem;
@@ -165,7 +230,7 @@
 }
 
 @media (max-width: 900px) {
-    .valueCards {
+    .valueCardsStatic {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -179,12 +244,22 @@
         border-radius: 0.75rem;
     }
 
-    .valueCards {
+    .valueCardsStatic {
         grid-template-columns: 1fr;
     }
 
     .homeLinks {
         align-items: stretch;
         flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .valueCarouselMotion {
+        display: none;
+    }
+
+    .valueCardsStatic {
+        display: grid;
     }
 }

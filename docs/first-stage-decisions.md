@@ -24,9 +24,11 @@ work. It is a working editorial brief, not approval of legal or policy claims.
 - Use Home, Foundations, Archive & journal, and Key terms as the main content
   areas. Keep Events and Contact available as clearly marked development
   pages; they do not advertise active events or accept messages.
-- Show the four value ideas together as stable cards. Do not auto-rotate
-  content: all four remain visible without motion, timed reading, or extra
-  navigation.
+- Present the four value ideas in a slow carousel that changes about every 28
+  seconds, with pause, previous, and next controls. Stop automatic rotation
+  when the carousel receives keyboard focus or pointer hover. Honor
+  reduced-motion preferences by showing all four ideas together as a static
+  card grid.
 - Keep the existing brand logo and do not add unapproved photos or partner
   marks. Do not surface external social links until their current status is
   confirmed.

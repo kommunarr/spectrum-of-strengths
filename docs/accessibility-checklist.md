@@ -13,6 +13,9 @@ layout change.
 - [ ] The mobile menu opens and closes with Enter/Space and Escape.
 - [ ] Focus returns to the menu trigger after the mobile menu closes.
 - [ ] No control requires a pointer, hover, or drag to operate.
+- [ ] The value carousel can be paused and navigated with the keyboard; focus
+      stops automatic rotation.
+- [ ] Pointer hover stops carousel rotation until someone explicitly resumes it.
 
 ## Zoom and reflow review
 
@@ -28,6 +31,10 @@ layout change.
 - [ ] Images have meaningful alternative text or are correctly marked decorative.
 - [ ] External links are understandable from their accessible names and indicate a new tab where appropriate.
 - [ ] Dynamic menu state changes are announced without requiring a page refresh.
+- [ ] Manually selected carousel slides are announced, while automatic slide
+      changes do not interrupt reading.
+- [ ] With reduced motion enabled, all four value cards are available without
+      automatic rotation.
 
 Record the browser, assistive technology, viewport/zoom, route, and any
 follow-up issue when a check fails.
