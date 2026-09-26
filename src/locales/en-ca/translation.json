@@ -146,6 +146,8 @@
         "accessibilityPage": {
             "metaDescription": "Learn about the accessibility features considered in the Spectrum of Strengths website and its review status.",
             "intro": "The site is being built with clear headings, keyboard navigation, a skip link, responsive layouts, and reduced-motion preferences in mind.",
+            "motionTitle": "Motion on the Home page",
+            "motionBody": "The four value ideas change automatically about every 28 seconds. Rotation stops when you move keyboard focus into the carousel or move your pointer over it. Use the pause control to stop or restart rotation, and the previous and next controls to move between ideas. If your device is set to reduce motion, the carousel is replaced by a static layout showing all four ideas.",
             "reviewTitle": "Review and feedback",
             "reviewBody": "The website and this statement still need review. An accessibility feedback channel is not active yet; contact options will be added when they are ready."
         },

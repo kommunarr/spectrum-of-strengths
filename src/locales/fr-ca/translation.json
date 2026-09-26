@@ -146,6 +146,8 @@
         "accessibilityPage": {
             "metaDescription": "Découvrez les caractéristiques d’accessibilité prises en compte sur le site de Spectrum of Strengths et l’état de son examen.",
             "intro": "Le site est conçu en tenant compte de titres clairs, de la navigation au clavier, d’un lien d’évitement, de mises en page adaptables et des préférences de réduction des animations.",
+            "motionTitle": "Mouvement sur la page d’accueil",
+            "motionBody": "Les quatre idées sur la valeur changent automatiquement environ toutes les 28 secondes. La rotation s’arrête lorsque le focus clavier entre dans le carrousel ou lorsque le pointeur le survole. Utilisez le bouton de pause pour arrêter ou reprendre la rotation, et les boutons précédent et suivant pour passer d’une idée à l’autre. Si votre appareil est configuré pour réduire les animations, les quatre idées s’affichent ensemble dans une disposition statique.",
             "reviewTitle": "Examen et commentaires",
             "reviewBody": "Le site et le présent énoncé doivent encore être examinés. Aucun canal de commentaires sur l’accessibilité n’est actif pour le moment; des options de contact seront ajoutées lorsqu’elles seront prêtes."
         },

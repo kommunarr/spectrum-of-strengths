@@ -11,6 +11,10 @@ function AccessibilityStandards() {
                 <h1>{t('accessibilityStandards')}</h1>
                 <p>{t('accessibilityPage.intro')}</p>
             </header>
+            <section aria-labelledby="home-motion-title">
+                <h2 id="home-motion-title">{t('accessibilityPage.motionTitle')}</h2>
+                <p>{t('accessibilityPage.motionBody')}</p>
+            </section>
             <section>
                 <h2>{t('accessibilityPage.reviewTitle')}</h2>
                 <p>{t('accessibilityPage.reviewBody')}</p>
