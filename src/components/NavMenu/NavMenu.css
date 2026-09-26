@@ -6,14 +6,15 @@
     .coreMenu {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
-        column-gap: 2rem;
+        flex-wrap: wrap;
+        column-gap: 1.75rem;
         list-style-type: none;
         font-size: var(--font-size-md);
         font-weight: 600;
         margin-block: 0.75rem;
-        padding-inline: 10%;
+        padding-inline: 1rem;
     }
 
     .mobileMenuOnly {
@@ -36,6 +37,10 @@
     }
 
     .navigationMenuHeadings li {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
         padding-block: 1rem;
         animation: fadeIn .5s ease-out;
 
@@ -65,14 +70,19 @@
         border-bottom-width: 0.5rem;
     }
 
-    .menuButton {
-        background: none;
-        border: none;
-        padding: 0;
-        font: inherit;
-        cursor: pointer;
-        text-align: start;
+    .navigationStatus {
+        display: block;
+        margin-block-start: 0.2rem;
+        color: #52505a;
+        font-size: 0.8rem;
+        font-weight: 500;
     }
+}
+
+.navigationStatus {
+    color: #52505a;
+    font-size: 0.75rem;
+    font-weight: 500;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,25 +1,16 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
+import '../contentPages.css';
+import '../developmentPage.css';
 
 function Events() {
-    const { t } = useTranslation(['common', 'events']);
+    const { t } = useTranslation(['common']);
+
     return (
-        <div className="events">
+        <article className="developmentPage">
+            <p className="developmentBadge">{t('inDevelopment')}</p>
             <h1>{t('events')}</h1>
-            <h2>{t('officialTitle', { ns: 'events' })}</h2>
-            <ul>
-                <li>
-                    <p>{t('officialName', { ns: 'events' })}</p>
-                    <p>{t('officialDescription', { ns: 'events' })}</p>
-                </li>
-            </ul>
-            <h2>{t('partnerTitle', { ns: 'events' })}</h2>
-            <ul>
-                <li>
-                    <a target="_blank" rel="noreferrer" href={t('partnerUrl', { ns: 'events' })}>{t('partnerName', { ns: 'events' })}</a>
-                    <p>{t('partnerDescription', { ns: 'events' })}</p>
-                </li>
-            </ul>
-        </div>
+            <p>{t('developmentsPage.eventsBody')}</p>
+        </article>
     );
 }
 

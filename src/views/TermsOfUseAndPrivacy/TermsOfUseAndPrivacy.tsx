@@ -1,20 +1,25 @@
-import { useTranslation } from "react-i18next";
-import TranslatedHtml from "../../components/TranslatedHtml";
+import { useTranslation } from 'react-i18next';
+import '../contentPages.css';
+import './PolicyPages.css';
+
+const privacySections = ['submissions', 'external', 'languages', 'details'];
 
 function TermsOfUseAndPrivacy() {
     const { t } = useTranslation(['common']);
-    const sections = ['officialLanguagesNotice', 'copyrightAndPermissionToReproduce', 'commercialReproduction', 'nonCommercialReproduction', 'hyperlinking'];
+
     return (
-        <div>
-            <h1>{t('termsOfUseAndPrivacy')}</h1>
-            <p>{t('termsOfUseBody')}</p>
-            {sections.map((section, index) => (
-                <div key={index}>
-                <h2>{t(`${section}Title`)}</h2>
-                <TranslatedHtml html={t(`${section}Body`)} />
-              </div>
+        <article className="policyPage">
+            <header className="contentPageHeader">
+                <h1>{t('termsOfUseAndPrivacy')}</h1>
+                <p>{t('privacyPage.intro')}</p>
+            </header>
+            {privacySections.map((section) => (
+                <section key={section}>
+                    <h2>{t(`privacyPage.${section}Title`)}</h2>
+                    <p>{t(`privacyPage.${section}Body`)}</p>
+                </section>
             ))}
-        </div>
+        </article>
     );
 }
 

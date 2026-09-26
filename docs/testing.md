@@ -20,10 +20,10 @@ The repository uses layered automated checks:
 The browser suite covers:
 
 - English and French navigation and language switching;
-- newsletter dialog dismissal and focus return;
+- the absence of inactive newsletter/contact submission controls;
 - responsive mobile-menu navigation, Escape dismissal, and focus return;
 - mobile-viewport overflow checks across every published route;
-- the contact form's honest disconnected state; and
+- the Events and Contact in-development states; and
 - automated axe-core accessibility checks on every published English and
   French route.
 

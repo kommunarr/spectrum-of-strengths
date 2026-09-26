@@ -1,20 +1,21 @@
-import { useTranslation } from "react-i18next";
-import TranslatedHtml from "../../components/TranslatedHtml";
+import { useTranslation } from 'react-i18next';
+import '../contentPages.css';
+import '../TermsOfUseAndPrivacy/PolicyPages.css';
 
 function AccessibilityStandards() {
     const { t } = useTranslation(['common']);
-    const sections = ['accessibilityDocumentAvailabilityNote', 'accessibilityPracticesAndProcedures', 'accessibilityCommunication', 'accessibilityWebContent', 'accessibilityFeedbackProcess'];
+
     return (
-        <div>
-            <h1>{t('accessibilityStandards')}</h1>
-            <TranslatedHtml html={t('accessibilityStandardsBody')} />
-            {sections.map((section, index) => (
-                <div key={index}>
-                  <h2>{t(`${section}Title`)}</h2>
-                  <TranslatedHtml html={t(`${section}Body`)} />
-                </div>
-            ))}
-        </div>
+        <article className="policyPage">
+            <header className="contentPageHeader">
+                <h1>{t('accessibilityStandards')}</h1>
+                <p>{t('accessibilityPage.intro')}</p>
+            </header>
+            <section>
+                <h2>{t('accessibilityPage.reviewTitle')}</h2>
+                <p>{t('accessibilityPage.reviewBody')}</p>
+            </section>
+        </article>
     );
 }
 

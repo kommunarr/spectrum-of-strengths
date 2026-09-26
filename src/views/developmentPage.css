@@ -1,0 +1,16 @@
+.developmentPage {
+    max-inline-size: 52rem;
+    min-block-size: 30vh;
+    padding-block: 2.5rem;
+}
+
+.developmentPage h1 {
+    margin-block: 0.25rem 1rem;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    line-height: 1.15;
+}
+
+.developmentPage > p:last-child {
+    font-size: 1.25rem;
+    line-height: 1.65;
+}

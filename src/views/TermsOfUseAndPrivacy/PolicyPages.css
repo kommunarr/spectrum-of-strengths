@@ -1,0 +1,21 @@
+.policyPage {
+    max-inline-size: 58rem;
+    padding-block: 1rem 2rem;
+}
+
+.policyPage section {
+    padding-block: 1rem;
+    border-block-start: 1px solid #dedee2;
+}
+
+.policyPage section h2 {
+    margin-block: 0 0.5rem;
+    font-size: 1.4rem;
+    line-height: 1.35;
+}
+
+.policyPage section p {
+    margin-block: 0;
+    font-size: 1rem;
+    line-height: 1.65;
+}

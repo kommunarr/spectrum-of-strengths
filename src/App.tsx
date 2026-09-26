@@ -8,6 +8,8 @@ import Contact from './views/Contact/Contact';
 import React from 'react';
 import ErrorPage from './views/ErrorPage/ErrorPage';
 import Events from './views/Events/Events';
+import Archive from './views/Archive/Archive';
+import Glossary from './views/Glossary/Glossary';
 import TermsOfUseAndPrivacy from './views/TermsOfUseAndPrivacy/TermsOfUseAndPrivacy';
 import AccessibilityStandards from './views/AccessibilityStandards/AccessibilityStandards';
 import Layout from './components/Layout';
@@ -19,7 +21,7 @@ const routeObject: RouteObject = {
   element: <Layout />,
   errorElement: <Layout outlet={<ErrorPage />} />,
   children: [
-    { index: true, element: <LanguageLoader lang="en" title="home"><Home /></LanguageLoader> },
+    { index: true, element: <LanguageLoader lang="en" title="homePage.title"><Home /></LanguageLoader> },
     {
       path: "events",
       element: <LanguageLoader lang="en" title="events"><Events /></LanguageLoader>,
@@ -27,6 +29,14 @@ const routeObject: RouteObject = {
     {
       path: "about",
       element: <LanguageLoader lang="en" title="about"><About /></LanguageLoader>,
+    },
+    {
+      path: "archive",
+      element: <LanguageLoader lang="en" title="archive"><Archive /></LanguageLoader>,
+    },
+    {
+      path: "glossary",
+      element: <LanguageLoader lang="en" title="glossary"><Glossary /></LanguageLoader>,
     },
     {
       path: "contact-us",
@@ -43,7 +53,7 @@ const routeObject: RouteObject = {
     {
       path: 'fr',
       children: [
-        { index: true, element: <LanguageLoader lang="fr" title="home"><Home /></LanguageLoader> },
+        { index: true, element: <LanguageLoader lang="fr" title="homePage.title"><Home /></LanguageLoader> },
         {
           path: "événements",
           element: <LanguageLoader lang="fr" title="events"><Events /></LanguageLoader>,
@@ -51,6 +61,14 @@ const routeObject: RouteObject = {
         {
           path: "propos",
           element: <LanguageLoader lang="fr" title="about"><About /></LanguageLoader>,
+        },
+        {
+          path: "archives",
+          element: <LanguageLoader lang="fr" title="archive"><Archive /></LanguageLoader>,
+        },
+        {
+          path: "glossaire",
+          element: <LanguageLoader lang="fr" title="glossary"><Glossary /></LanguageLoader>,
         },
         {
           path: "contactez-nous",

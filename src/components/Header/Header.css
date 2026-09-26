@@ -56,8 +56,7 @@
     }
 
     .bottomRow,
-    .actionSection .languageLink,
-    .actionSection .actionButton {
+    .actionSection .languageLink {
         display: none;
     }
 

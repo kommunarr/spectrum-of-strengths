@@ -6,7 +6,6 @@ import Footer from "../Footer"
 import Header from "../Header";
 import NavMenu from "../NavMenu";
 import './Layout.css';
-import EmailModal from "../EmailModal";
 
 interface IRootRoute {
     outlet?: React.JSX.Element;
@@ -14,8 +13,6 @@ interface IRootRoute {
   
 function Layout(props: IRootRoute) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isEmailPromptOpen, setIsEmailPromptOpen] = useState(false);
-    const emailTriggerRef = React.useRef<HTMLElement | null>(null);
     const mobileMenuTriggerRef = React.useRef<HTMLButtonElement | null>(null);
     const wasMobileMenuOpenRef = React.useRef(false);
   
@@ -33,7 +30,7 @@ function Layout(props: IRootRoute) {
       mobileNavigation?.querySelector<HTMLElement>('a[href], button:not([disabled])')?.focus();
 
       function closeMenuOnEscape(event: KeyboardEvent) {
-        if (event.key === 'Escape' && !isEmailPromptOpen) {
+        if (event.key === 'Escape') {
           event.preventDefault();
           setIsMobileMenuOpen(false);
         }
@@ -52,7 +49,7 @@ function Layout(props: IRootRoute) {
         document.removeEventListener('keydown', closeMenuOnEscape);
         window.removeEventListener('resize', closeMenuOnDesktopResize);
       };
-    }, [isEmailPromptOpen, isMobileMenuOpen]);
+    }, [isMobileMenuOpen]);
 
     useEffect(() => {
       if (isMobileMenuOpen || !wasMobileMenuOpenRef.current) return;
@@ -63,23 +60,17 @@ function Layout(props: IRootRoute) {
           mobileMenuTriggerRef.current?.focus();
         }
       });
-    }, [isMobileMenuOpen, isEmailPromptOpen]);
+    }, [isMobileMenuOpen]);
   
     function toggleMobileMenu(): void {
       setIsMobileMenuOpen((isOpen) => !isOpen);
     }
   
-    function openAddEmailPrompt(event: React.MouseEvent<HTMLButtonElement>) {
-      emailTriggerRef.current = event.currentTarget;
-      setIsEmailPromptOpen(true);
-    }
-
     return (
         <>
             <a className="skipLink" href="#main-content">{t('skipToContent')}</a>
             <div className={"headerAndMain" + (isMobileMenuOpen ? " mobileMenuOpen" : '')}>
                 <Header
-                    openAddEmailPrompt={openAddEmailPrompt}
                     toggleMobileMenu={toggleMobileMenu}
                     isMobileMenuOpen={isMobileMenuOpen}
                     mobileMenuTriggerRef={mobileMenuTriggerRef}
@@ -89,18 +80,9 @@ function Layout(props: IRootRoute) {
                     {props.outlet ?? <Outlet />}
                 </div>
                 </main>
-                <NavMenu
-                    id="mobile-navigation"
-                    hidden={!isMobileMenuOpen}
-                    openAddEmailPrompt={openAddEmailPrompt}
-                />
+                <NavMenu id="mobile-navigation" hidden={!isMobileMenuOpen} />
             </div>
-            <EmailModal
-                showModal={isEmailPromptOpen}
-                setShowModal={setIsEmailPromptOpen}
-                returnFocusRef={emailTriggerRef}
-            />
-            <Footer openAddEmailPrompt={openAddEmailPrompt} />
+            <Footer />
         </>
     );
 }

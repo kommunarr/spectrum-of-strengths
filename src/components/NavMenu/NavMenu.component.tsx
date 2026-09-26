@@ -2,11 +2,8 @@ import { useTranslation } from 'react-i18next';
 import './NavMenu.css';
 import * as Utils from "../../utils";
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import type { MouseEventHandler } from 'react';
-import ActionButton from '../ActionButton';
 
 interface INavMenu {
-    openAddEmailPrompt: MouseEventHandler<HTMLButtonElement>;
     id?: string;
     hidden?: boolean;
 }
@@ -23,23 +20,17 @@ function NavMenu(props: INavMenu) {
                     {Utils.navMenuSections.map((section) =>
                     {
                         const path = t(`${section}Path`);
+                        const isInDevelopment = section === 'events' || section === 'contact';
                         return (
                         <li key={section}>
                             <NavLink className={({ isActive }) => `actionLink${isActive ? ' active' : ''}`} to={path} end>
                                 {t(section)}
                             </NavLink>
+                            {isInDevelopment && <span className="navigationStatus">{t('inDevelopment')}</span>}
                         </li>
                     )})}
                 </ul>
                 <ul className="mobileMenuOnly navigationMenuHeadings">
-                    <li>
-                        <ActionButton
-                            label={t('joinUs')}
-                            link
-                            className="menuButton"
-                            onClick={props.openAddEmailPrompt}
-                        />
-                    </li>
                     <li>
                         <Link className="actionLink" to={languageLinkLocation} lang={otherLanguageKey}>
                             {t('name', { ns: 'otherLanguage' })}

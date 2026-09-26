@@ -169,18 +169,10 @@ test.describe('navigation and language switching', () => {
   });
 });
 
-test('opens and dismisses the newsletter dialog with focus return', async ({ page }) => {
+test('does not offer newsletter signup in the first-stage site', async ({ page }) => {
   await page.goto(homePage);
-  const joinButton = page.locator('header button.actionButton');
-
-  await joinButton.click();
-
-  const dialog = page.getByRole('dialog');
-  await expect(dialog).toBeVisible();
-  await expect(dialog.locator('button')).toBeFocused();
-  await page.keyboard.press('Escape');
-  await expect(dialog).not.toBeVisible();
-  await expect(joinButton).toBeFocused();
+  await expect(page.locator('header button.actionButton')).toHaveCount(0);
+  await expect(page.getByRole('dialog')).toHaveCount(0);
 });
 
 test.describe('responsive navigation', () => {
@@ -240,16 +232,11 @@ test.describe('mobile layout contracts', () => {
   });
 });
 
-test('reports that the contact form is not connected after a valid attempt', async ({ page }) => {
+test('shows that contact is in development without collecting a message', async ({ page }) => {
   await page.goto('index.html#/contact-us');
-  await page.getByLabel('Name').fill('Test visitor');
-  await page.getByLabel('Email address').fill('visitor@example.com');
-  await page.getByLabel('Subject').fill('Test message');
-  await page.getByLabel('Message').fill('This is a browser test message.');
-  await page.getByRole('button', { name: 'Submit' }).click();
-
-  await expect(page.getByRole('alert')).toContainText('not connected');
-  await expect(page.locator('#contact-form-status')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Contact' })).toBeVisible();
+  await expect(page.getByText('Contact options are in development. This page does not accept or send messages.')).toBeVisible();
+  await expect(page.locator('form')).toHaveCount(0);
 });
 
 for (const route of publishedRoutes) {

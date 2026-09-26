@@ -6,6 +6,7 @@ The code for the Spectrum of Strengths website.
 
 - [Engineering guide](agents.md)
 - [Remaining work](docs/remaining-work.md)
+- [First-stage content and publishing decisions](docs/first-stage-decisions.md)
 - [Content management research and migration plan](docs/content-management.md)
 
 ## Setup

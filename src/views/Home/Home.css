@@ -1,0 +1,190 @@
+.homePage {
+    display: grid;
+    row-gap: clamp(2.5rem, 6vw, 5rem);
+    padding-block: 1rem 2rem;
+}
+
+.homeHero {
+    box-sizing: border-box;
+    padding: clamp(1.5rem, 6vw, 5rem);
+    border-radius: 1.5rem;
+    background: linear-gradient(135deg, #f3f7f8 0%, #f8f5fa 58%, #fff8f1 100%);
+    border-inline-start: 0.5rem solid var(--spectrum-magenta);
+}
+
+.homeHero h1 {
+    max-inline-size: 15ch;
+    margin-block: 0;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1.05;
+}
+
+.homeLead {
+    max-inline-size: 56rem;
+    margin-block: 1.5rem 0;
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.homeIntro {
+    max-inline-size: 54rem;
+    margin-block: 1rem 0;
+    font-size: var(--font-size-xl1);
+    line-height: 1.65;
+}
+
+.valueSection,
+.homeRecord,
+.homeDevelopment {
+    padding-inline: clamp(0rem, 1vw, 0.75rem);
+}
+
+.sectionIntro {
+    max-inline-size: 48rem;
+    margin-block-end: 1.5rem;
+}
+
+.sectionIntro h2,
+.homeRecord h2,
+.homeDevelopment h2 {
+    margin-block: 0 0.5rem;
+    line-height: 1.2;
+}
+
+.sectionIntro p,
+.homeRecord p,
+.homeDevelopment p {
+    line-height: 1.6;
+}
+
+.valueCards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.valueCard {
+    min-inline-size: 0;
+    padding: 1.25rem;
+    border: 1px solid #e1e2e5;
+    border-block-start: 0.35rem solid var(--spectrum-blue);
+    border-radius: 0.75rem;
+    background: #fff;
+}
+
+.valueCard h3 {
+    margin-block: 0 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1.35;
+}
+
+.valueCard p {
+    margin-block: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.valueCard-transformation {
+    border-block-start-color: var(--spectrum-green);
+}
+
+.valueCard-creation {
+    border-block-start-color: var(--spectrum-orange);
+}
+
+.valueCard-preservation {
+    border-block-start-color: var(--spectrum-purple);
+}
+
+.homeRecord {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 2rem;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    border-radius: 1rem;
+    background: #f6f6f6;
+}
+
+.homeRecord .homeEyebrow {
+    font-size: 0.875rem;
+}
+
+.homeRecord p:not(.homeEyebrow) {
+    max-inline-size: 60rem;
+    margin-block-end: 0;
+    font-size: 1rem;
+}
+
+.homeLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.homeLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 2.75rem;
+    padding: 0.5rem 0.9rem;
+    border: 2px solid #52505a;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: center;
+}
+
+.homeLinkPrimary,
+.homeLinkPrimary:visited {
+    border-color: #8e075b;
+    background: #8e075b;
+    color: #fff;
+}
+
+.homeLinkPrimary:hover {
+    background: #650540;
+    color: #fff;
+}
+
+.homeDevelopment {
+    padding-block: 1rem 0.5rem;
+    border-block-start: 1px solid #dedee2;
+}
+
+.homeDevelopment h2 {
+    font-size: 1.5rem;
+}
+
+.homeDevelopment p:last-child {
+    max-inline-size: 52rem;
+    margin-block-end: 0;
+    font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+    .valueCards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .homeRecord {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 540px) {
+    .homeHero {
+        border-radius: 0.75rem;
+    }
+
+    .valueCards {
+        grid-template-columns: 1fr;
+    }
+
+    .homeLinks {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}

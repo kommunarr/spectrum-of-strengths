@@ -1,0 +1,164 @@
+.homeEyebrow {
+    margin-block: 0 0.75rem;
+    color: #55505b;
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.developmentBadge {
+    display: inline-block;
+    margin-block: 0 0.75rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    background: #f1eaf5;
+    color: #44334a;
+    font-size: 0.875rem !important;
+    font-weight: 700;
+    line-height: 1.35 !important;
+}
+
+.foundationPage,
+.archivePage,
+.glossaryPage {
+    padding-block: 1rem 2rem;
+}
+
+.contentPageHeader {
+    max-inline-size: 58rem;
+    padding-block: 1.25rem 1.75rem;
+}
+
+.contentPageHeader h1 {
+    margin-block: 0.25rem 1rem;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    line-height: 1.15;
+}
+
+.contentPageHeader > p:last-child {
+    max-inline-size: 55rem;
+    margin-block: 0;
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+.foundationSections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.foundationSections section {
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid #e1e2e5;
+    border-radius: 0.75rem;
+    background: #fff;
+}
+
+.foundationSections h2 {
+    margin-block: 0 0.75rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
+}
+
+.foundationSections p {
+    margin-block: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.foundationGlossaryLink {
+    margin-block: 1.75rem 0;
+    font-size: 1rem;
+}
+
+.archiveCategories {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.archiveCategory {
+    padding: 1.25rem;
+    border-inline-start: 0.3rem solid var(--spectrum-blue);
+    background: #f6f6f6;
+}
+
+.archiveCategory:nth-child(2) {
+    border-inline-start-color: var(--spectrum-green);
+}
+
+.archiveCategory:nth-child(3) {
+    border-inline-start-color: var(--spectrum-orange);
+}
+
+.archiveCategory:nth-child(4) {
+    border-inline-start-color: var(--spectrum-purple);
+}
+
+.archiveCategory:nth-child(5) {
+    border-inline-start-color: var(--spectrum-magenta);
+}
+
+.archiveCategory h3,
+.glossaryList dt {
+    margin-block: 0 0.5rem;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.archiveCategory p,
+.glossaryList dd {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.archiveEmpty {
+    margin-block-start: 2rem;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    border: 1px solid #dedee2;
+    border-radius: 0.75rem;
+}
+
+.archiveEmpty h2 {
+    margin-block: 0 0.5rem;
+    font-size: 1.5rem;
+}
+
+.archiveEmpty p {
+    margin-block: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.archiveDateNote {
+    color: #4c4e52;
+}
+
+.glossaryList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 0;
+}
+
+.glossaryList > div {
+    padding: 1.25rem;
+    border: 1px solid #e1e2e5;
+    border-radius: 0.75rem;
+}
+
+.glossaryList dd {
+    margin-inline-start: 0;
+}
+
+@media (max-width: 640px) {
+    .foundationSections,
+    .archiveCategories,
+    .glossaryList {
+        grid-template-columns: 1fr;
+    }
+}

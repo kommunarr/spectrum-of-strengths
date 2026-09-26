@@ -2,9 +2,17 @@
 
 Research snapshot: 2026-07-16.
 
-## Requirements
+## First-stage default
 
-The site needs more than a translation library. A sustainable handoff requires:
+The first-stage site keeps its bilingual copy in the existing locale files and
+uses a technical maintainer for routine updates. This avoids adding a service,
+account setup, and editor training before the organization knows how often it
+will publish. Git history provides a basic rollback path. Revisit a browser
+editor if self-editing becomes a recurring need.
+
+## Requirements if a hosted CMS is later selected
+
+A sustainable browser-based editing handoff would require:
 
 - a browser-based editor who does not need to edit React or JSON;
 - structured fields for pages, events, links, media, and SEO metadata;
@@ -19,8 +27,9 @@ The site needs more than a translation library. A sustainable handoff requires:
 
 The current `react-i18next` setup is appropriate for UI labels and route
 navigation. It is not, by itself, a content-management system. Long-form page
-copy is currently split between JSX and locale JSON, which makes content
-editing and translation review unnecessarily technical.
+copy lives in locale JSON files, which keeps English and French content paired
+but requires technical help to edit. That is the first-stage default while the
+publishing cadence is unknown.
 
 ## Options Considered
 
@@ -130,34 +139,36 @@ provider before migrating every page.
 
 ## Proposed Content Model
 
+If a CMS is selected later, start with these first-stage types:
+
 ### Page
 
 - stable slug and page type;
 - English and French title, summary, and body;
 - published/unpublished status;
-- SEO title and description;
-- optional hero image with alt text;
+- optional approved image with alt text;
 - translation group and translation status;
 - last reviewed date and content owner.
 
-### Event
+### Journal entry
 
-- title and short description in both languages;
-- start/end date and timezone;
-- location or external URL;
-- registration/contact instructions;
-- status: draft, upcoming, past, or cancelled;
-- optional image with alt text;
-- translation readiness and last reviewed date.
+- category, title, body, and publication date in both languages;
+- source context, permissions status, and optional redacted excerpt;
+- draft/published state and last reviewed date.
+
+### Glossary term
+
+- English and French term names and plain-language definitions;
+- last reviewed date and status.
+
+Events should be added only when the organization is ready to announce real
+events. Event dates, locations, registration details, and cancellation status
+are future fields, not first-stage requirements.
 
 ### Site Settings
 
-- organization display name;
-- public contact email;
-- social links;
-- donation CTA visibility and destination;
-- newsletter CTA visibility;
-- privacy/accessibility contact details.
+Add only when there is an approved public contact destination, social link, or
+active call to action to manage.
 
 The React application should render these structures with reusable components.
 The CMS should not expose arbitrary HTML to the editor when a constrained rich
@@ -165,28 +176,32 @@ text or block field can express the same content safely.
 
 ## Translation Workflow
 
-1. An editor creates or updates the English source content.
-2. The CMS marks the French translation as needing review.
-3. A translator creates or updates the related French content.
-4. The preview shows both language routes before publication.
-5. Publishing is blocked or visibly warned when a required translation is
+1. A technical editor creates or updates the English source content.
+2. The French draft is prepared alongside it and marked for review where
+   organization-specific wording needs confirmation.
+3. The preview shows both language routes before publication.
+4. Publishing is blocked when a required translation is
    missing or stale.
-6. The published site never silently substitutes English for required French
+5. The published site never silently substitutes English for required French
    public content.
 
-Machine translation may help produce a draft, but it should never be treated as
-the final French copy without human review. Keep translation status in the
-content model so the editor does not need to remember it informally.
+Routine translation does not require the organization owner to write French.
+Ask for a specialist review when a term, proper name, personal story, or formal
+policy depends on organizational knowledge.
 
 ## Newsletter And Contact Integrations
 
+These integrations are deferred. Do not configure a provider until the
+organization has decided that it wants a working signup/contact feature and
+has confirmed who will own the provider account and its privacy obligations.
+
 ### Newsletter
 
-Use a mailing-list provider, not a generic client-side email sender. A provider
-such as [Brevo's sign-up forms](https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo)
+If signup is approved later, use a mailing-list provider, not a generic
+client-side email sender. A provider such as [Brevo's sign-up
+forms](https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo)
 can provide an embedded/hosted form, contact-list storage, consent fields, and
-double opt-in. The current modal can remain visually similar while delegating
-subscription, confirmation, unsubscribe, and list management to that provider.
+double opt-in.
 
 For a Canadian organization, confirm the consent and message policy before
 launch. The [CRTC CASL guidance](https://crtc.gc.ca/eng/com500/guide.htm)
@@ -208,15 +223,13 @@ attachments, spam controls, or more control over personal information.
 
 ## Migration Sequence
 
-1. Choose the content provider, email provider, hosting target, and account
-   owner.
-2. Define and approve the Page, Event, and Site Settings schemas.
-3. Build one Home page in the CMS with English/French content and preview it in
-   both routes.
-4. Add a deployment webhook or build trigger and verify rollback behavior.
-5. Migrate About and Events, then legal/accessibility pages after their text is
-   approved.
-6. Replace the simulated newsletter/contact flows and update privacy/consent
-   text.
-7. Write the maintainer guide and have a nontechnical person perform a full
-   edit, translation, preview, publish, and rollback exercise.
+1. Confirm that nontechnical editing would reduce work enough to justify a
+   hosted service.
+2. If yes, choose the content provider and account owner, then define Page,
+   Journal entry, and Glossary schemas.
+3. Preview both language routes and confirm rollback before migrating the
+   remaining content.
+4. Add events or submission providers only when their real operating workflows
+   and privacy language are approved.
+5. Write a maintainer guide only after the chosen provider and workflow are
+   known.

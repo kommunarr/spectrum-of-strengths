@@ -3,4 +3,4 @@ export {
   getLanguageForPath,
 } from './routeMapping';
 
-export const navMenuSections = ['home', 'events', 'about', 'contact'];
+export const navMenuSections = ['home', 'about', 'archive', 'glossary', 'events', 'contact'];

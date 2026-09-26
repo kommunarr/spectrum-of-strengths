@@ -1,9 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
-import type { MouseEventHandler, RefObject } from 'react';
+import type { RefObject } from 'react';
 import './Header.css';
 import Logo from "../Logo";
 import { useTranslation } from "react-i18next";
-import ActionButton from "../ActionButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import NavMenu from "../NavMenu";
@@ -11,7 +10,6 @@ import * as Utils from "../../utils";
 
 interface IHeader {
   toggleMobileMenu: () => void;
-  openAddEmailPrompt: MouseEventHandler<HTMLButtonElement>;
   isMobileMenuOpen: boolean;
   mobileMenuTriggerRef: RefObject<HTMLButtonElement>;
 }
@@ -32,10 +30,6 @@ function Header(props: IHeader) {
             <Link className="actionLink languageLink" to={languageLinkLocation} lang={otherLanguageKey}>
               {t('name', { ns: 'otherLanguage' })}
             </Link>
-            <ActionButton onClick={props.openAddEmailPrompt} label={t('joinUs')} />
-            <a href="https://www.facebook.com/people/Spectrum-of-Strengths-foundation-We-are-the-Spectrum/61556445292415/?sk=about" className="actionButton secondary" target="_blank" rel="noreferrer">
-              {t('donate')}
-            </a>
             <button
               className="mobileMenuTrigger"
               type="button"
@@ -51,7 +45,7 @@ function Header(props: IHeader) {
         </div>
         <div className="bottomRow">
           <div className="bottomRowContent">
-            <NavMenu openAddEmailPrompt={props.openAddEmailPrompt} />
+            <NavMenu />
           </div>
         </div>
       </header>
