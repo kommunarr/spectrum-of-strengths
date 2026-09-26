@@ -21,12 +21,22 @@ function NavMenu(props: INavMenu) {
                     {
                         const path = t(`${section}Path`);
                         const isInDevelopment = section === 'events' || section === 'contact';
+                        const statusDescriptionId = `${props.id ?? 'primary-navigation'}-${section}-status`;
                         return (
                         <li key={section}>
-                            <NavLink className={({ isActive }) => `actionLink${isActive ? ' active' : ''}`} to={path} end>
+                            <NavLink
+                                className={({ isActive }) => `actionLink${isActive ? ' active' : ''}`}
+                                to={path}
+                                end
+                                aria-describedby={isInDevelopment ? statusDescriptionId : undefined}
+                            >
                                 {t(section)}
                             </NavLink>
-                            {isInDevelopment && <span className="navigationStatus">{t('inDevelopment')}</span>}
+                            {isInDevelopment && (
+                                <span className="navigationStatus" id={statusDescriptionId}>
+                                    {t('inDevelopment')}
+                                </span>
+                            )}
                         </li>
                     )})}
                 </ul>

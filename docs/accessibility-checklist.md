@@ -9,6 +9,7 @@ layout change.
 - [ ] Tab order follows the visual reading order.
 - [ ] The skip link appears on the first Tab press and moves focus to the main content.
 - [ ] Every navigation item and language switcher is reachable.
+- [ ] Navigation links marked as in development announce that status to screen readers.
 - [ ] The mobile menu opens and closes with Enter/Space and Escape.
 - [ ] Focus returns to the menu trigger after the mobile menu closes.
 - [ ] No control requires a pointer, hover, or drag to operate.
