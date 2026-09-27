@@ -231,6 +231,37 @@ test.describe('home value carousel', () => {
   });
 });
 
+test.describe('archive themes carousel', () => {
+  test('rotates slowly and lets visitors pause and browse in English', async ({ page }) => {
+    await page.clock.install();
+    await page.goto('index.html#/archive');
+
+    const carousel = page.getByRole('group', { name: 'What the record will include', exact: true });
+    await expect(carousel.getByRole('group', { name: 'Slide 1 of 5' })).toContainText('Heritage and systems');
+    await page.clock.fastForward(28_000);
+    await expect(carousel.getByRole('group', { name: 'Slide 2 of 5' })).toContainText('Research and evidence');
+
+    await carousel.getByRole('button', { name: 'Pause rotation' }).click();
+    await page.clock.fastForward(28_000);
+    await expect(carousel.getByRole('group', { name: 'Slide 2 of 5' })).toBeVisible();
+    await carousel.getByRole('button', { name: 'Next theme' }).click();
+    await expect(carousel.getByRole('group', { name: 'Slide 3 of 5' })).toContainText('Lived experience');
+    await expect(page.getByRole('status')).toHaveText('Lived experience, 3 of 5');
+  });
+
+  test('shows French controls and a static layout for reduced motion', async ({ page }) => {
+    await page.goto('index.html#/fr/archives');
+    const carousel = page.getByRole('group', { name: 'Ce que le dossier réunira', exact: true });
+    await carousel.getByRole('button', { name: 'Thème suivant' }).click();
+    await expect(carousel.getByRole('group', { name: 'Diapositive 2 sur 5' })).toContainText('Recherche et données probantes');
+
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await expect(page.locator('.archiveCarouselMotion')).toBeHidden();
+    await expect(page.locator('.archiveCategories')).toBeVisible();
+    await expect(page.locator('.archiveCategories').getByRole('article')).toHaveCount(5);
+  });
+});
+
 for (const route of [
   {
     language: 'en',

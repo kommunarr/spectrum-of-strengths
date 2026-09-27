@@ -15,6 +15,8 @@ work. It is a working editorial brief, not approval of legal or policy claims.
 - Explain heritage and value language in plain English and French.
 - Keep events, contact, volunteering, donations, and other operational
   features out of the first stage.
+- Let visitors absorb information at a calm pace without relying on repeated
+  clicking, and show that professional relationships take time to develop.
 
 ## Defaults used in the first-stage site
 
@@ -24,11 +26,14 @@ work. It is a working editorial brief, not approval of legal or policy claims.
 - Use Home, Foundations, Archive & journal, and Key terms as the main content
   areas. Keep Events and Contact available as clearly marked development
   pages; they do not advertise active events or accept messages.
-- Present the four value ideas in a slow carousel that changes about every 28
-  seconds, with pause, previous, and next controls. Stop automatic rotation
-  when the carousel receives keyboard focus or pointer hover. Honor
-  reduced-motion preferences by showing all four ideas together as a static
-  card grid.
+- Present the four value ideas on Home and the five archive themes in separate
+  slow carousels that change about every 28 seconds, with pause, previous, and
+  next controls. Stop automatic rotation when a carousel receives keyboard
+  focus or pointer hover. Honor reduced-motion preferences by showing each set
+  together as a static card grid. Each page has only one rotating region.
+- Describe relationship building as an intention and gradual process. Do not
+  name national bodies, imply endorsement, or describe joint work as confirmed
+  until the organization has approved details for public sharing.
 - Keep the existing brand logo and do not add unapproved photos or partner
   marks. Do not surface external social links until their current status is
   confirmed.

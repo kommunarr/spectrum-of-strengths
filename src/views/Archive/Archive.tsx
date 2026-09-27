@@ -1,8 +1,16 @@
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import '../contentPages.css';
 import './Archive.css';
 
 const archiveCategories = ['heritage', 'research', 'experience', 'gaps', 'progress'] as const;
+const rotationInterval = 28_000;
+
+function getReducedMotionPreference(): boolean {
+    return typeof window !== 'undefined' &&
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
 type ArchiveCategory = typeof archiveCategories[number];
 type ArchiveStatus = 'planned' | 'inProgress' | 'confirmed';
@@ -33,10 +41,55 @@ function formatPublicationDate(date: string, language: string): string {
 
 function Archive() {
     const { t, i18n } = useTranslation(['common']);
+    const [prefersReducedMotion, setPrefersReducedMotion] = useState(getReducedMotionPreference);
+    const [isRotationRequested, setIsRotationRequested] = useState(() => !getReducedMotionPreference());
+    const [hasInteractionPausedRotation, setHasInteractionPausedRotation] = useState(false);
+    const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+    const [slideAnnouncement, setSlideAnnouncement] = useState('');
+    const isRotationEnabled = isRotationRequested && !hasInteractionPausedRotation && !prefersReducedMotion;
     const entries = (t('archivePage.entries', { returnObjects: true }) as ArchiveEntry[])
         .slice()
         .sort((left, right) => right.publicationDate.localeCompare(left.publicationDate));
     const dateLanguage = i18n.resolvedLanguage === 'fr' ? 'fr-CA' : 'en-CA';
+
+    useEffect(() => {
+        if (typeof window.matchMedia !== 'function') return;
+
+        const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function updateMotionPreference() {
+            setPrefersReducedMotion(reducedMotionQuery.matches);
+            if (reducedMotionQuery.matches) setIsRotationRequested(false);
+        }
+
+        updateMotionPreference();
+        reducedMotionQuery.addEventListener('change', updateMotionPreference);
+        return () => {
+            reducedMotionQuery.removeEventListener('change', updateMotionPreference);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!isRotationEnabled) return;
+
+        const rotationTimer = window.setInterval(() => {
+            setActiveCategoryIndex((currentIndex) => (currentIndex + 1) % archiveCategories.length);
+        }, rotationInterval);
+
+        return () => {
+            window.clearInterval(rotationTimer);
+        };
+    }, [isRotationEnabled]);
+
+    function moveToCategory(direction: -1 | 1) {
+        const nextIndex = (activeCategoryIndex + direction + archiveCategories.length) % archiveCategories.length;
+        setActiveCategoryIndex(nextIndex);
+        setSlideAnnouncement(t('homePage.slideAnnouncement', {
+            current: nextIndex + 1,
+            total: archiveCategories.length,
+            title: t(`archivePage.${archiveCategories[nextIndex]}Title`),
+        }));
+    }
 
     return (
         <article className="archivePage">
@@ -57,6 +110,69 @@ function Archive() {
                             <p>{t(`archivePage.${category}Body`)}</p>
                         </article>
                     ))}
+                </div>
+                <div
+                    className="archiveCarouselMotion"
+                    role="group"
+                    aria-labelledby="archive-categories-title"
+                    aria-roledescription={t('homePage.carouselRoleDescription')}
+                    onFocusCapture={() => {
+                        setHasInteractionPausedRotation(true);
+                    }}
+                    onPointerEnter={() => {
+                        setHasInteractionPausedRotation(true);
+                    }}
+                >
+                    <div className="valueCarouselControls">
+                        <button
+                            type="button"
+                            aria-controls="archive-carousel-slides"
+                            onClick={() => {
+                                if (isRotationRequested) {
+                                    setIsRotationRequested(false);
+                                } else {
+                                    setHasInteractionPausedRotation(false);
+                                    setIsRotationRequested(true);
+                                }
+                            }}
+                        >
+                            {t(isRotationRequested ? 'homePage.pauseRotation' : 'homePage.resumeRotation')}
+                        </button>
+                        <button type="button" aria-controls="archive-carousel-slides" onClick={() => {
+                            moveToCategory(-1);
+                        }}>
+                            {t('archivePage.previousTheme')}
+                        </button>
+                        <span className="valueCarouselPosition" aria-hidden="true">
+                            {activeCategoryIndex + 1} / {archiveCategories.length}
+                        </span>
+                        <button type="button" aria-controls="archive-carousel-slides" onClick={() => {
+                            moveToCategory(1);
+                        }}>
+                            {t('archivePage.nextTheme')}
+                        </button>
+                    </div>
+                    <div className="archiveCarouselViewport" id="archive-carousel-slides" aria-live="off">
+                        {archiveCategories.map((category, index) => (
+                            <div
+                                className="archiveCategory archiveCarouselSlide"
+                                key={category}
+                                hidden={activeCategoryIndex !== index}
+                                role="group"
+                                aria-roledescription={t('homePage.slideRoleDescription')}
+                                aria-label={t('homePage.slidePosition', {
+                                    current: index + 1,
+                                    total: archiveCategories.length,
+                                })}
+                            >
+                                <h3>{t(`archivePage.${category}Title`)}</h3>
+                                <p>{t(`archivePage.${category}Body`)}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <p className="valueCarouselAnnouncement" role="status" aria-live="polite" aria-atomic="true">
+                        {slideAnnouncement}
+                    </p>
                 </div>
             </section>
 

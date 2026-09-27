@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import '../contentPages.css';
 
-const foundationSections = ['origins', 'purpose', 'contributors', 'embodiment'];
+const foundationSections = ['origins', 'purpose', 'contributors', 'relationships', 'embodiment'];
 
 function About() {
     const { t } = useTranslation(['common']);
