@@ -12,11 +12,6 @@ updates:
         update-types:
           - version-update:semver-minor
           - version-update:semver-patch
-    ignore:
-      # The 0.5 series requires ESLint 9 and the site still uses ESLint 8.
-      - dependency-name: eslint-plugin-react-refresh
-        versions:
-          - ">=0.5.0"
     groups:
       routine-npm-updates:
         patterns:

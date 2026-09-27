@@ -61,11 +61,10 @@ minor and patch updates into fewer pull requests. A maintainer reviews those
 changes and the quality checks before merging; dependency updates do not
 publish the site automatically. Check security alerts promptly rather than
 waiting for the quarterly content review.
-Major npm version updates need a separate compatibility review. The React
-Refresh lint plugin is held on the 0.4 series because its 0.5 series requires
-ESLint 9; remove that exception when the lint configuration is upgraded. Check
-the held package during security audits because the exception also affects
-Dependabot proposals for it.
+Major npm version updates need a separate compatibility review. ESLint 9 uses
+the flat configuration in `eslint.config.mjs`, and the React Refresh lint plugin
+is on its ESLint 9 compatible 0.5 series. The previous version exception has
+been removed from Dependabot.
 
 Ask the owner only when a factual claim, relationship, permission, contributor
 story, or operational status needs confirmation. Events and Contact remain
