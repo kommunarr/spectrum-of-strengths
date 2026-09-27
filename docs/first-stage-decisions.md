@@ -34,9 +34,10 @@ work. It is a working editorial brief, not approval of legal or policy claims.
   confirmed.
 - Do not show newsletter, donation, join-us, or unconfirmed social calls to
   action. No form, registration, or payment flow is part of this release.
-- Do not invent contributors, organizational history, services, outcomes,
-  partners, or archive entries. The archive starts with its scope and an honest
-  empty state; no dates are backfilled.
+- Do not invent contributors, organizational history, services, outcomes, or
+  partners. The first archive entry will announce the opening of the public
+  record and describe future work as intentions. Its publication date will be
+  set to the actual release day; no earlier source timestamp will be invented.
 - Use the [archive entry workflow](archive-entry-workflow.md) when preparing
   updates. It separates source dates from publication dates and defaults to
   summaries and source references for private correspondence; publish excerpts
@@ -46,7 +47,8 @@ work. It is a working editorial brief, not approval of legal or policy claims.
   review only when a name, specialized term, personal account, or formal policy
   needs organizational confirmation.
 - Let a technical maintainer handle routine text and layout changes. Use the
-  repository history for rollback. Do not add scheduling, editor roles, or a
+  repository history for rollback. The owner will review a short bilingual
+  preview of the first full release. Do not add scheduling, editor roles, or a
   separate approval system until publishing frequency makes them useful.
 - Keep owner review focused on factual claims, contributor consent, private
   records, and policy wording. The owner does not need to choose page layout,
@@ -58,14 +60,27 @@ work. It is a working editorial brief, not approval of legal or policy claims.
 | --- | --- |
 | Who edits the site? | A technical maintainer edits the existing locale files; no CMS account is needed yet. |
 | Is a second approver required? | No separate approval step for routine copy. Confirm factual claims, names, permissions, and policies with the owner or source contributor. |
-| Are previews, scheduling, and rollback needed? | Use the current build/review workflow and Git history; publish manually and skip scheduling. |
+| Are previews, scheduling, and rollback needed? | Show the owner a short first-release preview, publish manually, use Git history for rollback, and skip scheduling. |
 | Who reviews French? | Prepare both languages together in plain Canadian French; request owner or specialist review only for organization-specific language and formal policy. |
 | Should both languages publish together? | Yes. Keep paired English/French content and do not silently fall back to the other language. |
 | How are images managed? | Use the existing logo only. Add other images after rights, context, and alt text are known. |
 | Should there be events, contact forms, registration, or a newsletter? | Keep these inactive until the organization has an owner, a real destination/provider, and approved privacy wording. |
 | Should analytics be added? | No tracking by default. Revisit only if a concrete decision depends on usage data. |
 | What happens to correspondence and personal stories? | Publish dated summaries and source context by default; require permission and redaction before publishing excerpts or identifiable stories. |
-| Which domain and host are final? | Keep the current configured base path and translated page descriptions; defer canonical and social-card metadata until deployment ownership is confirmed. |
+| Which domain and host are first? | Use the current GitHub Pages project URL and `/spectrum-of-strengths` base path. A custom domain can come later. |
+
+## Opening release decision
+
+The existing GitHub Pages URL still serves an older placeholder site. Replace
+it promptly with a bilingual holding page that has no forms or donation/join
+links. The full first release includes one opening entry written in the
+organization's voice. It describes the archive, evidence-led living lab,
+practical responses, and future community centres as plans, without naming a
+founder or partner or implying those services are operating. The owner will
+review the entry and short privacy/accessibility excerpts in a preview before
+the full site is published. The owner can arrange GitHub publishing access and
+will review the factual policy wording; the maintainer handles translation and
+implementation.
 
 ## Focused owner review before public launch
 

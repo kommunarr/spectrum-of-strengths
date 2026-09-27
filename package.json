@@ -7,6 +7,7 @@
     "dev": "vite",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
+    "deploy:holding": "gh-pages -d holding",
     "build": "tsc && vite build",
     "test": "node --experimental-strip-types --test",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",

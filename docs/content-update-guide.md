@@ -46,10 +46,11 @@ falling back to the other language.
 ## Publish and roll back
 
 The quality workflow checks pushes to `main` and pull requests; it does not
-publish the site. The repository contains a manual GitHub Pages deploy command,
-but the public host and deployment ownership still need confirmation. A
-maintainer should publish only through the host and account approved by the
-organization.
+publish the site. The first public address is the existing GitHub Pages URL at
+`https://kommunarr.github.io/spectrum-of-strengths/`. Use the
+[opening release guide](opening-release.md) for the temporary holding page,
+owner preview, and full-site deployment. A maintainer needs authorized GitHub
+access to run either deploy command.
 
 Git history records each content change. If a published change needs to be
 reversed, use a new revert commit for the change being corrected, review both
