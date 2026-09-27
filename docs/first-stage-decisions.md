@@ -49,9 +49,9 @@ work. It is a working editorial brief, not approval of legal or policy claims.
 - Do not show newsletter, donation, join-us, or unconfirmed social calls to
   action. No form, registration, or payment flow is part of this release.
 - Do not invent contributors, organizational history, services, outcomes, or
-  partners. The first archive entry will announce the opening of the public
-  record and describe future work as intentions. Its publication date will be
-  set to the actual release day; no earlier source timestamp will be invented.
+  partners. The first archive entry announces the opening of the public
+  record and describes future work as intentions. Its publication date is the
+  actual release day; no earlier source timestamp was invented.
 - Use the [archive entry workflow](archive-entry-workflow.md) when preparing
   updates. It separates source dates from publication dates and defaults to
   summaries and source references for private correspondence; publish excerpts
@@ -61,7 +61,7 @@ work. It is a working editorial brief, not approval of legal or policy claims.
   review only when a name, specialized term, personal account, or formal policy
   needs organizational confirmation.
 - Let a technical maintainer handle routine text and layout changes. Use the
-  repository history for rollback. The owner will review a short bilingual
+  repository history for rollback. The owner reviewed a short bilingual
   preview of the first full release. Do not add scheduling, editor roles, or a
   separate approval system until publishing frequency makes them useful.
 - Keep owner review focused on factual claims, contributor consent, private

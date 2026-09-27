@@ -175,7 +175,7 @@
             "motionTitle": "Mouvement sur les pages d’accueil et d’archives",
             "motionBody": "Les idées sur la valeur à l’accueil et les thèmes des archives changent chacun automatiquement environ toutes les 28 secondes. La rotation s’arrête lorsque le focus clavier entre dans un carrousel ou lorsque le pointeur le survole. Utilisez le bouton de pause pour arrêter ou reprendre la rotation, et les boutons précédent et suivant pour passer d’une idée à l’autre. Si votre appareil est configuré pour réduire les animations, chaque carrousel est remplacé par une disposition statique montrant toutes ses idées.",
             "reviewTitle": "Examen et commentaires",
-            "reviewBody": "Des vérifications automatisées de l’accessibilité ont été effectuées. L’examen manuel au clavier, du zoom et avec un lecteur d’écran est toujours en cours. Aucun canal de commentaires sur l’accessibilité n’est actif pour le moment; des options de contact seront ajoutées lorsqu’elles seront prêtes."
+            "reviewBody": "Des vérifications automatisées de l’accessibilité et l’examen manuel de l’organisme ont été effectués. L’organisme a signalé qu’aucune constatation de gravité élevée ou moyenne nécessitant une intervention n’a été relevée. Il n’est pas encore possible de transmettre des commentaires sur l’accessibilité par ce site; des options de contact seront ajoutées lorsqu’elles seront prêtes."
         },
         "pageNotFoundTitle": "Page non trouvée",
         "pageNotFoundSubtitle": "La page est introuvable. Utilisez la navigation principale pour continuer.",

@@ -101,5 +101,5 @@ Each published entry has these fields:
 The site sorts entries by publication date, newest first.
 
 The handoff template is an editorial aid, not a website form or publishing
-system. The site has a prepared opening entry, but no CMS, scheduling, or
+system. The site has a published opening entry, but no CMS, scheduling, or
 submission workflow.

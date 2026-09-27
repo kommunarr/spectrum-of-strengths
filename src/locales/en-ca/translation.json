@@ -171,11 +171,11 @@
         },
         "accessibilityPage": {
             "metaDescription": "Learn about the accessibility features considered in the Spectrum of Strengths website and its review status.",
-            "intro": "The site is being built with clear headings, keyboard navigation, a skip link, responsive layouts, and reduced-motion preferences in mind.",
+            "intro": "The site uses clear headings, keyboard navigation, a skip link, responsive layouts, and reduced-motion preferences.",
             "motionTitle": "Motion on the Home and archive pages",
             "motionBody": "The value ideas on Home and the archive themes each change automatically about every 28 seconds. Rotation stops when you move keyboard focus into a carousel or move your pointer over it. Use the pause control to stop or restart rotation, and the previous and next controls to move between ideas. If your device is set to reduce motion, each carousel is replaced by a static layout showing all its ideas.",
             "reviewTitle": "Review and feedback",
-            "reviewBody": "Automated accessibility checks have been completed. Manual keyboard, zoom, and screen-reader review is still in progress. An accessibility feedback channel is not active yet; contact options will be added when they are ready."
+            "reviewBody": "Automated accessibility checks and the organization's manual review have been completed. The organization reported no actionable high or medium findings. Accessibility feedback cannot yet be submitted through this website; contact options will be added when they are ready."
         },
         "pageNotFoundTitle": "Page not found",
         "pageNotFoundSubtitle": "The page could not be found. Use the main navigation to continue.",
