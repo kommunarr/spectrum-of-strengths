@@ -113,11 +113,16 @@ If content growth justifies a structured model later, start with:
   provider and document consent requirements before adding tracking.
 - Add a custom domain only after email, privacy, and deployment ownership are
   settled.
-- Add a content review cadence and an owner for stale events, external links,
-  policies, and contact information.
 
 ## Completed In This Pass
 
+- Assigned quarterly public-content review to the technical maintainer, with
+  review before each new archive entry and owner input only for factual or
+  permission-sensitive changes.
+- Added localized recovery links for unknown hash routes and a bilingual
+  static GitHub Pages 404 page; its live-host behavior awaits full release.
+- Refreshed the footer visual baselines for the current browser, and made
+  Lighthouse CI install the same Chromium build used by browser checks.
 - Replaced placeholder Home and About copy with the first-stage identity,
   foundations, and four-value framework supplied by the organization owner.
 - Added an Archive & journal landing page and bilingual plain-language key
