@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "deploy:holding": "gh-pages -d holding",
+    "deploy": "gh-pages -d dist -m 'Publish bilingual site'",
+    "deploy:holding": "gh-pages -d holding -m 'Publish bilingual holding page'",
     "build": "tsc && vite build",
     "test": "node --experimental-strip-types --test",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -19,7 +19,7 @@
     "test:visual:update": "playwright test tests/browser/visual.spec.ts --update-snapshots",
     "test:cross-browser": "playwright test --config=playwright.cross-browser.config.ts",
     "test:external-links": "npm run build && node scripts/check-external-links.mjs",
-    "test:lighthouse": "npm run build && lhci autorun",
+    "test:lighthouse": "npm run build && node scripts/run-lighthouse.mjs",
     "setup:hooks": "node scripts/install-git-hooks.mjs",
     "prepare": "npm run setup:hooks",
     "preview": "vite preview"
@@ -32,11 +32,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.1.2",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^7.18.4"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
-    "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.62.0",
     "@types/node": "^26.1.1",
     "@types/react": "^18.2.66",
@@ -44,11 +43,13 @@
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "chrome-launcher": "^1.2.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "gh-pages": "^6.3.0",
+    "lighthouse": "^13.5.0",
     "typescript": "^5.2.2",
     "vite": "^6.3.3"
   }

@@ -13,9 +13,9 @@ The repository uses layered automated checks:
   and WebKit.
 - `npm run test:external-links` crawls rendered routes and checks HTTPS links.
   The scheduled workflow runs this separately from pull-request checks.
-- `npm run test:lighthouse` audits representative production routes and
-  enforces measurable quality budgets for accessibility, performance, SEO, and
-  best practices.
+- `npm run test:lighthouse` audits representative production routes with
+  Lighthouse directly. Accessibility and meta descriptions are required;
+  performance, SEO, and best-practice budgets produce warnings.
 
 The browser suite covers:
 

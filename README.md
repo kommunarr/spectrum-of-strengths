@@ -30,8 +30,10 @@ To run the production browser suite locally, install Chromium with
 of automated accessibility checks.
 
 Run `npm run test:lighthouse` with Chrome installed to audit the production
-build against the configured performance, accessibility, best-practice, and
-SEO budgets.
+build. It saves HTML and JSON reports under `lighthouse-reports/`, requires an
+accessibility score of at least 0.95 and a passing meta-description audit, and
+warns when performance, best-practice, or SEO scores fall below their budgets.
+The Lighthouse runner requires Node.js 22.19 or newer.
 
 ## Deferred Decisions
 
