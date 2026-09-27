@@ -27,20 +27,18 @@ function reportError(message) {
   }
 }
 
-async function waitForPreview(server, isReady) {
-  for (let attempt = 0; attempt < 100; attempt += 1) {
+async function waitForPreview(server) {
+  for (let attempt = 0; attempt < 300; attempt += 1) {
     if (server.exitCode !== null) throw new Error('Preview server exited before it was ready.');
-    if (isReady()) {
-      try {
-        const response = await fetch(base);
-        if (response.ok) return;
-      } catch {
-        // The preview server has not opened its port yet.
-      }
+    try {
+      const response = await fetch(base);
+      if (response.ok) return;
+    } catch {
+      // The preview server has not opened its port yet.
     }
     await delay(200);
   }
-  throw new Error('Preview server did not become ready in 20 seconds.');
+  throw new Error('Preview server did not become ready in 60 seconds.');
 }
 
 async function main() {
@@ -48,17 +46,15 @@ async function main() {
     'node_modules/vite/bin/vite.js', 'preview', '--host', '127.0.0.1',
     '--port', '4173', '--strictPort',
   ], { stdio: ['ignore', 'pipe', 'pipe'] });
-  let serverReady = false;
   server.stdout.on('data', (chunk) => {
     process.stdout.write(chunk);
-    if (String(chunk).includes('Local:')) serverReady = true;
   });
   server.stderr.on('data', (chunk) => process.stderr.write(chunk));
   let chrome;
   let failed = false;
 
   try {
-    await waitForPreview(server, () => serverReady);
+    await waitForPreview(server);
     chrome = await chromeLauncher.launch({
       chromePath: process.env.CHROME_PATH || chromium.executablePath(),
       chromeFlags: ['--headless', '--no-sandbox'],

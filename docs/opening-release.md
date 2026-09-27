@@ -81,9 +81,10 @@ dates before deploying.
 - The production build now includes a bilingual static 404 page, and unknown
   hash routes offer localized home links. The live GitHub Pages response for
   invalid paths still needs confirmation after full publication.
-- The footer screenshot baselines were refreshed for the current Playwright
-  Chromium version after visual review. Lighthouse CI now installs and uses
-  that browser directly, avoiding dependence on a runner-specific Chrome path.
+- Visual checks now use the same test font across local and CI browsers; the
+  updated header, footer, and menu snapshots were reviewed. Lighthouse CI now
+  installs that Chromium build and waits for an actual HTTP response from the
+  preview server instead of relying on console output.
 
 ## Release gate
 
