@@ -63,6 +63,13 @@ dates before deploying.
 - On 2026-09-26, the bilingual holding page replaced the older public site.
   The live HTML matches `holding/index.html`, shows both languages and the
   GitHub Pages privacy note, and has no old join or donation controls.
+- On 2026-09-27, an additional keyboard review found and fixed a skip-link
+  focus issue. Browser checks now exercise skip-link activation in both
+  languages, mobile-menu Enter/Space/Escape behavior, and 200% text reflow
+  across every route. The functional browser checks pass. The available
+  environment has no screen reader, so the actual assistive-technology pass
+  is still required before the full release. The opening entry retains its
+  provisional date until the full site is published.
 
 ## September 2026 holding-page publication record
 

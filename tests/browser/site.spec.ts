@@ -383,6 +383,17 @@ for (const route of [
     await expect(skipLink).toHaveCSS('outline-style', 'solid');
     await expect(skipLink).toHaveCSS('outline-width', '3px');
   });
+
+  test(`moves keyboard focus to the main content in ${route.language}`, async ({ page }) => {
+    await page.goto(route.path);
+    await expect(page.locator('html')).toHaveAttribute('lang', route.language);
+    const startingUrl = page.url();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+
+    await expect(page.locator('main')).toBeFocused();
+    await expect(page).toHaveURL(startingUrl);
+  });
 }
 
 test.describe('responsive navigation', () => {
@@ -413,6 +424,68 @@ test.describe('responsive navigation', () => {
     await expect(mobileNavigation).toBeHidden();
     await expect(page.getByRole('button', { name: 'Menu' })).toBeFocused();
   });
+
+  test('opens the menu with Enter and Space and returns focus after Escape', async ({ page }) => {
+    await page.goto(homePage);
+    const menuButton = page.getByRole('button', { name: 'Menu' });
+    await menuButton.focus();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('#mobile-navigation')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Close' })).toHaveAttribute('aria-expanded', 'true');
+    await page.keyboard.press('Escape');
+    await expect(menuButton).toBeFocused();
+
+    await page.keyboard.press('Space');
+    await expect(page.locator('#mobile-navigation')).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(menuButton).toBeFocused();
+  });
+});
+
+for (const route of [
+  { language: 'en', path: homePage },
+  { language: 'fr', path: 'index.html#/fr' },
+] as const) {
+  test(`keeps home content usable with 200% text in ${route.language}`, async ({ page }) => {
+    await page.setViewportSize({ width: 640, height: 900 });
+    await page.goto(route.path);
+    await page.evaluate(() => {
+      document.documentElement.style.fontSize = '200%';
+    });
+
+    const layout = await page.evaluate(() => ({
+      scrollWidth: document.documentElement.scrollWidth,
+      viewportWidth: window.innerWidth,
+    }));
+    expect(layout.scrollWidth).toBeLessThanOrEqual(layout.viewportWidth);
+    await expect(page.locator('main h1')).toBeVisible();
+    await expect(page.locator('.valueCarouselMotion')).toBeVisible();
+    await expect(page.locator('.valueCarouselControls button').first()).toBeVisible();
+    await expect(page.locator('.homeRecord a').first()).toBeVisible();
+  });
+}
+
+test('keeps every published route within the viewport with 200% text', async ({ page }) => {
+  await page.setViewportSize({ width: 640, height: 900 });
+  const overflowRoutes: string[] = [];
+
+  for (const route of publishedRoutes) {
+    await page.goto(route.testPath);
+    await page.evaluate(() => {
+      document.documentElement.style.fontSize = '200%';
+    });
+    await expect(page.locator('main h1')).toBeVisible();
+
+    const layout = await page.evaluate(() => ({
+      scrollWidth: document.documentElement.scrollWidth,
+      viewportWidth: window.innerWidth,
+    }));
+    if (layout.scrollWidth > layout.viewportWidth) {
+      overflowRoutes.push(`${route.name} (${String(layout.scrollWidth)}px > ${String(layout.viewportWidth)}px)`);
+    }
+  }
+
+  expect(overflowRoutes).toEqual([]);
 });
 
 test.describe('mobile layout contracts', () => {

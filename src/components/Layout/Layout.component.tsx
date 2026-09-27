@@ -68,7 +68,16 @@ function Layout(props: IRootRoute) {
   
     return (
         <>
-            <a className="skipLink" href="#main-content">{t('skipToContent')}</a>
+            <a
+                className="skipLink"
+                href="#main-content"
+                onClick={(event) => {
+                    event.preventDefault();
+                    document.getElementById('main-content')?.focus();
+                }}
+            >
+                {t('skipToContent')}
+            </a>
             <div className={"headerAndMain" + (isMobileMenuOpen ? " mobileMenuOpen" : '')}>
                 <Header
                     toggleMobileMenu={toggleMobileMenu}
