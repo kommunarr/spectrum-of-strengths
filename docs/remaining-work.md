@@ -188,5 +188,5 @@ If content growth justifies a structured model later, start with:
 2. Revisit a CMS only if nontechnical self-editing is a real need. Do not add
    signup, contact, payment, or event providers before their workflows and
    privacy wording are approved.
-4. Keep accessibility, route, SEO, and browser checks current for later content
+3. Keep accessibility, route, SEO, and browser checks current for later content
    changes.
