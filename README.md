@@ -42,8 +42,8 @@ the [remaining work](docs/remaining-work.md) and [content management plan](docs/
 before connecting any external service or publishing unapproved organization
 content.
 
-The current GitHub Pages address serves the bilingual holding page. The
-[opening release guide](docs/opening-release.md) describes the reviewed full
-release. `npm run deploy:holding` updates the temporary page;
-`npm run deploy` publishes the full application. Both commands require
-authorized access to the `kommunarr/spectrum-of-strengths` repository.
+The [public GitHub Pages site](https://kommunarr.github.io/spectrum-of-strengths/)
+serves the full bilingual first release, published on 2026-09-27. The
+[opening release guide](docs/opening-release.md) records the launch.
+`npm run deploy` publishes approved application updates and requires authorized
+access to the `kommunarr/spectrum-of-strengths` repository.

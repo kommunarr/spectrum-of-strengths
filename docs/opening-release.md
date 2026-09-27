@@ -1,9 +1,8 @@
 # Opening release guide
 
 The public address is `https://kommunarr.github.io/spectrum-of-strengths/`.
-It currently serves the bilingual holding page. The organization owner chose
-two publication steps: that short holding page, then the full site with one
-opening journal entry after preview review.
+The full bilingual first release went live on 2026-09-27, following a short
+holding page and owner review of the opening journal entry.
 
 ## Temporary holding page
 
@@ -52,57 +51,55 @@ If publication happens on a later day than the preview, update both archive
 entry dates to that actual publication day, rebuild, and review the rendered
 dates before deploying.
 
-## Current release status
+## Release record
 
 - On 2026-09-26, the organization owner approved the opening entry and the
   factual privacy/accessibility summaries in the bilingual review packet.
-- The holding page and full-site code are committed. Local project, browser,
-  Lighthouse, and external-link checks passed. The owner review does not
-  approve a provisional publication date as an actual release date.
+- The holding page and full-site code were committed. Local project, browser,
+  Lighthouse, and external-link checks passed during preparation.
 - Keyboard focus order and accessible names were inspected in English and
-  French. Reflow at a 640 px viewport was reviewed. An actual screen-reader
-  pass and live-host checks remain before the full release.
+  French. Reflow at a 640 px viewport was reviewed.
 - On 2026-09-26, the bilingual holding page replaced the older public site.
   The live HTML matches `holding/index.html`, shows both languages and the
   GitHub Pages privacy note, and has no old join or donation controls.
 - On 2026-09-27, an additional keyboard review found and fixed a skip-link
   focus issue. Browser checks now exercise skip-link activation in both
   languages, mobile-menu Enter/Space/Escape behavior, and 200% text reflow
-  across every route. The functional browser checks pass. The available
-  environment has no screen reader, so the actual assistive-technology pass
-  is still required before the full release. The opening entry retains its
-  provisional date until the full site is published.
+  across every route. The functional browser checks passed. The available
+  environment had no screen reader, so the owner completed the accessibility
+  review separately before release.
 - Chromium accessibility-tree checks cover English and French Home and Archive:
   landmarks, named navigation, the development status on event links, manual
   carousel status announcements, quiet automatic rotation, and the static
   archive layout under reduced motion. These checks inspect what the browser
   exposes to assistive technology; they cannot confirm how a screen reader
   speaks it or how a person experiences the controls.
-- The production build now includes a bilingual static 404 page, and unknown
-  hash routes offer localized home links. The live GitHub Pages response for
-  invalid paths still needs confirmation after full publication.
+- The production build includes a bilingual static 404 page, and unknown hash
+  routes offer localized home links. The live invalid-path response was
+  confirmed after publication.
 - Visual checks now use the same test font across local and CI browsers; the
   updated header, footer, and menu snapshots were reviewed. Lighthouse CI now
   installs that Chromium build and waits for an actual HTTP response from the
   preview server instead of relying on console output.
 
-## Release gate
-
-The owner's content and policy review is complete. The maintainer has prepared
-the bilingual preview and can handle copy, date, build, and deployment without
-another general approval round. The only prepublication check still awaiting
-outside input is the owner's real screen-reader review in both languages.
-When that review is complete, set both opening-entry dates to the actual day,
-run the release checks, and deploy the full site. Confirm live routes, favicon,
-metadata, and the custom 404 page after deployment. Keep the holding page in
-place until that sequence is ready.
+- On 2026-09-27, the owner reported completing the accessibility review with
+  no actionable high or medium findings and authorized publication. This is
+  the owner's review outcome, not a certification of WCAG conformance.
+- Both opening-entry dates were set to the actual publication day,
+  2026-09-27. The release passed `npm run check`, 54 browser checks, the
+  external-link check, and Lighthouse checks before deployment.
+- Source commit `b96ea36` was pushed to `main`, and the full application was
+  deployed to `gh-pages` at `d84781e`. The deployment includes `.nojekyll`.
+- GitHub Actions Quality, Browser quality, and Lighthouse quality workflows
+  completed successfully for source commit `b96ea36`.
+- On the public host, all 16 direct English and French routes loaded with
+  page metadata and no `noindex` directive. The opening dates, Archive
+  language switch, favicon, and bilingual custom 404 response were checked.
 
 ## September 2026 holding-page publication record
 
 The source and dependency update was pushed to `main` at `89b9b4b`. The
 approved holding page was pushed to `gh-pages` at `af2832e`. Its eight older
 deployment commits now have descriptive messages in place of “Updates”; their
-file trees were preserved. The holding-page tip contains only `index.html`
-and `.nojekyll`. The full site remains unpublished until the remaining
-accessibility review is complete and the opening entry's publication date is
-set to the actual full-site release day.
+file trees were preserved. At that stage, the holding-page tip contained only
+`index.html` and `.nojekyll`. The full site replaced it on 2026-09-27.

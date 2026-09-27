@@ -1,14 +1,13 @@
 # Remaining Work
 
-This is the current implementation backlog after reviewing the application,
-translations, README, and project notes. Priority reflects what must be true
-before the site should be treated as a dependable public site, not what would
-make the demo look more elaborate.
+This is the postlaunch backlog after reviewing the application, translations,
+README, and project notes. Priority reflects public accuracy and maintenance
+needs as the bilingual first release develops.
 
 The first-stage site now has owner-directed Home and Foundations content, an
-Archive & journal page with a draft opening entry, plain-language English/French
-key terms, and clearly marked Events and Contact development pages. See
-[First-stage content and publishing decisions](first-stage-decisions.md) for
+Archive & journal page with a published opening entry, plain-language
+English/French key terms, and clearly marked Events and Contact development
+pages. See [First-stage content and publishing decisions](first-stage-decisions.md) for
 the defaults and questions intentionally deferred to reduce owner workload.
 
 ## P0: Public Integrity
@@ -71,27 +70,25 @@ If content growth justifies a structured model later, start with:
 - approved media assets with alt text and usage notes if the organization later
   supplies them.
 
-### Accessibility Remediation
+### Accessibility Maintenance
 
 - Automated browser checks now cover policy-section structure, skip-link focus,
   reduced-motion layout, carousel announcements, and axe-core rules on every
   English and French route.
-- Manually verify heading order, landmarks, link names, contrast, 200% zoom,
-  and screen-reader behavior in both languages before public launch. Use the
-  [manual accessibility checklist](accessibility-checklist.md).
+- The owner completed the accessibility review before publication and reported
+  no actionable high or medium findings. Use the
+  [manual accessibility checklist](accessibility-checklist.md) when new
+  content or interactions are introduced; track any later findings by severity.
 
 ### Routing, SEO, And Deployment
 
-- Use the existing GitHub Pages project URL for the first public release and
-  preserve the `/spectrum-of-strengths` base path. A custom domain can be
-  considered later.
+- Preserve the published `/spectrum-of-strengths` base path. A custom domain
+  can be considered later.
 - Keep the translated title and page description aligned with each route.
-- Confirm the canonical and social metadata, favicon, and 404 experience on
-  the published host after the full release.
-- Test refresh and direct navigation for every English and French route on the
-  actual host.
-- Prepare a short bilingual visual and copy preview for owner review before
-  publishing the full first release.
+- Recheck metadata, favicon, 404 behavior, and direct navigation on the live
+  host after changes to routing or deployment.
+- Prepare focused bilingual previews for future factual or permission-sensitive
+  public changes.
 - Keep secrets and provider configuration out of the client bundle. Public CMS
   read identifiers may be exposed only when the chosen provider explicitly
   supports that model.
@@ -120,7 +117,7 @@ If content growth justifies a structured model later, start with:
   review before each new archive entry and owner input only for factual or
   permission-sensitive changes.
 - Added localized recovery links for unknown hash routes and a bilingual
-  static GitHub Pages 404 page; its live-host behavior awaits full release.
+  static GitHub Pages 404 page; its live-host behavior was verified at release.
 - Refreshed the footer visual baselines for the current browser, and made
   Lighthouse CI install the same Chromium build used by browser checks.
 - Replaced placeholder Home and About copy with the first-stage identity,
@@ -129,8 +126,8 @@ If content growth justifies a structured model later, start with:
   terms without inventing archive entries, dates, contributors, or outcomes.
 - Made the archive ready for paired English/French entries with publication
   and source timestamps, status, category, summary, and optional public source
-  context or link. One organization opening entry is prepared for owner preview;
-  its date must match the actual full-site publication day.
+  context or link. The organization opening entry was published with the
+  2026-09-27 release date.
 - Added paired English/French routes and brought Events and Contact into clear
   development states without submission or registration forms.
 - Replaced unreviewed privacy/accessibility policy claims with concise current-
@@ -156,7 +153,7 @@ If content growth justifies a structured model later, start with:
   manual slide announcements, focus/hover pause, and a reduced-motion card
   layout.
 - Added a bilingual accessibility-page explanation of the carousel's timing,
-  controls, and reduced-motion layout; the full statement still needs review.
+  controls, and reduced-motion layout.
 - Added browser coverage for carousel controls, reduced motion, policy section
   structure, keyboard focus, and English/French announcements.
 - Reviewed and refreshed desktop/mobile visual baselines for the current
@@ -180,14 +177,15 @@ If content growth justifies a structured model later, start with:
   replacing the older placeholder site without forms or donation/join links.
 - Added the opening archive entry, GitHub Pages privacy disclosure, public URL
   metadata, and focused browser checks for those features.
+- Published the full bilingual first release on 2026-09-27 after the owner's
+  accessibility review. Verified all 16 direct routes, opening dates, metadata,
+  language switch, favicon, and custom 404 response on the public host.
 
 ## Suggested Order
 
-1. Complete the manual accessibility checklist, including a screen-reader
-   pass; retain the owner's approved wording unless a fact changes.
-2. Set the opening entry's actual publication date, publish the full bilingual
-   site, and check the live routes.
-3. Revisit a CMS only if nontechnical self-editing is a real need. Do not add
+1. Maintain a quarterly public-content review and publish new archive records
+   when their dates, sources, and sharing permissions are ready.
+2. Revisit a CMS only if nontechnical self-editing is a real need. Do not add
    signup, contact, payment, or event providers before their workflows and
    privacy wording are approved.
 4. Keep accessibility, route, SEO, and browser checks current for later content

@@ -98,18 +98,19 @@ private record, then confirm the specific wording proposed for publication.
 
 ## Opening release decision
 
-The existing GitHub Pages URL now serves a bilingual holding page with no
-forms or donation/join links. The full first release includes one opening entry
-written in the organization's voice. It describes the archive, evidence-led
-living lab, practical responses, and future community centres as plans,
+The existing GitHub Pages URL served a bilingual holding page with no forms or
+donation/join links before the full first release on 2026-09-27. That release
+includes one opening entry written in the organization's voice. It describes
+the archive, evidence-led living lab, practical responses, and future community
+centres as plans,
 without naming a founder or partner or implying those services are operating.
 The owner approved the entry and factual privacy/accessibility excerpts on
 2026-09-26. The maintainer handles translation and implementation.
 
-## Focused owner review before public launch
+## Focused owner review for future public claims
 
-Before public launch, prepare a short review summary covering only the points
-that need the owner's knowledge:
+For future public claims, prepare a short review summary covering only the
+points that need the owner's knowledge:
 
 - Does the organization description, slogan, and audience reflect the intended
   identity?
