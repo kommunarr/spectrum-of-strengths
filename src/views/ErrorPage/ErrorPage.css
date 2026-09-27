@@ -1,0 +1,15 @@
+.notFoundPage {
+  max-inline-size: 46rem;
+  margin-block: 3rem;
+}
+
+.notFoundHomeLink {
+  display: inline-block;
+  margin-block-start: 0.5rem;
+  color: #76114b;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}

@@ -1,8 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import * as Utils from "../../utils";
 import { updateMetaDescription } from '../../utils/pageMetadata';
+import './ErrorPage.css';
 
 function ErrorPage() {
     const { t, i18n } = useTranslation(['common']);
@@ -20,9 +21,12 @@ function ErrorPage() {
     }, [t, language]);
 
     return (
-        <div>
+        <div className="notFoundPage">
             <h1>{t('pageNotFoundTitle')}</h1>
             <p>{t('pageNotFoundSubtitle')}</p>
+            <Link className="notFoundHomeLink" to={t('homePath') ? `/${t('homePath')}` : '/'}>
+                {t('pageNotFoundHomeLink')}
+            </Link>
         </div>
     );
 }

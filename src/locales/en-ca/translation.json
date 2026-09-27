@@ -179,6 +179,7 @@
         },
         "pageNotFoundTitle": "Page not found",
         "pageNotFoundSubtitle": "The page could not be found. Use the main navigation to continue.",
+        "pageNotFoundHomeLink": "Go to the home page",
         "pageNotFoundDescription": "The requested Spectrum of Strengths page could not be found."
     },
     "otherLanguage": {

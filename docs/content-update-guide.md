@@ -46,6 +46,21 @@ The English and French routes are paired through the language switcher. Check
 both versions before publishing; never rely on a missing translation silently
 falling back to the other language.
 
+## Review cadence
+
+The technical maintainer owns routine site review until the organization names
+a different maintainer. Review the public site every three months and before
+each new archive entry. Check that current and planned activities are described
+accurately, both languages agree, external links still work, and the privacy
+and accessibility summaries match the site's actual behavior. Remove or update
+any time-sensitive information that has become stale. The weekly external-link
+workflow is a prompt to investigate failures, not a substitute for this review.
+
+Ask the owner only when a factual claim, relationship, permission, contributor
+story, or operational status needs confirmation. Events and Contact remain
+development notices until the organization assigns an owner and approves real
+workflows. No analytics or custom domain is needed for this first release.
+
 ## Publish and roll back
 
 The quality workflow checks pushes to `main` and pull requests; it does not

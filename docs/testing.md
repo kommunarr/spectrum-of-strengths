@@ -26,8 +26,13 @@ The browser suite covers:
 - carousel pause on keyboard focus and pointer hover, manual navigation and
   announcements, and the reduced-motion static-card layout in both languages;
 - semantic privacy/accessibility page sections and visible keyboard skip links
-  in both languages;
+  with working focus movement in both languages;
+- 200% text reflow across every route, plus keyboard menu activation;
+- Chromium accessibility-tree names, descriptions, and carousel status
+  exposure on English and French Home and Archive pages;
 - the paired opening archive entry, hosting disclosure, and public URL metadata;
+- localized recovery links for unknown hash routes and the bilingual static
+  GitHub Pages 404 page;
 - the Events and Contact in-development states; and
 - automated axe-core accessibility checks on every published English and
   French route.

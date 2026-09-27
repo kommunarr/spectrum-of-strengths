@@ -344,6 +344,10 @@ test('identifies GitHub Pages hosting in both privacy summaries', async ({ page 
 
 test('advertises the current public address to link previews', async ({ page }) => {
   await page.goto(homePage);
+  await expect(page.locator('link[rel="icon"]')).toHaveAttribute(
+    'href',
+    '/spectrum-of-strengths/favicon.svg',
+  );
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     'href',
     'https://kommunarr.github.io/spectrum-of-strengths/',
@@ -352,6 +356,37 @@ test('advertises the current public address to link previews', async ({ page }) 
     'content',
     'https://kommunarr.github.io/spectrum-of-strengths/',
   );
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', /Spectrum of Strengths/);
+  await expect(page.locator('meta[property="og:description"]')).toHaveAttribute('content', /heritage/);
+});
+
+test('offers localized home links for unknown hash routes', async ({ page }) => {
+  for (const route of [
+    { path: 'index.html#/missing', language: 'en', link: 'Go to the home page', target: /#\/$/ },
+    { path: 'index.html#/fr/inconnue', language: 'fr', link: 'Aller à la page d’accueil', target: /#\/fr$/ },
+  ] as const) {
+    await page.goto(route.path);
+    await expect(page.locator('html')).toHaveAttribute('lang', route.language);
+    await expect(page.locator('main h1')).toHaveCount(1);
+    await page.getByRole('link', { name: route.link }).click();
+    await expect(page).toHaveURL(route.target);
+  }
+});
+
+test('provides a bilingual static 404 page for invalid server paths', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.goto('404.html');
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex');
+  await expect(page.getByRole('heading', { name: 'Page not found' })).toBeVisible();
+  await expect(page.locator('section[lang="fr"]')).toContainText('Page non trouvée');
+  await expect(page.getByRole('link', { name: 'Go to the English home page' })).toHaveAttribute(
+    'href', '/spectrum-of-strengths/',
+  );
+  await expect(page.getByRole('link', { name: 'Aller à la page d’accueil en français' })).toHaveAttribute(
+    'href', '/spectrum-of-strengths/#/fr',
+  );
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
 });
 
 for (const route of policyRoutes) {

@@ -179,6 +179,7 @@
         },
         "pageNotFoundTitle": "Page non trouvée",
         "pageNotFoundSubtitle": "La page est introuvable. Utilisez la navigation principale pour continuer.",
+        "pageNotFoundHomeLink": "Aller à la page d’accueil",
         "pageNotFoundDescription": "La page Spectrum of Strengths demandée est introuvable."
     },
     "otherLanguage": {
