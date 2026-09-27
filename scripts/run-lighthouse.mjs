@@ -3,6 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { setTimeout as delay } from 'node:timers/promises';
 import * as chromeLauncher from 'chrome-launcher';
 import lighthouse from 'lighthouse';
+import { chromium } from '@playwright/test';
 
 const base = 'http://127.0.0.1:4173/spectrum-of-strengths/';
 const routes = [
@@ -51,7 +52,7 @@ async function main() {
   try {
     await waitForPreview(server, () => serverReady);
     chrome = await chromeLauncher.launch({
-      chromePath: process.env.CHROME_PATH,
+      chromePath: process.env.CHROME_PATH || chromium.executablePath(),
       chromeFlags: ['--headless', '--no-sandbox'],
     });
     await mkdir('lighthouse-reports', { recursive: true });

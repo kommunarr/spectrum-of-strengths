@@ -36,6 +36,8 @@ The deployment command updates the published `gh-pages` branch. A push to
 - Add generic canonical and social metadata for the GitHub Pages project URL.
   The hash router continues to supply localized page titles and descriptions
   inside the browser. No social-card image is approved yet.
+- Include the bilingual static `404.html` for invalid server paths. Unknown
+  hash routes use the app's localized not-found page with a home link.
 
 The maintainer prepares the full bilingual preview and a short owner review
 of the opening entry and privacy/accessibility wording. The owner confirms
@@ -76,6 +78,23 @@ dates before deploying.
   archive layout under reduced motion. These checks inspect what the browser
   exposes to assistive technology; they cannot confirm how a screen reader
   speaks it or how a person experiences the controls.
+- The production build now includes a bilingual static 404 page, and unknown
+  hash routes offer localized home links. The live GitHub Pages response for
+  invalid paths still needs confirmation after full publication.
+- The footer screenshot baselines were refreshed for the current Playwright
+  Chromium version after visual review. Lighthouse CI now installs and uses
+  that browser directly, avoiding dependence on a runner-specific Chrome path.
+
+## Release gate
+
+The owner's content and policy review is complete. The maintainer has prepared
+the bilingual preview and can handle copy, date, build, and deployment without
+another general approval round. The only prepublication check still awaiting
+outside input is the owner's real screen-reader review in both languages.
+When that review is complete, set both opening-entry dates to the actual day,
+run the release checks, and deploy the full site. Confirm live routes, favicon,
+metadata, and the custom 404 page after deployment. Keep the holding page in
+place until that sequence is ready.
 
 ## September 2026 holding-page publication record
 
