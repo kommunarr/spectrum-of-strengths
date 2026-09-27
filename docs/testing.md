@@ -27,6 +27,7 @@ The browser suite covers:
   announcements, and the reduced-motion static-card layout in both languages;
 - semantic privacy/accessibility page sections and visible keyboard skip links
   in both languages;
+- the paired opening archive entry, hosting disclosure, and public URL metadata;
 - the Events and Contact in-development states; and
 - automated axe-core accessibility checks on every published English and
   French route.

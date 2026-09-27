@@ -6,8 +6,8 @@ before the site should be treated as a dependable public site, not what would
 make the demo look more elaborate.
 
 The first-stage site now has owner-directed Home and Foundations content, an
-Archive & journal landing page, plain-language English/French key terms, and
-clearly marked Events and Contact development pages. See
+Archive & journal page with a draft opening entry, plain-language English/French
+key terms, and clearly marked Events and Contact development pages. See
 [First-stage content and publishing decisions](first-stage-decisions.md) for
 the defaults and questions intentionally deferred to reduce owner workload.
 
@@ -24,8 +24,9 @@ the defaults and questions intentionally deferred to reduce owner workload.
   event, service, partner, outcome, or operating schedule until the organization
   has approved the claim and the maintenance owner is clear.
 - Review the concise privacy and accessibility summaries with the
-  organization's responsible person. Provider, hosting, and formal policy
-  details are deliberately not asserted until confirmed.
+  organization's responsible person before the full release. GitHub Pages
+  hosting is identified; future form providers and formal policy details are
+  still deferred.
 
 ### Future Submission Workflows
 
@@ -82,15 +83,16 @@ If content growth justifies a structured model later, start with:
 
 ### Routing, SEO, And Deployment
 
-- Decide whether the final public URL is GitHub Pages, a custom domain, or
-  another host. Preserve the `/spectrum-of-strengths` base path until that is
-  decided.
+- Use the existing GitHub Pages project URL for the first public release and
+  preserve the `/spectrum-of-strengths` base path. A custom domain can be
+  considered later.
 - Keep the translated title and page description aligned with each route.
-- Add canonical URL and Open Graph/Twitter metadata once the public domain is
-  known; confirm the favicon and 404 experience on the final host.
+- Confirm the canonical and social metadata, favicon, and 404 experience on
+  the published host after the full release.
 - Test refresh and direct navigation for every English and French route on the
   actual host.
-- Add a deployment preview path for content changes before publishing them.
+- Prepare a short bilingual visual and copy preview for owner review before
+  publishing the full first release.
 - Keep secrets and provider configuration out of the client bundle. Public CMS
   read identifiers may be exposed only when the chosen provider explicitly
   supports that model.
@@ -99,7 +101,6 @@ If content growth justifies a structured model later, start with:
 
 - Keep the existing route/language and translation-key checks current as routes
   or locale structure changes.
-- Add an archive-rendering check when the first journal entries are added.
 - Keep browser coverage aligned with the development states and any future
   submission workflows.
 
@@ -124,7 +125,8 @@ If content growth justifies a structured model later, start with:
   terms without inventing archive entries, dates, contributors, or outcomes.
 - Made the archive ready for paired English/French entries with publication
   and source timestamps, status, category, summary, and optional public source
-  context or link. It remains empty until approved content is available.
+  context or link. One organization opening entry is prepared for owner preview;
+  its date must match the actual full-site publication day.
 - Added paired English/French routes and brought Events and Contact into clear
   development states without submission or registration forms.
 - Replaced unreviewed privacy/accessibility policy claims with concise current-
@@ -170,18 +172,21 @@ If content growth justifies a structured model later, start with:
   development statuses in both copies of the navigation.
 - Removed simulated contact/newsletter success states and corrected malformed
   policy markup without adding external integrations.
+- Prepared a bilingual holding page to replace the older live placeholder site
+  and documented the owner-reviewed full-release sequence.
+- Added the opening archive entry, GitHub Pages privacy disclosure, public URL
+  metadata, and focused browser checks for those features.
 
 ## Suggested Order
 
-1. Review the first-stage English/French copy and the concise privacy and
-   accessibility summaries.
-2. Confirm ownership of the public domain and host before adding deployment-
-   specific metadata or provider details.
-3. Use the [archive entry workflow](archive-entry-workflow.md) to prepare the
-   first bilingual entry once its source, dates, and sharing permissions are
-   known.
+1. Replace the older live placeholder site with the [bilingual holding page](opening-release.md)
+   once GitHub publishing access is available.
+2. Review the opening entry and concise privacy/accessibility excerpts with
+   the owner, and complete the manual accessibility checklist.
+3. Set the opening entry's actual publication date, publish the full bilingual
+   site, and check the live routes.
 4. Revisit a CMS only if nontechnical self-editing is a real need. Do not add
    signup, contact, payment, or event providers before their workflows and
    privacy wording are approved.
-5. Complete focused accessibility, route, SEO, and browser review before public
-   launch.
+5. Keep accessibility, route, SEO, and browser checks current for later content
+   changes.

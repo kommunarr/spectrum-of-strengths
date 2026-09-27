@@ -16,7 +16,17 @@ function TermsOfUseAndPrivacy() {
             {privacySections.map((section) => (
                 <section key={section}>
                     <h2>{t(`privacyPage.${section}Title`)}</h2>
-                    <p>{t(`privacyPage.${section}Body`)}</p>
+                    <p>
+                        {t(`privacyPage.${section}Body`)}
+                        {section === 'details' && (
+                            <>
+                                {' '}
+                                <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">
+                                    {t('privacyPage.detailsLinkLabel')}
+                                </a>
+                            </>
+                        )}
+                    </p>
                 </section>
             ))}
         </article>

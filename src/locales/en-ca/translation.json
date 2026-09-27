@@ -94,7 +94,16 @@
             "emptyTitle": "The journal is just getting started",
             "emptyBody": "No journal entries have been published yet. Entries will appear here as research, experiences, and records are prepared for public sharing.",
             "dateNote": "Entries will include publication dates and source context when available.",
-            "entries": []
+            "entries": [
+                {
+                    "id": "opening-the-public-record",
+                    "publicationDate": "2026-09-26",
+                    "category": "progress",
+                    "status": "confirmed",
+                    "title": "Spectrum of Strengths opens its public record",
+                    "summary": "Spectrum of Strengths is opening a public record rooted in heritage, history, tradition, dignity, and the strengths of neurodivergent communities, including autistic and ADHD people. We intend to bring research and lived experience together in an archive and living lab, identify unmet needs, and develop practical responses that create and share value. Our plans include products and future community centres. These are intentions under development; no community centres or programs are currently operating."
+                }
+            ]
         },
         "glossaryPage": {
             "metaDescription": "Plain-language definitions of heritage, systems, dignity, gap bridging, and the four value principles.",
@@ -132,7 +141,7 @@
             "contactBody": "Contact options are in development. This page does not accept or send messages."
         },
         "privacyPage": {
-            "metaDescription": "How the Spectrum of Strengths website currently handles submissions, external websites, and published content.",
+            "metaDescription": "How the Spectrum of Strengths website currently handles submissions, external websites, and GitHub Pages hosting.",
             "intro": "This page summarizes how the website currently works. It will be updated before new ways of submitting information or other data practices are introduced.",
             "submissionsTitle": "Information submitted through this site",
             "submissionsBody": "The current site does not provide working contact, newsletter, event registration, or payment forms. It does not ask visitors to submit those kinds of personal information.",
@@ -140,8 +149,9 @@
             "externalBody": "Some links may lead to external websites. Those sites have their own privacy and content practices.",
             "languagesTitle": "Languages and content",
             "languagesBody": "Core site content is offered in English and French. External resources may be available only in the language used by their publishers.",
-            "detailsTitle": "Details still being confirmed",
-            "detailsBody": "Hosting-related information is still being confirmed. This page does not make claims about information kept by a hosting provider or an external website."
+            "detailsTitle": "Hosting and technical information",
+            "detailsBody": "This site is hosted on GitHub Pages. GitHub says it logs visitors’ IP addresses for security. Spectrum of Strengths does not use a visitor analytics service on this site.",
+            "detailsLinkLabel": "Read GitHub Pages’ data collection information"
         },
         "accessibilityPage": {
             "metaDescription": "Learn about the accessibility features considered in the Spectrum of Strengths website and its review status.",
@@ -149,7 +159,7 @@
             "motionTitle": "Motion on the Home page",
             "motionBody": "The four value ideas change automatically about every 28 seconds. Rotation stops when you move keyboard focus into the carousel or move your pointer over it. Use the pause control to stop or restart rotation, and the previous and next controls to move between ideas. If your device is set to reduce motion, the carousel is replaced by a static layout showing all four ideas.",
             "reviewTitle": "Review and feedback",
-            "reviewBody": "The website and this statement still need review. An accessibility feedback channel is not active yet; contact options will be added when they are ready."
+            "reviewBody": "Automated accessibility checks have been completed. Manual keyboard, zoom, and screen-reader review is still in progress. An accessibility feedback channel is not active yet; contact options will be added when they are ready."
         },
         "pageNotFoundTitle": "Page not found",
         "pageNotFoundSubtitle": "The page could not be found. Use the main navigation to continue.",

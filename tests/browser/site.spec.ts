@@ -263,6 +263,66 @@ const policyRoutes = [
   { language: 'fr', path: 'index.html#/fr/normes-daccessibilite', sectionCount: 2 },
 ] as const;
 
+test('publishes the opening record in English and French with the same date', async ({ page }) => {
+  const dates: string[] = [];
+
+  for (const route of [
+    {
+      path: 'index.html#/archive',
+      language: 'en',
+      title: 'Spectrum of Strengths opens its public record',
+      status: 'Confirmed',
+      future: 'future community centres',
+    },
+    {
+      path: 'index.html#/fr/archives',
+      language: 'fr',
+      title: 'Spectrum of Strengths ouvre son dossier public',
+      status: 'Confirmé',
+      future: 'futurs centres communautaires',
+    },
+  ] as const) {
+    await page.goto(route.path);
+    const entry = page.locator('.archiveEntry');
+
+    await expect(page.locator('html')).toHaveAttribute('lang', route.language);
+    await expect(entry).toHaveCount(1);
+    await expect(entry.getByRole('heading', { name: route.title })).toBeVisible();
+    await expect(entry).toContainText(route.status);
+    await expect(entry).toContainText(route.future);
+    await expect(page.locator('.archiveEmpty')).toHaveCount(0);
+    await expect(entry.locator('time')).toHaveCount(1);
+    dates.push((await entry.locator('time').getAttribute('dateTime')) ?? '');
+  }
+
+  expect(dates[0]).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  expect(dates[1]).toBe(dates[0]);
+});
+
+test('identifies GitHub Pages hosting in both privacy summaries', async ({ page }) => {
+  for (const path of [
+    'index.html#/terms-of-use-and-privacy',
+    'index.html#/fr/conditions-dutilisation-politique-confidentialite',
+  ]) {
+    await page.goto(path);
+    await expect(page.locator('main')).toContainText('GitHub Pages');
+    await expect(page.locator('main')).toContainText(/IP|adresse IP/);
+    await expect(page.locator('main a[href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"]')).toBeVisible();
+  }
+});
+
+test('advertises the current public address to link previews', async ({ page }) => {
+  await page.goto(homePage);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    'href',
+    'https://kommunarr.github.io/spectrum-of-strengths/',
+  );
+  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+    'content',
+    'https://kommunarr.github.io/spectrum-of-strengths/',
+  );
+});
+
 for (const route of policyRoutes) {
   test(`keeps policy page sections semantic for ${route.path}`, async ({ page }) => {
     await page.goto(route.path);
