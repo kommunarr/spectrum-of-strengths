@@ -56,6 +56,12 @@ and accessibility summaries match the site's actual behavior. Remove or update
 any time-sensitive information that has become stale. The weekly external-link
 workflow is a prompt to investigate failures, not a substitute for this review.
 
+Dependabot checks npm packages and GitHub Actions monthly and groups routine
+minor and patch updates into fewer pull requests. A maintainer reviews those
+changes and the quality checks before merging; dependency updates do not
+publish the site automatically. Check security alerts promptly rather than
+waiting for the quarterly content review.
+
 Ask the owner only when a factual claim, relationship, permission, contributor
 story, or operational status needs confirmation. Events and Contact remain
 development notices until the organization assigns an owner and approves real
