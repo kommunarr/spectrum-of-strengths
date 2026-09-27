@@ -94,7 +94,7 @@ async function expectHealthyPage(page: Page, route: PublishedRoute) {
 
     return anchors.flatMap((anchor) => {
       const rawHref = anchor.getAttribute('href')?.trim();
-      const label = anchor.textContent?.trim() ?? anchor.getAttribute('aria-label') ?? '<unnamed link>';
+      const label = anchor.textContent.trim() || (anchor.getAttribute('aria-label') ?? '<unnamed link>');
 
       if (!rawHref || rawHref === '#main-content') {
         return rawHref ? [] : [`${label}: empty href`];
