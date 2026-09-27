@@ -1,9 +1,9 @@
 # Opening release guide
 
 The public address is `https://kommunarr.github.io/spectrum-of-strengths/`.
-It currently serves an older placeholder site. The organization owner chose
-two publication steps: a short bilingual holding page, then the full site with
-one opening journal entry after preview review.
+It currently serves the bilingual holding page. The organization owner chose
+two publication steps: that short holding page, then the full site with one
+opening journal entry after preview review.
 
 ## Temporary holding page
 
@@ -12,12 +12,10 @@ It states that the public home is being prepared. It has no forms, analytics,
 donation link, join link, or launch date. The page is marked `noindex` while it
 is temporary.
 
-1. Open `holding/index.html` locally and review both language sections at
-   desktop and mobile widths. Check the external GitHub Pages information link.
-2. Commit the reviewed page and run `npm run deploy:holding` using authorized
-   access to the existing GitHub Pages repository.
-3. Open the public address and confirm the older placeholder copy and controls
-   have been replaced. Check that both languages and the privacy note appear.
+For later holding-page changes, review `holding/index.html` in both languages
+at desktop and mobile widths, run `npm run deploy:holding` with authorized
+GitHub access, and confirm the public address shows both languages and the
+privacy note.
 
 The deployment command updates the published `gh-pages` branch. A push to
 `main` alone does not publish the site.
@@ -62,23 +60,16 @@ dates before deploying.
 - Keyboard focus order and accessible names were inspected in English and
   French. Reflow at a 640 px viewport was reviewed. An actual screen-reader
   pass and live-host checks remain before the full release.
-- This workspace cannot publish yet: GitHub write access is being arranged,
-  and its system SSH configuration is rejected by OpenSSH. The older public
-  site remains online until the holding page is successfully deployed.
+- On 2026-09-26, the bilingual holding page replaced the older public site.
+  The live HTML matches `holding/index.html`, shows both languages and the
+  GitHub Pages privacy note, and has no old join or donation controls.
 
-## Prepared September 2026 holding-page push
+## September 2026 holding-page publication record
 
-The local `gh-pages-reworded` branch contains the approved holding page at
-`af2832e`. Its eight older deployment commits have descriptive messages in
-place of “Updates”; their file trees are unchanged. The branch tip contains
-only `index.html` and `.nojekyll`. The local `main` branch contains the current
-source, including the dependency security update.
-
-GitHub still reported `main` at `639c83e` and `gh-pages` at `9b9eab4` when
-the pushes were prepared. Both SSH and HTTPS push attempts failed because
-this workspace lacks a usable GitHub credential. Once access is available,
-verify those remote tips again, then push `main` normally. Push
-`gh-pages-reworded` to `gh-pages` with a force-with-lease against the verified
-old `gh-pages` tip, because rewording old commits changes their hashes. If
-either remote tip has changed, inspect the new commits before pushing. Check
-the public address immediately after the holding-page push.
+The source and dependency update was pushed to `main` at `89b9b4b`. The
+approved holding page was pushed to `gh-pages` at `af2832e`. Its eight older
+deployment commits now have descriptive messages in place of “Updates”; their
+file trees were preserved. The holding-page tip contains only `index.html`
+and `.nojekyll`. The full site remains unpublished until the remaining
+accessibility review is complete and the opening entry's publication date is
+set to the actual full-site release day.

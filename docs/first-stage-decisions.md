@@ -98,16 +98,13 @@ private record, then confirm the specific wording proposed for publication.
 
 ## Opening release decision
 
-The existing GitHub Pages URL still serves an older placeholder site. Replace
-it promptly with a bilingual holding page that has no forms or donation/join
-links. The full first release includes one opening entry written in the
-organization's voice. It describes the archive, evidence-led living lab,
-practical responses, and future community centres as plans, without naming a
-founder or partner or implying those services are operating. The owner will
-review the entry and short privacy/accessibility excerpts in a preview before
-the full site is published. The owner can arrange GitHub publishing access and
-will review the factual policy wording; the maintainer handles translation and
-implementation.
+The existing GitHub Pages URL now serves a bilingual holding page with no
+forms or donation/join links. The full first release includes one opening entry
+written in the organization's voice. It describes the archive, evidence-led
+living lab, practical responses, and future community centres as plans,
+without naming a founder or partner or implying those services are operating.
+The owner approved the entry and factual privacy/accessibility excerpts on
+2026-09-26. The maintainer handles translation and implementation.
 
 ## Focused owner review before public launch
 

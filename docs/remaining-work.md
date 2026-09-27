@@ -171,21 +171,19 @@ If content growth justifies a structured model later, start with:
   development statuses in both copies of the navigation.
 - Removed simulated contact/newsletter success states and corrected malformed
   policy markup without adding external integrations.
-- Prepared a bilingual holding page to replace the older live placeholder site
-  and documented the owner-reviewed full-release sequence.
+- Published the bilingual holding page at the existing GitHub Pages address,
+  replacing the older placeholder site without forms or donation/join links.
 - Added the opening archive entry, GitHub Pages privacy disclosure, public URL
   metadata, and focused browser checks for those features.
 
 ## Suggested Order
 
-1. Replace the older live placeholder site with the [bilingual holding page](opening-release.md)
-   once GitHub publishing access is available.
-2. Complete the manual accessibility checklist, including a screen-reader
+1. Complete the manual accessibility checklist, including a screen-reader
    pass; retain the owner's approved wording unless a fact changes.
-3. Set the opening entry's actual publication date, publish the full bilingual
+2. Set the opening entry's actual publication date, publish the full bilingual
    site, and check the live routes.
-4. Revisit a CMS only if nontechnical self-editing is a real need. Do not add
+3. Revisit a CMS only if nontechnical self-editing is a real need. Do not add
    signup, contact, payment, or event providers before their workflows and
    privacy wording are approved.
-5. Keep accessibility, route, SEO, and browser checks current for later content
+4. Keep accessibility, route, SEO, and browser checks current for later content
    changes.

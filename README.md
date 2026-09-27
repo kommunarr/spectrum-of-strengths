@@ -42,9 +42,8 @@ the [remaining work](docs/remaining-work.md) and [content management plan](docs/
 before connecting any external service or publishing unapproved organization
 content.
 
-The current GitHub Pages address serves an older placeholder site. The
-[opening release guide](docs/opening-release.md) describes the bilingual
-holding page and the reviewed first release. `npm run deploy:holding` publishes
-the temporary page; `npm run deploy` publishes the full application. Both
-commands require authorized access to the `kommunarr/spectrum-of-strengths`
-GitHub Pages repository.
+The current GitHub Pages address serves the bilingual holding page. The
+[opening release guide](docs/opening-release.md) describes the reviewed full
+release. `npm run deploy:holding` updates the temporary page;
+`npm run deploy` publishes the full application. Both commands require
+authorized access to the `kommunarr/spectrum-of-strengths` repository.
