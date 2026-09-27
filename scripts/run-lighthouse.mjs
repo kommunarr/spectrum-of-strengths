@@ -19,6 +19,14 @@ const thresholds = {
   seo: { minimum: 0.85, fail: false },
 };
 
+function reportError(message) {
+  console.error(message);
+  if (process.env.GITHUB_ACTIONS === 'true') {
+    const encoded = message.replaceAll('%', '%25').replaceAll('\r', '%0D').replaceAll('\n', '%0A');
+    console.error(`::error title=Lighthouse audit::${encoded}`);
+  }
+}
+
 async function waitForPreview(server, isReady) {
   for (let attempt = 0; attempt < 100; attempt += 1) {
     if (server.exitCode !== null) throw new Error('Preview server exited before it was ready.');
@@ -77,7 +85,7 @@ async function main() {
         if (score === null || score === undefined || score < threshold.minimum) {
           const message = `${route.name}: ${category} ${score ?? 'unavailable'} is below ${threshold.minimum}`;
           if (threshold.fail) {
-            console.error(message);
+            reportError(message);
             failed = true;
           } else {
             console.warn(message);
@@ -85,7 +93,7 @@ async function main() {
         }
       }
       if (result.lhr.audits['meta-description']?.score !== 1) {
-        console.error(`${route.name}: meta description audit failed.`);
+        reportError(`${route.name}: meta description audit failed.`);
         failed = true;
       }
       console.log(`${route.name}: Lighthouse report saved.`);
@@ -99,6 +107,6 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error(error);
+  reportError(error instanceof Error ? error.stack ?? error.message : String(error));
   process.exitCode = 1;
 });
