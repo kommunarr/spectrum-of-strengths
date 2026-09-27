@@ -5,7 +5,7 @@ import '../contentPages.css';
 import './Home.css';
 
 const valuePillars = ['capture', 'transformation', 'creation', 'preservation'];
-const rotationInterval = 9_000;
+const rotationInterval = 6_000;
 
 function getReducedMotionPreference(): boolean {
     return typeof window !== 'undefined' &&

@@ -215,7 +215,7 @@ test.describe('home value carousel', () => {
     await expect(carousel.getByRole('group', { name: 'Slide 1 of 4' })).toBeVisible();
 
     await page.mouse.move(0, 0);
-    await page.clock.fastForward(9_000);
+    await page.clock.fastForward(6_000);
     await expect(carousel.getByRole('group', { name: 'Slide 2 of 4' })).toBeVisible();
   });
 
@@ -236,7 +236,7 @@ test.describe('archive themes carousel', () => {
 
     const carousel = page.getByRole('group', { name: 'What the record will include', exact: true });
     await expect(carousel.getByRole('group', { name: 'Slide 1 of 5' })).toContainText('Heritage and systems');
-    await page.clock.fastForward(9_000);
+    await page.clock.fastForward(6_000);
     await expect(carousel.getByRole('group', { name: 'Slide 2 of 5' })).toContainText('Research and evidence');
 
     await carousel.getByRole('button', { name: 'Pause rotation' }).click();

@@ -31,7 +31,7 @@ work. It is a working editorial brief, not approval of legal or policy claims.
   areas. Keep Events and Contact available as clearly marked development
   pages; they do not advertise active events or accept messages.
 - Present the four value ideas on Home and the five archive themes in separate
-  carousels that fade between ideas about every 9 seconds, with small pause,
+  carousels that fade between ideas about every 6 seconds, with small pause,
   previous, and next controls. Stop automatic rotation when a carousel receives
   keyboard focus; pause on pointer hover and resume on pointer leave. Honor
   reduced-motion preferences by showing each set together as a static card grid.

@@ -4,7 +4,7 @@ import '../contentPages.css';
 import './Archive.css';
 
 const archiveCategories = ['heritage', 'research', 'experience', 'gaps', 'progress'] as const;
-const rotationInterval = 9_000;
+const rotationInterval = 6_000;
 
 function getReducedMotionPreference(): boolean {
     return typeof window !== 'undefined' &&
