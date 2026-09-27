@@ -70,6 +70,12 @@ dates before deploying.
   environment has no screen reader, so the actual assistive-technology pass
   is still required before the full release. The opening entry retains its
   provisional date until the full site is published.
+- Chromium accessibility-tree checks cover English and French Home and Archive:
+  landmarks, named navigation, the development status on event links, manual
+  carousel status announcements, quiet automatic rotation, and the static
+  archive layout under reduced motion. These checks inspect what the browser
+  exposes to assistive technology; they cannot confirm how a screen reader
+  speaks it or how a person experiences the controls.
 
 ## September 2026 holding-page publication record
 
