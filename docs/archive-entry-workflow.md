@@ -15,6 +15,9 @@ English and French archivePage.entries arrays in the locale files.
   only the date is known, use YYYY-MM-DD. Never guess or backfill a time.
 - Distinguish a plan from work underway and from a completed, source-backed
   milestone. Use neutral, factual wording for institutional gaps and delays.
+- A timestamp can show when a record existed or a communication was sent. It
+  does not by itself establish why a delay occurred, who caused it, or that a
+  proposed response will work. Keep those claims tied to their own evidence.
 - Cite public sources directly. For private correspondence, retain it outside
   the public site and keep its private reference label outside the repository.
   Publish a summary; quote or identify people only after sharing permission is
@@ -56,6 +59,14 @@ public-sharing permission is unclear, keep the item unpublished and ask one
 focused question. The owner reviews specific facts, names, permissions, and
 organization-specific language rather than routine editorial fields.
 
+For an entry about a social need and possible product or change, the maintainer
+may also prepare three short statements together: the documented need, a
+proposed response, and its potential social and economic value. Describe a
+response as proposed until it exists, and a return as potential until it is
+measured. Leave this trio out when the source does not support all three. The
+opening announcement has no specific case to describe, so it does not use
+these fields.
+
 ## Before publishing
 
 1. Confirm that the source supports each public statement and that the status
@@ -79,6 +90,9 @@ Each published entry has these fields:
 - category: heritage, research, experience, gaps, or progress.
 - status: planned, inProgress, or confirmed.
 - title and summary: the approved English or French copy for that locale.
+- need, proposedResponse, and potentialValue: optional paired statements for a
+  specific documented case. Supply all three in both languages or omit all
+  three; do not fill a missing field with a guess.
 - sourceContext: optional approved public context or citation. Omit it when
   the source is private or no safe public context is available.
 - sourceUrl: optional HTTPS link to a public source. Never link to private
@@ -87,5 +101,5 @@ Each published entry has these fields:
 The site sorts entries by publication date, newest first.
 
 The handoff template is an editorial aid, not a website form or publishing
-system. The site currently has no archive entries, CMS, scheduling, or
+system. The site has a prepared opening entry, but no CMS, scheduling, or
 submission workflow.

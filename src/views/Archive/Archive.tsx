@@ -23,6 +23,9 @@ interface ArchiveEntry {
     status: ArchiveStatus;
     title: string;
     summary: string;
+    need?: string;
+    proposedResponse?: string;
+    potentialValue?: string;
     sourceContext?: string;
     sourceUrl?: string;
 }
@@ -180,6 +183,7 @@ function Archive() {
                 <h2 className="archiveSectionTitle" id="archive-entries-title">
                     {t('archivePage.entriesTitle')}
                 </h2>
+                <p className="archiveEntriesIntro">{t('archivePage.entriesIntro')}</p>
                 {entries.length === 0 ? (
                     <div className="archiveEmpty" aria-labelledby="archive-empty-title" role="status">
                         <h3 id="archive-empty-title">{t('archivePage.emptyTitle')}</h3>
@@ -209,6 +213,22 @@ function Archive() {
                                     </div>
                                     <h3>{entry.title}</h3>
                                     <p>{entry.summary}</p>
+                                    {entry.need && entry.proposedResponse && entry.potentialValue && (
+                                        <dl className="archiveEntryCase">
+                                            <div>
+                                                <dt>{t('archivePage.needLabel')}</dt>
+                                                <dd>{entry.need}</dd>
+                                            </div>
+                                            <div>
+                                                <dt>{t('archivePage.responseLabel')}</dt>
+                                                <dd>{entry.proposedResponse}</dd>
+                                            </div>
+                                            <div>
+                                                <dt>{t('archivePage.valueLabel')}</dt>
+                                                <dd>{entry.potentialValue}</dd>
+                                            </div>
+                                        </dl>
+                                    )}
                                     {(entry.sourceContext !== undefined || entry.sourceUrl !== undefined) && (
                                         <p className="archiveEntrySource">
                                             <strong>{t('archivePage.sourceContextLabel')}: </strong>

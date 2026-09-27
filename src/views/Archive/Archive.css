@@ -39,6 +39,12 @@
     margin-block-start: 2.5rem;
 }
 
+.archiveEntriesIntro {
+    max-inline-size: 52rem;
+    margin-block: 0 1.25rem;
+    line-height: 1.65;
+}
+
 .archiveEntryList {
     display: grid;
     gap: 1rem;
@@ -76,6 +82,30 @@
     line-height: 1.65;
 }
 
+.archiveEntryCase {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 1.25rem 0 0;
+}
+
+.archiveEntryCase > div {
+    min-inline-size: 0;
+    padding: 1rem;
+    border-radius: 0.65rem;
+    background: #f4f7f8;
+}
+
+.archiveEntryCase dt {
+    margin-block-end: 0.4rem;
+    font-weight: 700;
+}
+
+.archiveEntryCase dd {
+    margin: 0;
+    line-height: 1.6;
+}
+
 .archiveEntry .archiveEntrySource {
     padding-block-start: 0.75rem;
     border-block-start: 1px solid #dedee2;
@@ -94,5 +124,11 @@
 
     .archiveCarouselMotion {
         display: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .archiveEntryCase {
+        grid-template-columns: 1fr;
     }
 }

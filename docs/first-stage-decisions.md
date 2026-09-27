@@ -12,6 +12,10 @@ work. It is a working editorial brief, not approval of legal or policy claims.
   transformation, creation, and preservation.
 - Build toward a historical archive and living journal about systems, research,
   social need, lived experience, gaps, responses, and organizational progress.
+- Place a documented need beside a proposed product or change and the social
+  and economic value it might create; celebrate strengths as well as gaps.
+- Focus on establishing relationships and due process in Canada before
+  describing possible cross-border work as operational.
 - Explain heritage and value language in plain English and French.
 - Keep events, contact, volunteering, donations, and other operational
   features out of the first stage.
@@ -34,6 +38,11 @@ work. It is a working editorial brief, not approval of legal or policy claims.
 - Describe relationship building as an intention and gradual process. Do not
   name national bodies, imply endorsement, or describe joint work as confirmed
   until the organization has approved details for public sharing.
+- Keep the owner's specific claims about a Public Health Agency of Canada
+  review, relationships with US organizations, and delays involving offices
+  out of public copy until the underlying records, wording, and permission to
+  identify others have been confirmed. The owner need only review a focused
+  draft when one of those claims is ready to publish.
 - Keep the existing brand logo and do not add unapproved photos or partner
   marks. Do not surface external social links until their current status is
   confirmed.
@@ -73,6 +82,19 @@ work. It is a working editorial brief, not approval of legal or policy claims.
 | Should analytics be added? | No tracking by default. Revisit only if a concrete decision depends on usage data. |
 | What happens to correspondence and personal stories? | Publish dated summaries and source context by default; require permission and redaction before publishing excerpts or identifiable stories. |
 | Which domain and host are first? | Use the current GitHub Pages project URL and `/spectrum-of-strengths` base path. A custom domain can come later. |
+
+## Owner notes awaiting source material
+
+The maintainer can draft and translate these items when a source is available.
+The owner need only supply a rough note, public link, or safe reference to a
+private record, then confirm the specific wording proposed for publication.
+
+| Item | Minimum needed before a public claim |
+| --- | --- |
+| Historical archive material | A record or public source, its date if known, and whether it may be shared. |
+| Public Health Agency of Canada review | The exact record and wording that supports the review and “ambitious” description, plus permission to identify the agency in context. |
+| US organizational relationships | Approved names and a description of the present relationship that each organization may be named in. |
+| Correspondence about delays | Source dates and a factual timeline; review of any proposed attribution or institutional criticism before publication. The full private messages remain outside the repository. |
 
 ## Opening release decision
 

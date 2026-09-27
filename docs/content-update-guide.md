@@ -13,6 +13,9 @@ or to edit code. For an archive or journal update, start with the
 - Home content uses `common.homePage`; Foundations uses
   `common.foundationsPage`; archive content and entries use
   `common.archivePage`; and definitions use `common.glossaryPage`.
+- A specific archive case can show the documented need, proposed response,
+  and potential shared value together. The [archive entry workflow](archive-entry-workflow.md)
+  explains when to include those optional fields.
 - Events and Contact are development notices. Do not add event details or
   working forms until the organization has confirmed the information,
   workflow, owner, and privacy wording.

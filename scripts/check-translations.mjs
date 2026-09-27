@@ -60,6 +60,7 @@ export function validateTranslations(locales, namespaces = getContentNamespaces(
 const archiveCategories = new Set(['heritage', 'research', 'experience', 'gaps', 'progress']);
 const archiveStatuses = new Set(['planned', 'inProgress', 'confirmed']);
 const sharedArchiveFields = ['publicationDate', 'sourceDateTime', 'category', 'status', 'sourceUrl'];
+const archiveCaseFields = ['need', 'proposedResponse', 'potentialValue'];
 
 function isRecord(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -114,6 +115,16 @@ function validateArchiveLocale(locale, language) {
     for (const field of ['title', 'summary']) {
       if (typeof entry[field] !== 'string' || entry[field].trim().length === 0) {
         errors.push(`${label}.${field} must be a non-empty string.`);
+      }
+    }
+
+    const providedCaseFields = archiveCaseFields.filter((field) => entry[field] !== undefined);
+    if (providedCaseFields.length > 0 && providedCaseFields.length !== archiveCaseFields.length) {
+      errors.push(`${label} must provide need, proposedResponse, and potentialValue together.`);
+    }
+    for (const field of providedCaseFields) {
+      if (typeof entry[field] !== 'string' || entry[field].trim().length === 0) {
+        errors.push(`${label}.${field} must be a non-empty string when provided.`);
       }
     }
 
@@ -173,6 +184,11 @@ export function validateArchiveEntries(locales) {
     for (const field of sharedArchiveFields) {
       if (englishEntry[field] !== frenchEntry[field]) {
         errors.push(`Archive entry ${id} must use the same ${field} in both locales.`);
+      }
+    }
+    for (const field of archiveCaseFields) {
+      if ((englishEntry[field] === undefined) !== (frenchEntry[field] === undefined)) {
+        errors.push(`Archive entry ${id} must include ${field} in both locales or neither.`);
       }
     }
   }

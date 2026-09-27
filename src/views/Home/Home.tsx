@@ -152,6 +152,21 @@ function Home() {
                 </div>
             </section>
 
+            <section className="homeMethod" aria-labelledby="method-title">
+                <div className="sectionIntro">
+                    <h2 id="method-title">{t('homePage.methodTitle')}</h2>
+                    <p>{t('homePage.methodIntro')}</p>
+                </div>
+                <div className="homeMethodSteps">
+                    {(['need', 'response', 'benefit'] as const).map((step) => (
+                        <div className="homeMethodStep" key={step}>
+                            <h3>{t(`homePage.${step}Title`)}</h3>
+                            <p>{t(`homePage.${step}Body`)}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
             <section className="homeRecord" aria-labelledby="record-title">
                 <div>
                     <p className="homeEyebrow">{t('archivePage.title')}</p>
