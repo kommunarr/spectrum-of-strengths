@@ -326,7 +326,7 @@ test('publishes the opening record in English and French with the same date', as
     dates.push((await entry.locator('time').getAttribute('dateTime')) ?? '');
   }
 
-  expect(dates[0]).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  expect(dates[0]).toBe('2026-09-27');
   expect(dates[1]).toBe(dates[0]);
 });
 
