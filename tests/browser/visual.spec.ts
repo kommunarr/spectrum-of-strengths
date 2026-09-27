@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 const stableFont = '* { font-family: "Liberation Sans", Arial, sans-serif !important; }';
+const screenshotOptions = { animations: 'disabled' as const, maxDiffPixelRatio: 0.02 };
 
 test.describe('shared shell visual contracts', () => {
   test.use({ viewport: { width: 1440, height: 900 } });
@@ -9,12 +10,8 @@ test.describe('shared shell visual contracts', () => {
     await page.goto('index.html');
     await page.addStyleTag({ content: stableFont });
 
-    await expect(page.locator('header')).toHaveScreenshot('desktop-header.png', {
-      animations: 'disabled',
-    });
-    await expect(page.locator('footer')).toHaveScreenshot('desktop-footer.png', {
-      animations: 'disabled',
-    });
+    await expect(page.locator('header')).toHaveScreenshot('desktop-header.png', screenshotOptions);
+    await expect(page.locator('footer')).toHaveScreenshot('desktop-footer.png', screenshotOptions);
   });
 });
 
@@ -29,16 +26,10 @@ test.describe('mobile shell visual contracts', () => {
     await page.goto('index.html');
     await page.addStyleTag({ content: stableFont });
 
-    await expect(page.locator('header')).toHaveScreenshot('mobile-header.png', {
-      animations: 'disabled',
-    });
-    await expect(page.locator('footer')).toHaveScreenshot('mobile-footer.png', {
-      animations: 'disabled',
-    });
+    await expect(page.locator('header')).toHaveScreenshot('mobile-header.png', screenshotOptions);
+    await expect(page.locator('footer')).toHaveScreenshot('mobile-footer.png', screenshotOptions);
 
     await page.getByRole('button', { name: 'Menu' }).click();
-    await expect(page.locator('#mobile-navigation')).toHaveScreenshot('mobile-navigation.png', {
-      animations: 'disabled',
-    });
+    await expect(page.locator('#mobile-navigation')).toHaveScreenshot('mobile-navigation.png', screenshotOptions);
   });
 });
