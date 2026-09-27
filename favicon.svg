@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Spectrum of Strengths">
+  <defs>
+    <linearGradient id="spectrum" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ea68a2" />
+      <stop offset="0.35" stop-color="#7a75c1" />
+      <stop offset="0.65" stop-color="#03b7de" />
+      <stop offset="1" stop-color="#f9bd33" />
+    </linearGradient>
+  </defs>
+  <path
+    d="M50 50C40 40 35 25 22 25 10 25 6 36 6 50s4 25 16 25c13 0 18-15 28-25Zm0 0c10-10 15-25 28-25 12 0 16 11 16 25s-4 25-16 25c-13 0-18-15-28-25Z"
+    fill="none"
+    stroke="url(#spectrum)"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="10"
+  />
+</svg>
