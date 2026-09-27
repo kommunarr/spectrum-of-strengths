@@ -51,3 +51,17 @@ public site.
 If publication happens on a later day than the preview, update both archive
 entry dates to that actual publication day, rebuild, and review the rendered
 dates before deploying.
+
+## Current release status
+
+- On 2026-09-26, the organization owner approved the opening entry and the
+  factual privacy/accessibility summaries in the bilingual review packet.
+- The holding page and full-site code are committed. Local project, browser,
+  Lighthouse, and external-link checks passed. The owner review does not
+  approve a provisional publication date as an actual release date.
+- Keyboard focus order and accessible names were inspected in English and
+  French. Reflow at a 640 px viewport was reviewed. An actual screen-reader
+  pass and live-host checks remain before the full release.
+- This workspace cannot publish yet: GitHub write access is being arranged,
+  and its system SSH configuration is rejected by OpenSSH. The older public
+  site remains online until the holding page is successfully deployed.

@@ -13,20 +13,19 @@ the defaults and questions intentionally deferred to reduce owner workload.
 
 ## P0: Public Integrity
 
-### Review Current Public Content
+### Current Public Content
 
-- Prepare a short, issue-focused review for the owner covering identity, key
-  term meanings, factual claims, and current privacy/accessibility statements.
-  The maintainer handles routine bilingual proofing and technical details.
+- The owner approved the current identity, opening entry, and factual
+  privacy/accessibility summaries on 2026-09-26. Recheck those statements only
+  if their facts or public-sharing context change; the maintainer handles
+  routine bilingual proofing and technical details.
 - Confirm organization-specific facts, names, contact details, social links,
   and calls to action before those details are published or activated.
 - Separate current services from future ideas. Do not publish a Zoom link,
   event, service, partner, outcome, or operating schedule until the organization
   has approved the claim and the maintenance owner is clear.
-- Review the concise privacy and accessibility summaries with the
-  organization's responsible person before the full release. GitHub Pages
-  hosting is identified; future form providers and formal policy details are
-  still deferred.
+- GitHub Pages hosting is identified in the approved privacy summary. Future
+  form providers and formal policy details are still deferred.
 
 ### Future Submission Workflows
 
@@ -181,8 +180,8 @@ If content growth justifies a structured model later, start with:
 
 1. Replace the older live placeholder site with the [bilingual holding page](opening-release.md)
    once GitHub publishing access is available.
-2. Review the opening entry and concise privacy/accessibility excerpts with
-   the owner, and complete the manual accessibility checklist.
+2. Complete the manual accessibility checklist, including a screen-reader
+   pass; retain the owner's approved wording unless a fact changes.
 3. Set the opening entry's actual publication date, publish the full bilingual
    site, and check the live routes.
 4. Revisit a CMS only if nontechnical self-editing is a real need. Do not add
