@@ -73,7 +73,7 @@
 
 .valueCarouselMotion {
     display: grid;
-    row-gap: 1rem;
+    row-gap: 0.75rem;
 }
 
 .valueCarouselControls {
@@ -81,38 +81,57 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 0.65rem;
+    gap: 0.25rem;
 }
 
 .valueCarouselControls button {
-    min-block-size: 2.75rem;
-    padding: 0.5rem 0.85rem;
-    border: 1px solid #76716f;
-    border-radius: 0.5rem;
-    background: #fff;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background: transparent;
+    color: #4c4e52;
     font: inherit;
-    font-weight: 650;
+    font-size: 1.5rem;
+    line-height: 1;
     cursor: pointer;
 }
 
+.valueCarouselControls button:first-child {
+    font-size: 1rem;
+}
+
+.valueCarouselControls button:hover,
+.valueCarouselControls button:focus-visible {
+    border-color: #a9aab0;
+    background: #fff;
+}
+
 .valueCarouselPosition {
-    min-inline-size: 3.5rem;
+    min-inline-size: 2.75rem;
+    color: #4c4e52;
+    font-size: 0.875rem;
     font-variant-numeric: tabular-nums;
     text-align: center;
 }
 
 .valueCarouselViewport {
+    display: grid;
     inline-size: min(100%, 48rem);
     margin-inline: auto;
 }
 
-.valueCarouselSlide[hidden] {
-    display: none;
+.valueCarouselSlide {
+    grid-area: 1 / 1;
+    min-block-size: 9rem;
+    transition: opacity 1.2s ease-in-out, visibility 1.2s;
 }
 
-.valueCarouselSlide:not([hidden]) {
-    min-block-size: 9rem;
-    animation: valueSlideReveal 800ms ease-out;
+.valueCarouselSlide[aria-hidden='true'] {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .valueCarouselAnnouncement {
@@ -125,11 +144,6 @@
     white-space: nowrap;
     clip-path: inset(50%);
     border: 0;
-}
-
-@keyframes valueSlideReveal {
-    from { opacity: 0.65; }
-    to { opacity: 1; }
 }
 
 .valueCard {

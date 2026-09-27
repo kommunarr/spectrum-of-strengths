@@ -4,7 +4,7 @@ import '../contentPages.css';
 import './Archive.css';
 
 const archiveCategories = ['heritage', 'research', 'experience', 'gaps', 'progress'] as const;
-const rotationInterval = 28_000;
+const rotationInterval = 9_000;
 
 function getReducedMotionPreference(): boolean {
     return typeof window !== 'undefined' &&
@@ -47,9 +47,10 @@ function Archive() {
     const [prefersReducedMotion, setPrefersReducedMotion] = useState(getReducedMotionPreference);
     const [isRotationRequested, setIsRotationRequested] = useState(() => !getReducedMotionPreference());
     const [hasInteractionPausedRotation, setHasInteractionPausedRotation] = useState(false);
+    const [isPointerHovering, setIsPointerHovering] = useState(false);
     const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
     const [slideAnnouncement, setSlideAnnouncement] = useState('');
-    const isRotationEnabled = isRotationRequested && !hasInteractionPausedRotation && !prefersReducedMotion;
+    const isRotationEnabled = isRotationRequested && !hasInteractionPausedRotation && !isPointerHovering && !prefersReducedMotion;
     const entries = (t('archivePage.entries', { returnObjects: true }) as ArchiveEntry[])
         .slice()
         .sort((left, right) => right.publicationDate.localeCompare(left.publicationDate));
@@ -123,7 +124,10 @@ function Archive() {
                         setHasInteractionPausedRotation(true);
                     }}
                     onPointerEnter={() => {
-                        setHasInteractionPausedRotation(true);
+                        setIsPointerHovering(true);
+                    }}
+                    onPointerLeave={() => {
+                        setIsPointerHovering(false);
                     }}
                 >
                     <div className="valueCarouselControls">
@@ -138,21 +142,22 @@ function Archive() {
                                     setIsRotationRequested(true);
                                 }
                             }}
+                            aria-label={t(isRotationRequested ? 'homePage.pauseRotation' : 'homePage.resumeRotation')}
                         >
-                            {t(isRotationRequested ? 'homePage.pauseRotation' : 'homePage.resumeRotation')}
+                            <span aria-hidden="true">{isRotationRequested ? 'Ⅱ' : '▶'}</span>
                         </button>
-                        <button type="button" aria-controls="archive-carousel-slides" onClick={() => {
+                        <button type="button" aria-controls="archive-carousel-slides" aria-label={t('archivePage.previousTheme')} onClick={() => {
                             moveToCategory(-1);
                         }}>
-                            {t('archivePage.previousTheme')}
+                            <span aria-hidden="true">‹</span>
                         </button>
                         <span className="valueCarouselPosition" aria-hidden="true">
                             {activeCategoryIndex + 1} / {archiveCategories.length}
                         </span>
-                        <button type="button" aria-controls="archive-carousel-slides" onClick={() => {
+                        <button type="button" aria-controls="archive-carousel-slides" aria-label={t('archivePage.nextTheme')} onClick={() => {
                             moveToCategory(1);
                         }}>
-                            {t('archivePage.nextTheme')}
+                            <span aria-hidden="true">›</span>
                         </button>
                     </div>
                     <div className="archiveCarouselViewport" id="archive-carousel-slides" aria-live="off">
@@ -160,7 +165,7 @@ function Archive() {
                             <div
                                 className="archiveCategory archiveCarouselSlide"
                                 key={category}
-                                hidden={activeCategoryIndex !== index}
+                                aria-hidden={activeCategoryIndex !== index}
                                 role="group"
                                 aria-roledescription={t('homePage.slideRoleDescription')}
                                 aria-label={t('homePage.slidePosition', {

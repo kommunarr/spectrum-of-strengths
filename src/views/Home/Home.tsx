@@ -5,7 +5,7 @@ import '../contentPages.css';
 import './Home.css';
 
 const valuePillars = ['capture', 'transformation', 'creation', 'preservation'];
-const rotationInterval = 28_000;
+const rotationInterval = 9_000;
 
 function getReducedMotionPreference(): boolean {
     return typeof window !== 'undefined' &&
@@ -18,9 +18,10 @@ function Home() {
     const [prefersReducedMotion, setPrefersReducedMotion] = useState(getReducedMotionPreference);
     const [isRotationRequested, setIsRotationRequested] = useState(() => !getReducedMotionPreference());
     const [hasInteractionPausedRotation, setHasInteractionPausedRotation] = useState(false);
+    const [isPointerHovering, setIsPointerHovering] = useState(false);
     const [activePillarIndex, setActivePillarIndex] = useState(0);
     const [slideAnnouncement, setSlideAnnouncement] = useState('');
-    const isRotationEnabled = isRotationRequested && !hasInteractionPausedRotation && !prefersReducedMotion;
+    const isRotationEnabled = isRotationRequested && !hasInteractionPausedRotation && !isPointerHovering && !prefersReducedMotion;
 
     useEffect(() => {
         if (typeof window.matchMedia !== 'function') return;
@@ -96,7 +97,10 @@ function Home() {
                         setHasInteractionPausedRotation(true);
                     }}
                     onPointerEnter={() => {
-                        setHasInteractionPausedRotation(true);
+                        setIsPointerHovering(true);
+                    }}
+                    onPointerLeave={() => {
+                        setIsPointerHovering(false);
                     }}
                 >
                     <div className="valueCarouselControls">
@@ -111,21 +115,22 @@ function Home() {
                                     setIsRotationRequested(true);
                                 }
                             }}
+                            aria-label={t(isRotationRequested ? 'homePage.pauseRotation' : 'homePage.resumeRotation')}
                         >
-                            {t(isRotationRequested ? 'homePage.pauseRotation' : 'homePage.resumeRotation')}
+                            <span aria-hidden="true">{isRotationRequested ? 'Ⅱ' : '▶'}</span>
                         </button>
-                        <button type="button" aria-controls="value-carousel-slides" onClick={() => {
+                        <button type="button" aria-controls="value-carousel-slides" aria-label={t('homePage.previousValue')} onClick={() => {
                             moveToPillar(-1);
                         }}>
-                            {t('homePage.previousValue')}
+                            <span aria-hidden="true">‹</span>
                         </button>
                         <span className="valueCarouselPosition" aria-hidden="true">
                             {activePillarIndex + 1} / {valuePillars.length}
                         </span>
-                        <button type="button" aria-controls="value-carousel-slides" onClick={() => {
+                        <button type="button" aria-controls="value-carousel-slides" aria-label={t('homePage.nextValue')} onClick={() => {
                             moveToPillar(1);
                         }}>
-                            {t('homePage.nextValue')}
+                            <span aria-hidden="true">›</span>
                         </button>
                     </div>
                     <div className="valueCarouselViewport" id="value-carousel-slides" aria-live="off">
@@ -133,7 +138,7 @@ function Home() {
                             <div
                                 className={`valueCard valueCard-${pillar} valueCarouselSlide`}
                                 key={pillar}
-                                hidden={activePillarIndex !== index}
+                                aria-hidden={activePillarIndex !== index}
                                 role="group"
                                 aria-roledescription={t('homePage.slideRoleDescription')}
                                 aria-label={t('homePage.slidePosition', {

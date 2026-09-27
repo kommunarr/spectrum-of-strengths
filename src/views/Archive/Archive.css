@@ -14,25 +14,24 @@
 }
 
 .archiveCarouselViewport {
+    display: grid;
     inline-size: min(100%, 48rem);
     margin-inline: auto;
 }
 
-.archiveCarouselSlide[hidden] {
-    display: none;
-}
-
-.archiveCarouselSlide:not([hidden]) {
+.archiveCarouselSlide {
+    grid-area: 1 / 1;
     min-block-size: 9rem;
     padding: clamp(1.25rem, 3vw, 2rem);
     border-radius: 1rem;
     background: linear-gradient(135deg, #f2f8fa, #f8f4fa 65%, #fff9f1);
-    animation: archiveSlideReveal 800ms ease-out;
+    transition: opacity 1.2s ease-in-out, visibility 1.2s;
 }
 
-@keyframes archiveSlideReveal {
-    from { opacity: 0.65; }
-    to { opacity: 1; }
+.archiveCarouselSlide[aria-hidden='true'] {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .archiveEntries {

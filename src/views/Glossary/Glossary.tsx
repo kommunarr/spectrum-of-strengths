@@ -3,8 +3,6 @@ import '../contentPages.css';
 
 const glossaryTerms = [
     'heritage',
-    'tradition',
-    'dignity',
     'leadership',
     'systems',
     'gapFinding',

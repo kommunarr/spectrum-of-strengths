@@ -124,13 +124,9 @@
         "glossaryPage": {
             "metaDescription": "Plain-language definitions of heritage, systems, dignity, gap bridging, and the four value principles.",
             "title": "Key terms",
-            "intro": "These plain-language working definitions explain how Spectrum of Strengths uses key terms. They are a starting point and can be refined as the framework develops.",
+            "intro": "These working definitions explain terms that have a particular meaning in our approach. They can be refined as the framework develops.",
             "heritageTitle": "Heritage",
             "heritageBody": "Knowledge, histories, practices, and traditions carried forward by people and communities.",
-            "traditionTitle": "Tradition",
-            "traditionBody": "Practices and knowledge passed between generations and adapted as communities respond to new circumstances.",
-            "dignityTitle": "Dignity",
-            "dignityBody": "Respecting each person’s worth, choices, and contributions.",
             "leadershipTitle": "Visionary leadership",
             "leadershipBody": "Setting a direction that looks ahead, recognizes needs, and brings people and resources together to make change possible.",
             "systemsTitle": "Systems as a strategic anchor",
@@ -173,7 +169,7 @@
             "metaDescription": "Learn about the accessibility features considered in the Spectrum of Strengths website and its review status.",
             "intro": "The site uses clear headings, keyboard navigation, a skip link, responsive layouts, and reduced-motion preferences.",
             "motionTitle": "Motion on the Home and archive pages",
-            "motionBody": "The value ideas on Home and the archive themes each change automatically about every 28 seconds. Rotation stops when you move keyboard focus into a carousel or move your pointer over it. Use the pause control to stop or restart rotation, and the previous and next controls to move between ideas. If your device is set to reduce motion, each carousel is replaced by a static layout showing all its ideas.",
+            "motionBody": "The value ideas on Home and the archive themes each change automatically about every 9 seconds with a gentle fade. Rotation pauses while your pointer is over a carousel and resumes when it leaves. Keyboard focus stops rotation until you use the play control. Use the small controls to pause, play, or move between ideas. If your device is set to reduce motion, each carousel is replaced by a static layout showing all its ideas.",
             "reviewTitle": "Review and feedback",
             "reviewBody": "Automated accessibility checks and the organization's manual review have been completed. The organization reported no actionable high or medium findings. Accessibility feedback cannot yet be submitted through this website; contact options will be added when they are ready."
         },

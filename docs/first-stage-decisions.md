@@ -31,10 +31,11 @@ work. It is a working editorial brief, not approval of legal or policy claims.
   areas. Keep Events and Contact available as clearly marked development
   pages; they do not advertise active events or accept messages.
 - Present the four value ideas on Home and the five archive themes in separate
-  slow carousels that change about every 28 seconds, with pause, previous, and
-  next controls. Stop automatic rotation when a carousel receives keyboard
-  focus or pointer hover. Honor reduced-motion preferences by showing each set
-  together as a static card grid. Each page has only one rotating region.
+  carousels that fade between ideas about every 9 seconds, with small pause,
+  previous, and next controls. Stop automatic rotation when a carousel receives
+  keyboard focus; pause on pointer hover and resume on pointer leave. Honor
+  reduced-motion preferences by showing each set together as a static card grid.
+  Each page has only one rotating region.
 - Describe relationship building as an intention and gradual process. Do not
   name national bodies, imply endorsement, or describe joint work as confirmed
   until the organization has approved details for public sharing.

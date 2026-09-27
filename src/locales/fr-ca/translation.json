@@ -124,13 +124,9 @@
         "glossaryPage": {
             "metaDescription": "Des définitions en langage clair du patrimoine, des systèmes, de la dignité, de la réduction des écarts et des principes de valeur.",
             "title": "Termes clés",
-            "intro": "Ces définitions de travail en langage clair expliquent l’usage que fait Spectrum of Strengths des termes clés. Elles constituent un point de départ et pourront être précisées à mesure que le cadre évoluera.",
+            "intro": "Ces définitions de travail expliquent les termes qui ont un sens particulier dans notre approche. Elles pourront être précisées à mesure que le cadre évoluera.",
             "heritageTitle": "Patrimoine",
             "heritageBody": "Les connaissances, les histoires, les pratiques et les traditions que les personnes et les communautés transmettent.",
-            "traditionTitle": "Tradition",
-            "traditionBody": "Des pratiques et des connaissances transmises entre générations et adaptées lorsque les communautés font face à de nouvelles situations.",
-            "dignityTitle": "Dignité",
-            "dignityBody": "Respecter la valeur, les choix et les contributions de chaque personne.",
             "leadershipTitle": "Leadership visionnaire",
             "leadershipBody": "Définir une orientation tournée vers l’avenir, reconnaître les besoins et réunir des personnes et des ressources pour rendre le changement possible.",
             "systemsTitle": "Les systèmes comme ancrage stratégique",
@@ -173,7 +169,7 @@
             "metaDescription": "Découvrez les caractéristiques d’accessibilité prises en compte sur le site de Spectrum of Strengths et l’état de son examen.",
             "intro": "Le site est conçu en tenant compte de titres clairs, de la navigation au clavier, d’un lien d’évitement, de mises en page adaptables et des préférences de réduction des animations.",
             "motionTitle": "Mouvement sur les pages d’accueil et d’archives",
-            "motionBody": "Les idées sur la valeur à l’accueil et les thèmes des archives changent chacun automatiquement environ toutes les 28 secondes. La rotation s’arrête lorsque le focus clavier entre dans un carrousel ou lorsque le pointeur le survole. Utilisez le bouton de pause pour arrêter ou reprendre la rotation, et les boutons précédent et suivant pour passer d’une idée à l’autre. Si votre appareil est configuré pour réduire les animations, chaque carrousel est remplacé par une disposition statique montrant toutes ses idées.",
+            "motionBody": "Les idées sur la valeur à l’accueil et les thèmes des archives changent chacun automatiquement environ toutes les 9 secondes avec un fondu doux. La rotation s’interrompt pendant que le pointeur survole un carrousel et reprend lorsqu’il le quitte. Le focus clavier arrête la rotation jusqu’à ce que vous utilisiez le bouton de lecture. Les petits boutons permettent de mettre en pause, de reprendre ou de passer d’une idée à l’autre. Si votre appareil est configuré pour réduire les animations, chaque carrousel est remplacé par une disposition statique montrant toutes ses idées.",
             "reviewTitle": "Examen et commentaires",
             "reviewBody": "Des vérifications automatisées de l’accessibilité et l’examen manuel de l’organisme ont été effectués. L’organisme a signalé qu’aucune constatation de gravité élevée ou moyenne nécessitant une intervention n’a été relevée. Il n’est pas encore possible de transmettre des commentaires sur l’accessibilité par ce site; des options de contact seront ajoutées lorsqu’elles seront prêtes."
         },

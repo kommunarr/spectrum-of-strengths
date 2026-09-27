@@ -204,20 +204,18 @@ test.describe('home value carousel', () => {
     await expect(carousel.getByRole('group', { name: 'Slide 1 of 4' })).toBeVisible();
   });
 
-  test('stops rotation on pointer hover until the visitor resumes it', async ({ page }) => {
+  test('pauses rotation on pointer hover and resumes after the pointer leaves', async ({ page }) => {
     await page.clock.install();
     await page.goto(homePage);
 
     const carousel = page.getByRole('group', { name: 'Four ways of thinking about value', exact: true });
     await carousel.hover();
     await expect(carousel.getByRole('button', { name: 'Pause rotation' })).toBeVisible();
-    await page.clock.fastForward(28_000);
+    await page.clock.fastForward(10_000);
     await expect(carousel.getByRole('group', { name: 'Slide 1 of 4' })).toBeVisible();
 
-    await carousel.getByRole('button', { name: 'Pause rotation' }).click();
-    await expect(carousel.getByRole('button', { name: 'Resume rotation' })).toBeVisible();
-    await carousel.getByRole('button', { name: 'Resume rotation' }).click();
-    await page.clock.fastForward(28_000);
+    await page.mouse.move(0, 0);
+    await page.clock.fastForward(9_000);
     await expect(carousel.getByRole('group', { name: 'Slide 2 of 4' })).toBeVisible();
   });
 
@@ -232,13 +230,13 @@ test.describe('home value carousel', () => {
 });
 
 test.describe('archive themes carousel', () => {
-  test('rotates slowly and lets visitors pause and browse in English', async ({ page }) => {
+  test('rotates automatically and lets visitors pause and browse in English', async ({ page }) => {
     await page.clock.install();
     await page.goto('index.html#/archive');
 
     const carousel = page.getByRole('group', { name: 'What the record will include', exact: true });
     await expect(carousel.getByRole('group', { name: 'Slide 1 of 5' })).toContainText('Heritage and systems');
-    await page.clock.fastForward(28_000);
+    await page.clock.fastForward(9_000);
     await expect(carousel.getByRole('group', { name: 'Slide 2 of 5' })).toContainText('Research and evidence');
 
     await carousel.getByRole('button', { name: 'Pause rotation' }).click();

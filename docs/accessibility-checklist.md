@@ -15,7 +15,7 @@ layout change.
 - [ ] No control requires a pointer, hover, or drag to operate.
 - [ ] The value carousel can be paused and navigated with the keyboard; focus
       stops automatic rotation.
-- [ ] Pointer hover stops carousel rotation until someone explicitly resumes it.
+- [ ] Pointer hover pauses carousel rotation, and rotation resumes when the pointer leaves.
 
 ## Zoom and reflow review
 
