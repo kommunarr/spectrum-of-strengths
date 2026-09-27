@@ -65,3 +65,20 @@ dates before deploying.
 - This workspace cannot publish yet: GitHub write access is being arranged,
   and its system SSH configuration is rejected by OpenSSH. The older public
   site remains online until the holding page is successfully deployed.
+
+## Prepared September 2026 holding-page push
+
+The local `gh-pages-reworded` branch contains the approved holding page at
+`af2832e`. Its eight older deployment commits have descriptive messages in
+place of “Updates”; their file trees are unchanged. The branch tip contains
+only `index.html` and `.nojekyll`. The local `main` branch contains the current
+source, including the dependency security update.
+
+GitHub still reported `main` at `639c83e` and `gh-pages` at `9b9eab4` when
+the pushes were prepared. Both SSH and HTTPS push attempts failed because
+this workspace lacks a usable GitHub credential. Once access is available,
+verify those remote tips again, then push `main` normally. Push
+`gh-pages-reworded` to `gh-pages` with a force-with-lease against the verified
+old `gh-pages` tip, because rewording old commits changes their hashes. If
+either remote tip has changed, inspect the new commits before pushing. Check
+the public address immediately after the holding-page push.
