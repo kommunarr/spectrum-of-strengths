@@ -32,7 +32,17 @@ function loadEnglishRouteMap() {
     throw new Error('The English locale must include an otherLanguage object.');
   }
 
-  return Object.fromEntries(
+  const archive = (locale as {
+    common?: { archivePath?: string; archivePage?: { entries?: { id: string }[] } };
+  }).common;
+  const archivePath = archive?.archivePath;
+  const frenchArchivePath = archivePath
+    ? (otherLanguage as Record<string, unknown>)[`/${archivePath}`] : undefined;
+  if (!archivePath || typeof frenchArchivePath !== 'string' || !Array.isArray(archive.archivePage?.entries)) {
+    throw new Error('The English locale must include paired archive entry routes.');
+  }
+
+  const sectionRoutes = Object.fromEntries(
     Object.entries(otherLanguage).map(([path, target]) => {
       if (typeof target !== 'string') {
         throw new Error(`The route mapping for ${path} must be a string.`);
@@ -40,6 +50,10 @@ function loadEnglishRouteMap() {
       return [path, target];
     }),
   );
+  const entryRoutes = Object.fromEntries(archive.archivePage.entries.map(({ id }) => [
+    `/${archivePath}/${id}`, `${frenchArchivePath}/${id}`,
+  ]));
+  return { ...sectionRoutes, ...entryRoutes };
 }
 
 const localizedRouteEntries = Object.entries(loadEnglishRouteMap())
