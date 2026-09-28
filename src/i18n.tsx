@@ -14,10 +14,15 @@ const resources = {
   }
 };
 
+const initialPath = window.location.hash.startsWith('#/')
+  ? window.location.hash.slice(1)
+  : window.location.pathname.replace(/^\/spectrum-of-strengths/, '');
+const initialLanguage = initialPath === '/fr' || initialPath.startsWith('/fr/') ? 'fr' : 'en';
+
 void i18next.use(initReactI18next)
   .init({
     resources,
-    lng: 'en'
+    lng: initialLanguage
   });
 
   export default i18next;
