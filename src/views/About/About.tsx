@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { publishedRoute } from '../../utils/publishedRoute';
 import '../contentPages.css';
 
 const foundationSections = ['origins', 'purpose', 'contributors', 'relationships', 'embodiment'];
@@ -25,7 +26,7 @@ function About() {
             </div>
 
             <p className="foundationGlossaryLink">
-                <Link to={`/${t('glossaryPath')}`}>{t('foundationsPage.termsLink')}</Link>
+                <Link to={publishedRoute(t('glossaryPath'))}>{t('foundationsPage.termsLink')}</Link>
             </p>
         </article>
     );

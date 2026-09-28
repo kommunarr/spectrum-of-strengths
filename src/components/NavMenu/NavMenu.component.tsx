@@ -26,7 +26,7 @@ function NavMenu(props: INavMenu) {
                         <li key={section}>
                             <NavLink
                                 className={({ isActive }) => `actionLink${isActive ? ' active' : ''}`}
-                                to={path}
+                                to={Utils.publishedRoute(path)}
                                 end
                                 aria-describedby={isInDevelopment ? statusDescriptionId : undefined}
                             >
@@ -42,7 +42,7 @@ function NavMenu(props: INavMenu) {
                 </ul>
                 <ul className="mobileMenuOnly navigationMenuHeadings">
                     <li>
-                        <Link className="actionLink" to={languageLinkLocation} lang={otherLanguageKey}>
+                        <Link className="actionLink" to={Utils.publishedRoute(languageLinkLocation)} lang={otherLanguageKey}>
                             {t('name', { ns: 'otherLanguage' })}
                         </Link>
                     </li>

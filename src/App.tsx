@@ -1,4 +1,4 @@
-import { RouterProvider, createHashRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import type { RouteObject } from "react-router-dom";
 import './App.css'
 import Home from './views/Home/Home';
@@ -14,6 +14,8 @@ import TermsOfUseAndPrivacy from './views/TermsOfUseAndPrivacy/TermsOfUseAndPriv
 import AccessibilityStandards from './views/AccessibilityStandards/AccessibilityStandards';
 import Layout from './components/Layout';
 import LanguageLoader from './components/LanguageLoader';
+import CanadianEnglish from './locales/en-ca/translation.json';
+import CanadianFrench from './locales/fr-ca/translation.json';
 
 const routeObject: RouteObject = {
   path: "/",
@@ -87,7 +89,24 @@ const routeObject: RouteObject = {
   ]
 };
 
-const router = createHashRouter([routeObject]);
+// Convert old fragment bookmarks before the browser router reads the location.
+if (window.location.hash.startsWith('#/')) {
+  let legacyPath: string;
+  try {
+    legacyPath = decodeURIComponent(window.location.hash.slice(1));
+  } catch {
+    legacyPath = '/unknown';
+  }
+  const knownPaths = new Set([
+    ...Object.keys(CanadianEnglish.otherLanguage),
+    ...Object.keys(CanadianFrench.otherLanguage),
+  ].filter((path) => path.startsWith('/')));
+  const target = knownPaths.has(legacyPath) ? legacyPath : legacyPath.startsWith('/fr/') ? '/fr/unknown' : '/unknown';
+  const destination = `/spectrum-of-strengths${target === '/' ? '/' : `${target}/`}${window.location.search}`;
+  window.history.replaceState(window.history.state, '', destination);
+}
+
+const router = createBrowserRouter([routeObject], { basename: '/spectrum-of-strengths' });
 
 function App() {
   return (

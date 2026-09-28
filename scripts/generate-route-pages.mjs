@@ -1,0 +1,111 @@
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
+const outputDirectory = 'dist';
+const siteRoot = 'https://kommunarr.github.io/spectrum-of-strengths/';
+const routeDefinitions = [
+  ['homePath', 'homePage.title', 'homePage.metaDescription'],
+  ['aboutPath', 'about', 'foundationsPage.metaDescription'],
+  ['archivePath', 'archive', 'archivePage.metaDescription'],
+  ['glossaryPath', 'glossary', 'glossaryPage.metaDescription'],
+  ['eventsPath', 'events', 'developmentsPage.eventsMetaDescription'],
+  ['contactPath', 'contact', 'developmentsPage.contactMetaDescription'],
+  ['termsOfUseAndPrivacyPath', 'termsOfUseAndPrivacy', 'privacyPage.metaDescription'],
+  ['accessibilityStandardsPath', 'accessibilityStandards', 'accessibilityPage.metaDescription'],
+];
+
+const [english, french, template] = await Promise.all([
+  readFile(new URL('../src/locales/en-ca/translation.json', import.meta.url), 'utf8').then(JSON.parse),
+  readFile(new URL('../src/locales/fr-ca/translation.json', import.meta.url), 'utf8').then(JSON.parse),
+  readFile(join(outputDirectory, 'index.html'), 'utf8'),
+]);
+
+function valueAt(source, key) {
+  const value = key.split('.').reduce((current, part) => current?.[part], source);
+  if (typeof value !== 'string' || value.length === 0) {
+    throw new Error(`Missing published route value: ${key}`);
+  }
+  return value;
+}
+
+function pathFor(locale, pathKey) {
+  const value = locale.common[pathKey];
+  if (typeof value !== 'string') throw new Error(`Missing published route path: ${pathKey}`);
+  return value.replace(/^\/+|\/+$/g, '');
+}
+
+function publicUrl(path) {
+  return new URL(path ? `${path}/` : '', siteRoot).href;
+}
+
+function escapeHtml(value) {
+  return value.replaceAll('&', '&amp;').replaceAll('"', '&quot;')
+    .replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+}
+
+function replaceRequired(html, pattern, replacement) {
+  if (!pattern.test(html)) throw new Error(`Missing metadata pattern: ${pattern}`);
+  return html.replace(pattern, replacement);
+}
+
+function pageHtml(locale, language, path, otherPath, titleKey, descriptionKey) {
+  const common = locale.common;
+  const title = `${valueAt(common, titleKey)} | ${common.organizationName}`;
+  const description = valueAt(common, descriptionKey);
+  const canonical = publicUrl(path);
+  const englishUrl = language === 'en' ? canonical : publicUrl(otherPath);
+  const frenchUrl = language === 'fr' ? canonical : publicUrl(otherPath);
+  const alternateLinks = `\n    <link rel="alternate" hreflang="en-CA" href="${escapeHtml(englishUrl)}" />` +
+    `\n    <link rel="alternate" hreflang="fr-CA" href="${escapeHtml(frenchUrl)}" />`;
+
+  let html = replaceRequired(template, /<html lang="[^"]*">/, `<html lang="${language}">`);
+  html = replaceRequired(html, /<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`);
+  html = replaceRequired(html, /<meta name="description" content="[^"]*" \/>/,
+    `<meta name="description" content="${escapeHtml(description)}" />`);
+  html = replaceRequired(html, /<link rel="canonical" href="[^"]*" \/>/,
+    `<link rel="canonical" href="${escapeHtml(canonical)}" />${alternateLinks}`);
+  for (const [property, content] of [
+    ['og:title', title], ['og:description', description], ['og:url', canonical],
+  ]) {
+    html = replaceRequired(html, new RegExp(`<meta property="${property}" content="[^"]*" \\/>`),
+      `<meta property="${property}" content="${escapeHtml(content)}" />`);
+  }
+  for (const [name, content] of [
+    ['twitter:title', title], ['twitter:description', description],
+  ]) {
+    html = replaceRequired(html, new RegExp(`<meta name="${name}" content="[^"]*" \\/>`),
+      `<meta name="${name}" content="${escapeHtml(content)}" />`);
+  }
+  return html;
+}
+
+const sitemapEntries = [];
+for (const [pathKey, titleKey, descriptionKey] of routeDefinitions) {
+  const englishPath = pathFor(english, pathKey);
+  const frenchPath = pathFor(french, pathKey);
+  const englishRoute = englishPath ? `/${englishPath}` : '/';
+  const frenchRoute = `/${frenchPath}`;
+  if (english.otherLanguage[englishRoute] !== frenchRoute ||
+    french.otherLanguage[frenchRoute] !== englishRoute) {
+    throw new Error(`English/French route mismatch for ${pathKey}`);
+  }
+
+  for (const [locale, language, path, otherPath] of [
+    [english, 'en', englishPath, frenchPath],
+    [french, 'fr', frenchPath, englishPath],
+  ]) {
+    const directory = join(outputDirectory, path);
+    await mkdir(directory, { recursive: true });
+    await writeFile(join(directory, 'index.html'),
+      pageHtml(locale, language, path, otherPath, titleKey, descriptionKey));
+    sitemapEntries.push(`<url><loc>${escapeHtml(publicUrl(path))}</loc></url>`);
+  }
+}
+
+await writeFile(join(outputDirectory, 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n` +
+  `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+  sitemapEntries.map((entry) => `  ${entry}`).join('\n') +
+  `\n</urlset>\n`);
+
+console.log(`Generated ${sitemapEntries.length} direct route pages and sitemap.xml.`);

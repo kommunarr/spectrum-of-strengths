@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { publishedRoute } from '../../utils/publishedRoute';
 import '../contentPages.css';
 import './Home.css';
 
@@ -179,10 +180,10 @@ function Home() {
                     <p>{t('homePage.recordBody')}</p>
                 </div>
                 <div className="homeLinks">
-                    <Link className="homeLink homeLinkPrimary" to={`/${t('archivePath')}`}>
+                    <Link className="homeLink homeLinkPrimary" to={publishedRoute(t('archivePath'))}>
                         {t('homePage.archiveLink')}
                     </Link>
-                    <Link className="homeLink" to={`/${t('aboutPath')}`}>
+                    <Link className="homeLink" to={publishedRoute(t('aboutPath'))}>
                         {t('homePage.foundationsLink')}
                     </Link>
                 </div>

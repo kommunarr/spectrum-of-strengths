@@ -11,7 +11,8 @@ export function getCorrespondingPageRouteInOtherLanguage(
     i18n: i18n,
     path: string,
 ): string {
-    const isValidPath = i18n.exists(path, { ns: 'otherLanguage' });
-    const key = isValidPath ? path : `/${t('homePath')}`;
+    const normalizedPath = decodeURIComponent(path === '/' ? '/' : path.replace(/\/$/, ''));
+    const isValidPath = i18n.exists(normalizedPath, { ns: 'otherLanguage' });
+    const key = isValidPath ? normalizedPath : `/${t('homePath')}`;
     return t(key, { ns: 'otherLanguage' });
 }

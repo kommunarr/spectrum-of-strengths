@@ -27,7 +27,7 @@ function Header(props: IHeader) {
           <Logo />
 
           <div className="actionSection">
-            <Link className="actionLink languageLink" to={languageLinkLocation} lang={otherLanguageKey}>
+            <Link className="actionLink languageLink" to={Utils.publishedRoute(languageLinkLocation)} lang={otherLanguageKey}>
               {t('name', { ns: 'otherLanguage' })}
             </Link>
             <button

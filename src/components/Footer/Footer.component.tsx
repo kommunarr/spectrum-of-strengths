@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Logo from '../Logo';
 import './Footer.css';
 import { Link } from 'react-router-dom';
+import { publishedRoute } from '../../utils/publishedRoute';
 
 function Footer() {
 
@@ -13,7 +14,7 @@ function Footer() {
             <div className="footerInfo">
                 <div className="footerLinks">
                     {footerLinks.map((footerLink, index) => (
-                        <Link key={index} className="footerLink" to={t(`${footerLink}Path`)}>
+                        <Link key={index} className="footerLink" to={publishedRoute(t(`${footerLink}Path`))}>
                             {t(footerLink)}
                         </Link>
                     ))}

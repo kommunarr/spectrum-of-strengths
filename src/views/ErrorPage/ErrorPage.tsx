@@ -18,13 +18,20 @@ function ErrorPage() {
     useEffect(() => {
         document.title = `${t('pageNotFoundTitle')} | ${t('organizationName')}`;
         updateMetaDescription(t('pageNotFoundDescription'));
+        let robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+        if (!robots) {
+            robots = document.createElement('meta');
+            robots.name = 'robots';
+            document.head.append(robots);
+        }
+        robots.content = 'noindex';
     }, [t, language]);
 
     return (
         <div className="notFoundPage">
             <h1>{t('pageNotFoundTitle')}</h1>
             <p>{t('pageNotFoundSubtitle')}</p>
-            <Link className="notFoundHomeLink" to={t('homePath') ? `/${t('homePath')}` : '/'}>
+            <Link className="notFoundHomeLink" to={Utils.publishedRoute(t('homePath'))}>
                 {t('pageNotFoundHomeLink')}
             </Link>
         </div>
