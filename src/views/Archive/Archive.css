@@ -85,6 +85,7 @@
 
 .archiveEntryPage .archiveEntry h1 {
     margin-block: 0.75rem 0.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     line-height: 1.25;
 }
 
