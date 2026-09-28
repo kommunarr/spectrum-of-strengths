@@ -1,17 +1,18 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { createRouteRenderer } from './render-route-content.mjs';
 
 const outputDirectory = 'dist';
 const siteRoot = 'https://kommunarr.github.io/spectrum-of-strengths/';
 const routeDefinitions = [
-  ['homePath', 'homePage.title', 'homePage.metaDescription'],
-  ['aboutPath', 'about', 'foundationsPage.metaDescription'],
-  ['archivePath', 'archive', 'archivePage.metaDescription'],
-  ['glossaryPath', 'glossary', 'glossaryPage.metaDescription'],
-  ['eventsPath', 'events', 'developmentsPage.eventsMetaDescription'],
-  ['contactPath', 'contact', 'developmentsPage.contactMetaDescription'],
-  ['termsOfUseAndPrivacyPath', 'termsOfUseAndPrivacy', 'privacyPage.metaDescription'],
-  ['accessibilityStandardsPath', 'accessibilityStandards', 'accessibilityPage.metaDescription'],
+  ['homePath', 'homePage.title', 'homePage.metaDescription', 'Home'],
+  ['aboutPath', 'about', 'foundationsPage.metaDescription', 'About'],
+  ['archivePath', 'archive', 'archivePage.metaDescription', 'Archive'],
+  ['glossaryPath', 'glossary', 'glossaryPage.metaDescription', 'Glossary'],
+  ['eventsPath', 'events', 'developmentsPage.eventsMetaDescription', 'Events'],
+  ['contactPath', 'contact', 'developmentsPage.contactMetaDescription', 'Contact'],
+  ['termsOfUseAndPrivacyPath', 'termsOfUseAndPrivacy', 'privacyPage.metaDescription', 'TermsOfUseAndPrivacy'],
+  ['accessibilityStandardsPath', 'accessibilityStandards', 'accessibilityPage.metaDescription', 'AccessibilityStandards'],
 ];
 
 const [english, french, template] = await Promise.all([
@@ -48,7 +49,7 @@ function replaceRequired(html, pattern, replacement) {
   return html.replace(pattern, replacement);
 }
 
-function pageHtml(locale, language, path, otherPath, titleKey, descriptionKey) {
+function pageHtml(locale, language, path, otherPath, titleKey, descriptionKey, content) {
   const common = locale.common;
   const title = `${valueAt(common, titleKey)} | ${common.organizationName}`;
   const description = valueAt(common, descriptionKey);
@@ -59,6 +60,8 @@ function pageHtml(locale, language, path, otherPath, titleKey, descriptionKey) {
     `\n    <link rel="alternate" hreflang="fr-CA" href="${escapeHtml(frenchUrl)}" />`;
 
   let html = replaceRequired(template, /<html lang="[^"]*">/, `<html lang="${language}">`);
+  html = replaceRequired(html, /<\/head>/,
+    `  <noscript><link rel="stylesheet" href="/spectrum-of-strengths/no-script.css" /></noscript>\n  </head>`);
   html = replaceRequired(html, /<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`);
   html = replaceRequired(html, /<meta name="description" content="[^"]*" \/>/,
     `<meta name="description" content="${escapeHtml(description)}" />`);
@@ -76,11 +79,14 @@ function pageHtml(locale, language, path, otherPath, titleKey, descriptionKey) {
     html = replaceRequired(html, new RegExp(`<meta name="${name}" content="[^"]*" \\/>`),
       `<meta name="${name}" content="${escapeHtml(content)}" />`);
   }
+  html = replaceRequired(html, /<div id="root"><\/div>/,
+    `<div id="root" data-route-path="${escapeHtml(new URL(canonical).pathname)}">${content}</div>`);
   return html;
 }
 
+const renderRoute = await createRouteRenderer(outputDirectory);
 const sitemapEntries = [];
-for (const [pathKey, titleKey, descriptionKey] of routeDefinitions) {
+for (const [pathKey, titleKey, descriptionKey, componentName] of routeDefinitions) {
   const englishPath = pathFor(english, pathKey);
   const frenchPath = pathFor(french, pathKey);
   const englishRoute = englishPath ? `/${englishPath}` : '/';
@@ -101,8 +107,11 @@ for (const [pathKey, titleKey, descriptionKey] of routeDefinitions) {
   ]) {
     const directory = join(outputDirectory, path);
     await mkdir(directory, { recursive: true });
+    const content = await renderRoute({
+      componentName, locale, language, url: publicUrl(path),
+    });
     await writeFile(join(directory, 'index.html'),
-      pageHtml(locale, language, path, otherPath, titleKey, descriptionKey));
+      pageHtml(locale, language, path, otherPath, titleKey, descriptionKey, content));
     sitemapEntries.push(`  <url>\n    <loc>${escapeHtml(publicUrl(path))}</loc>\n${alternates}\n  </url>`);
   }
 }

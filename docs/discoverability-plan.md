@@ -17,6 +17,11 @@ those canonical routes and paired language alternates. Existing fragment
 bookmarks redirect to the matching path, and unknown server paths keep the
 bilingual static 404 response.
 
+The build now renders the actual page content into each HTML response. Direct
+routes hydrate that content in the browser; older fragment bookmarks replace
+their initial home-page markup after redirect. A no-JavaScript stylesheet keeps
+the content, language links, mobile navigation, and complete value cards usable.
+
 The route checks, external-link monitor, Lighthouse URLs, and maintainer guides
 now use direct paths. Quality, browser, and Lighthouse CI passed for the final
 route commit. Live direct English and French paths, the sitemap, and GitHub

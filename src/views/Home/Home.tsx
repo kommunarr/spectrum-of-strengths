@@ -8,16 +8,10 @@ import './Home.css';
 const valuePillars = ['capture', 'transformation', 'creation', 'preservation'];
 const rotationInterval = 6_000;
 
-function getReducedMotionPreference(): boolean {
-    return typeof window !== 'undefined' &&
-        typeof window.matchMedia === 'function' &&
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
 function Home() {
     const { t } = useTranslation(['common']);
-    const [prefersReducedMotion, setPrefersReducedMotion] = useState(getReducedMotionPreference);
-    const [isRotationRequested, setIsRotationRequested] = useState(() => !getReducedMotionPreference());
+    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+    const [isRotationRequested, setIsRotationRequested] = useState(true);
     const [hasInteractionPausedRotation, setHasInteractionPausedRotation] = useState(false);
     const [isPointerHovering, setIsPointerHovering] = useState(false);
     const [activePillarIndex, setActivePillarIndex] = useState(0);

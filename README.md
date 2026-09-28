@@ -49,7 +49,10 @@ serves the full bilingual first release, published on 2026-09-27. The
 `npm run deploy` publishes approved application updates and requires authorized
 access to the `kommunarr/spectrum-of-strengths` repository.
 
-The production build generates direct English and French page files and a
-`sitemap.xml` from the locale data. Older `#/...` bookmarks continue to open
-their matching pages. Keep the `/spectrum-of-strengths/` base path when adding
-routes or updating deployment configuration.
+The production build renders the English and French page content into each
+direct route file and generates a `sitemap.xml` from the locale data. The site
+then hydrates those pages for navigation and carousel controls. Pages remain
+readable with JavaScript disabled; a small fallback stylesheet shows the full
+value cards and mobile navigation in that case. Older `#/...` bookmarks continue
+to open their matching pages. Keep the `/spectrum-of-strengths/` base path when
+adding routes or updating deployment configuration.

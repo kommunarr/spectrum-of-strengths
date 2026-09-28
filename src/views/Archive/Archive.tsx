@@ -6,12 +6,6 @@ import './Archive.css';
 const archiveCategories = ['heritage', 'research', 'experience', 'gaps', 'progress'] as const;
 const rotationInterval = 6_000;
 
-function getReducedMotionPreference(): boolean {
-    return typeof window !== 'undefined' &&
-        typeof window.matchMedia === 'function' &&
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
 type ArchiveCategory = typeof archiveCategories[number];
 type ArchiveStatus = 'planned' | 'inProgress' | 'confirmed';
 
@@ -44,8 +38,8 @@ function formatPublicationDate(date: string, language: string): string {
 
 function Archive() {
     const { t, i18n } = useTranslation(['common']);
-    const [prefersReducedMotion, setPrefersReducedMotion] = useState(getReducedMotionPreference);
-    const [isRotationRequested, setIsRotationRequested] = useState(() => !getReducedMotionPreference());
+    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+    const [isRotationRequested, setIsRotationRequested] = useState(true);
     const [hasInteractionPausedRotation, setHasInteractionPausedRotation] = useState(false);
     const [isPointerHovering, setIsPointerHovering] = useState(false);
     const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);

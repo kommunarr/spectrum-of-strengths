@@ -19,7 +19,7 @@ production-facing claims until it is approved.
 
 - React 18 with TypeScript and Vite.
 - React Router with History API routes in `src/App.tsx`; the production build
-  generates a direct HTML file for each English and French route.
+  renders each English and French route into its own HTML file.
 - `react-i18next` with Canadian English and Canadian French resources under
   `src/locales/`.
 - CSS is colocated with components and views. Preserve the existing component
@@ -99,6 +99,9 @@ If a backend is added:
 ## Routing And Deployment
 
 - Add English and French routes together when a page is introduced.
+- Add new page components to the route renderer in
+  `scripts/render-route-content.mjs` and its metadata/path mapping in
+  `scripts/generate-route-pages.mjs`.
 - Preserve the `/spectrum-of-strengths` base path, direct route files, and
   redirects for older `#/...` bookmarks.
 - Verify direct navigation and refresh behavior for every route in the built
