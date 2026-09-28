@@ -45,8 +45,9 @@ public summary is based on private records.
 The English and French routes are paired through the language switcher. Check
 both versions before publishing; never rely on a missing translation silently
 falling back to the other language.
-The production build generates each route's HTML metadata and the sitemap from
-the locale files. Do not edit generated `dist/` files. When adding a route,
+The production build generates each route's HTML content, metadata, and sitemap
+entry from the locale files. It also gives paired archive entries direct URLs
+from their IDs. Do not edit generated `dist/` files. When adding a new section,
 update both locale route maps and the route-page generator together.
 
 ## Review cadence

@@ -53,6 +53,7 @@ The production build renders the English and French page content into each
 direct route file and generates a `sitemap.xml` from the locale data. The site
 then hydrates those pages for navigation and carousel controls. Pages remain
 readable with JavaScript disabled; a small fallback stylesheet shows the full
-value cards and mobile navigation in that case. Older `#/...` bookmarks continue
-to open their matching pages. Keep the `/spectrum-of-strengths/` base path when
+value cards and mobile navigation in that case. Approved archive entries get
+stable direct URLs from their IDs. Older `#/...` bookmarks continue to open
+their matching pages. Keep the `/spectrum-of-strengths/` base path when
 adding routes or updating deployment configuration.

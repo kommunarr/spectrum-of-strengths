@@ -116,6 +116,36 @@ for (const [pathKey, titleKey, descriptionKey, componentName] of routeDefinition
   }
 }
 
+for (const [englishIndex, entry] of english.common.archivePage.entries.entries()) {
+  const frenchIndex = french.common.archivePage.entries.findIndex((other) => other.id === entry.id);
+  if (frenchIndex < 0) throw new Error(`Missing French archive entry: ${entry.id}`);
+  const englishPath = `${pathFor(english, 'archivePath')}/${entry.id}`;
+  const frenchPath = `${pathFor(french, 'archivePath')}/${entry.id}`;
+  const alternates = [
+    ['en-CA', publicUrl(englishPath)],
+    ['fr-CA', publicUrl(frenchPath)],
+  ].map(([language, url]) =>
+    `    <xhtml:link rel="alternate" hreflang="${language}" href="${escapeHtml(url)}" />`).join('\n');
+
+  for (const [locale, language, path, otherPath, entryIndex] of [
+    [english, 'en', englishPath, frenchPath, englishIndex],
+    [french, 'fr', frenchPath, englishPath, frenchIndex],
+  ]) {
+    const directory = join(outputDirectory, path);
+    await mkdir(directory, { recursive: true });
+    const content = await renderRoute({
+      componentName: 'ArchiveEntryPage', entryId: entry.id,
+      locale, language, url: publicUrl(path),
+    });
+    await writeFile(join(directory, 'index.html'), pageHtml(
+      locale, language, path, otherPath,
+      `archivePage.entries.${entryIndex}.title`,
+      `archivePage.entries.${entryIndex}.summary`, content,
+    ));
+    sitemapEntries.push(`  <url>\n    <loc>${escapeHtml(publicUrl(path))}</loc>\n${alternates}\n  </url>`);
+  }
+}
+
 await writeFile(join(outputDirectory, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n` +
   `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n` +

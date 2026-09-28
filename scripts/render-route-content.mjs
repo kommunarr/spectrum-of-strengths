@@ -10,7 +10,7 @@ import { I18nextProvider, initReactI18next } from 'react-i18next';
 import { StaticRouter } from 'react-router-dom';
 
 const componentNames = [
-  'Home', 'About', 'Archive', 'Glossary', 'Events', 'Contact',
+  'Home', 'About', 'Archive', 'ArchiveEntryPage', 'Glossary', 'Events', 'Contact',
   'TermsOfUseAndPrivacy', 'AccessibilityStandards',
 ];
 
@@ -21,8 +21,10 @@ export async function createRouteRenderer(outputDirectory) {
   const logoUrl = `/spectrum-of-strengths/assets/${logoAsset}`;
   const cacheDirectory = resolve('node_modules/.cache');
   const bundlePath = resolve(cacheDirectory, `spectrum-route-renderer-${randomUUID()}.mjs`);
-  const componentExports = componentNames.map((name) =>
-    `export { default as ${name} } from './src/views/${name}/${name}.tsx';`).join('\n');
+  const componentExports = componentNames.map((name) => {
+    const directory = name === 'ArchiveEntryPage' ? 'Archive' : name;
+    return `export { default as ${name} } from './src/views/${directory}/${name}.tsx';`;
+  }).join('\n');
 
   await mkdir(cacheDirectory, { recursive: true });
   let components;
@@ -58,7 +60,7 @@ export async function createRouteRenderer(outputDirectory) {
   }
 
   const translations = new Map();
-  return async function renderRoute({ componentName, locale, language, url }) {
+  return async function renderRoute({ componentName, entryId, locale, language, url }) {
     if (!componentNames.includes(componentName)) {
       throw new Error(`Unknown page component: ${componentName}`);
     }
@@ -81,7 +83,7 @@ export async function createRouteRenderer(outputDirectory) {
           location: new URL(url).pathname,
           basename: '/spectrum-of-strengths/',
         }, React.createElement(components.Layout, {
-          outlet: React.createElement(components[componentName]),
+          outlet: React.createElement(components[componentName], { entryId }),
         }))),
     );
   };

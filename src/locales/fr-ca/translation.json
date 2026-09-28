@@ -96,6 +96,7 @@
             "progressTitle": "Plans et progrès",
             "progressBody": "Des nouvelles datées sur les projets, le développement des relations, le travail en cours et les étapes confirmées. Il est possible de citer une correspondance privée sans en publier le message intégral.",
             "entriesTitle": "Entrées publiées",
+            "backToArchive": "Retour aux archives",
             "entriesIntro": "Les entrées célébreront les forces et montreront le chemin des preuves à l’action. Lorsque les renseignements seront prêts à être partagés, un besoin documenté, une réponse proposée et une valeur partagée possible seront présentés ensemble. Les projets et la correspondance seront datés sans être présentés comme des réalisations achevées.",
             "needLabel": "Besoin documenté",
             "responseLabel": "Réponse proposée",

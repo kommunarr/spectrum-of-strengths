@@ -9,8 +9,9 @@ site was absent from search results.
 
 ## Implemented 2026-09-28
 
-The published site now uses direct English and French paths for all 16 public
-routes. The build generates a separate initial HTML file for each route with
+The published site now uses direct English and French paths for its eight
+sections and each approved archive entry. The build generates a separate
+initial HTML file for each route with
 its page language, translated title and description, canonical URL, social
 metadata, and English/French alternates. It also generates a sitemap containing
 those canonical routes and paired language alternates. Existing fragment
@@ -27,9 +28,8 @@ now use direct paths. Quality, browser, and Lighthouse CI passed for the final
 route commit. Live direct English and French paths, the sitemap, and GitHub
 Pages publication were checked after deployment.
 
-Individual archive entries still share the archive page URL. Give approved
-entries their own paths when there are enough entries to make individual
-discovery useful.
+The opening archive entry now has its own English and French paths. Future
+approved entries receive paths derived from their stable IDs during the build.
 
 ## Original target
 

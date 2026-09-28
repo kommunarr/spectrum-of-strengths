@@ -99,6 +99,10 @@ Each published entry has these fields:
   correspondence or a file that requires access to an internal account.
 
 The site sorts entries by publication date, newest first.
+Each approved entry also receives an English URL under `/archive/<id>/` and a
+French URL under `/fr/archives/<id>/`. Keep the ID stable after publication so
+shared links continue to work. The entry title and summary supply the page's
+initial HTML and social metadata in each language.
 
 The handoff template is an editorial aid, not a website form or publishing
 system. The site has a published opening entry, but no CMS, scheduling, or

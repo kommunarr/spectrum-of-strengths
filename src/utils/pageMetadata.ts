@@ -1,5 +1,6 @@
 import CanadianEnglish from '../locales/en-ca/translation.json';
 import CanadianFrench from '../locales/fr-ca/translation.json';
+import { getArchiveEntryAlternatePath } from './archiveEntryRoutes.ts';
 
 const siteRoot = 'https://kommunarr.github.io/spectrum-of-strengths/';
 
@@ -24,9 +25,9 @@ export function updatePageMetadata({ description, language, pathname, title }: {
     title: string;
 }): void {
     const routePath = decodeURIComponent(pathname === '/' ? '/' : pathname.replace(/\/$/, ''));
-    const alternatePath = language === 'en'
+    const alternatePath = getArchiveEntryAlternatePath(routePath) ?? (language === 'en'
         ? CanadianEnglish.otherLanguage[routePath as keyof typeof CanadianEnglish.otherLanguage]
-        : CanadianFrench.otherLanguage[routePath as keyof typeof CanadianFrench.otherLanguage];
+        : CanadianFrench.otherLanguage[routePath as keyof typeof CanadianFrench.otherLanguage]);
     const routeUrl = (path: string) => new URL(path === '/' ? '' : `${path.slice(1)}/`, siteRoot).href;
     const canonical = routeUrl(routePath);
     const otherUrl = typeof alternatePath === 'string' && alternatePath.startsWith('/')

@@ -75,6 +75,19 @@
     line-height: 1.35;
 }
 
+.archiveEntryPage {
+    padding-block: 1.5rem 3rem;
+}
+
+.archiveEntryBack {
+    margin-block: 0 1.5rem;
+}
+
+.archiveEntryPage .archiveEntry h1 {
+    margin-block: 0.75rem 0.5rem;
+    line-height: 1.25;
+}
+
 .archiveEntry > p {
     margin-block: 0.5rem 0;
     font-size: 1rem;

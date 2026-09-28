@@ -8,17 +8,21 @@ const configuredSiteUrl = process.env.SITE_URL?.trim();
 const localSiteUrl = `http://127.0.0.1:${previewPort}/spectrum-of-strengths/`;
 const requestTimeout = 15_000;
 
-function getRoutePaths(locale) {
-  return Object.entries(locale.otherLanguage)
+function getRoutePaths(english, french) {
+  const pagePaths = Object.entries(english.otherLanguage)
     .filter(([path]) => path.startsWith('/'))
     .flatMap(([englishPath, frenchPath]) => [englishPath, frenchPath]);
+  const entryPaths = english.common.archivePage.entries.flatMap((entry) => [
+    `/${english.common.archivePath}/${entry.id}`,
+    `/${french.common.archivePath}/${entry.id}`,
+  ]);
+  return [...pagePaths, ...entryPaths];
 }
 
-async function loadEnglishLocale() {
-  return JSON.parse(await readFile(
-    new URL('../src/locales/en-ca/translation.json', import.meta.url),
-    'utf8',
-  ));
+async function loadLocales() {
+  return Promise.all(['en-ca', 'fr-ca'].map(async (language) => JSON.parse(await readFile(
+    new URL(`../src/locales/${language}/translation.json`, import.meta.url), 'utf8',
+  ))));
 }
 
 async function waitForPreview(url) {
@@ -124,8 +128,8 @@ try {
     previewServer = await startPreview();
   }
 
-  const locale = await loadEnglishLocale();
-  const routePaths = getRoutePaths(locale);
+  const [english, french] = await loadLocales();
+  const routePaths = getRoutePaths(english, french);
   const links = await findExternalLinks(siteUrl, routePaths);
   const results = await Promise.all([...links.keys()].map((url) => checkLink(url)));
   const failures = results.filter(({ error, status }) => error || (status >= 400 && ![401, 403, 429].includes(status)));

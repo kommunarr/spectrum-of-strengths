@@ -9,6 +9,7 @@ import React from 'react';
 import ErrorPage from './views/ErrorPage/ErrorPage';
 import Events from './views/Events/Events';
 import Archive from './views/Archive/Archive';
+import ArchiveEntryPage from './views/Archive/ArchiveEntryPage';
 import Glossary from './views/Glossary/Glossary';
 import TermsOfUseAndPrivacy from './views/TermsOfUseAndPrivacy/TermsOfUseAndPrivacy';
 import AccessibilityStandards from './views/AccessibilityStandards/AccessibilityStandards';
@@ -16,6 +17,7 @@ import Layout from './components/Layout';
 import LanguageLoader from './components/LanguageLoader';
 import CanadianEnglish from './locales/en-ca/translation.json';
 import CanadianFrench from './locales/fr-ca/translation.json';
+import { archiveEntryRoutes } from './utils/archiveEntryRoutes.ts';
 
 const routeObject: RouteObject = {
   path: "/",
@@ -36,6 +38,10 @@ const routeObject: RouteObject = {
       path: "archive",
       element: <LanguageLoader lang="en" title="archive" description="archivePage.metaDescription"><Archive /></LanguageLoader>,
     },
+    ...archiveEntryRoutes.map((entry) => ({
+      path: entry.englishPath.slice(1),
+      element: <LanguageLoader lang="en" title={`archivePage.entries.${String(entry.englishIndex)}.title`} description={`archivePage.entries.${String(entry.englishIndex)}.summary`}><ArchiveEntryPage entryId={entry.id} /></LanguageLoader>,
+    })),
     {
       path: "glossary",
       element: <LanguageLoader lang="en" title="glossary" description="glossaryPage.metaDescription"><Glossary /></LanguageLoader>,
@@ -68,6 +74,10 @@ const routeObject: RouteObject = {
           path: "archives",
           element: <LanguageLoader lang="fr" title="archive" description="archivePage.metaDescription"><Archive /></LanguageLoader>,
         },
+        ...archiveEntryRoutes.map((entry) => ({
+          path: entry.frenchPath.slice(4),
+          element: <LanguageLoader lang="fr" title={`archivePage.entries.${String(entry.frenchIndex)}.title`} description={`archivePage.entries.${String(entry.frenchIndex)}.summary`}><ArchiveEntryPage entryId={entry.id} /></LanguageLoader>,
+        })),
         {
           path: "glossaire",
           element: <LanguageLoader lang="fr" title="glossary" description="glossaryPage.metaDescription"><Glossary /></LanguageLoader>,
@@ -100,6 +110,7 @@ if (window.location.hash.startsWith('#/')) {
   const knownPaths = new Set([
     ...Object.keys(CanadianEnglish.otherLanguage),
     ...Object.keys(CanadianFrench.otherLanguage),
+    ...archiveEntryRoutes.flatMap((entry) => [entry.englishPath, entry.frenchPath]),
   ].filter((path) => path.startsWith('/')));
   const target = knownPaths.has(legacyPath) ? legacyPath : legacyPath.startsWith('/fr/') ? '/fr/unknown' : '/unknown';
   const destination = `/spectrum-of-strengths${target === '/' ? '/' : `${target}/`}${window.location.search}`;
