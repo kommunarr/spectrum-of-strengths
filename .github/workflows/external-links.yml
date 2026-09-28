@@ -13,9 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      # Set SITE_URL as a repository variable to monitor the deployed site.
-      # Without it, the monitor checks the current production build locally.
-      SITE_URL: ${{ vars.SITE_URL }}
+      SITE_URL: https://kommunarr.github.io/spectrum-of-strengths/
     steps:
       - name: Check out repository
         uses: actions/checkout@v7

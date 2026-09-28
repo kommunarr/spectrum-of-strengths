@@ -54,7 +54,8 @@ each new archive entry. Check that current and planned activities are described
 accurately, both languages agree, external links still work, and the privacy
 and accessibility summaries match the site's actual behavior. Remove or update
 any time-sensitive information that has become stale. The weekly external-link
-workflow is a prompt to investigate failures, not a substitute for this review.
+workflow checks the published GitHub Pages site and is a prompt to investigate
+failures, not a substitute for this review.
 
 Dependabot checks npm packages and GitHub Actions monthly and groups routine
 minor and patch updates into fewer pull requests. A maintainer reviews those
