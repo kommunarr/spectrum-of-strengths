@@ -1,14 +1,31 @@
 # Discoverability plan for the bilingual archive
 
-The current GitHub Pages site uses fragment routes such as `#/archive` and
-`#/fr/archives`. The home page has a public canonical URL and social metadata,
-but fragment routes all share the same server response. [Google Search Central
+At planning time, the GitHub Pages site used fragment routes such as `#/archive`
+and `#/fr/archives`. Those routes shared the same server response. [Google Search Central
 recommends URL paths instead of fragments for distinct page
 content](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics#use-the-history-api-instead-of-fragments).
-This is a discoverability risk as the archive grows, not evidence that the
-current site is absent from search results.
+This was a discoverability risk as the archive grew, not evidence that the
+site was absent from search results.
 
-## Target
+## Implemented 2026-09-28
+
+The published site now uses direct English and French paths for all 16 public
+routes. The build generates a separate initial HTML file for each route with
+its page language, translated title and description, canonical URL, social
+metadata, and English/French alternates. It also generates a sitemap containing
+those canonical routes. Existing fragment bookmarks redirect to the matching
+path, and unknown server paths keep the bilingual static 404 response.
+
+The route checks, external-link monitor, Lighthouse URLs, and maintainer guides
+now use direct paths. Quality, browser, and Lighthouse CI passed for the final
+route commit. Live direct English and French paths, the sitemap, and GitHub
+Pages publication were checked after deployment.
+
+Individual archive entries still share the archive page URL. Give approved
+entries their own paths when there are enough entries to make individual
+discovery useful.
+
+## Original target
 
 Keep the current GitHub Pages address and bilingual content workflow. Give
 each public page a stable path, including `/spectrum-of-strengths/archive/`
@@ -17,7 +34,7 @@ and `/spectrum-of-strengths/fr/archives/`. Keep the English home page at
 `/spectrum-of-strengths/fr/`. The owner does not need to choose a domain,
 CMS, or search provider for this work.
 
-## Implementation sequence
+## Original implementation sequence
 
 1. Change the React router to use the History API with
    `/spectrum-of-strengths` as its basename. Keep the existing English and
@@ -53,7 +70,7 @@ CMS, or search provider for this work.
 - Review keyboard navigation, language switching, mobile layout, and the
   archive's date/source distinction after the router change.
 
-The route migration is a separate release from routine archive copy updates.
-It should be completed before treating individual archive entries as
-search-discoverable pages. [Google's JavaScript SEO guide](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+The route migration was a separate release from routine archive copy updates.
+Individual archive entries should receive their own paths before treating them
+as separately search-discoverable pages. [Google's JavaScript SEO guide](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
 provides the rationale for paths, server responses, and initial metadata.
