@@ -14,7 +14,7 @@ interface PublishedRoute {
 }
 
 function toTestPath(path: string) {
-  return path === '/' ? homePage : `index.html#${path}`;
+  return path === '/' ? homePage : `${path.slice(1)}/`;
 }
 
 function loadEnglishRouteMap() {
@@ -60,7 +60,7 @@ const publishedRoutes: PublishedRoute[] = localizedRouteEntries.flatMap(([englis
   },
 ]);
 
-const knownHashPaths = publishedRoutes.map(({ path }) => path);
+const knownPaths = publishedRoutes.map(({ path }) => path);
 
 async function expectHealthyPage(page: Page, route: PublishedRoute) {
   const consoleErrors: string[] = [];
@@ -100,11 +100,6 @@ async function expectHealthyPage(page: Page, route: PublishedRoute) {
         return rawHref ? [] : [`${label}: empty href`];
       }
 
-      if (rawHref.startsWith('#/')) {
-        const routePath = decodeURIComponent(rawHref.slice(1)) || '/';
-        return allowed.has(routePath) ? [] : [`${label}: unknown internal route ${routePath}`];
-      }
-
       let href: URL;
       try {
         href = new URL(rawHref, document.baseURI);
@@ -117,7 +112,12 @@ async function expectHealthyPage(page: Page, route: PublishedRoute) {
       }
 
       if (href.origin === window.location.origin) {
-        return [`${label}: unexpected same-origin href ${rawHref}`];
+        const basePath = '/spectrum-of-strengths';
+        if (!href.pathname.startsWith(`${basePath}/`)) {
+          return [`${label}: unexpected same-origin href ${rawHref}`];
+        }
+        const routePath = decodeURIComponent(href.pathname.slice(basePath.length)).replace(/\/$/, '') || '/';
+        return allowed.has(routePath) ? [] : [`${label}: unknown internal route ${routePath}`];
       }
 
       if (href.protocol !== 'https:') {
@@ -133,7 +133,7 @@ async function expectHealthyPage(page: Page, route: PublishedRoute) {
 
       return [];
     });
-  }, knownHashPaths);
+  }, knownPaths);
 
   expect(consoleErrors, `${route.name} console errors`).toEqual([]);
   expect(failedResponses, `${route.name} failed responses`).toEqual([]);
@@ -146,13 +146,13 @@ test.describe('navigation and language switching', () => {
   });
 
   test('navigates to an English page and switches it to French', async ({ page }) => {
-    await page.locator('header nav a[href="#/events"]').click();
-    await expect(page).toHaveURL(/#\/events$/);
+    await page.locator('header nav a[href="/spectrum-of-strengths/events/"]').click();
+    await expect(page).toHaveURL(/\/spectrum-of-strengths\/events\/?$/);
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
     await expect(page.locator('main h1')).toBeVisible();
 
     await page.locator('header .topRow a[lang="fr"]').click();
-    await expect.poll(() => decodeURIComponent(page.url())).toMatch(/#\/fr\/événements$/);
+    await expect.poll(() => decodeURIComponent(page.url())).toMatch(/\/fr\/événements\/?$/);
     await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
     await expect(page.locator('main h1')).toBeVisible();
   });
@@ -163,7 +163,7 @@ test.describe('navigation and language switching', () => {
     await expect(page.locator('main h1')).toBeVisible();
 
     await page.locator('header .topRow a[lang="en"]').click();
-    await expect(page).toHaveURL(/#\/contact-us$/);
+    await expect(page).toHaveURL(/\/contact-us\/?$/);
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
     await expect(page.locator('main h1')).toBeVisible();
   });
@@ -358,10 +358,10 @@ test('advertises the current public address to link previews', async ({ page }) 
   await expect(page.locator('meta[property="og:description"]')).toHaveAttribute('content', /heritage/);
 });
 
-test('offers localized home links for unknown hash routes', async ({ page }) => {
+test('offers localized home links for unknown legacy routes', async ({ page }) => {
   for (const route of [
-    { path: 'index.html#/missing', language: 'en', link: 'Go to the home page', target: /#\/$/ },
-    { path: 'index.html#/fr/inconnue', language: 'fr', link: 'Aller à la page d’accueil', target: /#\/fr$/ },
+    { path: 'index.html#/missing', language: 'en', link: 'Go to the home page', target: /\/spectrum-of-strengths\/?$/ },
+    { path: 'index.html#/fr/inconnue', language: 'fr', link: 'Aller à la page d’accueil', target: /\/fr\/?$/ },
   ] as const) {
     await page.goto(route.path);
     await expect(page.locator('html')).toHaveAttribute('lang', route.language);
@@ -381,7 +381,7 @@ test('provides a bilingual static 404 page for invalid server paths', async ({ p
     'href', '/spectrum-of-strengths/',
   );
   await expect(page.getByRole('link', { name: 'Aller à la page d’accueil en français' })).toHaveAttribute(
-    'href', '/spectrum-of-strengths/#/fr',
+    'href', '/spectrum-of-strengths/fr/',
   );
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
@@ -448,7 +448,7 @@ test.describe('responsive navigation', () => {
     await expect(page.locator('main')).toBeHidden();
 
     await mobileNavigation.getByRole('link', { name: 'Events' }).click();
-    await expect(page).toHaveURL(/#\/events$/);
+    await expect(page).toHaveURL(/\/events\/?$/);
     await expect(mobileNavigation).toBeHidden();
     await expect(page.locator('main h1')).toBeVisible();
 

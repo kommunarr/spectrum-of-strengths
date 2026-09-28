@@ -8,9 +8,9 @@ import { chromium } from '@playwright/test';
 const base = 'http://127.0.0.1:4173/spectrum-of-strengths/';
 const routes = [
   { name: 'home-en', path: '' },
-  { name: 'events-en', path: '#/events' },
-  { name: 'home-fr', path: '#/fr' },
-  { name: 'events-fr', path: '#/fr/événements' },
+  { name: 'events-en', path: 'events/' },
+  { name: 'home-fr', path: 'fr/' },
+  { name: 'events-fr', path: 'fr/événements/' },
 ];
 const thresholds = {
   accessibility: { minimum: 0.95, fail: true },

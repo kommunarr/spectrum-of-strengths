@@ -31,8 +31,8 @@ The browser suite covers:
 - Chromium accessibility-tree names, descriptions, and carousel status
   exposure on English and French Home and Archive pages;
 - the paired opening archive entry, hosting disclosure, and public URL metadata;
-- localized recovery links for unknown hash routes and the bilingual static
-  GitHub Pages 404 page;
+- redirects for older hash bookmarks, localized recovery links, and the
+  bilingual static GitHub Pages 404 page;
 - the Events and Contact in-development states; and
 - automated axe-core accessibility checks on every published English and
   French route.
@@ -41,7 +41,7 @@ The published-route checks are generated from the English locale's
 `otherLanguage` route map rather than a second hard-coded test list. Each route
 is checked for a localized document language, a non-empty page heading, a
 non-empty title, horizontal overflow, failed resources, console errors, broken
-internal hash routes, unsafe external links, and axe violations. This keeps
+internal path links, unsafe external links, and axe violations. This keeps
 the checks focused on page contracts while allowing CMS-managed copy and page
 headings to change.
 
@@ -55,6 +55,11 @@ Browser checks use semantic roles and labels so they validate user-visible
 behaviour rather than implementation-specific CSS selectors. Automated
 accessibility checks catch common DOM and ARIA regressions, but they do not
 replace keyboard, zoom, screen-reader, contrast, or user testing.
+
+The production build writes a separate HTML file for each direct English and
+French route, with translated initial metadata, canonical and alternate URLs,
+and a sitemap. The browser suite opens all published routes directly; older
+fragment bookmarks remain available for existing links.
 
 GitHub Actions installs Chromium and runs the browser suite on pushes to
 `main` and pull requests. A separate cross-browser smoke job installs Firefox

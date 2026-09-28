@@ -58,9 +58,7 @@ async function findExternalLinks(siteUrl, routePaths) {
 
   try {
     for (const path of routePaths) {
-      const routeUrl = path === '/'
-        ? baseUrl.toString()
-        : `${baseUrl.toString()}#${path}`;
+      const routeUrl = new URL(path === '/' ? '' : `${path.slice(1)}/`, baseUrl).toString();
       await page.goto(routeUrl, { waitUntil: 'networkidle' });
       await page.waitForFunction(
         (expectedLanguage) => document.documentElement.lang === expectedLanguage,

@@ -22,10 +22,10 @@ for (const route of [
 
 test('switches from English to French on every supported browser', async ({ page }) => {
   await page.goto('index.html');
-  await page.locator('header nav a[href="#/events"]').click();
-  await expect(page).toHaveURL(/#\/events$/);
+  await page.locator('header nav a[href="/spectrum-of-strengths/events/"]').click();
+  await expect(page).toHaveURL(/\/events\/?$/);
 
   await page.locator('header .topRow a[lang="fr"]').click();
-  await expect.poll(() => decodeURIComponent(page.url())).toMatch(/#\/fr\/événements$/);
+  await expect.poll(() => decodeURIComponent(page.url())).toMatch(/\/fr\/événements\/?$/);
   await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
 });
