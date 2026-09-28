@@ -89,6 +89,11 @@ for (const [pathKey, titleKey, descriptionKey] of routeDefinitions) {
     french.otherLanguage[frenchRoute] !== englishRoute) {
     throw new Error(`English/French route mismatch for ${pathKey}`);
   }
+  const alternates = [
+    ['en-CA', publicUrl(englishPath)],
+    ['fr-CA', publicUrl(frenchPath)],
+  ].map(([language, url]) =>
+    `    <xhtml:link rel="alternate" hreflang="${language}" href="${escapeHtml(url)}" />`).join('\n');
 
   for (const [locale, language, path, otherPath] of [
     [english, 'en', englishPath, frenchPath],
@@ -98,14 +103,14 @@ for (const [pathKey, titleKey, descriptionKey] of routeDefinitions) {
     await mkdir(directory, { recursive: true });
     await writeFile(join(directory, 'index.html'),
       pageHtml(locale, language, path, otherPath, titleKey, descriptionKey));
-    sitemapEntries.push(`<url><loc>${escapeHtml(publicUrl(path))}</loc></url>`);
+    sitemapEntries.push(`  <url>\n    <loc>${escapeHtml(publicUrl(path))}</loc>\n${alternates}\n  </url>`);
   }
 }
 
 await writeFile(join(outputDirectory, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n` +
-  `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-  sitemapEntries.map((entry) => `  ${entry}`).join('\n') +
+  `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n` +
+  sitemapEntries.join('\n') +
   `\n</urlset>\n`);
 
 console.log(`Generated ${sitemapEntries.length} direct route pages and sitemap.xml.`);

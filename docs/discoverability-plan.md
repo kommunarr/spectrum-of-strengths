@@ -13,8 +13,9 @@ The published site now uses direct English and French paths for all 16 public
 routes. The build generates a separate initial HTML file for each route with
 its page language, translated title and description, canonical URL, social
 metadata, and English/French alternates. It also generates a sitemap containing
-those canonical routes. Existing fragment bookmarks redirect to the matching
-path, and unknown server paths keep the bilingual static 404 response.
+those canonical routes and paired language alternates. Existing fragment
+bookmarks redirect to the matching path, and unknown server paths keep the
+bilingual static 404 response.
 
 The route checks, external-link monitor, Lighthouse URLs, and maintainer guides
 now use direct paths. Quality, browser, and Lighthouse CI passed for the final
