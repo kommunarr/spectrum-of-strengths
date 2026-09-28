@@ -8,6 +8,7 @@ The code for the Spectrum of Strengths website.
 - [Remaining work](docs/remaining-work.md)
 - [First-stage content and publishing decisions](docs/first-stage-decisions.md)
 - [Archive and journal entry workflow](docs/archive-entry-workflow.md)
+- [Bilingual archive discoverability plan](docs/discoverability-plan.md)
 - [Routine content update guide](docs/content-update-guide.md)
 - [Opening release guide](docs/opening-release.md)
 - [Content management research and migration plan](docs/content-management.md)
