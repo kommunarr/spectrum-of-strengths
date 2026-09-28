@@ -7,7 +7,7 @@ test.describe('shared shell visual contracts', () => {
   test.use({ viewport: { width: 1440, height: 900 } });
 
   test('preserves the desktop header and footer', async ({ page }) => {
-    await page.goto('index.html');
+    await page.goto('./');
     await page.addStyleTag({ content: stableFont });
 
     await expect(page.locator('header')).toHaveScreenshot('desktop-header.png', screenshotOptions);
@@ -23,7 +23,7 @@ test.describe('mobile shell visual contracts', () => {
   });
 
   test('preserves the mobile header, footer, and navigation', async ({ page }) => {
-    await page.goto('index.html');
+    await page.goto('./');
     await page.addStyleTag({ content: stableFont });
 
     await expect(page.locator('header')).toHaveScreenshot('mobile-header.png', screenshotOptions);

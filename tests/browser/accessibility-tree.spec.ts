@@ -19,7 +19,7 @@ function hasStatusText(nodes: Awaited<ReturnType<typeof accessibilityNodes>>, te
 
 for (const route of [
   {
-    path: 'index.html',
+    path: './',
     language: 'en',
     navigation: 'Primary navigation',
     event: 'Events',
@@ -29,7 +29,7 @@ for (const route of [
     announcement: 'Value transformation, 2 of 4',
   },
   {
-    path: 'index.html#/fr',
+    path: 'fr/',
     language: 'fr',
     navigation: 'Navigation principale',
     event: 'Événements',
@@ -71,7 +71,7 @@ for (const route of [
 
 for (const route of [
   {
-    path: 'index.html#/archive',
+    path: 'archive/',
     language: 'en',
     carousel: 'What the record will include',
     next: 'Next theme',
@@ -79,7 +79,7 @@ for (const route of [
     staticHeading: 'Heritage and systems',
   },
   {
-    path: 'index.html#/fr/archives',
+    path: 'fr/archives/',
     language: 'fr',
     carousel: 'Ce que le dossier réunira',
     next: 'Thème suivant',

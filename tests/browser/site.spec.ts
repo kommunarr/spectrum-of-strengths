@@ -2,7 +2,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 
-const homePage = 'index.html';
+const homePage = './';
 
 type Locale = 'en' | 'fr';
 
@@ -158,7 +158,7 @@ test.describe('navigation and language switching', () => {
   });
 
   test('switches from a French page back to its matching English page', async ({ page }) => {
-    await page.goto('index.html#/fr/contactez-nous');
+    await page.goto('fr/contactez-nous/');
     await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
     await expect(page.locator('main h1')).toBeVisible();
 
@@ -220,7 +220,7 @@ test.describe('home value carousel', () => {
   });
 
   test('provides translated controls and announcements in French', async ({ page }) => {
-    await page.goto('index.html#/fr');
+    await page.goto('fr/');
 
     const carousel = page.getByRole('group', { name: 'Quatre façons de penser la valeur', exact: true });
     await carousel.getByRole('button', { name: 'Valeur suivante' }).click();
@@ -232,7 +232,7 @@ test.describe('home value carousel', () => {
 test.describe('archive themes carousel', () => {
   test('rotates automatically and lets visitors pause and browse in English', async ({ page }) => {
     await page.clock.install();
-    await page.goto('index.html#/archive');
+    await page.goto('archive/');
 
     const carousel = page.getByRole('group', { name: 'What the record will include', exact: true });
     await expect(carousel.getByRole('group', { name: 'Slide 1 of 5' })).toContainText('Heritage and systems');
@@ -248,7 +248,7 @@ test.describe('archive themes carousel', () => {
   });
 
   test('shows French controls and a static layout for reduced motion', async ({ page }) => {
-    await page.goto('index.html#/fr/archives');
+    await page.goto('fr/archives/');
     const carousel = page.getByRole('group', { name: 'Ce que le dossier réunira', exact: true });
     await carousel.getByRole('button', { name: 'Thème suivant' }).click();
     await expect(carousel.getByRole('group', { name: 'Diapositive 2 sur 5' })).toContainText('Recherche et données probantes');
@@ -268,7 +268,7 @@ for (const route of [
   },
   {
     language: 'fr',
-    path: 'index.html#/fr',
+    path: 'fr/',
     titles: ['Captation de valeur', 'Transformation de la valeur', 'Création de valeur', 'Préservation de la valeur'],
   },
 ] as const) {
@@ -286,10 +286,10 @@ for (const route of [
 }
 
 const policyRoutes = [
-  { language: 'en', path: 'index.html#/terms-of-use-and-privacy', sectionCount: 4 },
-  { language: 'fr', path: 'index.html#/fr/conditions-dutilisation-politique-confidentialite', sectionCount: 4 },
-  { language: 'en', path: 'index.html#/accessibility-standards', sectionCount: 2 },
-  { language: 'fr', path: 'index.html#/fr/normes-daccessibilite', sectionCount: 2 },
+  { language: 'en', path: 'terms-of-use-and-privacy/', sectionCount: 4 },
+  { language: 'fr', path: 'fr/conditions-dutilisation-politique-confidentialite/', sectionCount: 4 },
+  { language: 'en', path: 'accessibility-standards/', sectionCount: 2 },
+  { language: 'fr', path: 'fr/normes-daccessibilite/', sectionCount: 2 },
 ] as const;
 
 test('publishes the opening record in English and French with the same date', async ({ page }) => {
@@ -297,14 +297,14 @@ test('publishes the opening record in English and French with the same date', as
 
   for (const route of [
     {
-      path: 'index.html#/archive',
+      path: 'archive/',
       language: 'en',
       title: 'Spectrum of Strengths opens its public record',
       status: 'Confirmed',
       future: 'future community centres',
     },
     {
-      path: 'index.html#/fr/archives',
+      path: 'fr/archives/',
       language: 'fr',
       title: 'Spectrum of Strengths ouvre son dossier public',
       status: 'Confirmé',
@@ -330,8 +330,8 @@ test('publishes the opening record in English and French with the same date', as
 
 test('identifies GitHub Pages hosting in both privacy summaries', async ({ page }) => {
   for (const path of [
-    'index.html#/terms-of-use-and-privacy',
-    'index.html#/fr/conditions-dutilisation-politique-confidentialite',
+    'terms-of-use-and-privacy/',
+    'fr/conditions-dutilisation-politique-confidentialite/',
   ]) {
     await page.goto(path);
     await expect(page.locator('main')).toContainText('GitHub Pages');
@@ -364,6 +364,7 @@ test('offers localized home links for unknown legacy routes', async ({ page }) =
     { path: 'index.html#/fr/inconnue', language: 'fr', link: 'Aller à la page d’accueil', target: /\/fr\/?$/ },
   ] as const) {
     await page.goto(route.path);
+    await page.reload();
     await expect(page.locator('html')).toHaveAttribute('lang', route.language);
     await expect(page.locator('main h1')).toHaveCount(1);
     await page.getByRole('link', { name: route.link }).click();
@@ -403,7 +404,7 @@ for (const route of policyRoutes) {
 
 for (const route of [
   { language: 'en', path: homePage, label: 'Skip to main content' },
-  { language: 'fr', path: 'index.html#/fr', label: 'Passer au contenu principal' },
+  { language: 'fr', path: 'fr/', label: 'Passer au contenu principal' },
 ] as const) {
   test(`shows a visible keyboard skip link in ${route.language}`, async ({ page }) => {
     await page.goto(route.path);
@@ -477,7 +478,7 @@ test.describe('responsive navigation', () => {
 
 for (const route of [
   { language: 'en', path: homePage },
-  { language: 'fr', path: 'index.html#/fr' },
+  { language: 'fr', path: 'fr/' },
 ] as const) {
   test(`keeps home content usable with 200% text in ${route.language}`, async ({ page }) => {
     await page.setViewportSize({ width: 640, height: 900 });
@@ -572,7 +573,7 @@ test.describe('narrow layout contracts', () => {
 });
 
 test('shows that contact is in development without collecting a message', async ({ page }) => {
-  await page.goto('index.html#/contact-us');
+  await page.goto('contact-us/');
   await expect(page.getByRole('heading', { name: 'Contact' })).toBeVisible();
   await expect(page.getByText('Contact options are in development. This page does not accept or send messages.')).toBeVisible();
   await expect(page.locator('form')).toHaveCount(0);

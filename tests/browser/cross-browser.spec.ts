@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
 
 for (const route of [
-  { language: 'en', path: 'index.html' },
-  { language: 'en', path: 'index.html#/events' },
-  { language: 'fr', path: 'index.html#/fr/contactez-nous' },
+  { language: 'en', path: './' },
+  { language: 'en', path: 'events/' },
+  { language: 'fr', path: 'fr/contactez-nous/' },
 ] as const) {
   test(`renders ${route.path} in ${route.language} without layout errors`, async ({ page }) => {
     await page.goto(route.path);
@@ -21,7 +21,7 @@ for (const route of [
 }
 
 test('switches from English to French on every supported browser', async ({ page }) => {
-  await page.goto('index.html');
+  await page.goto('./');
   await page.locator('header nav a[href="/spectrum-of-strengths/events/"]').click();
   await expect(page).toHaveURL(/\/events\/?$/);
 
