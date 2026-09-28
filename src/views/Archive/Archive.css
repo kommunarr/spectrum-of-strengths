@@ -75,6 +75,13 @@
     line-height: 1.35;
 }
 
+.archiveEntry h3 a,
+.archiveEntryBack a {
+    color: #650540;
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
+}
+
 .archiveEntryPage {
     padding-block: 1.5rem 3rem;
 }
