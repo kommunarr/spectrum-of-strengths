@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { publishedRoute } from '../../utils/publishedRoute';
+import { formatPublicationDate } from '../../utils/archiveDate';
 import '../contentPages.css';
 import './Home.css';
 
@@ -9,7 +10,7 @@ const valuePillars = ['capture', 'transformation', 'creation', 'preservation'];
 const rotationInterval = 6_000;
 
 function Home() {
-    const { t } = useTranslation(['common']);
+    const { t, i18n } = useTranslation(['common']);
     const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
     const [isRotationRequested, setIsRotationRequested] = useState(true);
     const [hasInteractionPausedRotation, setHasInteractionPausedRotation] = useState(false);
@@ -17,6 +18,17 @@ function Home() {
     const [activePillarIndex, setActivePillarIndex] = useState(0);
     const [slideAnnouncement, setSlideAnnouncement] = useState('');
     const isRotationEnabled = isRotationRequested && !hasInteractionPausedRotation && !isPointerHovering && !prefersReducedMotion;
+    const entries = t('archivePage.entries', { returnObjects: true }) as {
+        id: string;
+        publicationDate: string;
+        title: string;
+        summary: string;
+    }[];
+    const latestEntry = entries.length > 0
+        ? entries.slice().sort((left, right) =>
+            right.publicationDate.localeCompare(left.publicationDate))[0]
+        : null;
+    const dateLanguage = i18n.resolvedLanguage === 'fr' ? 'fr-CA' : 'en-CA';
 
     useEffect(() => {
         if (typeof window.matchMedia !== 'function') return;
@@ -182,6 +194,25 @@ function Home() {
                     </Link>
                 </div>
             </section>
+
+            {latestEntry && (
+                <section className="homeLatest" aria-labelledby="latest-entry-title">
+                    <p className="homeEyebrow">{t('archivePage.title')}</p>
+                    <h2 id="latest-entry-title">{t('homePage.latestEntryTitle')}</h2>
+                    <p className="homeLatestDate">
+                        {t('archivePage.publishedLabel')}:{' '}
+                        <time dateTime={latestEntry.publicationDate}>
+                            {formatPublicationDate(latestEntry.publicationDate, dateLanguage)}
+                        </time>
+                    </p>
+                    <h3>
+                        <Link to={publishedRoute(`${t('archivePath')}/${latestEntry.id}`)}>
+                            {latestEntry.title}
+                        </Link>
+                    </h3>
+                    <p>{latestEntry.summary}</p>
+                </section>
+            )}
 
             <section className="homeDevelopment" aria-labelledby="development-title">
                 <p className="developmentBadge">{t('inDevelopment')}</p>

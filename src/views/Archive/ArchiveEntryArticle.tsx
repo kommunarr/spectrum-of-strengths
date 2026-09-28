@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { publishedRoute } from '../../utils/publishedRoute';
+import { formatPublicationDate } from '../../utils/archiveDate';
 
 type ArchiveCategory = 'heritage' | 'research' | 'experience' | 'gaps' | 'progress';
 type ArchiveStatus = 'planned' | 'inProgress' | 'confirmed';
@@ -18,18 +19,6 @@ export interface ArchiveEntry {
     potentialValue?: string;
     sourceContext?: string;
     sourceUrl?: string;
-}
-
-function formatPublicationDate(date: string, language: string): string {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return date;
-
-    const parsedDate = new Date(`${date}T00:00:00Z`);
-    if (Number.isNaN(parsedDate.getTime()) || parsedDate.toISOString().slice(0, 10) !== date) return date;
-
-    return new Intl.DateTimeFormat(language, {
-        dateStyle: 'long',
-        timeZone: 'UTC',
-    }).format(parsedDate);
 }
 
 export default function ArchiveEntryArticle({ entry, standalone = false }: {

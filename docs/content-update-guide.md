@@ -16,6 +16,8 @@ or to edit code. For an archive or journal update, start with the
 - A specific archive case can show the documented need, proposed response,
   and potential shared value together. The [archive entry workflow](archive-entry-workflow.md)
   explains when to include those optional fields.
+- Home shows the newest published archive entry from the same locale data;
+  updating both entry arrays updates that panel automatically.
 - Events and Contact are development notices. Do not add event details or
   working forms until the organization has confirmed the information,
   workflow, owner, and privacy wording.
