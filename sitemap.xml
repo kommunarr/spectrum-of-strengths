@@ -80,4 +80,14 @@
     <xhtml:link rel="alternate" hreflang="en-CA" href="https://kommunarr.github.io/spectrum-of-strengths/accessibility-standards/" />
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://kommunarr.github.io/spectrum-of-strengths/fr/normes-daccessibilite/" />
   </url>
+  <url>
+    <loc>https://kommunarr.github.io/spectrum-of-strengths/archive/opening-the-public-record/</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://kommunarr.github.io/spectrum-of-strengths/archive/opening-the-public-record/" />
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://kommunarr.github.io/spectrum-of-strengths/fr/archives/opening-the-public-record/" />
+  </url>
+  <url>
+    <loc>https://kommunarr.github.io/spectrum-of-strengths/fr/archives/opening-the-public-record/</loc>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://kommunarr.github.io/spectrum-of-strengths/archive/opening-the-public-record/" />
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://kommunarr.github.io/spectrum-of-strengths/fr/archives/opening-the-public-record/" />
+  </url>
 </urlset>
