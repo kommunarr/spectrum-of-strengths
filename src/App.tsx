@@ -106,7 +106,7 @@ if (window.location.hash.startsWith('#/')) {
   window.history.replaceState(window.history.state, '', destination);
 }
 
-const router = createBrowserRouter([routeObject], { basename: '/spectrum-of-strengths' });
+const router = createBrowserRouter([routeObject], { basename: '/spectrum-of-strengths/' });
 
 function App() {
   return (
