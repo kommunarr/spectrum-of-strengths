@@ -36,6 +36,10 @@ The existing [archive entry workflow](archive-entry-workflow.md) is the handoff:
 the owner can send rough notes or a link. The maintainer chooses the category,
 drafts and translates the entry, checks the source, and asks for a focused
 review of facts and permissions. No new intake system is required.
+An [unpublished bilingual source brief](archive-candidates/2024-autism-strategy.md)
+is ready as one possible systems record; the creator still needs to confirm
+that this independent policy source fits the intended archive before it is
+published.
 
 ## Priority 2: Help visitors follow the story
 

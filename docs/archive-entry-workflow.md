@@ -115,7 +115,9 @@ Each published entry has these fields:
 - sourceContext: optional approved public context or citation. Omit it when
   the source is private or no safe public context is available.
 - sourceUrl: optional HTTPS link to a public source. Never link to private
-  correspondence or a file that requires access to an internal account.
+  correspondence or a file that requires access to an internal account. Use
+  the corresponding English or French public source URL in each locale when
+  the publisher provides both; the URLs need not be identical.
 
 The site sorts entries by publication date, newest first.
 Each approved entry also receives an English URL under `/archive/<id>/` and a

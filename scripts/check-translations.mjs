@@ -59,7 +59,7 @@ export function validateTranslations(locales, namespaces = getContentNamespaces(
 
 const archiveCategories = new Set(['heritage', 'research', 'experience', 'gaps', 'progress']);
 const archiveStatuses = new Set(['planned', 'inProgress', 'confirmed']);
-const sharedArchiveFields = ['publicationDate', 'sourceDateTime', 'category', 'status', 'sourceUrl'];
+const sharedArchiveFields = ['publicationDate', 'sourceDateTime', 'category', 'status'];
 const archiveCaseFields = ['need', 'proposedResponse', 'potentialValue'];
 
 function isRecord(value) {
