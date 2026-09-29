@@ -49,11 +49,13 @@ function replaceRequired(html, pattern, replacement) {
   return html.replace(pattern, replacement);
 }
 
-function pageHtml(locale, language, path, otherPath, titleKey, descriptionKey, content) {
+function pageHtml(locale, language, path, otherPath, titleKey, descriptionKey, content, objectType = 'website') {
   const common = locale.common;
   const title = `${valueAt(common, titleKey)} | ${common.organizationName}`;
   const description = valueAt(common, descriptionKey);
   const canonical = publicUrl(path);
+  const socialImage = new URL(`social-preview-${language}.png`, siteRoot).href;
+  const socialImageAlt = valueAt(common, 'socialImageAlt');
   const englishUrl = language === 'en' ? canonical : publicUrl(otherPath);
   const frenchUrl = language === 'fr' ? canonical : publicUrl(otherPath);
   const alternateLinks = `\n    <link rel="alternate" hreflang="en-CA" href="${escapeHtml(englishUrl)}" />` +
@@ -67,14 +69,22 @@ function pageHtml(locale, language, path, otherPath, titleKey, descriptionKey, c
     `<meta name="description" content="${escapeHtml(description)}" />`);
   html = replaceRequired(html, /<link rel="canonical" href="[^"]*" \/>/,
     `<link rel="canonical" href="${escapeHtml(canonical)}" />${alternateLinks}`);
+  html = replaceRequired(html, /<meta property="og:type" content="[^"]*" \/>/,
+    `<meta property="og:type" content="${objectType}" />`);
+  html = replaceRequired(html, /<meta property="og:locale" content="[^"]*" \/>/,
+    `<meta property="og:locale" content="${language === 'fr' ? 'fr_CA' : 'en_CA'}" />`);
+  html = replaceRequired(html, /<meta property="og:locale:alternate" content="[^"]*" \/>/,
+    `<meta property="og:locale:alternate" content="${language === 'fr' ? 'en_CA' : 'fr_CA'}" />`);
   for (const [property, content] of [
     ['og:title', title], ['og:description', description], ['og:url', canonical],
+    ['og:image', socialImage], ['og:image:alt', socialImageAlt],
   ]) {
     html = replaceRequired(html, new RegExp(`<meta property="${property}" content="[^"]*" \\/>`),
       `<meta property="${property}" content="${escapeHtml(content)}" />`);
   }
   for (const [name, content] of [
     ['twitter:title', title], ['twitter:description', description],
+    ['twitter:image', socialImage], ['twitter:image:alt', socialImageAlt],
   ]) {
     html = replaceRequired(html, new RegExp(`<meta name="${name}" content="[^"]*" \\/>`),
       `<meta name="${name}" content="${escapeHtml(content)}" />`);
@@ -140,7 +150,7 @@ for (const [englishIndex, entry] of english.common.archivePage.entries.entries()
     await writeFile(join(directory, 'index.html'), pageHtml(
       locale, language, path, otherPath,
       `archivePage.entries.${entryIndex}.title`,
-      `archivePage.entries.${entryIndex}.summary`, content,
+      `archivePage.entries.${entryIndex}.summary`, content, 'article',
     ));
     sitemapEntries.push(`  <url>\n    <loc>${escapeHtml(publicUrl(path))}</loc>\n${alternates}\n  </url>`);
   }

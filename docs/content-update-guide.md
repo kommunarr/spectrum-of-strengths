@@ -25,6 +25,10 @@ or to edit code. For an archive or journal update, start with the
   the site. Get permission, context, and useful alternative text before adding
   other images or partner marks. See the [media inventory](media-inventory.md)
   for current assets and image guidance.
+- English and French social previews reuse that logo and the approved slogan.
+  If either slogan changes, update `scripts/generate-social-previews.mjs`, run
+  `npm run generate:social-previews` with Chromium installed, and review both
+  images and their translated alternative text before publishing.
 
 Keep drafts, private correspondence, attachments, and personal information out
 of the repository. Use the archive workflow's secure-source guidance when a
