@@ -6,6 +6,7 @@ The code for the Spectrum of Strengths website.
 
 - [Engineering guide](agents.md)
 - [Remaining work](docs/remaining-work.md)
+- [Vision-aligned work catalog](docs/vision-roadmap.md)
 - [First-stage content and publishing decisions](docs/first-stage-decisions.md)
 - [Archive and journal entry workflow](docs/archive-entry-workflow.md)
 - [Bilingual archive discoverability plan](docs/discoverability-plan.md)
