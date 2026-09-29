@@ -25,9 +25,10 @@ function About() {
                 ))}
             </div>
 
-            <p className="foundationGlossaryLink">
+            <div className="foundationRelatedLinks">
+                <Link to={publishedRoute(t('archivePath'))}>{t('foundationsPage.archiveLink')}</Link>
                 <Link to={publishedRoute(t('glossaryPath'))}>{t('foundationsPage.termsLink')}</Link>
-            </p>
+            </div>
         </article>
     );
 }

@@ -69,9 +69,18 @@
     line-height: 1.7;
 }
 
-.foundationGlossaryLink {
+.foundationRelatedLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
     margin-block: 1.75rem 0;
     font-size: 1rem;
+}
+
+.foundationRelatedLinks a {
+    color: #650540;
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
 }
 
 .archiveCategories {
