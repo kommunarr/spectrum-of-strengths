@@ -105,7 +105,9 @@ Each published entry has these fields:
 - id: a stable lowercase slug.
 - publicationDate: an ISO date in YYYY-MM-DD format.
 - sourceDateTime: an optional ISO 8601 timestamp with a time-zone offset. Use
-  YYYY-MM-DD if the source gives only a date.
+  YYYY-MM-DD if the source gives only a date. The site displays date-only
+  sources in the visitor's selected language and preserves full timestamp
+  text, including its time-zone offset.
 - category: heritage, research, experience, gaps, or progress.
 - status: planned, inProgress, or confirmed.
 - title and summary: the approved English or French copy for that locale. The

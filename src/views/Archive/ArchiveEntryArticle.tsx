@@ -44,7 +44,11 @@ export default function ArchiveEntryArticle({ entry, standalone = false }: {
                 {entry.sourceDateTime && (
                     <span>
                         {t('archivePage.sourceDateLabel')}:{' '}
-                        <time dateTime={entry.sourceDateTime}>{entry.sourceDateTime}</time>
+                        <time dateTime={entry.sourceDateTime}>
+                            {entry.sourceDateTime.length === 10
+                                ? formatPublicationDate(entry.sourceDateTime, dateLanguage)
+                                : entry.sourceDateTime}
+                        </time>
                     </span>
                 )}
             </div>
