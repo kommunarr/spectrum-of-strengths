@@ -26,7 +26,7 @@ or to edit code. For an archive or journal update, start with the
   other images or partner marks. See the [media inventory](media-inventory.md)
   for current assets and image guidance.
 - English and French social previews reuse that logo and the approved slogan.
-  If either slogan changes, update `scripts/generate-social-previews.mjs`, run
+  If either slogan or page theme changes, run
   `npm run generate:social-previews` with Chromium installed, and review both
   images and their translated alternative text before publishing.
 

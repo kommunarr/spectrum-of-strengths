@@ -2,20 +2,23 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { chromium } from '@playwright/test';
 
-const logo = await readFile(resolve('src/assets/SpectrumOfStrengthsLogo.svg'));
+const [logo, english, french] = await Promise.all([
+  readFile(resolve('src/assets/SpectrumOfStrengthsLogo.svg')),
+  readFile(resolve('src/locales/en-ca/translation.json'), 'utf8').then(JSON.parse),
+  readFile(resolve('src/locales/fr-ca/translation.json'), 'utf8').then(JSON.parse),
+]);
 const logoUrl = `data:image/svg+xml;base64,${logo.toString('base64')}`;
-const cards = [
-  {
-    language: 'en',
-    title: 'We ARE the Spectrum.',
-    theme: 'Heritage · systems · visionary leadership',
-  },
-  {
-    language: 'fr',
-    title: 'Nous sommes le spectre.',
-    theme: 'Patrimoine · systèmes · leadership visionnaire',
-  },
-];
+const cards = [['en', english], ['fr', french]].map(([language, locale]) => ({
+  language,
+  title: locale.common.homePage.title,
+  theme: locale.common.homePage.eyebrow,
+  organizationName: locale.common.organizationName,
+}));
+
+function escapeHtml(value) {
+  return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+}
 
 const browser = await chromium.launch({ headless: true });
 try {
@@ -42,9 +45,9 @@ try {
         </style></head>
         <body><main>
           <img src="${logoUrl}" alt="" />
-          <p class="theme">${card.theme}</p>
-          <h1>${card.title}</h1>
-          <p class="brand">Spectrum of Strengths</p>
+          <p class="theme">${escapeHtml(card.theme)}</p>
+          <h1>${escapeHtml(card.title)}</h1>
+          <p class="brand">${escapeHtml(card.organizationName)}</p>
         </main></body>
       </html>`);
     await page.screenshot({ path: resolve(`public/social-preview-${card.language}.png`) });
