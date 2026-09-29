@@ -14,6 +14,7 @@ export interface ArchiveEntry {
     status: ArchiveStatus;
     title: string;
     summary: string;
+    body?: string[];
     need?: string;
     proposedResponse?: string;
     potentialValue?: string;
@@ -51,6 +52,16 @@ export default function ArchiveEntryArticle({ entry, standalone = false }: {
                 <h3><Link to={entryPath}>{entry.title}</Link></h3>
             )}
             <p>{entry.summary}</p>
+            {standalone && entry.body && (
+                <div className="archiveEntryBody">
+                    {entry.body.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                </div>
+            )}
+            {!standalone && entry.body && (
+                <p className="archiveEntryReadMore">
+                    <Link to={entryPath}>{t('archivePage.readFullEntry')}</Link>
+                </p>
+            )}
             {entry.need && entry.proposedResponse && entry.potentialValue && (
                 <dl className="archiveEntryCase">
                     <div>

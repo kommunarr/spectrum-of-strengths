@@ -108,7 +108,11 @@ Each published entry has these fields:
   YYYY-MM-DD if the source gives only a date.
 - category: heritage, research, experience, gaps, or progress.
 - status: planned, inProgress, or confirmed.
-- title and summary: the approved English or French copy for that locale.
+- title and summary: the approved English or French copy for that locale. The
+  summary appears on Home, in the archive list, and at the start of the entry.
+- body: optional array of plain-text paragraphs for a fuller record. It appears
+  only on the entry's own page; provide a corresponding body in both languages
+  or omit it in both. Keep source claims supported and do not add HTML.
 - need, proposedResponse, and potentialValue: optional paired statements for a
   specific documented case. Supply all three in both languages or omit all
   three; do not fill a missing field with a guess.

@@ -99,6 +99,7 @@
             "progressTitle": "Plans and progress",
             "progressBody": "Dated updates on plans, relationship building, work in progress, and confirmed milestones. Private correspondence can be cited without publishing the full message.",
             "entriesTitle": "Published entries",
+            "readFullEntry": "Read the full entry",
             "backToArchive": "Back to the archive",
             "entriesIntro": "Entries will celebrate strengths and show the path from evidence to action. When there is enough information to share, a documented need, proposed response, and potential shared value will appear together. Plans and correspondence will be dated without treating them as completed work.",
             "needLabel": "Documented need",

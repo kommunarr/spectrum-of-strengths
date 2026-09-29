@@ -117,6 +117,13 @@ function validateArchiveLocale(locale, language) {
         errors.push(`${label}.${field} must be a non-empty string.`);
       }
     }
+    if (
+      entry.body !== undefined &&
+      (!Array.isArray(entry.body) || entry.body.length === 0 ||
+        entry.body.some((paragraph) => typeof paragraph !== 'string' || paragraph.trim().length === 0))
+    ) {
+      errors.push(`${label}.body must be a non-empty array of non-empty paragraphs when provided.`);
+    }
 
     const providedCaseFields = archiveCaseFields.filter((field) => entry[field] !== undefined);
     if (providedCaseFields.length > 0 && providedCaseFields.length !== archiveCaseFields.length) {
@@ -190,6 +197,9 @@ export function validateArchiveEntries(locales) {
       if ((englishEntry[field] === undefined) !== (frenchEntry[field] === undefined)) {
         errors.push(`Archive entry ${id} must include ${field} in both locales or neither.`);
       }
+    }
+    if ((englishEntry.body === undefined) !== (frenchEntry.body === undefined)) {
+      errors.push(`Archive entry ${id} must include body in both locales or neither.`);
     }
   }
 

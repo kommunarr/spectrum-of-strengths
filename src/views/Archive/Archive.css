@@ -76,7 +76,8 @@
 }
 
 .archiveEntry h3 a,
-.archiveEntryBack a {
+.archiveEntryBack a,
+.archiveEntryReadMore a {
     color: #650540;
     text-decoration: underline;
     text-underline-offset: 0.16em;
@@ -100,6 +101,12 @@
     margin-block: 0.5rem 0;
     font-size: 1rem;
     line-height: 1.65;
+}
+
+.archiveEntryBody p {
+    margin-block: 1rem 0;
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
 .archiveEntryCase {

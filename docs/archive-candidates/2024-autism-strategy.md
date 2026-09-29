@@ -47,6 +47,18 @@ consultation with Autistic people and others during its development. This
 public document provides a dated point of reference for examining how
 Canadian systems describe needs and proposed responses.
 
+### Optional English body for the entry page
+
+The strategy describes national conferences in 2022 and 2024 and the
+participation of Autistic people and others in shaping its priorities. It
+also distinguishes federal responsibilities from the provincial and
+territorial administration of most health, education, and social supports.
+That division is part of the systems history this archive could trace.
+
+The strategy records plans and priorities. Later public records would be
+needed to describe implementation or outcomes. This entry therefore treats
+the 2024 publication as a dated policy milestone, not a measure of success.
+
 ### Titre français
 
 La Stratégie pour l'autisme au Canada de 2024 : un repère sur les systèmes
@@ -62,6 +74,20 @@ consultations menées auprès de personnes autistes et d'autres participantes
 et participants pendant son élaboration. Ce document public fournit un
 repère daté pour examiner la façon dont les systèmes canadiens décrivent
 les besoins et les réponses envisagées.
+
+### Texte complémentaire facultatif en français
+
+La stratégie décrit les conférences nationales de 2022 et de 2024 ainsi que
+la participation de personnes autistes et d'autres personnes à la définition
+de ses priorités. Elle distingue aussi les responsabilités fédérales de
+l'administration provinciale et territoriale de la plupart des soutiens en
+santé, en éducation et en services sociaux. Cette répartition fait partie
+de l'histoire des systèmes que les archives pourraient retracer.
+
+La stratégie consigne des projets et des priorités. Il faudrait d'autres
+documents publics pour décrire leur mise en œuvre ou leurs résultats. Cette
+entrée présente donc la publication de 2024 comme une étape datée de la
+politique publique, sans la considérer comme une mesure de réussite.
 
 ## Focused review before publication
 
