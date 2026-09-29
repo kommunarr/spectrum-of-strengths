@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { publishedRoute } from '../../utils/publishedRoute';
-import { formatPublicationDate } from '../../utils/archiveDate';
+import { formatPublicationDate, sortArchiveEntriesNewestFirst } from '../../utils/archiveDate';
 import '../contentPages.css';
 import './Home.css';
 
@@ -25,8 +25,7 @@ function Home() {
         summary: string;
     }[];
     const latestEntry = entries.length > 0
-        ? entries.slice().sort((left, right) =>
-            right.publicationDate.localeCompare(left.publicationDate))[0]
+        ? sortArchiveEntriesNewestFirst(entries)[0]
         : null;
     const dateLanguage = i18n.resolvedLanguage === 'fr' ? 'fr-CA' : 'en-CA';
 

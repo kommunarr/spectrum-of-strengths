@@ -119,7 +119,8 @@ Each published entry has these fields:
   the corresponding English or French public source URL in each locale when
   the publisher provides both; the URLs need not be identical.
 
-The site sorts entries by publication date, newest first.
+The site sorts entries by publication date, newest first, then by stable ID
+when multiple entries share a date. Home uses the first entry in that order.
 Each approved entry also receives an English URL under `/archive/<id>/` and a
 French URL under `/fr/archives/<id>/`. Keep the ID stable after publication so
 shared links continue to work. The entry title and summary supply the page's

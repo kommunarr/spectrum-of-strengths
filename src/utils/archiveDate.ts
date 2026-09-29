@@ -9,3 +9,8 @@ export function formatPublicationDate(date: string, language: string): string {
         timeZone: 'UTC',
     }).format(parsedDate);
 }
+
+export function sortArchiveEntriesNewestFirst<T extends { id: string; publicationDate: string }>(entries: T[]): T[] {
+    return entries.slice().sort((left, right) =>
+        right.publicationDate.localeCompare(left.publicationDate) || left.id.localeCompare(right.id));
+}

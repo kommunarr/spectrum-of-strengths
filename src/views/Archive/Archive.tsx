@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ArchiveEntryArticle from './ArchiveEntryArticle';
 import type { ArchiveEntry } from './ArchiveEntryArticle';
+import { sortArchiveEntriesNewestFirst } from '../../utils/archiveDate';
 import '../contentPages.css';
 import './Archive.css';
 
@@ -17,9 +18,8 @@ function Archive() {
     const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
     const [slideAnnouncement, setSlideAnnouncement] = useState('');
     const isRotationEnabled = isRotationRequested && !hasInteractionPausedRotation && !isPointerHovering && !prefersReducedMotion;
-    const entries = (t('archivePage.entries', { returnObjects: true }) as ArchiveEntry[])
-        .slice()
-        .sort((left, right) => right.publicationDate.localeCompare(left.publicationDate));
+    const entries = sortArchiveEntriesNewestFirst(
+        t('archivePage.entries', { returnObjects: true }) as ArchiveEntry[]);
 
     useEffect(() => {
         if (typeof window.matchMedia !== 'function') return;
