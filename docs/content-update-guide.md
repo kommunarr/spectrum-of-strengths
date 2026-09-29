@@ -29,6 +29,10 @@ or to edit code. For an archive or journal update, start with the
 Keep drafts, private correspondence, attachments, and personal information out
 of the repository. Use the archive workflow's secure-source guidance when a
 public summary is based on private records.
+Keep its private source register outside the repository as well. If a dated
+entry needs a material factual correction, follow the
+[published-entry correction steps](archive-entry-workflow.md#correcting-a-published-entry)
+so visitors can see what changed without losing the original publication date.
 
 ## Prepare and preview a copy change
 

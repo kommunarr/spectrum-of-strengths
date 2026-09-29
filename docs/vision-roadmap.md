@@ -62,14 +62,18 @@ the visual treatment while leaving direct navigation available.
 - Keep a private source inventory outside the public repository: original
   record, source date, rights or consent, safe public citation, and the public
   entries that refer to it. Back up the originals separately from the site.
+  The [archive workflow](archive-entry-workflow.md#keep-a-private-source-register)
+  now provides the minimum fields; the actual register belongs in the
+  organization's secure storage when sources arrive.
   Library and Archives Canada's [digital preservation guidance for small
   museums](https://www.canada.ca/en/heritage-information-network/services/digital-preservation/recommendations-small-museums.html)
   offers useful principles for provenance and preservation; it is a reference,
   not a requirement imposed on this organization.
-- Maintain a concise correction path for dated entries: fix errors visibly
-  where the correction affects meaning, preserve the original source record,
-  and avoid silently changing what a dated claim appeared to say. The
-  maintainer can draft this convention before the archive has many entries.
+- Follow the [published-entry correction
+  process](archive-entry-workflow.md#correcting-a-published-entry): fix errors
+  visibly where the correction affects meaning, preserve the original source
+  record, and keep the original publication date. Add an entry display field
+  when the first public correction note is needed.
 - Continue the quarterly content review already assigned in the operational
   backlog. Check current-state claims, broken source links, translations,
   accessibility, and whether development notices still describe reality.

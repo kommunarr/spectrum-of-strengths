@@ -49,6 +49,25 @@ reference labels in the repository. Keep original records in the
 organization's normal secure storage. For a private source, share only the
 minimum source detail the maintainer needs to verify the date and facts.
 
+## Keep a private source register
+
+The maintainer keeps a small register alongside the organization's secure
+originals, outside this repository. One row per source is enough:
+
+| Field | What to record privately |
+| --- | --- |
+| Source reference | A stable internal label and where the original is stored. Never put a private storage path, correspondence ID, or access link in the public entry. |
+| Source timing | The date or timestamp shown by the original, including its time zone when available; leave unknown values blank. |
+| Provenance | Who supplied it and whether it is a public record, private correspondence, or a contributor account. |
+| Sharing permission | What may be summarized, quoted, named, or shown as an image, who granted permission, and when. Record restrictions as well as approvals. |
+| Public use | The approved public citation or context and the stable IDs of entries based on this source. |
+| Preservation | Where a backed-up copy is held and who can access it. Keep the backup separate from the published site. |
+
+This is a private working register, not a request for the owner to fill in a
+spreadsheet. The owner can still send rough notes or a link; the maintainer
+records the details that are actually known and asks only about missing facts
+or permissions needed for a proposed public claim.
+
 ## Maintainer prepares the entry
 
 The maintainer assigns the category and status, creates a short title and
@@ -107,3 +126,23 @@ initial HTML and social metadata in each language.
 The handoff template is an editorial aid, not a website form or publishing
 system. The site has a published opening entry, but no CMS, scheduling, or
 submission workflow.
+
+## Correcting a published entry
+
+1. Check the original source and decide whether the change is a typo, a
+   clearer translation, or a correction that changes the meaning of a public
+   claim. Ask the owner or contributor only if the underlying fact or sharing
+   permission is uncertain.
+2. Update English and French together. Preserve the entry ID and original
+   publication date so existing links and the chronology remain accurate.
+3. For a material factual correction, add a dated, plain-language correction
+   note in both versions of the entry explaining what changed. If the current
+   entry structure cannot display that note clearly, add the display field
+   before publishing the correction. Do not silently replace a material
+   claim or pretend the correction was part of the original publication.
+4. Keep the original source and private verification notes outside the
+   repository. Git history records the site edit but does not replace a
+   visitor-facing correction note.
+5. Review the paired pages and their summaries, then publish through the
+   normal deployment path. Update or remove related claims elsewhere on the
+   site at the same time.
