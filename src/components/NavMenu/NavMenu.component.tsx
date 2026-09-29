@@ -27,7 +27,7 @@ function NavMenu(props: INavMenu) {
                             <NavLink
                                 className={({ isActive }) => `actionLink${isActive ? ' active' : ''}`}
                                 to={Utils.publishedRoute(path)}
-                                end
+                                end={section !== 'archive'}
                                 aria-describedby={isInDevelopment ? statusDescriptionId : undefined}
                             >
                                 {t(section)}
