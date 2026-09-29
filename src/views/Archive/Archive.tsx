@@ -100,16 +100,17 @@ function Archive() {
                             type="button"
                             aria-controls="archive-carousel-slides"
                             onClick={() => {
-                                if (isRotationRequested) {
+                                if (isRotationEnabled) {
                                     setIsRotationRequested(false);
                                 } else {
                                     setHasInteractionPausedRotation(false);
+                                    setIsPointerHovering(false);
                                     setIsRotationRequested(true);
                                 }
                             }}
-                            aria-label={t(isRotationRequested ? 'homePage.pauseRotation' : 'homePage.resumeRotation')}
+                            aria-label={t(isRotationEnabled ? 'homePage.pauseRotation' : 'homePage.resumeRotation')}
                         >
-                            <span aria-hidden="true">{isRotationRequested ? 'Ⅱ' : '▶'}</span>
+                            <span aria-hidden="true">{isRotationEnabled ? 'Ⅱ' : '▶'}</span>
                         </button>
                         <button type="button" aria-controls="archive-carousel-slides" aria-label={t('archivePage.previousTheme')} onClick={() => {
                             moveToCategory(-1);
