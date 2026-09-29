@@ -195,6 +195,9 @@ test.describe('home value carousel', () => {
     await page.goto(homePage);
 
     const carousel = page.getByRole('group', { name: 'Four ways of thinking about value', exact: true });
+    await carousel.hover();
+    await expect(carousel.getByRole('button', { name: 'Resume rotation' })).toBeVisible();
+    await carousel.getByRole('button', { name: 'Resume rotation' }).click();
     await carousel.getByRole('button', { name: 'Pause rotation' }).click();
     await expect(carousel.getByRole('button', { name: 'Resume rotation' })).toBeVisible();
 
@@ -212,7 +215,7 @@ test.describe('home value carousel', () => {
 
     const carousel = page.getByRole('group', { name: 'Four ways of thinking about value', exact: true });
     await carousel.getByRole('button', { name: 'Pause rotation' }).focus();
-    await expect(carousel.getByRole('button', { name: 'Pause rotation' })).toBeVisible();
+    await expect(carousel.getByRole('button', { name: 'Resume rotation' })).toBeVisible();
 
     await page.clock.fastForward(28_000);
     await expect(carousel.getByRole('group', { name: 'Slide 1 of 4' })).toBeVisible();
@@ -224,7 +227,7 @@ test.describe('home value carousel', () => {
 
     const carousel = page.getByRole('group', { name: 'Four ways of thinking about value', exact: true });
     await carousel.hover();
-    await expect(carousel.getByRole('button', { name: 'Pause rotation' })).toBeVisible();
+    await expect(carousel.getByRole('button', { name: 'Resume rotation' })).toBeVisible();
     await page.clock.fastForward(10_000);
     await expect(carousel.getByRole('group', { name: 'Slide 1 of 4' })).toBeVisible();
 
@@ -253,6 +256,8 @@ test.describe('archive themes carousel', () => {
     await page.clock.fastForward(6_000);
     await expect(carousel.getByRole('group', { name: 'Slide 2 of 5' })).toContainText('Research and evidence');
 
+    await carousel.hover();
+    await carousel.getByRole('button', { name: 'Resume rotation' }).click();
     await carousel.getByRole('button', { name: 'Pause rotation' }).click();
     await page.clock.fastForward(28_000);
     await expect(carousel.getByRole('group', { name: 'Slide 2 of 5' })).toBeVisible();
