@@ -5,6 +5,7 @@ The code for the Spectrum of Strengths website.
 ## Project Documentation
 
 - [Engineering guide](agents.md)
+- [Ranked website role and archive work list](WORK-LIST.md)
 - [Remaining work](docs/remaining-work.md)
 - [Vision-aligned work catalog](docs/vision-roadmap.md)
 - [First-stage content and publishing decisions](docs/first-stage-decisions.md)
