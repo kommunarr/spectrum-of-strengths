@@ -44,7 +44,7 @@ accuracy, or content. It does not mean the public wording is approved.
 | Rank / ID | Improvement | Status | Prerequisites | Narrow path scope and execution | Acceptance conditions |
 | --- | --- | --- | --- | --- | --- |
 | 1 / SOS-001 | **Objective, high impact:** prepare the first own-history or community-work record from a safe source, with date, provenance, status, and permission. Use the [archive workflow](docs/archive-entry-workflow.md); a rough note or link is enough from the creator. | Parked: source material and sharing status needed. | None. | Draft outside public content; serial because facts and permissions govern copy. | A short English/French draft identifies what happened, what is planned, source timing, and what may be shared. Private originals remain outside Git. No public claim is added yet. |
-| 2 / SOS-002 | **Objective, high impact:** make a two-site role and claim review packet. Propose a plain English/French sentence for this site's historical role, identify any current-state wording that may be stale, and ask only the minimum factual questions. | Ready. | None. | `docs/site-role-review.md`; serial editorial work. Do not reproduce private messages in the public repository. | Packet distinguishes observed website claims from verified facts, contains a neutral bilingual proposal, and presents at most three focused owner questions. |
+| 2 / SOS-002 | **Objective, high impact:** make a two-site role and claim review packet. Propose a plain English/French sentence for this site's historical role, identify any current-state wording that may be stale, and ask only the minimum factual questions. | Complete 2026-10-16: [review packet](docs/site-role-review.md). | None. | `docs/site-role-review.md`; serial editorial work. Do not reproduce private messages in the public repository. | Packet distinguishes observed website claims from verified facts, contains a neutral bilingual proposal, and presents at most three focused owner questions. |
 | 3 / SOS-003 | **Objective, high impact:** confirm how the two sites may name and link to each other and which current activities are established. | Parked: creator decision. | SOS-002. | Decision recorded in `docs/site-role-review.md`; serial. | Owner confirms the relationship, preferred site names, public link wording, and any current-state corrections. A lack of reply is not approval. |
 | 4 / SOS-004 | **Objective, high impact:** publish a modest bilingual role cue and link, then reconcile affected Home, Foundations, archive, metadata, and development wording. Preserve the historic record and current/future distinction. | Parked: public wording decision. | SOS-003. | `src/locales/`, relevant `src/views/`, route metadata generator if needed, focused browser coverage; serial because the pages and locale files overlap. | A visitor can understand this site's role and reach the other site; both languages identify an English-only destination if applicable. No unverified program, partnership, endorsement, or funding claim appears. Existing routes and accessibility remain sound. |
 | 5 / SOS-005 | **Objective, high impact:** publish the first approved, source-backed entry about the organization's own history or community work. | Parked: approved SOS-001 draft. | SOS-001; SOS-003 if the entry describes the relationship between sites. | Paired `src/locales/` entries, archive documentation, focused route/browser coverage; serial with SOS-004 because they edit the same content files. | Both languages have one stable dated entry with an accurate status, appropriate source context, and a direct URL; publication and source dates are distinct. Owner reviews only facts and sharing permissions. |
@@ -77,9 +77,10 @@ For public changes, review English and French together, verify source and
 permission notes outside the repository, run the repository's required checks,
 inspect desktop/mobile and keyboard behavior, and check the live direct routes
 after an authorized deploy. Keep unrelated working-tree files out of commits.
-For this planning phase, no public site files or deployment are changed.
+Editorial review packets do not change the public site or deploy it.
 
-Ready now: SOS-002. SOS-001 and SOS-006 are independent editorial tracks once
-their source or fit decision arrives. SOS-004 and SOS-005 both edit locale
-files, so complete them serially. Visual tasks remain conditional and do not
-block factual work.
+Ready now: none after SOS-002. SOS-003 awaits the creator's answers in the
+[review packet](docs/site-role-review.md). SOS-001 and SOS-006 are independent
+editorial tracks once their source or fit decision arrives. SOS-004 and SOS-005
+both edit locale files, so complete them serially. Visual tasks remain
+conditional and do not block factual work.
