@@ -1,6 +1,37 @@
 # Spectrum of Strengths
 
-The code for the Spectrum of Strengths website.
+A bilingual public record for Spectrum of Strengths, built as a static React
+site. It presents the organization's heritage and four value ideas in English
+and French, with a dated archive for approved research and community records.
+Events and contact options are clearly marked as in development.
+
+**[Explore the live site](https://kommunarr.github.io/spectrum-of-strengths/)**
+
+## Site preview
+
+<a href="docs/screenshots/home-desktop.png"><img src="docs/screenshots/home-desktop.png" width="680" alt="English desktop home page showing the introduction, value carousel, and archive preview"></a>
+<a href="docs/screenshots/home-mobile-fr.png"><img src="docs/screenshots/home-mobile-fr.png" width="180" alt="French mobile home page showing the same content in a narrow layout"></a>
+
+## What the implementation demonstrates
+
+- **Bilingual publishing:** paired English and French routes, language switching,
+  translation validation, localized metadata, canonical URLs, and `hreflang`
+  entries in page HTML and the sitemap.
+- **Static delivery with readable initial HTML:** the production build generates
+  direct route files, then hydrates them for client navigation and the carousel.
+  Main content remains readable when JavaScript is disabled.
+- **Accessible motion choices:** the value carousel can pause and resume, stops
+  on focus and hover, and shows static cards when reduced motion is requested.
+  Keyboard, reflow, and automated accessibility checks cover both languages.
+- **A durable archive:** entries use bilingual permanent links and distinguish
+  publication dates from dates of source material. Content checks require paired
+  entry data and validate route and source fields.
+- **Reviewable releases:** GitHub Actions runs code, build, browser, cross-browser,
+  and Lighthouse checks. A separate scheduled job checks external links.
+
+The [engineering case study](docs/engineering-case-study.md) explains the
+requirements, implementation choices, evidence, and current limits. It is a
+technical account of the site, not a claim that planned services are operating.
 
 ## Project Documentation
 
@@ -14,6 +45,7 @@ The code for the Spectrum of Strengths website.
 - [Routine content update guide](docs/content-update-guide.md)
 - [Opening release guide](docs/opening-release.md)
 - [Content management research and migration plan](docs/content-management.md)
+- [Testing strategy](docs/testing.md)
 
 ## Setup
 
@@ -38,24 +70,14 @@ accessibility score of at least 0.95 and a passing meta-description audit, and
 warns when performance, best-practice, or SEO scores fall below their budgets.
 The Lighthouse runner requires Node.js 22.19 or newer.
 
-## Deferred Decisions
+## Publishing and scope
 
-CMS, newsletter, and contact-provider choices are intentionally deferred. See
-the [remaining work](docs/remaining-work.md) and [content management plan](docs/content-management.md)
-before connecting any external service or publishing unapproved organization
-content.
+The bilingual first release went live on 2026-09-27. The [opening release
+guide](docs/opening-release.md) records the launch. `npm run deploy` publishes
+approved updates to GitHub Pages and requires authorized repository access.
+Keep the `/spectrum-of-strengths/` base path when changing routes or deployment.
 
-The [public GitHub Pages site](https://kommunarr.github.io/spectrum-of-strengths/)
-serves the full bilingual first release, published on 2026-09-27. The
-[opening release guide](docs/opening-release.md) records the launch.
-`npm run deploy` publishes approved application updates and requires authorized
-access to the `kommunarr/spectrum-of-strengths` repository.
-
-The production build renders the English and French page content into each
-direct route file and generates a `sitemap.xml` from the locale data. The site
-then hydrates those pages for navigation and carousel controls. Pages remain
-readable with JavaScript disabled; a small fallback stylesheet shows the full
-value cards and mobile navigation in that case. Approved archive entries get
-stable direct URLs from their IDs. Older `#/...` bookmarks continue to open
-their matching pages. Keep the `/spectrum-of-strengths/` base path when
-adding routes or updating deployment configuration.
+CMS, newsletter, and contact-provider choices are deferred. See the
+[remaining work](docs/remaining-work.md) and
+[content management plan](docs/content-management.md) before connecting an
+external service or publishing unapproved organization content.
