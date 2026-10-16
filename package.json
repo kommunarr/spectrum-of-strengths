@@ -21,6 +21,7 @@
     "test:cross-browser": "playwright test --config=playwright.cross-browser.config.ts",
     "test:external-links": "npm run build && node scripts/check-external-links.mjs",
     "test:lighthouse": "npm run build && node scripts/run-lighthouse.mjs",
+    "test:lighthouse:mobile": "npm run build && node scripts/run-lighthouse.mjs --mobile",
     "setup:hooks": "node scripts/install-git-hooks.mjs",
     "prepare": "npm run setup:hooks",
     "preview": "vite preview"

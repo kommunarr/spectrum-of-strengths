@@ -50,6 +50,9 @@ visitor analytics. Those additions should follow an actual organizational need
 and an owner for the resulting data and workflow.
 
 Technical improvements that can proceed independently include periodically
-measuring production performance, comparing mobile and desktop results, and
-addressing any reproducible regression. If the archive grows, its browsing
-structure can be revisited using real entries instead of placeholder content.
+repeating the [performance lab baseline](performance-baseline.md), comparing
+mobile and desktop results, and addressing any reproducible regression. If the
+archive grows, its browsing structure can be revisited using real entries
+instead of placeholder content. A [two-minute walkthrough](demo-walkthrough.md)
+shows the implemented experience without adding a self-promotional page to the
+organization's website.

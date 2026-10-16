@@ -2,10 +2,12 @@ import { spawn } from 'node:child_process';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { setTimeout as delay } from 'node:timers/promises';
 import * as chromeLauncher from 'chrome-launcher';
-import lighthouse from 'lighthouse';
+import lighthouse, { desktopConfig } from 'lighthouse';
 import { chromium } from '@playwright/test';
 
 const base = 'http://127.0.0.1:4173/spectrum-of-strengths/';
+const mobile = process.argv.includes('--mobile');
+const reportPrefix = mobile ? 'mobile-' : '';
 const routes = [
   { name: 'home-en', path: '' },
   { name: 'events-en', path: 'events/' },
@@ -66,20 +68,16 @@ async function main() {
         port: chrome.port,
         output: 'html',
         logLevel: 'error',
-        formFactor: 'desktop',
-        screenEmulation: {
-          mobile: false, width: 1350, height: 940, deviceScaleFactor: 1, disabled: false,
-        },
-      });
+      }, mobile ? undefined : desktopConfig);
       if (!result) throw new Error(`Lighthouse did not return a result for ${route.name}.`);
 
-      await writeFile(`lighthouse-reports/${route.name}.html`, result.report);
-      await writeFile(`lighthouse-reports/${route.name}.json`, JSON.stringify(result.lhr, null, 2));
+      await writeFile(`lighthouse-reports/${reportPrefix}${route.name}.html`, result.report);
+      await writeFile(`lighthouse-reports/${reportPrefix}${route.name}.json`, JSON.stringify(result.lhr, null, 2));
 
       for (const [category, threshold] of Object.entries(thresholds)) {
         const score = result.lhr.categories[category]?.score;
         if (score === null || score === undefined || score < threshold.minimum) {
-          const message = `${route.name}: ${category} ${score ?? 'unavailable'} is below ${threshold.minimum}`;
+          const message = `${reportPrefix}${route.name}: ${category} ${score ?? 'unavailable'} is below ${threshold.minimum}`;
           if (threshold.fail) {
             reportError(message);
             failed = true;
@@ -89,10 +87,10 @@ async function main() {
         }
       }
       if (result.lhr.audits['meta-description']?.score !== 1) {
-        reportError(`${route.name}: meta description audit failed.`);
+        reportError(`${reportPrefix}${route.name}: meta description audit failed.`);
         failed = true;
       }
-      console.log(`${route.name}: Lighthouse report saved.`);
+      console.log(`${reportPrefix}${route.name}: Lighthouse report saved.`);
     }
   } finally {
     if (chrome) await chrome.kill();

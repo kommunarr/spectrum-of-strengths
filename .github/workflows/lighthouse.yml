@@ -36,6 +36,9 @@ jobs:
       - name: Run Lighthouse CI
         run: npm run test:lighthouse
 
+      - name: Run mobile Lighthouse CI
+        run: npm run test:lighthouse:mobile
+
       - name: Upload Lighthouse reports
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v7

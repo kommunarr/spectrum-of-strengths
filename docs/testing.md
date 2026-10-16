@@ -16,6 +16,11 @@ The repository uses layered automated checks:
 - `npm run test:lighthouse` audits representative production routes with
   Lighthouse directly. Accessibility and meta descriptions are required;
   performance, SEO, and best-practice budgets produce warnings.
+- `npm run test:lighthouse:mobile` runs the same representative routes with
+  Lighthouse's default mobile configuration and saves separately named reports.
+  The desktop command uses Lighthouse's desktop configuration. Both commands
+  use lab conditions; neither measures real visitor experience. The Lighthouse
+  workflow runs both profiles and retains their reports as an artifact.
 
 The browser suite covers:
 

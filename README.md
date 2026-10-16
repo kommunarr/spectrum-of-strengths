@@ -32,6 +32,9 @@ Events and contact options are clearly marked as in development.
 The [engineering case study](docs/engineering-case-study.md) explains the
 requirements, implementation choices, evidence, and current limits. It is a
 technical account of the site, not a claim that planned services are operating.
+The [two-minute walkthrough](docs/demo-walkthrough.md) gives a short demo path,
+and the [performance baseline](docs/performance-baseline.md) records the
+current Lighthouse lab measurements and how to reproduce them.
 
 ## Project Documentation
 
@@ -64,11 +67,12 @@ To run the production browser suite locally, install Chromium with
 [testing strategy](docs/testing.md) for the covered user flows and the limits
 of automated accessibility checks.
 
-Run `npm run test:lighthouse` with Chrome installed to audit the production
-build. It saves HTML and JSON reports under `lighthouse-reports/`, requires an
-accessibility score of at least 0.95 and a passing meta-description audit, and
-warns when performance, best-practice, or SEO scores fall below their budgets.
-The Lighthouse runner requires Node.js 22.19 or newer.
+Run `npm run test:lighthouse` and `npm run test:lighthouse:mobile` with Chrome
+installed to audit the production build in both profiles. They save HTML and
+JSON reports under `lighthouse-reports/`, require an accessibility score of at
+least 0.95 and a passing meta-description audit, and warn when performance,
+best-practice, or SEO scores fall below their budgets. The Lighthouse runner
+requires Node.js 22.19 or newer.
 
 ## Publishing and scope
 
